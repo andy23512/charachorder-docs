@@ -35,7 +35,7 @@ sys.path.insert(0, os.path.abspath('_ext'))
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 # extensions = ['sphinx.ext.autodoc']
-extensions = ['myst_parser', 'sphinx.ext.autosectionlabel', "sphinx_design",
+extensions = ['myst_parser', 'sphinx_design',
 'sphinx.ext.autosectionlabel', 'sphinx_copybutton', 'ccos_meta', 'ccos_changelog']
 
 # Automatically prefix labels with the document name
