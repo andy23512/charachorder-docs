@@ -50,7 +50,7 @@ community.
       When an action
       code activates a specific library, subsequent chord creation automatically
       groups new chords within that library's structure, allowing for context-
-      specific chord sets (e.g., multiligual, coding, email) that can be
+      specific chord sets (e.g., multilingual, coding, email) that can be
       programmatically switched during use.
 
    Forced Chord Phenomenon

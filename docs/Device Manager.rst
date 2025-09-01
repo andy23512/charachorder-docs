@@ -93,18 +93,18 @@ Undo and Redo
 .. image:: /assets/images/ManagerUndoRedo.png
   :alt: The Undo and Redo arrows
 
-Near the top left corner, the device manager has handy undo and redo buttons which do exactly what their names describe. If you're making changes to your layout, your chords, or your layout, you can step back, one change at a time, all the way back to the very first change that you made during that session. Once you're stepped back, you can step forward to redo the change(s) that was/were undone.
+Near the top left corner, the device manager has handy undo and redo buttons which do exactly what their names describe. If you're making changes to your layout, your chords, or your settings, you can step back, one change at a time, all the way back to the very first change that you made during that session. Once you're stepped back, you can step forward to redo the change(s) that was/were undone.
 
 Color Scheme
 ------------
-On the bottom right of the device manager, you'll see a circle with a solid color. Hovering over this circle will reveal the label "color scheme." You can click this circle to change the color scheme of the device manager. In the color scheme menu, you can choose your preferred color using a color pallette, an RGB color system, or by clicking the dropper icon to choose a color on your screen.
+On the bottom right of the device manager, you'll see a circle with a solid color. Hovering over this circle will reveal the label "color scheme." You can click this circle to change the color scheme of the device manager. In the color scheme menu, you can choose your preferred color using a color palette, an RGB color system, or by clicking the dropper icon to choose a color on your screen.
 
 .. image:: /assets/images/ManagerColorScheme.png
   :alt: The Color Scheme Menu
 
 Light and Dark Mode
 -------------------
-Also in the bottom right-hand corner, you'll find a sun or moon icon where you can toggle between light and dark mode. This toggle can help those who would rather a brighter screen to see better or a darker screen to reduce eye strain.
+Also in the bottom right-hand corner, you'll find a sun or moon icon where you can toggle between light and dark mode. This toggle can help those who would rather have a brighter screen to see better or a darker screen to reduce eye strain.
 
 Apply Button
 ------------
@@ -192,12 +192,12 @@ Arpeggiates
 
 	Arpeggiate actions are timed actions that can modify a :ref:`chord<Chords:What are Chords?>` after the chord is performed. A quick example of this is the use of :doc:`chord modifiers<Chord Modifiers>` after you perform the chord. You can read that section for information on how the chord modifiers work.
 
-	With arpeggiates enabled, you can chord the word run and then, within the :ref:`arpeggiate timeout window<GenerativeTextMenu:Arpeggiate Timeout>`, press the :ref:`past tense modifier<Chord Modifiers:Past Tense>` for the word to be “modified” into its past tense variant; in english, ran.
+	With arpeggiates enabled, you can chord the word run and then, within the :ref:`arpeggiate timeout window<GenerativeTextMenu:Arpeggiate Timeout>`, press the :ref:`past tense modifier<Chord Modifiers:Past Tense>` for the word to be “modified” into its past tense variant; in English, ran.
 
 .. image:: /assets/images/ManagerSettingsArpeggiates.png
   :alt: The Arpeggiates settings box
 
-In this box, ou can enable or disable arpeggiates as well as increase or decrease the :ref:`arpeggiate timeout setting<GenerativeTextMenu:Arpeggiate Timeout>`.
+In this box, you can enable or disable arpeggiates as well as increase or decrease the :ref:`arpeggiate timeout setting<GenerativeTextMenu:Arpeggiate Timeout>`.
 
 .. dropdown:: Mode
 
