@@ -367,8 +367,9 @@ However, if you have editable text highlighted when you connect your CharaChorde
 	in the ``Display`` menu, and the Meta API has no setting matching it on any
 	of the 11 device slugs it publishes -- unlike, say,
 	:ref:`Capslock<GenerativeTextMenu:Capslock>`, which is a real GTM toggle the
-	API simply does not track. Whether the standalone toggle was folded into
-	this one or just dropped is not recorded in any release note. If you would
+	API simply does not track. As of CCOS 2.1.0, the standalone Startup toggle
+	was removed with the introduction of the Instant Boot feature, which allows
+	for character entry while the chords load in the background. If you would
 	rather not see the startup message, this setting is now the only known way
 	to turn it off.
 
