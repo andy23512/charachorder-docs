@@ -40,6 +40,7 @@ Table of Contents
    CharaChorder X.rst
    CCOS.rst
    Chords.rst
+   Chord Modifiers.rst
    Device Manager.rst
    FAQs.rst
    GenerativeTextMenu.rst
