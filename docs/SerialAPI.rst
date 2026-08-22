@@ -252,47 +252,7 @@ Keymap codes
 Parameter codes
 ^^^^^^^^^^^^^^^
 
-.. csv-table::
-   :header: "Parameter Codes","Hexadecimal Code","Description"
-
-   "Enable Serial Header","0x01","boolean 0 or 1, default is 0"
-   "Enable Serial Logging","0x02","boolean 0 or 1, default is 0"
-   "Enable Serial Debugging","0x03","boolean 0 or 1, default is 0"
-   "Enable Serial Raw","0x04","boolean 0 or 1, default is 0"
-   "Enable Serial Chord","0x05","boolean 0 or 1, default is 0"
-   "Enable Serial Keyboard","0x06","boolean 0 or 1, default is 0"
-   "Enable Serial Mouse","0x07","boolean 0 or 1, default is 0"
-   "Enable USB HID Keyboard","0x11","boolean 0 or 1, default is 1"
-   "Enable Character Entry","0x12","boolean 0 or 1"
-   "GUI-CTRL Swap Mode","0x13","boolean 0 or 1; 1 swaps keymap 0 and 1. (CCL only)"
-   "Key Scan Duration","0x14","scan rate described in milliseconds; default is 2ms = 500Hz"
-   "Key Debounce Press Duration","0x15","debounce time in milliseconds; default is 7ms on the One and 20ms on the Lite"
-   "Key Debounce Release Duration","0x16","debounce time in milliseconds; default is 7ms on the One and 20ms on the Lite"
-   "Keyboard Output Character Microsecond Delays","0x17","delay time in microseconds (one delay for press and again for release); default is 480us; max is 10240us; increments of 40us"
-   "Enable USB HID Mouse","0x21","boolean 0 or 1; default is 1"
-   "Slow Mouse Speed","0x22","pixels to move at the mouse poll rate; default for CC1 is 5 = 250px/s"
-   "Fast Mouse Speed","0x23","pixels to move at the mouse poll rate; default for CC1 is 25 = 1250px/s"
-   "Enable Active Mouse","0x24","boolean 0 or 1; moves mouse back and forth every 60s"
-   "Mouse Scroll Speed","0x25","default is 1; polls at 1/4th the rate of the mouse move updates"
-   "Mouse Poll Duration","0x26","poll rate described in milliseconds; default is 20ms = 50Hz"
-   "Enable Chording","0x31","boolean 0 or 1"
-   "Enable Chording Character Counter Timeout","0x32","boolean 0 or 1; default is 1"
-   "Chording Character Counter Timeout Timer","0x33","0-255 deciseconds; default is 40 or 4.0 seconds"
-   "Chord Detection Press Tolerance(ms)","0x34","1-150 milliseconds"
-   "Chord Detection Release Tolerance(ms)","0x35","1-150 milliseconds"
-   "Enable Spurring","0x41","boolean 0 or 1; default is 1"
-   "Enable Spurring Character Counter Timeout","0x42","boolean 0 or 1; default is 1"
-   "Spurring Character Counter Timeout Timer","0x43","0-255 seconds; default is 240"
-   "Enable Arpeggiates","0x51","boolean 0 or 1; default is 1"
-   "Arpeggiate Tolerance","0x54","in milliseconds; default 800ms"
-   "Compound Tolerance","0x64","in milliseconds; default 1500ms"
-   "LED Brightness","0x81","0-50 (CCL only); default is 5, which draws around 100 mA of current"
-   "LED Color Code","0x82","Color Codes to be listed (CCL only)"
-   "Enable LED Key Highlight (coming soon)","0x83","boolean 0 or 1 (CCL only)"
-   "Enable LEDs","0x84","boolean 0 or 1; default is 1 (CCL only)"
-   "Operating System","0x91",":ref:`Operating system codes<SerialAPI:Operating system codes>` listed below"
-   "Enable Realtime Feedback","0x92","boolean 0 or 1; default is 1"
-   "Enable CharaChorder Ready on startup","0x93","boolean 0 or 1; default is 1"
+.. ccos-parameter-codes::
 
 
 Operating system codes
@@ -529,4 +489,7 @@ To use these chords with the Serial API, they should be converted to a 16-charac
 Action codes
 ------------
 
-You can view the `action codes here. <https://docs.google.com/spreadsheets/d/1--T9bXshCIC-OVly-CY3rK87fgb7AHgJl3IySh7cmHc/edit#gid=0>`__
+Every CC action code published by the firmware, grouped by category.
+Chords store these as decimal values; see :ref:`Chord Construction<SerialAPI:Chord Construction>`.
+
+.. ccos-action-codes::
