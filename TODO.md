@@ -212,3 +212,50 @@ It is **not** derivable from the Meta API:
 
 The rest of the file contains no defaults, ranges, or units — only prose,
 images, notes and dropdowns. It should stay hand-written.
+
+---
+
+## 12. Pre-existing markup bugs in the RST sources
+
+Unrelated to the Meta API work — found while checking the deployed site. Both
+predate this branch (`git log -L` points at upstream commits by `duianto`,
+2025-08). Both are easy to miss: 12a never warns anywhere, because it is valid
+RST that simply does nothing, and 12b resolves silently on macOS, whose
+filesystem is case-insensitive, so it only warns on the Linux CI runner.
+
+### 12a. A whole section is commented out — `docs/Master Forge.rst:333`
+
+```rst
+.. Dropdown: Only use in Emergency
+```
+
+One colon, not two. `.. dropdown::` is a directive; `.. Dropdown:` is a
+**comment**, so docutils swallows everything indented beneath it — lines
+334–418, i.e. 62 non-blank lines and 9 images. The entire *"Only use in
+Emergency"* manual firmware-update procedure is absent from the published
+page. Confirmed: the deployed `Master Forge.html` contains no occurrence of
+"auto-connected" or "Doing it manually".
+
+**Question:** restore it as a real `.. dropdown:: Only use in Emergency`?
+The block would then be parsed for the first time, so expect follow-on work:
+its lines are indented with a mix of tabs and spaces at inconsistent depths,
+and two of its images have the wrong case (12b).
+
+### 12b. Image paths whose case does not match the file on disk
+
+| Reference | File in git | Effect |
+|---|---|---|
+| `Device Manager.rst:403` → `ManagerSettingsAutocorrect.png` | `ManagerSettingsAutoCorrect.png` | **Image missing from the published page** |
+| `Master Forge.rst:325` → `DM-apply-update-button-M4G.png` | `DM-apply-update-button-m4g.png` | **Image missing from the published page** |
+| `Master Forge.rst:342` → `FW-connect-button.jpg` | `FW-connect-button.JPG` | Harmless today — inside the 12a comment |
+| `Master Forge.rst:385` → `FW-connect-button.jpg` | `FW-connect-button.JPG` | Harmless today — inside the 12a comment |
+
+The first two are the only `image file not readable` warnings the CI build
+emits. Fixing them is a one-word edit each; the last two must be fixed as part
+of 12a, or they will start failing the moment that block is uncommented.
+
+Note `Master Forge.rst:241` and `:291` already spell the same file `.JPG`
+correctly, so only the copies inside the commented block are wrong.
+
+**Question:** fix these in the fork, or send them upstream as a separate PR
+(they are not fork-specific, so upstream seems the better home)?
