@@ -1,6 +1,8 @@
-# docs
+# docs (Tangent's fork)
 
-CharaChorder documentation
+An unofficial fork of the [CharaChorder documentation](https://github.com/CharaChorder/docs), where setting tables are
+generated from the Firmware Meta API instead of being written by hand.
+The official documentation is at <https://docs.charachorder.com/>.
 
 ## Dependencies
 

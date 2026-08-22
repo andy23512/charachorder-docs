@@ -3,8 +3,15 @@
    in this index.rst for them to be rendered and added to the
    table of contents
 
-Welcome to the Official CharaChorder Guide!
-===========================================
+Welcome to the CharaChorder Guide (Tangent's fork)!
+===================================================
+
+.. note::
+   This is an unofficial fork of the CharaChorder documentation, maintained by
+   Tangent. Setting tables here are generated from the
+   `CCOS Firmware Meta API <https://github.com/CharaChorder/CCOS-firmware#firmware-meta-api>`__
+   rather than written by hand, so they may differ from the official guide.
+   The official documentation lives at https://docs.charachorder.com/.
 
 Welcome to the wonderful world of CharaChorder! If you're here, you are likely seeking guidance for your CharaChorder device or you're simply interested in CharaChorder and came here to read a little about what CharaChorder devices are capable of. Either way, we welcome you and hope that you enjoy reading this guide. If you are setting your CharaChorder device up for the first time, please continue reading below.
 

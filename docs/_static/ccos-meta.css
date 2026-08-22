@@ -6,6 +6,7 @@
   --ccos-border: #d7dbe0;
   --ccos-accent: #2980b9;
   --ccos-muted: #4a5560;
+  --ccos-text: #404040;
 
   position: sticky;
   top: 0;
@@ -20,6 +21,9 @@
   border-left: 3px solid var(--ccos-accent);
   border-radius: 3px;
   background: var(--ccos-surface);
+  color: var(--ccos-text);
+  /* Let the <select> and checkbox follow the same scheme as the panel. */
+  color-scheme: light dark;
   font-size: 0.9em;
 }
 
@@ -29,11 +33,15 @@
     --ccos-border: #454b52;
     --ccos-accent: #4aa3df;
     --ccos-muted: #b3bcc4;
+    --ccos-text: #e6e6e6;
   }
 }
 
+/* sphinx_rtd_theme hardcodes `label { color: #333 }`, which disappears against
+   the panel in dark mode, so the labels have to take the panel's colour. */
 .ccos-picker label {
   margin: 0;
+  color: inherit;
   font-weight: 700;
 }
 

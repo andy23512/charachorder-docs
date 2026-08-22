@@ -54,7 +54,7 @@ source_suffix = ['.rst', '.md']
 master_doc = 'index'
 
 # General information about the project.
-project = 'CharaChorder Docs'
+project = "CharaChorder Docs (Tangent's fork)"
 copyright = '2025, CharaChorder'
 author = 'CharaChorder'
 
@@ -129,7 +129,7 @@ html_sidebars = {
 html_title = f'{project} v{version}'
 
 # Canonical URL
-html_baseurl = 'https://docs.charachorder.com'
+html_baseurl = 'https://andy23512.github.io/charachorder-docs/'
 
 # Logos/icons
 html_logo = 'assets/images/CharaChorder-logo.png'
