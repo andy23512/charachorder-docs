@@ -175,12 +175,8 @@ Currently, on CCOS, you can select between Windows, Mac, Linux, iOS, or Android.
 
 The intent of this setting is to provide more accurate key mapping. As such, it is recommendable to set this setting to match whatever computer operating system you're using your CCOS device on.
 
-.. csv-table::
-    :header: "Device", "Default"
-
-    "CharaChorder One", "Windows"
-    "CharaChorder Lite", "Windows"
-    "CharaChorder X", "Windows"
+.. ccos-setting:: misc/operating system
+   :columns: Device, Default
 
 .. Warning::
 	As of December of 2023, this setting doesn't do anything on CCOS devices.
@@ -268,12 +264,7 @@ This setting is used in conjunction with :ref:`poll rate <GenerativeTextMenu:Pol
 
 You can find the default settings for each device in the table below:
 
-.. csv-table::
-    :header: "Device", "Default", "Min. Value", "Max. Value", "Increments"
-
-    "CharaChorder One", "5 px", "0 px", "250 px", "1 px"
-    "CharaChorder Lite", "16 px", "0 px", "250 px", "1 px"
-    "CharaChorder X", "16 px", "0 px", "250 px", "1 px"
+.. ccos-setting:: mouse/slow speed
 
 Fast Speed
 ~~~~~~~~~~
@@ -294,12 +285,7 @@ This setting is used in conjunction with :ref:`poll rate <GenerativeTextMenu:Pol
 
 You can find the default settings for each device in the table below:
 
-.. csv-table::
-    :header: "Device", "Default", "Min. Value", "Max. Value", "Increments"
-
-    "CharaChorder One", "25 px", "0 px", "250 px", "1 px"
-    "CharaChorder Lite", "32 px", "0 px", "250 px", "1 px"
-    "CharaChorder X", "32 px", "0 px", "250 px", "1 px"
+.. ccos-setting:: mouse/fast speed
 
 Scroll Speed
 ~~~~~~~~~~~~
@@ -320,12 +306,7 @@ Increasing this setting will make your CCOS scrolling scroll faster. This settin
 
 You can find the default settings for each device in the table below:
 
-.. csv-table::
-    :header: "Device", "Default", "Min. Value", "Max. Value", "Increments"
-
-    "CharaChorder One", "2 px", "0 px", "25 px", "1 px"
-    "CharaChorder Lite", "2 px", "0 px", "25 px", "1 px"
-    "CharaChorder X", "2 px", "0 px", "25 px", "1 px"
+.. ccos-setting:: mouse/scroll speed
 
 
 Active Mode
@@ -374,12 +355,7 @@ The downside to having higher values is that you may accidentally trigger chords
 
 You can find the default settings for each device in the table below:
 
-.. csv-table::
-    :header: "Device", "Default", "Min. Value", "Max. Value", "Increments"
-
-    "CharaChorder One", "25 ms", "0 ms", "150 ms", "1 ms"
-    "CharaChorder Lite", "25 ms", "0 ms", "150 ms", "1 ms"
-    "CharaChorder X", "25 ms", "0 ms", "150 ms", "1 ms"
+.. ccos-setting:: chording/press tolerance
 
 Release Tolerance
 ~~~~~~~~~~~~~~~~~
@@ -403,12 +379,7 @@ The downside to having higher values is that you may accidentally trigger chords
 
 You can find the default settings for each device in the table below:
 
-.. csv-table::
-    :header: "Device", "Default", "Min. Value", "Max. Value", "Increments"
-
-    "CharaChorder One", "18 ms", "0 ms", "150 ms", "1 ms"
-    "CharaChorder Lite", "18 ms", "0 ms", "150 ms", "1 ms"
-    "CharaChorder X", "18 ms", "0 ms", "150 ms", "1 ms"
+.. ccos-setting:: chording/release tolerance
 
 
 Timeout
@@ -429,12 +400,7 @@ You can set this setting to be as low as 0.0 seconds (s) or as high as 25.0 seco
 
 You can find the default settings for each device in the table below:
 
-.. csv-table::
-    :header: "Device", "Default", "Min. Value", "Max. Value", "Increments"
-
-    "CharaChorder One", "4 s", "0 s", "25 s", "0.1 s"
-    "CharaChorder Lite", "4 s", "0 s", "25 s", "0.1 s"
-    "CharaChorder X", "4 s", "0 s", "25 s", "0.1 s"
+.. ccos-setting:: autocorrect/timeout
 
 Spurring
 ~~~~~~~~
@@ -589,10 +555,7 @@ Please note that LEDs are NOT individually addressable as of December of 2023. T
 
 You can find the default settings for the CharaChorder Lite in the table below:
 
-.. csv-table::
-    :header: "Device", "Default", "Min. Value", "Max. Value", "Increments"
-
-    "CharaChorder Lite", "5", "0", "50", "1"
+.. ccos-setting:: leds/brightness
 
 
 Resources
