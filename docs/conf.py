@@ -21,6 +21,9 @@ import os
 import sys
 # sys.path.insert(0, os.path.abspath('../source'))
 
+# Local Sphinx extensions live in docs/_ext (see ccos_meta.py).
+sys.path.insert(0, os.path.abspath('_ext'))
+
 
 # -- General configuration ------------------------------------------------
 
@@ -33,7 +36,7 @@ import sys
 # ones.
 # extensions = ['sphinx.ext.autodoc']
 extensions = ['myst_parser', 'sphinx.ext.autosectionlabel', "sphinx_design",
-'sphinx.ext.autosectionlabel', 'sphinx_copybutton']
+'sphinx.ext.autosectionlabel', 'sphinx_copybutton', 'ccos_meta']
 
 # Automatically prefix labels with the document name
 autosectionlabel_prefix_document = True
@@ -100,6 +103,15 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# Lets readers switch the generated CCOS setting tables to another device or
+# firmware version without a rebuild. Without JS the cached tables still show.
+html_css_files = ['ccos-meta.css']
+html_js_files = ['ccos-meta.js']
+
+# Excluded from the build: cached Meta API data consumed by the ccos_meta
+# extension, not pages of their own.
+exclude_patterns += ['_data']
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.

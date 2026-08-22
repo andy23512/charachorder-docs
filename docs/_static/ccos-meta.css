@@ -1,0 +1,64 @@
+/* Styling for the CCOS version picker and the tables it drives.
+   See docs/_ext/ccos_meta.py and docs/_static/ccos-meta.js. */
+
+.ccos-picker {
+  --ccos-surface: #f8f9fb;
+  --ccos-border: #d7dbe0;
+  --ccos-accent: #2980b9;
+  --ccos-muted: #4a5560;
+
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.5rem 0 1rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--ccos-border);
+  border-left: 3px solid var(--ccos-accent);
+  border-radius: 3px;
+  background: var(--ccos-surface);
+  font-size: 0.9em;
+}
+
+@media (prefers-color-scheme: dark) {
+  .ccos-picker {
+    --ccos-surface: #2b2f33;
+    --ccos-border: #454b52;
+    --ccos-accent: #4aa3df;
+    --ccos-muted: #b3bcc4;
+  }
+}
+
+.ccos-picker label {
+  margin: 0;
+  font-weight: 700;
+}
+
+.ccos-picker select {
+  margin-left: 0.4rem;
+  padding: 0.15rem 0.3rem;
+}
+
+.ccos-picker-toggle {
+  font-weight: 400;
+}
+
+.ccos-picker-status {
+  margin-left: auto;
+  color: var(--ccos-muted);
+  font-style: italic;
+}
+
+/* The generated tables should read like the hand-written ones around them. */
+.ccos-table table {
+  width: 100%;
+}
+
+.ccos-enum-options {
+  margin-top: 0.4rem;
+  font-size: 0.9em;
+  opacity: 0.85;
+}

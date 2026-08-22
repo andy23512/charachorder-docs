@@ -80,3 +80,84 @@ If you want to link to a specific anchor:
   :width: 1200
   :alt: Alt text for screen readers
 ```
+
+## CCOS setting tables
+
+Setting defaults and ranges are generated from the official
+[Firmware Meta API](https://github.com/CharaChorder/CCOS-firmware#firmware-meta-api)
+instead of being written by hand, so they stay correct per device and per CCOS
+version. Instead of a `csv-table`, write:
+
+```
+.. ccos-setting:: mouse/slow speed
+```
+
+The argument is `<settings group>/<setting name>` spelled exactly as the Meta
+API spells it (lower case). Options:
+
+```
+.. ccos-setting:: chording/detection method
+   :devices: one_m0, two_s3
+   :version: 3.0.0
+   :columns: Device, Default, Setting ID
+```
+
+- `:devices:` — API device slugs; defaults to the devices marked
+  `docs_default` in `docs/_data/ccos/devices.json`
+- `:version:` — a cached CCOS version; defaults to the newest one cached
+- `:columns:` — any of `Device`, `Default`, `Min. Value`, `Max. Value`,
+  `Increments`, `Setting ID`
+
+A device that does not have the setting gets an em dash, so hardware
+differences show up on their own.
+
+### Other generated tables
+
+`SerialAPI.rst` uses two more directives fed by the same cache:
+
+```
+.. ccos-parameter-codes::
+```
+
+Every setting id a device accepts, as the hexadecimal parameter code used by
+`CMD_VAR_SET_PARAMETER`, with the accepted range and factory default. Takes
+`:devices:` and `:version:`. Settings that only exist on some hardware are
+marked in the description ("CharaChorder Lite, Master Forge only"). This table
+is a union across devices rather than one row per device, so unlike
+`ccos-setting` it is **not** re-rendered by the live version picker.
+
+```
+.. ccos-action-codes::
+```
+
+All CC action codes from `actions.json`, one table per category, with the
+decimal value used inside chords and its hexadecimal equivalent. Takes
+`:version:` and `:categories:` (comma separated, to render only some).
+`actions.json` is identical across devices for a given release, so it is
+cached once per version.
+
+### Refreshing the data
+
+The build never touches the network; it reads snapshots committed under
+`docs/_data/ccos/`. To update them:
+
+```sh
+python3 scripts/update_ccos_meta.py                 # newest stable per device
+python3 scripts/update_ccos_meta.py --version 3.0.0
+python3 scripts/update_ccos_meta.py --pre-releases   # include rc/beta builds
+```
+
+`.github/workflows/update-ccos-meta.yml` runs this weekly and opens a pull
+request, so firmware changes surface as a reviewable diff.
+
+On top of the baked-in tables, `docs/_static/ccos-meta.js` adds a version
+picker that queries the Meta API live, letting readers check any device and
+CCOS version combination. With JavaScript off, the cached tables still render.
+
+### Finding setting names
+
+To list what a version exposes:
+
+```sh
+curl -s https://charachorder.io/firmware/one_m0/3.0.0/settings.json | python3 -m json.tool
+```

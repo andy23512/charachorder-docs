@@ -7,3 +7,6 @@ results/*.png
 results/*.txt
 processed_data/*.dat
 .*.sw?
+
+# Local Python env for building these docs
+.venv/

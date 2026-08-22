@@ -1,0 +1,23 @@
+{
+  "_comment": [
+    "Hand-maintained map from Firmware Meta API device slugs to the product names used in these docs.",
+    "Slug aliases cross-checked against CharaChorder/DeviceManager src/lib/serial/device.ts (DEVICE_ALIASES).",
+    "'docs_default': true means the device gets a row in generated tables unless a directive overrides it.",
+    "Entries marked \"confirm\": true still need a human to confirm the product name."
+  ],
+  "devices": {
+    "one_m0":     { "name": "CharaChorder One",            "docs_default": true },
+    "lite_m0":    { "name": "CharaChorder Lite (M0)",      "docs_default": false },
+    "lite_s2":    { "name": "CharaChorder Lite",           "docs_default": true },
+    "x_s2":       { "name": "CharaChorder X",              "docs_default": true },
+    "two_s3":     { "name": "CharaChorder Two",            "docs_default": true },
+    "engine_s2":  { "name": "CharaChorder Engine",         "docs_default": true },
+    "m4g_s3":     { "name": "Master Forge",                "docs_default": true },
+    "m4gr_s3":    { "name": "Master Forge (right half)",   "docs_default": false, "confirm": true },
+    "t4g_s2":     { "name": "CCB (T4G S2)",                "docs_default": false, "confirm": true },
+    "ccb_s2":     { "name": "CCB (S2)",                    "docs_default": false, "confirm": true },
+    "zero_linux": { "name": "CharaChorder Zero (Linux)",   "docs_default": false, "confirm": true },
+    "zero_wasm":  { "name": "CharaChorder Zero (WASM)",    "docs_default": false, "confirm": true },
+    "zero_win":   { "name": "CharaChorder Zero (Windows)", "docs_default": false, "confirm": true }
+  }
+}

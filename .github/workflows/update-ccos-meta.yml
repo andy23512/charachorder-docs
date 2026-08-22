@@ -1,0 +1,35 @@
+name: Update CCOS meta cache
+
+# The docs build reads committed snapshots of the Firmware Meta API rather than
+# fetching at build time, so a scheduled job keeps them current. Changes arrive
+# as a pull request, which also gives a reviewable diff of what CCOS changed.
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - name: Refresh cached Meta API data
+        run: python3 scripts/update_ccos_meta.py
+      - name: Open a pull request if anything changed
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: chore/update-ccos-meta
+          title: 'Refresh CCOS Firmware Meta API cache'
+          commit-message: 'Refresh CCOS Firmware Meta API cache'
+          body: |
+            Automated refresh of `docs/_data/ccos/` from the
+            [Firmware Meta API](https://github.com/CharaChorder/CCOS-firmware#firmware-meta-api).
+
+            Review the diff for setting changes that need prose updates too.
+          add-paths: docs/_data/ccos
