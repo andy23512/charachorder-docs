@@ -1,6 +1,9 @@
 /* Styling for the CCOS version picker and the tables it drives.
    See docs/_ext/ccos_meta.py and docs/_static/ccos-meta.js. */
 
+/* sphinx_rtd_theme has no dark mode -- the page is always light -- so the
+   picker is always light too. Keying it off prefers-color-scheme made it a
+   dark bar floating on a white page. */
 .ccos-picker {
   --ccos-surface: #f8f9fb;
   --ccos-border: #d7dbe0;
@@ -22,32 +25,26 @@
   border-radius: 3px;
   background: var(--ccos-surface);
   color: var(--ccos-text);
-  /* Let the <select> and checkbox follow the same scheme as the panel. */
-  color-scheme: light dark;
+  /* The controls are light regardless of the OS setting, to match the theme. */
+  color-scheme: light;
   font-size: 0.9em;
 }
 
-@media (prefers-color-scheme: dark) {
-  .ccos-picker {
-    --ccos-surface: #2b2f33;
-    --ccos-border: #454b52;
-    --ccos-accent: #4aa3df;
-    --ccos-muted: #b3bcc4;
-    --ccos-text: #e6e6e6;
-  }
-}
-
-/* sphinx_rtd_theme hardcodes `label { color: #333 }`, which disappears against
-   the panel in dark mode, so the labels have to take the panel's colour. */
+/* sphinx_rtd_theme hardcodes `label { color: #333 }`; take the panel's colour
+   instead so the two stay in step. */
 .ccos-picker label {
   margin: 0;
   color: inherit;
   font-weight: 700;
 }
 
+/* The theme forces `select { background-color: #fff }` but sets no colour, so
+   the text would otherwise inherit whatever the panel uses. */
 .ccos-picker select {
   margin-left: 0.4rem;
   padding: 0.15rem 0.3rem;
+  color: var(--ccos-text);
+  background-color: #fff;
 }
 
 .ccos-picker-toggle {
