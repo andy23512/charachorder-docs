@@ -171,8 +171,6 @@ Operating System
 
 This setting refers to your host computer's operating system. Because the keys on the different computer operating systems may vary, you can set your CCOS device up so that it matches your computer.
 
-Currently, on CCOS, you can select between Windows, Mac, Linux, iOS, or Android.
-
 The intent of this setting is to provide more accurate key mapping. As such, it is recommendable to set this setting to match whatever computer operating system you're using your CCOS device on.
 
 .. ccos-setting:: misc/operating system

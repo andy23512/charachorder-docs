@@ -185,14 +185,32 @@ the Device Manager.
 
 ---
 
-## 5. Enum values render in the API's lower case
+## 5. Enum values render in the API's lower case (decided)
 
-`misc/operating system` renders as `windows`, `mac`, `linux`, `ios`,
-`android`. The hand-written table said `Windows`.
+Eight settings carry an `enum`, 29 values between them. They show up in three
+places: the `Default` column, the generated "Available options:" line under the
+table, and the `One of: ...` sentence in the Serial API parameter table.
 
-**Question:** render enum values verbatim, or title-case them for display?
-Verbatim matches what the device and Device Manager show; title-case matches
-the old docs' prose style.
+**Decided: render them verbatim.** No code change.
+
+A blanket title-case does not work. `ios` becomes `Ios`, which is wrong, while
+`usb/poll rate` already ships `1000Hz`, `500Hz` and so on — the API sometimes
+cases values deliberately, so a rule would overwrite that. A hand-written
+display map like `UNIT_DISPLAY` was rejected for a different reason: that one
+has three entries and no reason to grow, whereas this would be 29 values across
+eight settings that upstream adds to, and a value added without a map entry
+would be the only lower-case one on the page.
+
+The deciding argument is that these are not display strings. They are the
+values a reader sends over the Serial API, and they match what the device and
+the Device Manager show.
+
+Consequence handled here: `GenerativeTextMenu.rst` said "Currently, on CCOS,
+you can select between Windows, Mac, Linux, iOS, or Android" immediately above
+a generated table saying `windows`. The sentence was deleted rather than
+re-cased — "Currently" plus a hand-written list is exactly the shape that goes
+stale, and the generated "Available options:" line below it says the same thing
+from the API.
 
 ---
 
@@ -240,6 +258,14 @@ mismatches to re-read:
   0–255 ms.
 - `SerialAPI.rst` parameter code descriptions carry their own defaults
   ("default is 7ms on the One and 20ms on the Lite") that predate 2.x.
+- `GenerativeTextMenu.rst`, `Operating System`: the section recommends setting
+  it to match your computer, then warns "As of December of 2023, this setting
+  doesn't do anything on CCOS devices" — advice and warning contradicting each
+  other, on a page describing CCOS 3.0.0 (2026-01). Nothing in
+  `Beta Releases.rst` mentions the setting either way, so whether the warning
+  still holds needs a device: change it and see whether key output changes.
+  Both keeping it and deleting it are a claim nobody has checked. Item 6 covers
+  the same setting from the Serial API side and may settle it.
 
 ---
 
