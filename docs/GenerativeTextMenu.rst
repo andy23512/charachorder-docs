@@ -409,15 +409,17 @@ If you would rather not have this message display every time that you connect yo
 .. Warning::
 	The Startup setting is dependent on the :ref:`realtime feedback setting<GenerativeTextMenu:Realtime Feedback>`. If that setting is set to OFF, then Startup won't display, even if Startup is set to ON.
 
-LEDs (CharaChorder Lite only)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+LEDs
+~~~~
 
 ``Path: GTM > Display > LEDs``
 
-The :doc:`CharaChorder Lite<CharaChorder_Lite>` comes with RGB LEDs that light up the keys of the keyboard from below with a static light. This section contains settings pertaining to those LED lights.
+Some CCOS devices carry RGB LEDs. The :doc:`CharaChorder Lite<CharaChorder_Lite>` lights the keys of the keyboard from below, and the :doc:`Master Forge<Master Forge>` has downward facing LED clusters inside each :ref:`digitizer<Master Forge:The Digitizers>`. This section contains settings pertaining to those LED lights.
 
 .. note::
-	LED settings only exist in the GTM for :doc:`CharaChorder Lite<CharaChorder_Lite>` devices, not on any other CharaChorder devices.
+	These settings only exist on devices that have LEDs, currently the :doc:`CharaChorder Lite<CharaChorder_Lite>` and the :doc:`Master Forge<Master Forge>`. The LEDs are not individually addressable: every LED on a device shares one colour and one brightness. On the Master Forge each half stores its own LED settings, so the two :ref:`digitizers<Master Forge:The Digitizers>` can be lit in different colours, and the right half has to be configured separately from the left.
+
+The GTM only offers the on/off toggle and the brightness. Colour is set from the Device Manager's :ref:`RGB settings<Device Manager:RGB>`.
 
 On/Off
 ^^^^^^
@@ -426,45 +428,20 @@ On/Off
 
 Quickly toggle the LEDs on or off with this setting.
 
-Color
-^^^^^
-
-``Path: GTM > Display > LEDs > Color``
-
-Use this setting to change the color of the LED backlights on your CharaChorder Lite. In the GTM, there are 11 colors to choose from which you can see in the table below:
-
-.. csv-table::
-    :header: "Letter", "Color"
-
-	"W", "White"
-	"R", "Red"
-	"O", "Orange"
-	"Y", "Yellow"
-	"L", "Lime"
-	"G", "Green"
-	"C", "Cyan"
-	"B", "Blue"
-	"V", "Violet"
-	"P", "Pink"
-	"M", "Multicolor"
-
-Please note that, as of December of 2023, the LEDs are NOT individually addressable. The color setting changes the color of ALL LEDs at the same time.
-
 Brightness
 ^^^^^^^^^^
 
 ``Path: GTM > Display > LEDs > Brightness``
 
-This setting lets you adjust the brightness of the LED backlights on your CharaChorder Lite. You can choose any number between 0 and 50, where 0 means that your LEDs are completely off and 50 means that your LEDs are at max brightness.
-
-Please note that LEDs are NOT individually addressable as of December of 2023. The brightness setting adjusts the brightness for ALL LEDs equally.
+This setting lets you adjust the brightness of the LEDs, from 0, where they are completely off, up to the maximum shown in the table below. It applies to every LED on the device equally.
 
 .. note::
     If you are using a low power usb bank or port, having a high LED brightness may lead to issues with your CharaChorder Lite's power. If you have issues on your device that seem to keep your CharaChorder Lite from properly powering on or staying on, it may be a good idea to lower this setting.
 
-You can find the default settings for the CharaChorder Lite in the table below:
+You can find the default settings for each device in the table below:
 
 .. ccos-setting:: leds/brightness
+   :devices: lite_s2, m4g_s3
 
 
 Resources

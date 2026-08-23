@@ -156,7 +156,7 @@ following things:
 	- You will be able to see your keyboard's lights flash from left to right, then go completely dark. After a few moments, the entire keyboard will be lit up with the LED backlighting.
 
 If you have :ref:`startup<GenerativeTextMenu:Startup>` enabled, once you can see the highlighted text that reads
-“CCOS is ready.”, your device is ready to be used. If you have :ref:`LEDs<GenerativeTextMenu:LEDs (CharaChorder Lite only)>` turned on, once you see all of the lights turned on and static, your device is ready to be used.
+“CCOS is ready.”, your device is ready to be used. If you have :ref:`LEDs<GenerativeTextMenu:LEDs>` turned on, once you see all of the lights turned on and static, your device is ready to be used.
 
 .. note::
    The :ref:`Startup message<GenerativeTextMenu:Startup>` is enabled by default on new CharaChorder devices.

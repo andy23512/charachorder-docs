@@ -404,9 +404,9 @@ Autocorrect
 
 RGB
 ---
-The RGB settings ONLY affect the CharaChorder Lite as of February of 2024.
+These settings adjust the color and brightness of the LEDs on the devices that have them: the :doc:`CharaChorder Lite<CharaChorder_Lite>` and the :doc:`Master Forge<Master Forge>`. The Master Forge stores them per half, so each :ref:`digitizer<Master Forge:The Digitizers>` can be lit in its own color.
 
-These settings adjust the color and brightness of your CharaChorder Lite.
+You can read more about the LED settings in the :ref:`GTM section<GenerativeTextMenu:LEDs>`.
 
 
 .. image:: /assets/images/ManagerSettingsRGB.png

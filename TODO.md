@@ -116,20 +116,43 @@ it is gone.
 
 ---
 
-## 3. LEDs section is scoped to the wrong devices
+## 3. LEDs section is scoped to the wrong devices (done)
 
-**File:** `docs/GenerativeTextMenu.rst`, heading
-`LEDs (CharaChorder Lite only)`
+`leds/*` exists on four slugs in 3.0.0 — `lite_m0`, `lite_s2`, `m4g_s3` and
+`m4gr_s3` — with identical defaults on all of them, so both Lite generations
+and both Master Forge halves have LEDs. The heading claiming otherwise, and a
+note under it stating LED settings exist "not on any other CharaChorder
+devices", were both wrong.
 
-In CCOS 3.0.0 the `leds/*` settings exist on **`lite_s2` and `m4g_s3`**, so
-the generated brightness table shows values for CharaChorder Lite *and* Master
-Forge while the heading still says "CharaChorder Lite only".
+Checked on hardware while fixing this:
 
-**Question:** rename the heading (e.g. drop the parenthetical), and does the
-surrounding prose about LED behaviour hold for Master Forge?
+- The Lite's LEDs are not individually addressable; every LED takes one color.
+- The Master Forge stores LED settings per half, so its two digitizers can be
+  lit in different colors, but a half is still one color throughout.
+- **Neither device exposes an LED color setting in the GTM.**
+- The low-power warning is a Lite matter; nothing similar is recorded for the
+  Master Forge, which has far fewer LEDs.
 
-Note the hand-written table said brightness `0–50, default 5`; the API says
-`0–255, default 255`.
+What changed:
+
+- Heading `LEDs (CharaChorder Lite only)` → `LEDs`, and the one `:ref:` that
+  used the old title (`CharaChorder_Lite.rst:159`) was retargeted. The intro
+  now describes both devices' lighting, which is physically different: the Lite
+  lights the keys from below, the Master Forge has downward facing clusters
+  inside each digitizer.
+- The `Color` subsection and its 11-color table (`W`/`R`/`O`/…) were deleted:
+  the GTM has no color setting, and the API models color as `leds/hue`
+  (`0-65280`) plus `leds/saturation`, not a list of names. Judged not worth
+  keeping anywhere.
+- Brightness prose said "any number between 0 and 50"; the API says `0-255`,
+  default 255. Rather than restate the new numbers, the prose now points at the
+  generated table so it cannot go stale again.
+- The brightness table carries `:devices: lite_s2, m4g_s3`. Without it the
+  table was six rows, four of them em dashes for devices with no LEDs. The
+  cost is that a future LED device has to be added by hand.
+- `Device Manager.rst`'s `RGB` section opened with "The RGB settings ONLY
+  affect the CharaChorder Lite as of February of 2024", which is now wrong; it
+  describes both devices instead.
 
 ---
 
@@ -369,4 +392,48 @@ did) or go; menu entries with no section get written.
 
 Worth doing before trusting any remaining `Path:` line, but it is a device-in-
 hand job and does not block the other items.
+
+---
+
+## 14. Six LED settings have no documentation anywhere
+
+**File:** `docs/Device Manager.rst`, `RGB` section
+
+Item 3 fixed who the LED settings apply to, not how many are described. The API
+exposes eight; the docs describe two.
+
+| Setting | Default | Range / options | Documented |
+|---|---|---|---|
+| `leds/enable` | 1 | `0-1` | yes, GTM `On/Off` |
+| `leds/brightness` | 255 | `0-255` | yes, GTM `Brightness` |
+| `leds/hue` | 0 | `0-65280` | no |
+| `leds/saturation` | 255 | `0-255` | no |
+| `leds/effect` | `rainbow` | `static`, `rainbow` | no |
+| `leds/effect cycle` | 25000 | `100-25500`, step 100, unit `s` | no |
+| `leds/off delay` | 1000 | `0-2550 ms`, step 10 | no |
+| `leds/on off transition` | 1000 | `0-2550 ms`, step 10 | no |
+
+The `RGB` section is two sentences and a screenshot, so this is where they
+belong — the same shape as the `USB` section added for item 2.
+
+**Why it was not done with item 3:** the metadata alone does not say what these
+mean, and guessing is how three settings ended up on the wrong page during item
+2. Specifically:
+
+- `leds/effect cycle` has unit `s` with range `100-25500` and no `scale`, so
+  taken literally the maximum is 25500 seconds, about 7 hours, for what reads
+  like an animation period. Compare `usb/aggressive reporting throttle`, which
+  has the same shape but carries `scale: 0.001`. Either this one is missing a
+  scale upstream or the unit is wrong.
+- `leds/off delay` and `leds/on off transition` are both `0-2550 ms` and
+  nothing in the API distinguishes them.
+- `leds/hue` at `0-65280` is presumably a 16-bit hue, but whether the Device
+  Manager shows it that way or as a color picker is unknown.
+
+**What it needs:** someone with a Lite or a Master Forge open in the Device
+Manager to say which controls appear in the RGB box and what each does. Then
+the six get dropdowns and `ccos-setting` tables like the rest.
+
+`leds/effect cycle` is also a candidate for item 10 (upstream data quirks) if
+the missing `scale` turns out to be a firmware bug.
 
