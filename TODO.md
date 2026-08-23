@@ -453,3 +453,52 @@ mean, and guessing is how three settings ended up on the wrong page during item
 Manager to say which controls appear in the RGB box and what each does. Then
 the six get dropdowns and `ccos-setting` tables like the rest.
 
+---
+
+## 15. Every screenshot on the Device Manager page is out of date
+
+**File:** `docs/Device Manager.rst`, `docs/assets/images/Manager*.png`
+
+The page shows 15 screenshots. All of them predate CCOS 3.0.0 (released
+2026-01-28), and two thirds predate the Master Forge:
+
+| Last changed | Screenshots |
+|---|---|
+| 2024-01/02 | `ManagerSELECTDEVICE`, `ManagerColorScheme`, `ManagerLayoutSelector`, `ManagerSaveButton`, `ManagerSettingsArpeggiates`, `ManagerSettingsChentry`, `ManagerSettingsModifiers`, `ManagerSettingsMouse`, `ManagerSettingsRGB`, `ManagerUndoRedo` |
+| 2025-02-25 | `ChordManager`, `ManagerHistoryMenu`, `ManagerSettingsDevice` |
+| 2025-08-26 | `ManagerSettingsAutoCorrect`, `ManagerSettingsChording` |
+
+Mismatches already known, without opening the app:
+
+- `ManagerSettingsMouse.png` shows a Mouse box containing **Poll Rate**, which
+  2.2.0 removed, and cannot show **Scroll Throttle**, which the page now
+  documents (item 2).
+- `ManagerSettingsRGB.png` predates the Master Forge, so it shows the box as it
+  looked when RGB really was Lite-only — the claim item 3 had to delete.
+- The `USB` section added for item 2 has **no screenshot at all**.
+- `ManagerSettingsSpurring.png` is orphaned: item 3 deleted the section that
+  used it, because the Device Manager has no spurring box any more.
+
+**Also worth folding in while reshooting:**
+
+- Item 12b's case bug is on this page: line 390 asks for
+  `ManagerSettingsAutocorrect.png` while the file is
+  `ManagerSettingsAutoCorrect.png`, so that image is missing from the published
+  page today. A reshoot renames the file anyway, which is the moment to settle
+  on one spelling.
+- Twelve `Manager*.png` files in `assets/images` are referenced by no `.rst` at
+  all: `ManagerBootloaderButton-Lite`, `ManagerCONNECT`,
+  `ManagerDeviceButton-Lite`, `ManagerFirstTimeConnect`, `ManagerLinks`,
+  `ManagerPowerButton-Lite`, `ManagerREDCONNECTBUTTON`,
+  `ManagerSettingsAutoCorrect` (the case bug above), `ManagerSettingsResets`,
+  `ManagerSettingsSpurring`, `ManagerTerminal`, `ManagerVersion`. Some are
+  probably left from sections that were rewritten; worth deciding which to
+  delete once the new set exists.
+
+**What it needs:** a device connected to the current Device Manager, and a
+decision about capture size. The existing set is inconsistent: widths run from
+250px (`ManagerSaveButton`) to 1066px (`ManagerSettingsModifiers`), and 7 of
+the 15 carry `:width: 1200` — an upscale for every one of them, since none is
+that wide. Worth settling on one capture width and dropping the `:width:`
+overrides rather than reproducing the mix.
+
