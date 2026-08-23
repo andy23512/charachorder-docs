@@ -10,29 +10,52 @@ via `docs/_ext/ccos_meta.py`. See README.md for how the directive works.
 
 ---
 
-## 1. Confirm device slug → product names
+## 1. Device slug → product names (decided)
 
 **File:** `docs/_data/ccos/devices.json`
 
-Slugs marked `"confirm": true` are guesses and are currently excluded from
-generated tables (`"docs_default": false`).
+Every slug the Meta API exposes now has a decision. Recorded here so the ones
+that are deliberately hidden do not get re-investigated. Slugs still marked
+`"confirm": true` carry a guessed name and stay out of generated tables
+(`"docs_default": false`) until CharaChorder announces the product.
 
-| Slug | Current name | Status |
-|---|---|---|
-| `m4gr_s3` | Master Forge (right half) | DeviceManager calls it `M4G (right)` — is it a separate documented product? |
-| `t4g_s2` | CCB (T4G S2) | DeviceManager maps **both** `t4g_s2` and `ccb_s2` to `CCB` |
-| `ccb_s2` | CCB (S2) | Same alias as above — are these one product or two? |
-| `zero_linux` | CharaChorder Zero (Linux) | Software build, not hardware — should it appear in device tables at all? |
-| `zero_wasm` | CharaChorder Zero (WASM) | Same |
-| `zero_win` | CharaChorder Zero (Windows) | Same; has no stable release yet |
+**Decided:** `m4gr_s3` is the right half of one product, not a product of its
+own. In 3.0.0 its 43 settings are byte-for-byte identical to `m4g_s3`, so a row
+for it would only repeat the Master Forge row. Kept out of generated tables,
+renamed to `Master Forge (right)` to match DeviceManager, `confirm` dropped.
+
+**Decided:** `t4g_s2` and `ccb_s2` are **two separate products**, despite
+DeviceManager aliasing both to `CCB`. Neither is described in the official docs
+yet, so both stay out of generated tables (`docs_default: false`). Their names
+here are still guesses — `confirm: true` is kept until CharaChorder publishes
+the products. Revisit then. (Only `t4g_s2` appears in the 3.0.0 snapshot;
+`ccb_s2` has no data yet.)
+
+**Decided:** `zero_linux`, `zero_wasm` and `zero_win` are treated the same way:
+CharaChorder Zero has not been announced and has no page in these docs, so all
+three stay out of generated tables and keep `confirm: true` until it ships.
+Whether the three platform builds deserve separate rows, or collapse into one
+"CharaChorder Zero", is deferred to that point.
 
 Confirmed from `DeviceManager/src/lib/serial/device.ts` (`DEVICE_ALIASES`):
 `one_m0`→CC1, `two_s3`→CC2, `lite_s2`→Lite (S2), `lite_m0`→Lite (M0),
 `x_s2`→CCX, `m4g_s3`→M4G.
 
-**Also decide:** `lite_m0` and `lite_s2` are two hardware generations of
-"CharaChorder Lite". Docs currently show only `lite_s2` as "CharaChorder
-Lite". Should both appear as separate rows?
+**Decided:** `lite_m0` and `lite_s2` are two shipped generations of
+"CharaChorder Lite", so the rule is per setting: `lite_s2` alone by default,
+and `:devices:` spelled out to add a `lite_m0` row only where the two
+generations actually differ.
+
+Nothing needs that treatment today. In 3.0.0 the two are identical — 43
+settings each, no key or value differences. And `lite_m0` published no build
+between `2.0.0-beta` and `3.0.0`, so it has no metadata for the whole 2.1–2.2
+range the version picker offers; adding it there would produce a column of em
+dashes.
+
+Re-check when a new CCOS release is cached: if a setting starts to differ, give
+that one directive an explicit `:devices:` listing both. Note the option
+*replaces* the default list rather than extending it, so all the other slugs
+have to be repeated.
 
 ---
 

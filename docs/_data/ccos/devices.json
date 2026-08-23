@@ -13,7 +13,7 @@
     "two_s3":     { "name": "CharaChorder Two",            "docs_default": true },
     "engine_s2":  { "name": "CharaChorder Engine",         "docs_default": true },
     "m4g_s3":     { "name": "Master Forge",                "docs_default": true },
-    "m4gr_s3":    { "name": "Master Forge (right half)",   "docs_default": false, "confirm": true },
+    "m4gr_s3":    { "name": "Master Forge (right)",        "docs_default": false },
     "t4g_s2":     { "name": "CCB (T4G S2)",                "docs_default": false, "confirm": true },
     "ccb_s2":     { "name": "CCB (S2)",                    "docs_default": false, "confirm": true },
     "zero_linux": { "name": "CharaChorder Zero (Linux)",   "docs_default": false, "confirm": true },
