@@ -156,18 +156,32 @@ What changed:
 
 ---
 
-## 4. Unit labels the API uses for LEDs
+## 4. Unit labels the API uses for LEDs (done)
 
-`leds/brightness` has `unit: "B"`, `leds/hue` has `"H"`, `leds/saturation` has
-`"S"` — HSB component letters. Rendered faithfully this reads "255 B", which
-is not obvious to a reader.
+`leds/brightness` had `unit: "B"`, `leds/hue` `"H"`, `leds/saturation` `"S"` —
+HSB component letters, not units. Rendered faithfully they read "255 B", and
+the setting name beside them already says which component it is.
 
-**Question:** leave as-is (faithful to the API), or add a display-name
-override map in the extension (e.g. `B` → nothing, or → "brightness")?
+**Decided:** suppress them. `UNIT_DISPLAY` maps `B`, `H` and `S` to nothing,
+and lives in both `docs/_ext/ccos_meta.py` and `docs/_static/ccos-meta.js`,
+because the extension renders the baked-in table and the script re-renders it
+on a version switch. Documented in README.md so the next unit question knows
+where to go.
 
-`mouse/scroll speed` belongs to the same question: its unit is `pg`, so the
-table reads "2 pg". The prose that used to surround it said "pixels (px)" and
-was deleted with the poll rate rewrite, so nothing explains `pg` now.
+| | before | after |
+|---|---|---|
+| `leds/brightness` | `Range 0 B to 255 B. Default 255 B.` | `Range 0 to 255. Default 255.` |
+| `leds/hue` | `Range 0 H to 65280 H, in steps of 256 H.` | `Range 0 to 65280, in steps of 256.` |
+
+`ms`, `s` and `px` are left alone — they are real units and they read fine.
+
+**Still open: `pg`.** `mouse/scroll speed` has `unit: "pg"`, so its table reads
+"2 pg" with nothing to explain it. Unlike the HSB letters this looks like a
+genuine unit, probably "pages", but that is a guess and the prose that used to
+surround the table said "pixels (px)", contradicting the API. Left verbatim
+rather than expanded into a word nobody has verified. Resolving it means
+watching what changing the setting actually does, or finding a label for it in
+the Device Manager.
 
 ---
 
@@ -265,6 +279,12 @@ they show up in generated output:
 - Requests for versions older than 2.1.0 answer **HTTP 500 without CORS
   headers** rather than 404, which browsers can only report as a generic
   network failure.
+- `fuzzy modifiers/enable` is an on/off setting with `range [0, 1]`, but it
+  carries `unit: "ms"`. The other nine `[0, 1]` settings across the API have no
+  unit, and its neighbours in the same group (`press theshold`, `release
+  theshold`, `release guard threshold`) are genuinely in ms, so the unit looks
+  copied. It renders as "Range 0 ms to 1 ms. Default 0 ms." The docs leave it
+  verbatim rather than special-casing it, so a fix upstream will show up here.
 
 **Question:** worth opening issues upstream on CCOS-firmware?
 
@@ -420,20 +440,16 @@ belong — the same shape as the `USB` section added for item 2.
 mean, and guessing is how three settings ended up on the wrong page during item
 2. Specifically:
 
-- `leds/effect cycle` has unit `s` with range `100-25500` and no `scale`, so
-  taken literally the maximum is 25500 seconds, about 7 hours, for what reads
-  like an animation period. Compare `usb/aggressive reporting throttle`, which
-  has the same shape but carries `scale: 0.001`. Either this one is missing a
-  scale upstream or the unit is wrong.
 - `leds/off delay` and `leds/on off transition` are both `0-2550 ms` and
   nothing in the API distinguishes them.
-- `leds/hue` at `0-65280` is presumably a 16-bit hue, but whether the Device
-  Manager shows it that way or as a color picker is unknown.
+- `leds/hue` at `0-65280` in steps of 256 is presumably a 16-bit hue stored in
+  the high byte, but whether the Device Manager shows a number or a color
+  picker is unknown.
+- `leds/effect` has two options, `static` and `rainbow`, and `leds/effect cycle`
+  (`0.1-25.5 s`) presumably sets the rainbow's period — but that it applies
+  only to `rainbow` is a guess.
 
 **What it needs:** someone with a Lite or a Master Forge open in the Device
 Manager to say which controls appear in the RGB box and what each does. Then
 the six get dropdowns and `ccos-setting` tables like the rest.
-
-`leds/effect cycle` is also a candidate for item 10 (upstream data quirks) if
-the missing `scale` turns out to be a firmware bug.
 

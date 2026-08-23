@@ -16,6 +16,9 @@
   "use strict";
 
   var API_ROOT = "https://charachorder.io/firmware";
+  /* HSB component letters the API sends as units, which read as nonsense next
+     to a number. Keep this in step with UNIT_DISPLAY in docs/_ext/ccos_meta.py. */
+  var UNIT_DISPLAY = { B: "", H: "", S: "" };
   var MISSING = "—";
   var STORAGE_KEY = "ccos-docs-version";
   var cache = new Map();
@@ -75,7 +78,10 @@
     }
     var scaled = setting.scale ? value * setting.scale : value;
     var text = formatNumber(scaled);
-    return setting.unit ? text + " " + setting.unit : text;
+    var unit = UNIT_DISPLAY.hasOwnProperty(setting.unit)
+      ? UNIT_DISPLAY[setting.unit]
+      : setting.unit;
+    return unit ? text + " " + unit : text;
   }
 
   function cellFor(column, setting) {

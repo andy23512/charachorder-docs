@@ -113,6 +113,14 @@ API spells it (lower case). Options:
 A device that does not have the setting gets an em dash, so hardware
 differences show up on their own.
 
+Values are rendered as the API sends them — scaled, with the unit appended —
+with one exception. The LED settings use HSB component letters as their unit,
+so `leds/brightness` would read "255 B". Those letters are suppressed by
+`UNIT_DISPLAY`, which lives in **both** `docs/_ext/ccos_meta.py` and
+`docs/_static/ccos-meta.js`: the extension renders the baked-in table and the
+script re-renders it when a reader picks another version, so a unit dropped in
+only one of them would come back on the first version switch.
+
 ### Other generated tables
 
 `SerialAPI.rst` uses two more directives fed by the same cache:

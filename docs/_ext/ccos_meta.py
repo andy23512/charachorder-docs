@@ -34,6 +34,12 @@ logger = logging.getLogger(__name__)
 DEFAULT_COLUMNS = ("Device", "Default", "Min. Value", "Max. Value", "Increments")
 MISSING = "—"  # em dash: this device/version does not have the setting
 
+# The API's `unit` field carries HSB component letters for the LED settings, so
+# leds/brightness reads "255 B". The setting name already says which component
+# it is, and a bare letter reads as a unit that does not exist. Drop them.
+# Keep this in step with UNIT_DISPLAY in docs/_static/ccos-meta.js.
+UNIT_DISPLAY = {"B": "", "H": "", "S": ""}
+
 
 class ccos_table(nodes.General, nodes.Element):
     """Wrapper that carries the setting key through to the HTML writer."""
@@ -106,6 +112,7 @@ def format_value(value, setting, is_step=False):
         value = value * scale
     text = format_number(value)
     unit = setting.get("unit")
+    unit = UNIT_DISPLAY.get(unit, unit)
     return f"{text} {unit}" if unit else text
 
 
