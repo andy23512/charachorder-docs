@@ -250,20 +250,6 @@ You can find the default settings for each device in the table below:
 
 .. ccos-setting:: mouse/scroll speed
 
-Scroll Throttle
-~~~~~~~~~~~~~~~
-
-``Path: GTM > Mouse > Scroll Throttle``
-
-Scroll throttle sets the shortest time CCOS will leave between two scroll events. It exists because Windows struggles to process fast scrolling: without a gap between the events, some of them are dropped and the page scrolls less than you asked for.
-
-Increase this setting if scrolling feels unreliable on your computer. Lower it if scrolling feels sluggish and your computer keeps up with it.
-
-You can find the default settings for each device in the table below:
-
-.. ccos-setting:: mouse/scroll throttle
-
-
 Active Mode
 ~~~~~~~~~~~
 
@@ -356,23 +342,6 @@ You can set this setting to be as low as 0.0 seconds (s) or as high as 25.0 seco
 You can find the default settings for each device in the table below:
 
 .. ccos-setting:: autocorrect/timeout
-
-Detection Method
-~~~~~~~~~~~~~~~~
-
-``Path: GTM > Chording > Detection Method``
-
-This setting controls how CCOS decides that a group of key presses is a chord rather than a run of individual characters. There are three methods:
-
-* **Latency** (classic) prints each key instantly and backspaces it after a successful chord.
-* **Smart** adds a small amount of latency depending on your :ref:`tolerances<GenerativeTextMenu:Press Tolerance>`, and only prints characters when it is no longer plausible for the inputs to be a chord.
-* **Continuous**, also known as spurring, outputs chords on a press event rather than on a press and release. It lets you press the keys of a chord one at a time with a much longer waiting period, which makes it useful for practising chording without worrying about proper :ref:`timing<GenerativeTextMenu:Press Tolerance>`. It also lets you jump from one chord to the next without releasing everything. It can provide significant speed gains when chording, but takes away the flexibility of character entry, so it suits users who have chords for all of the words they want to use.
-
-You can find the default settings for each device in the table below:
-
-.. ccos-setting:: chording/detection method
-   :columns: Device, Default
-
 
 Arpeggiate
 ~~~~~~~~~~

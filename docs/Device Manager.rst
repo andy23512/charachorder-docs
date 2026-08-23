@@ -331,6 +331,14 @@ In this box, you can adjust settings relating to :doc:`CCOS'<CCOS>` mouse abilit
 
 	You can read a more in-depth explanation of the scroll speed in the :ref:`GTM section<GenerativeTextMenu:Scroll Speed>`.
 
+.. dropdown:: Scroll Throttle
+
+	Scroll throttle sets the shortest time CCOS will leave between two scroll events. It exists because Windows struggles to process fast scrolling: without a gap between the events, some of them are dropped and the page scrolls less than you asked for.
+
+	Increase this setting if scrolling is unreliable on your computer. Lower it if scrolling feels sluggish and your computer keeps up with it.
+
+	.. ccos-setting:: mouse/scroll throttle
+
 .. dropdown:: Active Mouse
 
 	Active mode nudges your mouse cursor one pixel every minute or so (not a specific timing). This setting can be used to keep your computer from going to sleep. You might turn this setting off if you notice desktop apps are preventing you from getting mobile notifications (for example on Discord or Microsoft Teams).
@@ -415,10 +423,10 @@ These settings are experimental. They are not in the :doc:`GTM<GenerativeTextMen
 
 	Changing this setting requires unplugging and replugging the device before it takes effect.
 
-.. ccos-setting:: usb/poll rate
-   :columns: Device, Default
+	This setting arrived in CCOS 2.2.0, replacing the separate mouse and keyboard poll rate settings. Those older settings did not actually change the poll rate.
 
-This setting arrived in CCOS 2.2.0, replacing the separate mouse and keyboard poll rate settings. Those older settings did not actually change the poll rate.
+	.. ccos-setting:: usb/poll rate
+	   :columns: Device, Default
 
 Library
 *******

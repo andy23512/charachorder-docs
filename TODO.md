@@ -81,9 +81,17 @@ setting under a new experimental category."
   it depended on never worked, the formula was deleted rather than retargeted.
   Measuring the real cursor speed on hardware would let it come back.
 - `mouse/scroll throttle` (new in 3.0.0, `0-255 ms`, default 16) had no
-  documentation at all; it now has a `Scroll Throttle` section. **Unverified:**
-  the `Path: GTM > Mouse > Scroll Throttle` line assumes the GTM label matches
-  the API name.
+  documentation at all. Confirmed on hardware that it is not in the GTM either,
+  despite being in the `mouse` group, so it is documented as a `Scroll
+  Throttle` dropdown in the Device Manager's `Mouse` section.
+
+**Worth knowing for the rest of this work:** an API group name does not tell
+you whether a setting is reachable from the GTM. `usb/poll rate`,
+`mouse/scroll throttle` and `chording/detection method` are all absent from the
+GTM in 3.0.0, and each was guessed wrong from its group before being checked on
+a device. The GTM page's section list has never been verified against 3.0.0 as
+a whole — only the sections touched here. Anything written there with a
+`Path: GTM > ...` line is an untested claim unless someone has looked.
 
 ### 2b. `GTM > Chording > Spurring` — folded into detection method
 
@@ -94,9 +102,11 @@ timeout (240 s, range 0-250 s) exists in any version, so it was not renamed —
 it is gone.
 
 - The `Spurring` section in `GenerativeTextMenu.rst`, its `Spurring On/Off` and
-  `Spurring Timeout` subsections and the hand-written table were replaced by a
-  `Detection Method` section covering all three modes. This also removed a
-  stale path line that read
+  `Spurring Timeout` subsections and the hand-written table were deleted. The
+  GTM does not offer `chording/detection method` either (confirmed on
+  hardware), so nothing replaces them on that page; the Device Manager's
+  `Detection method` dropdown already covers all three modes. The deletion also
+  removed a stale path line reading
   `Path: GTM > Chording > Character Only Mode > Spurring Timeout`.
 - `Device Manager.rst` described spurring twice: an old `Spurring` section and
   a current `Detection method` dropdown under `Chording`. Confirmed in the
