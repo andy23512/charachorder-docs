@@ -326,3 +326,47 @@ branch — the same four are missing at the commit this branch started from — 
 
 **Question:** fix these in the fork, or send them upstream as a separate PR
 (they are not fork-specific, so upstream seems the better home)?
+
+---
+
+## 13. The GTM page has never been checked against a real device
+
+**File:** `docs/GenerativeTextMenu.rst`
+
+Every section there carries a `Path: GTM > ...` line claiming the setting is
+reachable from that menu. 26 such claims remain, and none has been verified
+against CCOS 3.0.0:
+
+| Menu | Claims |
+|---|---|
+| Keyboard | 7 |
+| Chording | 7 |
+| Display | 7 |
+| Mouse | 4 |
+| Resources | 1 |
+
+This is not hypothetical. Three settings were placed on that page during the
+item 2 work by reasoning from their API group, and all three turned out to be
+absent from the GTM when someone opened it on a device:
+
+| Setting | Group | Actually in the GTM |
+|---|---|---|
+| `usb/poll rate` | `usb` | no |
+| `mouse/scroll throttle` | `mouse` | no |
+| `chording/detection method` | `chording` | no |
+
+So the API tells you a setting exists and what values it takes, but not where a
+user reaches it. Only the device does. The settings whose sections survived
+item 2 were inherited from the pre-3.0.0 docs and carry the same risk in the
+other direction: a section may describe a menu entry that 3.0.0 moved or
+dropped.
+
+**What it would take:** open the GTM on a device running 3.0.0, walk
+`>K<eyboard`, `>M<ouse`, `>C<hording`, `>D<isplay` and `>R<esources`, and write
+down what each menu actually lists. Then reconcile: sections with no menu entry
+move to `Device Manager.rst` (as `usb/poll rate` and `mouse/scroll throttle`
+did) or go; menu entries with no section get written.
+
+Worth doing before trusting any remaining `Path:` line, but it is a device-in-
+hand job and does not block the other items.
+
