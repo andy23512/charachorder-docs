@@ -59,35 +59,50 @@ have to be repeated.
 
 ---
 
-## 2. Settings that no longer exist in CCOS 3.0.0
+## 2. Settings that no longer exist in CCOS 3.0.0 (done)
 
-These sections still have hand-written tables because the setting is gone from
-the API and the surrounding prose describes behaviour that may no longer exist.
-Converting them would need someone who knows what replaced the feature.
+Both were removed from the firmware, and `docs/Beta Releases.rst` turned out to
+record why. The docs now describe what replaced them.
 
-### 2a. `GTM > Mouse > Poll Rate` — `docs/GenerativeTextMenu.rst`
+### 2a. `GTM > Mouse > Poll Rate` — removed
 
-- Not present in CCOS 3.0.0 at all.
-- In 2.1.x it existed as `mouse/poll rate`, `range [0, 1000]`, `step 5`,
-  unit **Hz**. The hand-written table says "20 ms / 0 ms / 100 ms / 1 ms (Hz)",
-  so it was already inconsistent with the firmware back then.
-- 3.0.0 gained `usb/poll rate` (enum: `1000Hz`, `500Hz`, `250Hz`, `125Hz`) and
-  `mouse/scroll throttle` (`range [0, 255]`, unit ms).
+`Beta Releases.rst:215` (2.2.0-beta): "Replaced the mouse/keyboard poll rate
+settings (which didn't actually change the poll rate) with a USB poll rate
+setting under a new experimental category."
 
-**Question:** does the GTM still expose a mouse poll rate? Should this section
-be rewritten around `usb/poll rate`, split, or deleted?
+- The `Mouse > Poll Rate` section is gone from `GenerativeTextMenu.rst`, along
+  with its hand-written table and the Hz-to-ms conversion dropdown.
+- Confirmed on hardware that the GTM does not expose the `usb/*` settings, so
+  `usb/poll rate` is documented in `Device Manager.rst` instead, under a new
+  `USB` section, generated with `:columns: Device, Default` because it is an
+  enum. The old `Mouse > Poll Rate` dropdown there was deleted.
+- The mouse speed sections used to repeat a
+  `Speed (px) x poll rate (Hz) = px/s` dropdown three times. Since the setting
+  it depended on never worked, the formula was deleted rather than retargeted.
+  Measuring the real cursor speed on hardware would let it come back.
+- `mouse/scroll throttle` (new in 3.0.0, `0-255 ms`, default 16) had no
+  documentation at all; it now has a `Scroll Throttle` section. **Unverified:**
+  the `Path: GTM > Mouse > Scroll Throttle` line assumes the GTM label matches
+  the API name.
 
-### 2b. `GTM > Chording > Spurring > Spurring Timeout` — `docs/GenerativeTextMenu.rst`
+### 2b. `GTM > Chording > Spurring` — folded into detection method
 
-- No matching setting in **any** version that publishes metadata (2.1.0+).
-- Spurring itself survives as `chording/detection method` = `continuous`,
-  whose API description reads "Continuous (spurring)".
-- The hand-written table says default 240 s, range 0–250 s. No setting with
-  that shape exists; the nearest candidate `chording/compound timeout` is
-  `range [0, 2550]`, `step 10`, unit **ms**.
+Spurring is not a setting of its own in any version that publishes metadata. It
+survives as `chording/detection method` = `continuous`, whose API description
+reads "Continuous (spurring)". No setting matching the hand-written spurring
+timeout (240 s, range 0-250 s) exists in any version, so it was not renamed —
+it is gone.
 
-**Question:** was the spurring timeout removed, or renamed to something not
-obviously related? If removed, this subsection should probably go.
+- The `Spurring` section in `GenerativeTextMenu.rst`, its `Spurring On/Off` and
+  `Spurring Timeout` subsections and the hand-written table were replaced by a
+  `Detection Method` section covering all three modes. This also removed a
+  stale path line that read
+  `Path: GTM > Chording > Character Only Mode > Spurring Timeout`.
+- `Device Manager.rst` described spurring twice: an old `Spurring` section and
+  a current `Detection method` dropdown under `Chording`. Confirmed in the
+  Device Manager that the spurring box no longer exists, so the old section was
+  deleted. `assets/images/ManagerSettingsSpurring.png` is now unreferenced but
+  was left in place.
 
 ---
 
@@ -116,6 +131,10 @@ is not obvious to a reader.
 
 **Question:** leave as-is (faithful to the API), or add a display-name
 override map in the extension (e.g. `B` → nothing, or → "brightness")?
+
+`mouse/scroll speed` belongs to the same question: its unit is `pg`, so the
+table reads "2 pg". The prose that used to surround it said "pixels (px)" and
+was deleted with the poll rate rewrite, so nothing explains `pg` now.
 
 ---
 
@@ -279,6 +298,21 @@ of 12a, or they will start failing the moment that block is uncommented.
 
 Note `Master Forge.rst:241` and `:291` already spell the same file `.JPG`
 correctly, so only the copies inside the commented block are wrong.
+
+### 12c. `:ref:` targets that do not exist
+
+Four cross-references point at section titles no section has. They predate this
+branch — the same four are missing at the commit this branch started from — and
+`sphinx.yml` does not pass `-W`, so they warn without failing the build.
+
+| Reference | Target that does not exist |
+|---|---|
+| `Chords.rst:103` | `Chords:Impulse Chording` |
+| `Device Manager.rst:618` | `Device Manager:Action Code Categories` |
+| `Glossary.rst:35` | `Device Manager:Compound Timeout Setting` |
+| `SerialAPI.rst:31` | `SerialAPI:ID` |
+
+**Question:** same as 12b — fix in the fork, or send upstream?
 
 **Question:** fix these in the fork, or send them upstream as a separate PR
 (they are not fork-specific, so upstream seems the better home)?

@@ -215,52 +215,12 @@ Mouse
 
 CCOS allows you to use your device as a mouse including functions like scrolling and cursor movement. This section will cover settings that relate to the mouse function on CCOS devices.
 
-Poll Rate
-~~~~~~~~~
-
-``Path: GTM > Mouse > Poll Rate``
-
-The polling rate (poll rate) is the frequency at which data from the CharaChorder's mouse functionality is sent to the device it's connected to. In other words, how often it updates the cursor's position to the computer. This is typically expressed in Hz (Hertz), with the average gaming mouse reporting data at 1000 Hz, which means 1000 times every second.
-
-However, :doc:`CCOS<CCOS>` uses ms (milliseconds) which is directly inverse to Hz. 1 ms is equal to 1000 Hz, 2 ms is equal to 500 Hz, and 1000 ms is equal to 1 Hz.
-
- .. dropdown:: An Explanation of Hz to ms conversion
-
-    In the context of frequency and period (time duration), the relationship is inverse. Frequency is the number of cycles per second, measured in Hz. The period is the time it takes for one cycle to complete, measured in seconds (s). The formula is:
-
-	``Frequency (Hz) = 1/Period (s), where s = 1000 ms``
-
-    If you convert the period to milliseconds (ms), the relationship remains inverse. For instance, if you have a frequency of 1000 Hz, the period is 1 ms (because 1 second = 1000 milliseconds). As the frequency increases, the period (measured in ms) decreases.
-
-
-
-You can find the default settings for each device in the table below:
-
-.. csv-table::
-    :header: "Device", "Default", "Min. Value", "Max. Value", "Increments"
-
-    "CharaChorder One", "20 ms", "0 ms", "100 ms", "1 ms (Hz)"
-    "CharaChorder Lite", "20 ms", "0 ms", "100 ms", "1 ms (Hz)"
-    "CharaChorder X", "20 ms", "0 ms", "100 ms", "1 ms (Hz)"
-
-This setting is used in conjunction with the :ref:`slow speed <GenerativeTextMenu:Slow Speed>` and :ref:`fast speed <GenerativeTextMenu:Fast Speed>` settings. Both, the :ref:`slow speed <GenerativeTextMenu:Slow Speed>` and the :ref:`fast speed <GenerativeTextMenu:Fast Speed>` rely on the poll rate.
-
 Slow Speed
 ~~~~~~~~~~
 
 ``Path: GTM > Mouse > Slow Speed``
 
 Slow speed is activated when you use only one of the mouse keys in a single direction (as opposed to using 2 keys in the same direction). Increasing this setting will make your CCOS pointer move faster.
-
-This setting is used in conjunction with :ref:`poll rate <GenerativeTextMenu:Poll Rate>`. See the explanation below.
-
-.. dropdown:: Explanation of CCOS mouse speeds
-
-    The mouse speed refers to the speed of the cursor on the CharaChorder's mouse functionality. The cursor will move at the number of pixels (px) indicated by this setting multiplied by the number of Hz indicated by the :ref:`polling rate<GenerativeTextMenu:Poll Rate>`.
-
-    In other words, if your speed is set to 2 px, and your :ref:`poll rate<GenerativeTextMenu:Poll Rate>` is set to 20 ms (~50 Hz), your CharaChorder's cursor will move at 100 pixels per second (px/s). The equation comes out to:
-    ``Speed (px) x poll rate (Hz) = Number of pixels that the cursor will move per second``
-
 
 You can find the default settings for each device in the table below:
 
@@ -273,16 +233,6 @@ Fast Speed
 
 Fast speed is activated when you use two mouse keys in a single direction (as opposed to using only one key in the same direction). Increasing this setting will make your CCOS pointer move faster.
 
-This setting is used in conjunction with :ref:`poll rate <GenerativeTextMenu:Poll Rate>`. See the explanation below.
-
-.. dropdown:: Explanation of CCOS mouse speeds
-
-    The mouse speed refers to the speed of the cursor on the CharaChorder's mouse functionality. The cursor will move at the number of pixels (px) indicated by this setting multiplied by the number of Hz indicated by the :ref:`polling rate<GenerativeTextMenu:Poll Rate>`.
-
-    In other words, if your speed is set to 2 px, and your :ref:`poll rate<GenerativeTextMenu:Poll Rate>` is set to 20 ms (~50 Hz), your CharaChorder's cursor will move at 100 pixels per second (px/s). The equation comes out to:
-    ``Speed (px) x poll rate (Hz) = Number of pixels that the cursor will move per second``
-
-
 You can find the default settings for each device in the table below:
 
 .. ccos-setting:: mouse/fast speed
@@ -294,19 +244,24 @@ Scroll Speed
 
 Scroll speed refers to the speed at which your CCOS scroll will scroll.
 
-Increasing this setting will make your CCOS scrolling scroll faster. This setting is used in conjunction with :ref:`poll rate <GenerativeTextMenu:Poll Rate>`. See the explanation below.
-
-.. dropdown:: Explanation of CCOS mouse speeds
-
-    The scroll speed refers to the speed at which the CharaChorder scrolls at. The CCOS will scroll at the number of pixels (px) indicated by this setting multiplied by the number of Hz indicated by the :ref:`polling rate<GenerativeTextMenu:Poll Rate>`.
-
-    In other words, if your speed is set to 2 px, and your :ref:`poll rate<GenerativeTextMenu:Poll Rate>` is set to 20 ms (~50 Hz), your CharaChorder's scroll will move at 100 pixels per second (px/s). The equation comes out to:
-    ``Speed (px) x poll rate (Hz) = Number of pixels that the cursor will move per second``
-
+Increasing this setting will make your CCOS scrolling scroll faster.
 
 You can find the default settings for each device in the table below:
 
 .. ccos-setting:: mouse/scroll speed
+
+Scroll Throttle
+~~~~~~~~~~~~~~~
+
+``Path: GTM > Mouse > Scroll Throttle``
+
+Scroll throttle sets the shortest time CCOS will leave between two scroll events. It exists because Windows struggles to process fast scrolling: without a gap between the events, some of them are dropped and the page scrolls less than you asked for.
+
+Increase this setting if scrolling feels unreliable on your computer. Lower it if scrolling feels sluggish and your computer keeps up with it.
+
+You can find the default settings for each device in the table below:
+
+.. ccos-setting:: mouse/scroll throttle
 
 
 Active Mode
@@ -402,37 +357,22 @@ You can find the default settings for each device in the table below:
 
 .. ccos-setting:: autocorrect/timeout
 
-Spurring
-~~~~~~~~
+Detection Method
+~~~~~~~~~~~~~~~~
 
-``Path: GTM > Chording > Spurring``
+``Path: GTM > Chording > Detection Method``
 
-A 'chording only' mode which tells your device to output chords on a press event rather than a press & release and release event. When in spurring mode, you can press the keys of a chord one at a time with a much longer waiting period, which makes it a useful mode for those who want to practice chording without worrying about proper :ref:`timing<GenerativeTextMenu:Press Tolerance>`.
+This setting controls how CCOS decides that a group of key presses is a chord rather than a run of individual characters. There are three methods:
 
-Spurring mode also enables you to jump from one chord to another without releasing everything. It can provide significant speed gains when chording, but also takes away the flexibility of character entry. Spurring mode can truly maximize speed when chording if a user has chords for all of the words they want to use.
-
-Spurring On/Off
-^^^^^^^^^^^^^^^
-
-``Path: GTM > Chording > Character Only Mode > Spurring Timeout``
-
-This setting will toggle spurring mode ON or OFF.
-
-Spurring Timeout
-^^^^^^^^^^^^^^^^
-
-``Path: GTM > Chording > Spurring > Spurring Timeout``
-
-The time of inactivity to default back to fluid chorded/character entry mode (aka spurring off).
+* **Latency** (classic) prints each key instantly and backspaces it after a successful chord.
+* **Smart** adds a small amount of latency depending on your :ref:`tolerances<GenerativeTextMenu:Press Tolerance>`, and only prints characters when it is no longer plausible for the inputs to be a chord.
+* **Continuous**, also known as spurring, outputs chords on a press event rather than on a press and release. It lets you press the keys of a chord one at a time with a much longer waiting period, which makes it useful for practising chording without worrying about proper :ref:`timing<GenerativeTextMenu:Press Tolerance>`. It also lets you jump from one chord to the next without releasing everything. It can provide significant speed gains when chording, but takes away the flexibility of character entry, so it suits users who have chords for all of the words they want to use.
 
 You can find the default settings for each device in the table below:
 
-.. csv-table::
-    :header: "Device", "Default", "Min. Value", "Max. Value", "Increments"
+.. ccos-setting:: chording/detection method
+   :columns: Device, Default
 
-    "CharaChorder One", "240 s", "0 s", "250 s", "1 s"
-    "CharaChorder Lite", "240 s", "0 s", "250 s", "1 s"
-    "CharaChorder X", "240 s", "0 s", "250 s", "1 s"
 
 Arpeggiate
 ~~~~~~~~~~

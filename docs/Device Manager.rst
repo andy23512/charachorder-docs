@@ -192,21 +192,6 @@ Additionally, you can reset some parts of your device files such as your chords,
   :width: 1200
   :alt: The Device settings box
 
-Spurring
---------
-
-.. dropdown:: What is Spurring?
-
-	Spurring is a ‘chording only’ mode which tells your device to output :ref:`chords<Chords:What are Chords?>` on a press event rather than a press and release event. When in spurring mode, you can press the keys of a :ref:`chord<Chords:What are Chords?>` one at a time with a much longer waiting period, which makes it a useful mode for those who want to practice chording without worrying about proper :ref:`timing<GenerativeTextMenu:Press Tolerance>`.
-
-	Spurring mode also enables you to jump from one :ref:`chord<Chords:What are Chords?>` to another without releasing everything. It can provide significant speed gains when chording, but also takes away the flexibility of character entry. Spurring mode can truly maximize speed when chording if a user has chords for all of the words they want to use.
-
-.. image:: /assets/images/ManagerSettingsSpurring.png
-  :width: 1200
-  :alt: The Spurring settings box
-
-In this box, you can enable or disable spurring mode as well as increase or decrease the :ref:`spurring timeout setting<GenerativeTextMenu:Spurring Timeout>`.
-
 Arpeggiates
 -----------
 .. dropdown:: What are arpeggiates?
@@ -350,12 +335,6 @@ In this box, you can adjust settings relating to :doc:`CCOS'<CCOS>` mouse abilit
 
 	Active mode nudges your mouse cursor one pixel every minute or so (not a specific timing). This setting can be used to keep your computer from going to sleep. You might turn this setting off if you notice desktop apps are preventing you from getting mobile notifications (for example on Discord or Microsoft Teams).
 
-.. dropdown:: Poll Rate
-
-	The polling rate (poll rate) is the frequency at which data from the CharaChorder’s mouse functionality is sent to the device it’s connected to. In other words, how often it updates the cursor’s position to the computer.
-
-	You can read a more in-depth explanation of the polling rate in the :ref:`GTM section<GenerativeTextMenu:Poll Rate>`.
-
 Chording
 --------
 .. dropdown:: What is Chording?
@@ -425,6 +404,21 @@ These settings adjust the color and brightness of your CharaChorder Lite.
 .. image:: /assets/images/ManagerSettingsRGB.png
   :width: 1200
   :alt: The RGB settings box
+
+USB
+---
+These settings are experimental. They are not in the :doc:`GTM<GenerativeTextMenu>`, so the Device Manager and the :doc:`Serial API<SerialAPI>` are the only ways to change them.
+
+.. dropdown:: Poll Rate
+
+	The polling rate (poll rate) is the frequency at which the device sends its input reports to the computer it is connected to, expressed in Hz (Hertz). At 1000 Hz the device reports 1000 times every second.
+
+	Changing this setting requires unplugging and replugging the device before it takes effect.
+
+.. ccos-setting:: usb/poll rate
+   :columns: Device, Default
+
+This setting arrived in CCOS 2.2.0, replacing the separate mouse and keyboard poll rate settings. Those older settings did not actually change the poll rate.
 
 Library
 *******
