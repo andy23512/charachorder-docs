@@ -268,6 +268,11 @@ Operating system codes
    "Android","4"
    "Unknown","255"
 
+.. note::
+	Codes 0 to 4 are the positions of the values in the ``misc/operating system`` enum, which the Firmware Meta API spells in lower case: ``windows``, ``mac``, ``linux``, ``ios``, ``android``.
+
+	``255`` is not in that enum, and no device ships it as a factory default — every one of them starts at ``0``. It is kept here because it has been documented since this page was written, but whether the firmware still accepts it, and whether it is a value you can set or only one the device reports back, has not been verified.
+
 CMD_VAR_COMMIT
 ^^^^^^^^^^^^^^
 

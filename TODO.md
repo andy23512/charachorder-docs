@@ -214,14 +214,36 @@ from the API.
 
 ---
 
-## 6. Operating system codes table — `docs/SerialAPI.rst`
+## 6. Operating system codes table — `docs/SerialAPI.rst` (decided)
 
 The hand-written table maps `Windows`→0 … `Android`→4 **plus `Unknown`→255**.
-The API enum only has the five real values; 255 is not represented.
+Codes 0-4 are exactly the positions of the values in the `misc/operating
+system` enum, but 255 is not in the enum, so the table cannot be generated
+whole.
 
-**Question:** is `255` still a valid value to send? If yes the table cannot be
-fully generated and should stay hand-written (or the generator needs a way to
-add extra rows).
+Nothing found supports 255: it is absent from the Meta API, all eleven devices
+ship factory default `0`, and `Beta Releases.rst` never mentions the setting.
+Nothing found contradicts it either — it has been in this page since the serial
+API was first documented (`d1c9eba`).
+
+**Decided: the table stays hand-written, with a note saying what is and is not
+known.** Deleting 255 would assert it is invalid, which nobody has checked;
+leaving it bare would keep implying it is as solid as the other five. The note
+also records the open reading — whether 255 is a value you can set or only one
+the device reports back — and points out that the API spells the names in lower
+case while this table title-cases them.
+
+The generator was not extended to bolt extra rows onto an enum. That would put
+an unverified value inside the generated pipeline, for one table, with no
+second use case in sight.
+
+The section also stays as its own table rather than folding into the generated
+`Parameter codes` above it. They are different lookups: the generated one is
+read by parameter name, this one by code number, which is what someone
+implementing the protocol has in hand.
+
+**To settle 255:** send it to parameter `0x91` with `CMD_VAR_SET_PARAMETER`
+and read it back.
 
 ---
 
@@ -279,7 +301,8 @@ Of the 24 `csv-table` blocks, 2 are now generated. The rest were left alone:
 - **Keymap codes** (`Primary` A1, `Secondary` A2, `Tertiary` A3) — not exposed
   as settings.
 - **Chord Construction** bit layout table.
-- **Operating system codes** — see item 6 above.
+- **Operating system codes** — decided in item 6: stays hand-written,
+  because `Unknown`/255 is not in the API's enum and nothing verifies it.
 
 **Question:** is any of the protocol data published somewhere machine-readable
 (the way settings and actions are)? If not these stay hand-written, and it is
