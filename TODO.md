@@ -247,25 +247,56 @@ and read it back.
 
 ---
 
-## 7. The version picker only lists one device's releases
+## 7. The version picker only listed one device's releases (done)
 
 **File:** `docs/_static/ccos-meta.js`
 
-The dropdown is built from the first device in the table, but release history
-differs a lot per device — stable counts: `one_m0` 9, `lite_s2` 12,
-`engine_s2` 6, `two_s3` 6, `x_s2` 6, `m4g_s3` 3, `t4g_s2` 1.
+The dropdown was built from the first device of the first table on the page.
+Release history differs a lot per device — stable counts: `one_m0` 9,
+`lite_s2` 12, `engine_s2` 6, `two_s3` 6, `x_s2` 6, `m4g_s3` 3, `t4g_s2` 1 — so
+which versions a reader was offered depended on which table happened to come
+first, and versions other devices shipped never appeared at all.
 
-Picking a version another device never shipped shows an em dash for it, which
-is correct but can look like missing data.
+**Done: the picker now lists the union of every device on the page, minus the
+versions that publish no setting metadata.**
 
-**Question:** list the union of all devices' versions (more choices, more
-em dashes), the intersection (fewer, always fully populated), or keep the
-current behaviour?
+The intersection was measured before choosing, and it collapses. Across the six
+devices the generated tables cover, exactly one stable release is common to all
+of them: 3.0.0. A picker with a single entry is not a picker.
 
-Related: CCOS only publishes setting metadata from **2.1.0** onward. Older
-builds answer HTTP 500 with no CORS header. The picker currently offers them
-and explains the failure after the fact; it could hide them instead, but that
-would require probing every version.
+The union was measured too, by asking for `settings.json` on all 297
+device/version pairs those six devices list (2026-08):
+
+- 80 distinct versions, of which **54 publish metadata and 26 answer 500 on
+  every device**.
+- The cutoff is clean: everything from **2.1.0-rc.0** up is published,
+  everything below it is dead. No exceptions in either direction.
+- Probing only `one_m0` offered 61 versions, **22 of them dead** — including
+  six of its nine stable releases, since 2.0.x and everything older publishes
+  nothing.
+- It also hid 15 versions that do work, all pre-releases (`3.1.0-beta.*`,
+  `2.2.0-beta.*`), because the One never shipped them.
+
+So the change both widens and narrows the list. With pre-releases hidden, which
+is the default, the dropdown is now 3.0.0 / 2.1.1 / 2.1.0 — three entries that
+all work, where it used to be nine of which six failed.
+
+The em dashes the union adds are correct and were accepted: 2.1.1 blanks the X
+and the Engine rows because those devices never shipped 2.1.x. That is the
+question the picker exists to answer.
+
+Dropping the dead versions by version comparison rather than by probing each
+one costs a hardcoded floor, `MIN_METADATA_VERSION`. It is a claim about the
+past, which does not move, and the failure mode is mild in both directions: if
+CharaChorder backfills older builds they simply will not be listed, and the
+500-handling path in `apply()` is still there if the floor ever turns out to be
+wrong. Probing 54 versions × 6 devices on page load to avoid the constant is
+not worth it.
+
+Not addressed: the picker still fetches one directory listing per device on the
+page (six instead of one). Responses are cached per URL and the tables already
+fetch all six devices on any version switch, so this only moves work that was
+happening a moment later anyway.
 
 ---
 

@@ -164,6 +164,11 @@ On top of the baked-in tables, `docs/_static/ccos-meta.js` adds a version
 picker that queries the Meta API live, letting readers check any device and
 CCOS version combination. With JavaScript off, the cached tables still render.
 
+The picker offers every version any device on the page released, back to
+2.1.0-rc.0 — older builds answer 500 rather than publishing setting metadata,
+so `MIN_METADATA_VERSION` hides them. A version a device skipped shows em
+dashes in that device's row.
+
 ### Finding setting names
 
 To list what a version exposes:

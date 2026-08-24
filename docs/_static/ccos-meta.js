@@ -21,6 +21,12 @@
   var UNIT_DISPLAY = { B: "", H: "", S: "" };
   var MISSING = "—";
   var STORAGE_KEY = "ccos-docs-version";
+  /* CCOS only publishes setting metadata from 2.1.0-rc.0 onward; older builds
+     answer 500. Every one of the 80 versions the documented devices list was
+     checked (2026-08) and the cutoff is clean, so the picker can drop the dead
+     ones by comparison rather than by probing each one. apply() still reports a
+     500 as missing metadata in case an older build starts publishing. */
+  var MIN_METADATA_VERSION = "2.1.0-rc.0";
   var cache = new Map();
 
   function fetchJson(url) {
@@ -105,6 +111,16 @@
     }
   }
 
+  function devicesIn(blocks) {
+    var slugs = new Set();
+    blocks.forEach(function (block) {
+      block.dataset.devices.split(",").forEach(function (device) {
+        slugs.add(device);
+      });
+    });
+    return Array.from(slugs);
+  }
+
   function columnsOf(table) {
     return Array.prototype.map.call(table.querySelectorAll("thead th"), function (th) {
       return th.textContent.trim().toLowerCase();
@@ -148,13 +164,7 @@
   }
 
   function apply(blocks, version, status) {
-    var devices = new Set();
-    blocks.forEach(function (block) {
-      block.dataset.devices.split(",").forEach(function (d) {
-        devices.add(d);
-      });
-    });
-    var slugs = Array.from(devices);
+    var slugs = devicesIn(blocks);
     status.textContent = "Loading CCOS " + version + "…";
     return Promise.all(
       slugs.map(function (device) {
@@ -244,18 +254,38 @@
       return block.innerHTML;
     });
     var bakedVersion = blocks[0].dataset.version;
-    var probeDevice = blocks[0].dataset.devices.split(",")[0];
 
-    fetchJson(API_ROOT + "/" + probeDevice + "/")
-      .then(function (listing) {
-        var versions = listing
-          .filter(function (entry) {
-            return entry.type === "directory";
-          })
-          .map(function (entry) {
-            return entry.name;
+    /* Release history differs per device -- the One never shipped 2.0.x, the
+       Engine and the X never shipped 2.1.x -- so offer every version any device
+       on this page has. One that another device skipped renders as em dashes in
+       its row, which is what happened on that device. Listing only the first
+       device's releases hid 15 builds and made the dropdown depend on which
+       table came first on the page. */
+    Promise.all(
+      devicesIn(blocks).map(function (device) {
+        return fetchJson(API_ROOT + "/" + device + "/").catch(function () {
+          return [];
+        });
+      })
+    )
+      .then(function (listings) {
+        var seen = new Set();
+        listings.forEach(function (listing) {
+          listing.forEach(function (entry) {
+            if (entry.type === "directory") seen.add(entry.name);
+          });
+        });
+        var versions = Array.from(seen)
+          .filter(function (version) {
+            return (
+              version === bakedVersion ||
+              compareVersions(version, MIN_METADATA_VERSION) <= 0
+            );
           })
           .sort(compareVersions);
+        /* Offline, blocked, or every listing failed: the baked-in tables are
+           already correct, so say nothing rather than show a dead picker. */
+        if (!versions.length) return;
 
         var ui = buildPicker(blocks, bakedVersion, versions);
         var requested =
@@ -299,8 +329,9 @@
         else ui.status.textContent = "Showing CCOS " + bakedVersion + " (bundled with these docs)";
       })
       .catch(function () {
-        /* Offline or blocked: the baked-in tables are already correct, so
-           there is nothing to do beyond not showing a broken picker. */
+        /* A failed listing already resolves to an empty array, so reaching
+           here means the API answered with something unexpected. Same call:
+           leave the baked-in tables to speak for themselves. */
       });
   }
 
