@@ -25,6 +25,7 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           branch: chore/update-ccos-meta
+          delete-branch: true
           title: 'Refresh CCOS Firmware Meta API cache'
           commit-message: 'Refresh CCOS Firmware Meta API cache'
           body: |

@@ -147,6 +147,25 @@ def snapshot_device(device, version):
     }
 
 
+def write_snapshot(path, payload, sort_keys=False):
+    """Write payload, reusing the previous fetched_at when nothing else moved.
+
+    A timestamp that is new on every run would make the scheduled job open a
+    pull request every week whose only content is the clock. Keeping the old
+    timestamp leaves the file byte-identical, so a pull request shows up only
+    when CCOS actually changed something.
+    """
+    stripped = {k: v for k, v in payload.items() if k != "fetched_at"}
+    if path.exists():
+        try:
+            previous = json.loads(path.read_text())
+        except json.JSONDecodeError:
+            previous = None
+        if previous and {k: v for k, v in previous.items() if k != "fetched_at"} == stripped:
+            payload = dict(payload, fetched_at=previous.get("fetched_at", payload["fetched_at"]))
+    path.write_text(json.dumps(payload, indent=1, sort_keys=sort_keys) + "\n")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--version", help="snapshot this exact version instead of the latest")
@@ -204,7 +223,7 @@ def main():
             "devices": devices,
         }
         path = DATA_DIR / f"{version}.json"
-        path.write_text(json.dumps(payload, indent=1, sort_keys=True) + "\n")
+        write_snapshot(path, payload, sort_keys=True)
         print(f"wrote {path.relative_to(DATA_DIR.parent.parent.parent)}")
 
     versions = sorted(
@@ -212,12 +231,9 @@ def main():
         key=version_key,
         reverse=True,
     )
-    INDEX_FILE.write_text(
-        json.dumps(
-            {"fetched_at": fetched_at, "default_version": versions[0], "versions": versions},
-            indent=1,
-        )
-        + "\n"
+    write_snapshot(
+        INDEX_FILE,
+        {"fetched_at": fetched_at, "default_version": versions[0], "versions": versions},
     )
     print(f"wrote {INDEX_FILE.relative_to(DATA_DIR.parent.parent.parent)} (default {versions[0]})")
     return 0
