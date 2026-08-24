@@ -68,27 +68,6 @@ Keyboard
 
 Under this menu, you will be able to modify settings pertaining to how your CCOS device interacts with your computer.
 
-Scan Rate
-~~~~~~~~~
-
-``Path: GTM > Keyboard > Scan Rate``
-
-The scan rate, sometimes known as the "Key scan duration," refers to the frequency at which the device checks the state of the input keys.
-For reference, 5 ms corresponds to 200 Hz, which means that :doc:`CCOS<CCOS>` checks the position of the keys once every 5 milliseconds, which equals 200 times in a second. Having a lower number is usually better as it makes CCOS more responsive, though the difference at low numbers is usually negligible. In the GTM, this setting is adjustable in millisecond (ms) units.
-
-You can find the default scan rates of the different CharaChorder devices in the table below.
-
-+------------------+----------------+------------+------------+---------------+
-| Device           | Default Value  | Min. Value | Max. Value | Increments    |
-+==================+================+============+============+===============+
-| CharaChorder One | 2 ms           | 0 ms       | 20 ms      | 1 ms          |
-+------------------+----------------+------------+------------+---------------+
-| CharaChorder Lite| 2 ms           | 0 ms       | 20 ms      | 1 ms          |
-+------------------+----------------+------------+------------+---------------+
-| CharaChorder X   | 2 ms           | 0 ms       | 20 ms      | 1 ms          |
-+------------------+----------------+------------+------------+---------------+
-
-
 Debounce Press
 ~~~~~~~~~~~~~~
 
@@ -100,15 +79,7 @@ We should adjust this setting if we are having unintentional duplicate character
 
 You can find the default debounce press value of the different CharaChorder devices in the table below:
 
-+------------------+----------------+------------+------------+---------------+
-| Device           | Default Value  | Min. Value | Max. Value | Increments    |
-+==================+================+============+============+===============+
-| CharaChorder One | 7 ms           | 0 ms       | 100 ms     | 1 ms          |
-+------------------+----------------+------------+------------+---------------+
-| CharaChorder Lite| 12 ms          | 0 ms       | 100 ms     | 1 ms          |
-+------------------+----------------+------------+------------+---------------+
-| CharaChorder X   | 1 ms           | 0 ms       | 100 ms     | 1 ms          |
-+------------------+----------------+------------+------------+---------------+
+.. ccos-setting:: keyboard/debounce press
 
 
 
@@ -123,38 +94,7 @@ We should adjust this setting if we are having unintentional duplicate character
 
 You can find the default debounce release value of the different  CharaChorder devices in the table below:
 
-+------------------+----------------+------------+------------+---------------+
-| Device           | Default Value  | Min. Value | Max. Value | Increments    |
-+==================+================+============+============+===============+
-| CharaChorder One | 7 ms           | 0 ms       | 100 ms     | 1 ms          |
-+------------------+----------------+------------+------------+---------------+
-| CharaChorder Lite| 12 ms          | 0 ms       | 100 ms     | 1 ms          |
-+------------------+----------------+------------+------------+---------------+
-| CharaChorder X   | 1 ms           | 0 ms       | 100 ms     | 1 ms          |
-+------------------+----------------+------------+------------+---------------+
-
-Keystroke Delay
-~~~~~~~~~~~~~~~
-
-``Path: GTM > Keyboard > Keystroke Delay``
-
-This setting adds a small delay to keystroke inputs. It is measured in microseconds (μs) and is very small by default.
-
-You should increase this value if your computer is not accepting all of the characters output by your device, such as when using the GTM. If you are having this issue, your GTM would look weird, with missing chunks or characters.
-
-If you have a faster computer, then you can lower this setting to make chording and the GTM feel snappier and more responsive.
-
-This value is adjusted in 40us increments. You can find the default debounce press of the different  CharaChorder devices in the table below:
-
-+------------------+----------------+------------+-------------+--------------+
-| Device           | Default Value  | Min. Value | Max. Value  | Increments   |
-+==================+================+============+=============+==============+
-| CharaChorder One | 480 μs         | 0 μs       | 10200 μs    | 40 μs        |
-+------------------+----------------+------------+-------------+--------------+
-| CharaChorder Lite| 480 μs         | 0 μs       | 10200 μs    | 40 μs        |
-+------------------+----------------+------------+-------------+--------------+
-| CharaChorder X   | 480 μs         | 0 μs       | 10200 μs    | 40 μs        |
-+------------------+----------------+------------+-------------+--------------+
+.. ccos-setting:: keyboard/debounce release
 
 Capslock
 ~~~~~~~~
@@ -177,7 +117,12 @@ The intent of this setting is to provide more accurate key mapping. As such, it 
    :columns: Device, Default
 
 .. Warning::
-	As of December of 2023, this setting doesn't do anything on CCOS devices.
+	Whether this setting does anything has not been verified. This page has said since
+	December of 2023 that it does nothing on CCOS devices, which contradicts the advice
+	above it, and nothing has settled it since — the Meta API publishes the setting and
+	its values but not what reads them, and no release note mentions it either way.
+	Matching your computer costs nothing, so the advice stands, but do not count on it
+	changing what your keys output until someone checks on a device.
 
 GUI-CTRL Soft Swap (CharaChorder Lite only)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -332,7 +277,7 @@ CCOS devices have a running timer that starts after every single character that 
 
 This feature allows users to misfire chords, yet be able to correct them by quickly performing the chord correctly, without having to backspace manually to erase the misfired chord. The result is that the timeout will automatically backspace all of the preceding characters (up to the last :doc:`breaking character <Breaking Character>`) and replace them with the intended chord.
 
-You can set this setting to be as low as 0.0 seconds (s) or as high as 25.0 seconds (s), being able to adapt it to your individual :doc:`chording<Chords>` style.
+You can adapt this setting to your individual :doc:`chording<Chords>` style.
 
 .. warning::
     Setting this setting to 0.0 s will result in :doc:`chords<Chords>` not working at all. They will fire, but they will not automatically erase the :ref:`chord inputs<Chord Input>`.

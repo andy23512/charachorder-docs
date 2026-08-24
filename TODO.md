@@ -76,6 +76,9 @@ setting under a new experimental category."
   `usb/poll rate` is documented in `Device Manager.rst` instead, under a new
   `USB` section, generated with `:columns: Device, Default` because it is an
   enum. The old `Mouse > Poll Rate` dropdown there was deleted.
+- **Missed at the time:** that sentence says "mouse/keyboard poll rate
+  settings", plural. `keyboard/poll rate` (`0x14`) is what the GTM page called
+  `Scan Rate`, and it went in the same release. Item 8f deleted it.
 - The mouse speed sections used to repeat a
   `Speed (px) x poll rate (Hz) = px/s` dropdown three times. Since the setting
   it depended on never worked, the formula was deleted rather than retargeted.
@@ -300,25 +303,81 @@ happening a moment later anyway.
 
 ---
 
-## 8. Prose that quotes stale numbers
+## 8. Prose that quotes stale numbers (done)
 
-Converting the tables fixed the tables, not the sentences around them. Known
-mismatches to re-read:
+Converting the tables fixed the tables, not the sentences around them. Four
+mismatches were listed here. Two had already gone with the tables that carried
+them, and re-reading the pages turned up two more that were never listed.
 
-- "You can set this setting to be as low as 0.0 seconds (s) or as high as
-  25.0 seconds (s)" — API says max 25.5 s (`autocorrect/timeout`).
-- Chord press/release tolerance prose implies a 0–150 ms range; the API says
-  0–255 ms.
-- `SerialAPI.rst` parameter code descriptions carry their own defaults
-  ("default is 7ms on the One and 20ms on the Lite") that predate 2.x.
-- `GenerativeTextMenu.rst`, `Operating System`: the section recommends setting
-  it to match your computer, then warns "As of December of 2023, this setting
-  doesn't do anything on CCOS devices" — advice and warning contradicting each
-  other, on a page describing CCOS 3.0.0 (2026-01). Nothing in
-  `Beta Releases.rst` mentions the setting either way, so whether the warning
-  still holds needs a device: change it and see whether key output changes.
-  Both keeping it and deleting it are a claim nobody has checked. Item 6 covers
-  the same setting from the Serial API side and may settle it.
+**8a. `autocorrect/timeout` — fixed.** `GenerativeTextMenu.rst` offered "as low
+as 0.0 seconds (s) or as high as 25.0 seconds (s)". The API says `[0, 25500]`
+at `scale 0.001`, so the ceiling is 25.5 s. The range was dropped from the
+sentence rather than corrected: the generated table sits directly underneath
+and says the same thing more precisely, and a second hand-written copy is just
+somewhere else to go stale. The warning below it — that 0.0 s leaves chords
+firing without erasing their inputs — describes behaviour no table carries, and
+stayed.
+
+**8b. Chord tolerances "0-150 ms" — nothing to fix.** The 150 was in the
+hand-written table, not the prose, and went with it in `9e48ffd`. Neither
+tolerance section states a range at all. One number does sit nearby: the
+`25ms` in the GTM screen example at line 51, which illustrates what the menu
+looks like rather than claiming a default. Recorded under item 13 to be
+checked with the rest of that page on a device.
+
+**8c. SerialAPI defaults "7ms on the One and 20ms on the Lite" — nothing to
+fix.** Removed with the hand-written table in `fb0c398`. The generated rows say
+more rather than less — `Range 0 ms to 255 ms. Default 16 ms.` — and the old
+numbers were wrong anyway: `0x64` claimed 1500 ms where the API says 1000.
+Diffing the 38 old rows against the 44 generated ones did turn up eight codes
+that vanished without a replacement, which is now item 16.
+
+**8d. `misc/operating system` — the contradiction is now stated as one.** The
+page recommended matching the setting to your computer and then warned, in a
+note dated December 2023, that it does nothing. Nothing settles it: the Meta
+API publishes the setting and its values but not what reads them, and
+`Beta Releases.rst` does not mention it in either direction. Deleting the
+warning would assert it works; deleting the advice would assert it does not.
+The warning now says the question is open and that matching your computer costs
+nothing either way. The one hint found, too weak to act on, is that
+`keyboard/command control swap` exists separately and is described as easing
+the move between Mac and other systems — which would leave this setting with
+little to do. Item 6 covers the same setting from the Serial API side.
+
+**8e. Debounce Press / Release — converted.** Two hand-written tables in
+`GenerativeTextMenu.rst` were stale in every column: defaults of 7/12/1 ms per
+device against the API's 16 ms everywhere, a 100 ms ceiling against 255, and
+three devices listed out of eleven. Both are now
+`.. ccos-setting:: keyboard/debounce press` / `release`.
+
+**8f. Scan Rate and Keystroke Delay — deleted.** Neither has a setting in
+3.0.0. Tracking the parameter ids across versions says why:
+
+| | `0x14` | `0x17` | `0x26` |
+|---|---|---|---|
+| 2.1.0, 2.1.1 | `keyboard/poll rate` | — | `mouse/poll rate` |
+| 2.2.0-beta.0 | — | — | — |
+| 2.2.0-beta.29 onward | — | `keyboard/rollover` | — |
+
+`0x14` is the old "Key Scan Duration", and it disappeared alongside
+`mouse/poll rate` in 2.2.0-beta.0 — both halves of `Beta Releases.rst:215`,
+"Replaced the mouse/keyboard poll rate settings (which didn't actually change
+the poll rate) with a USB poll rate setting". Item 2a acted on that sentence for
+the mouse and missed the keyboard. The replacement, `usb/poll rate`, is already
+documented in `Device Manager.rst`.
+
+Keystroke Delay (`0x17`, "Keyboard Output Character Microsecond Delays") is
+absent from 2.1.0, the oldest version publishing metadata, and its id now
+belongs to `keyboard/rollover`. Same situation as spurring in item 2b: no
+version has it, so it was not renamed, it is gone. Leaving it documented would
+point readers at an id that now writes something else.
+
+Deleted: both `GenerativeTextMenu.rst` sections with their tables, the
+`Key Scan Rate` and `Output Character Delay` dropdowns in `Device Manager.rst`
+that repeated them, and "and even a customizable scan rate" from the CCOS
+feature list in `CCOS.rst:18`.
+
+Checking `keyboard/rollover` afterwards led to item 17.
 
 ---
 
@@ -356,9 +415,10 @@ they show up in generated output:
   `KeyCode`, both `variantOf` and `variationOf`, and `sparator` alongside
   `separator`. The generator only reads `id`, `name`, `display` and `title`,
   so it is unaffected.
-- Requests for versions older than 2.1.0 answer **HTTP 500 without CORS
+- Requests for versions older than 2.1.0-rc.0 answer **HTTP 500 without CORS
   headers** rather than 404, which browsers can only report as a generic
-  network failure.
+  network failure. Item 7 has the measured boundary: 26 of the 80 versions the
+  documented devices list answer 500 on every device.
 - `fuzzy modifiers/enable` is an on/off setting with `range [0, 1]`, but it
   carries `unit: "ms"`. The other nine `[0, 1]` settings across the API have no
   unit, and its neighbours in the same group (`press theshold`, `release
@@ -490,6 +550,14 @@ down what each menu actually lists. Then reconcile: sections with no menu entry
 move to `Device Manager.rst` (as `usb/poll rate` and `mouse/scroll throttle`
 did) or go; menu entries with no section get written.
 
+The same walk settles one line of prose. `GenerativeTextMenu.rst:51` shows what
+a GTM screen looks like, using ``Press Tolerance [ Use up/down arrow keys to
+adjust: 25ms ]`` as the example. 25 ms is not the 3.0.0 default -- the API says
+30 -- but it is an illustration, not a claim about defaults, and nobody has
+checked whether a 3.0.0 device still draws the line in that shape at all.
+Changing the number alone would make an unverified example look verified, so it
+waits for the device with everything else on this page.
+
 Worth doing before trusting any remaining `Path:` line, but it is a device-in-
 hand job and does not block the other items.
 
@@ -582,3 +650,98 @@ the 15 carry `:width: 1200` — an upscale for every one of them, since none is
 that wide. Worth settling on one capture width and dropping the `:width:`
 overrides rather than reproducing the mix.
 
+---
+
+## 16. Eight serial parameter codes vanished with the hand-written table
+
+**File:** `docs/SerialAPI.rst`
+
+Generating the parameter code table (`fb0c398`) replaced 38 hand-written rows
+with 44 generated ones. Fifteen of the old codes have no generated counterpart.
+Seven of them are settings CCOS dropped -- `0x14` key scan duration, `0x26`
+mouse poll duration, `0x32`/`0x33` chording character counter timeout,
+`0x41`-`0x43` spurring -- and falling out of the table is the right outcome for
+those. The other eight are not:
+
+| Code | Old name |
+|---|---|
+| `0x01` | Enable Serial Header |
+| `0x02` | Enable Serial Logging |
+| `0x03` | Enable Serial Debugging |
+| `0x04` | Enable Serial Raw |
+| `0x05` | Enable Serial Chord |
+| `0x06` | Enable Serial Keyboard |
+| `0x07` | Enable Serial Mouse |
+| `0x12` | Enable Character Entry |
+
+These switch serial output on and off. They are not settings a user reaches
+through the GTM or the Device Manager, which is what the Meta API publishes, so
+they were never in the generated data and the table lost them silently. Someone
+implementing the protocol is the exact reader who needs them.
+
+**Not restored from the old rows, because those cannot be trusted on their
+own.** `0x17` used to be "Keyboard Output Character Microsecond Delays" and is
+now `keyboard/rollover`; `0x93` used to be "Enable CharaChorder Ready on
+startup" and is now `usb/aggressive reporting throttle`. CCOS reuses parameter
+ids when a setting goes away.
+Pasting the old descriptions back would document values that may now write
+something else entirely.
+
+**To settle:** read the parameter ids out of the CCOS firmware source, or send
+`CMD_VAR_GET_PARAMETER` for each of the eight to a device on 3.0.0 and see what
+answers. Then either write them up as a second, clearly hand-written table
+below the generated one, or record that they are gone.
+
+---
+
+## 17. Thirteen settings the API exposes and the docs never mention
+
+**Files:** `docs/GenerativeTextMenu.rst`, `docs/Device Manager.rst`
+
+Item 14 counted the LED settings. Checking `keyboard/rollover` while closing
+item 8f turned into the same count for everything else: of the 43 settings CCOS
+3.0.0 publishes, 13 non-LED ones have no section, no dropdown and no table
+anywhere in these docs. They appear only as a row in the generated Serial API
+parameter table, under their API name.
+
+| Setting | Code | Default | Values | API description |
+|---|---|---|---|---|
+| `arpeggiates/mode` | 0x55 | 0 | all, chord modifiers, arpeggiate chords | no |
+| `chording/concatenation style` | 0x3E | 0 | appended, prepended | yes |
+| `chording/minimum chord keys` | 0x38 | 2 | 1-12 | yes |
+| `chording/tap dance tolerance` | 0x39 | 175 | 0-1275 step 5 | no |
+| `fuzzy modifiers/enable` | 0x18 | 0 | 0-1 ms | no |
+| `fuzzy modifiers/press theshold` | 0x19 | 50 | 0-255 ms | yes |
+| `fuzzy modifiers/release theshold` | 0x1A | 110 | 0-255 ms | yes |
+| `fuzzy modifiers/release guard threshold` | 0x1B | 50 | 0-255 ms | yes |
+| `gaming/layer warp` | 0x70 | 0 | 0-1 | yes |
+| `keyboard/rollover` | 0x17 | 1 | 6 key, 12 key, 18 key | yes |
+| `usb/aggressive reporting` | 0x95 | 0 | never, active only | yes |
+| `usb/aggressive reporting throttle` | 0x93 | 0 | 0-25500 step 100 s scale 0.001 | no |
+| `usb/hid resend throttle` | 0x97 | 10 | 10-2550 step 10 ms | no |
+
+Five have something to start from in `Beta Releases.rst`: `keyboard/rollover`
+("Keyboard Rollover Settings"), `gaming/layer warp`, `usb/aggressive
+reporting`, `chording/concatenation style` ("Prepend concatenation style") and
+`arpeggiates/mode`. Seven carry an API description, which is what the generated
+Serial API rows already show.
+
+Two settings that look missing are not: `mouse/caffeine` is documented as the
+Device Manager's `Active Mouse`, and `keyboard/command control swap` as
+`GUI-CTRL Soft Swap` on the GTM page. Neither name matches the API.
+
+**Why this is not just writing them up.** Same trap as item 2a: the API group
+does not tell you where a user reaches a setting. `usb/poll rate`,
+`mouse/scroll throttle` and `chording/detection method` were each placed by
+reasoning from the group, and each turned out to be absent from the GTM when
+someone looked. Eight of these thirteen sit in `fuzzy modifiers`, `gaming` and
+`usb` — groups with no section on either page, so there is not even an
+established home to add them to.
+
+**What it would take:** the device walk from item 13, plus a pass over the
+Device Manager's own UI, to see which surface offers what. After that the ones
+with API descriptions can be written from the metadata.
+
+Kept separate from item 14 because the LED settings have a known home (the
+`RGB` section) and a specific obstacle (nothing distinguishes `off delay` from
+`on off transition`). These have neither.

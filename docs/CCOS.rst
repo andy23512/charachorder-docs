@@ -14,8 +14,8 @@ to introduce new features, fix bugs, as well as respond to feedback more
 efficiently with a convergent and spearheaded approach. In addition to the
 introduction of importable and exportable settings, inside your
 :doc:`Generative Text Menu (GTM)<GenerativeTextMenu>` you'll find new
-configurable settings including programmable debounce, arpeggiate tolerances,
-and even a customizable scan rate. Specialized 'hard coded' chords which were
+configurable settings including programmable debounce and arpeggiate
+tolerances. Specialized 'hard coded' chords which were
 previously immutable can now be edited, including chords only available in
 spurring. Even modifier keys can now be repurposed as constituent inputs for
 any possible chord output by permanently overriding their derivative output
