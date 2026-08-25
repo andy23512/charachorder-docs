@@ -381,7 +381,7 @@ Checking `keyboard/rollover` afterwards led to item 17.
 
 ---
 
-## 9. Tables in `SerialAPI.rst` that stayed hand-written
+## 9. Tables in `SerialAPI.rst` that stayed hand-written (answered)
 
 Of the 24 `csv-table` blocks, 2 are now generated. The rest were left alone:
 
@@ -394,9 +394,25 @@ Of the 24 `csv-table` blocks, 2 are now generated. The rest were left alone:
 - **Operating system codes** — decided in item 6: stays hand-written,
   because `Unknown`/255 is not in the API's enum and nothing verifies it.
 
-**Question:** is any of the protocol data published somewhere machine-readable
-(the way settings and actions are)? If not these stay hand-written, and it is
-worth a note in the file saying so.
+**Answered: no, the protocol is not published machine-readable.** Checked the
+whole Meta API surface. A version directory
+(`https://charachorder.io/firmware/one_m0/3.0.0/`) holds exactly 13 files:
+`meta.json`, `settings.json`, `actions.json`, `factory_settings.json`,
+`factory_layout.json`, `changelog.json`, `recipes.json`, the four chord sets
+(`starter`, `functional`, `riley`, `arpeggiates`), `firmware.bin` and
+`CURRENT.UF2`. `meta.json` indexes those files and nothing else — there is no
+command, subcommand or frame description anywhere in it.
+
+The CCOS-firmware README says so itself. Its "Serial API" section names two
+references and neither is data: this docs page, and a hand-written TypeScript
+client at `DeviceManager/src/lib/serial/device.ts`. That client hardcodes
+`"C0"`, `"B0"` and the rest as inline string literals, so it is not a table
+anyone could generate from either.
+
+**Done:** `docs/SerialAPI.rst` now carries a note at the top saying which two
+tables are generated and that the wire format is maintained by hand, so the
+next person does not repeat this search. The reference implementation is
+linked from it — see item 18 for what comparing against it turned up.
 
 ---
 
@@ -745,3 +761,46 @@ with API descriptions can be written from the metadata.
 Kept separate from item 14 because the LED settings have a known home (the
 `RGB` section) and a specific obstacle (nothing distinguishes `off delay` from
 `on off transition`). These have neither.
+
+---
+
+## 18. The Serial API page has drifted from the reference implementation
+
+Found while answering item 9. `DeviceManager/src/lib/serial/device.ts` is the
+client CharaChorder's own web app talks to devices with, and the CCOS-firmware
+README offers it as the reference implementation of this protocol. Four things
+it does are not on the page:
+
+- **`QRY KEY`** — a whole command that is missing. `queryKey()` sends
+  `QRY KEY` and reads back a number. `QRY` is in neither the Commands Overview
+  table nor the `CMD` output example, which still lists
+  `CMD,ID,VERSION,CML,VAR,RST,RAM,SIM`.
+- **`CML C5`** — `getProgress()` sends it and parses a float. The CML
+  subcommand table stops at `C4`.
+- **`RST OTA`** — sent by `updateFirmware()` to start an over-the-air update.
+  The RST subcommand table lists nine values and `OTA` is not among them.
+  (`UPGRADECML` is documented but unused by the client.)
+- **Profiles are missing from both `VAR` addressing schemes.** `setLayoutKey()`
+  builds the keymap argument as `String.fromCodePoint('A' + profile) + layer`,
+  so `A1`–`A3` is profile A and `B1`–`C3` address profiles B and C.
+  `setSetting()` sends the parameter code as `id + profile * 0x100`, so profile
+  B's copy of setting `0x15` is `0x115`. The page describes `A1`/`A2`/`A3` as
+  three fixed keymaps and parameter codes as one flat byte. `docs/Beta
+  Releases.rst` already documents the three profiles, so this is the Serial API
+  page lagging behind, not new hardware.
+
+**Why this is not just writing them up.** A client sending a command proves
+the firmware accepted it when that code was written, not what it returns, what
+its arguments mean, or which devices and CCOS versions have it. The page's
+tables give an index, type and example for every field; none of that can be
+read off a call site. `QRY KEY` returning "a number" is the clearest case —
+whether it is a key id, an action code or a status is not in the source.
+
+**What it would take:** the device walk from item 13. Every one of these can be
+tried on a real device over a serial terminal and its response transcribed,
+which is how the rest of the page reads.
+
+**Not fork staleness.** The official page at
+<https://docs.charachorder.com/SerialAPI.html> was fetched and searched: it
+contains no `QRY`, no `C5`, no `RST OTA` and no mention of profiles either. So
+these are upstream documentation gaps, worth filing alongside item 10's list.

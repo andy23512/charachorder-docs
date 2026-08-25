@@ -16,6 +16,18 @@ The Serial API allows users and developers to interact with their CCOS powered d
 .. note::
    Throughout this document, lines prefixed with a ">" symbol represent user input in the examples shown.
 
+.. note::
+   Two tables on this page are generated from published data: the
+   :ref:`parameter codes<SerialAPI:Parameter codes>` and the
+   :ref:`action codes<SerialAPI:Action codes>`, both read from the `Firmware
+   Meta API <https://github.com/CharaChorder/CCOS-firmware#firmware-meta-api>`_.
+   Everything that describes the wire format itself — the commands, their
+   subcommands, the keymap codes, the chord bit layout — is written by hand,
+   because CCOS publishes nothing machine-readable for it. The firmware
+   repository points at this page for the Serial API, and offers one other
+   reference: a hand-written TypeScript client in `DeviceManager
+   <https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/serial/device.ts>`_.
+
 .. contents::
    :local:
 
