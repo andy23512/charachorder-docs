@@ -882,3 +882,88 @@ which is how the rest of the page reads.
 <https://docs.charachorder.com/SerialAPI.html> was fetched and searched: it
 contains no `QRY`, no `C5`, no `RST OTA` and no mention of profiles either. So
 these are upstream documentation gaps, worth filing alongside item 10's list.
+
+---
+
+## 19. Contact details still point readers at CharaChorder
+
+**File:** `docs/index.rst:24`
+
+> If you would like to submit a correction to something you've read in this
+> guide, or if you have suggestions for the guide, please email
+> alan@charachorder.com.
+
+That line was written for the official guide. Here it sends corrections about
+**this fork's** content — generated tables, the version picker, the sections
+items 2, 3 and 8f moved or deleted — to a CharaChorder employee who cannot act
+on them and did not ask for them. The reader has no way to tell, because the
+sentence sits three paragraphs below the note that says this is a fork.
+
+Everything else found is a link to an official community, which is fine to keep
+because it is about the devices rather than about the docs:
+
+| File | What it points at |
+|---|---|
+| `docs/FAQs.rst:15` | Discord invite `https://discord.gg/hYu6VW5YkM` |
+| `docs/FAQs.rst:16` | `https://www.youtube.com/charachorder` |
+| `docs/CharaChorder Engine.rst:14` | Engine Discord channel invite |
+
+**What it needs:** a decision on where fork corrections should go. The obvious
+candidate is this repository's issue tracker, which costs nothing to point at
+and keeps the report next to the code that produced the table. An email address
+would work too, but that is the maintainer's to choose and is not recorded
+anywhere in the repo today.
+
+Whichever it is, the sentence should also say which corrections belong where:
+content inherited from the official guide is worth sending upstream, and only
+the fork's own output belongs here. Item 12 is the live example — three fixes
+that are not fork-specific at all.
+
+---
+
+## 20. No page explains how this fork differs from the official docs
+
+**Files:** `docs/index.rst`, plus a new page
+
+All a reader gets today is a five-line `.. note::` at `docs/index.rst:9`,
+saying the setting tables are generated from the Meta API and may differ from
+the official guide. The title carries `(Tangent's fork)` and so does
+`conf.py:57`. That is the whole disclosure.
+
+The actual difference is much larger than "tables are generated". Against the
+commit this fork started from (`a5a75a5`, 2025-08-29) it is 20 files and 25
+commits, and the parts a reader would notice are:
+
+- **Generated setting tables.** `docs/_ext/ccos_meta.py` renders the
+  `ccos-setting` directive from cached Meta API data, so ranges, defaults,
+  units and per-device columns come from the firmware rather than from prose.
+- **A version picker.** `docs/_static/ccos-meta.js` re-renders every table on
+  the page for a chosen CCOS release. Item 7 covers what it lists and why.
+- **Sections the official guide still has, which are gone here.** Mouse and
+  keyboard poll rate, scan rate, keystroke delay, and the spurring settings and
+  timeout — all removed from CCOS, all still documented upstream (items 2 and
+  8f).
+- **Sections moved between pages** after checking a device, because the API
+  group a setting belongs to does not say where a user reaches it: `usb/poll
+  rate` and `mouse/scroll throttle` are documented under Device Manager here
+  and on the GTM page upstream (item 2a).
+- **Scope corrections**, such as LED settings no longer being described as
+  Lite-only (item 3).
+- **Presentation choices** that make generated output differ from the
+  hand-written original: enum values kept in the API's lower case (item 5) and
+  HSB component letters suppressed as units (item 4).
+- **Fixes that are not fork-specific at all** and would be equally right
+  upstream (item 12).
+
+**What it needs:** a decision on shape before writing. Specifically:
+
+- Where it lives and what it is called — `About this fork` reads better in a
+  sidebar than `Differences from the official documentation`, and it has to be
+  added to the `toctree` in `index.rst` or it will not render (the file itself
+  says so in a comment at the top).
+- Whether the index note shrinks to a link once the page exists, or stays as
+  it is and gains a "read more" line.
+- How much of it should be generated. The list of moved and deleted sections
+  is the part most likely to go stale, and it is exactly the part this TODO
+  already tracks per item, so one option is to write the page by hand and keep
+  it honest by linking each entry to its item here.
