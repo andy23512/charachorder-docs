@@ -416,7 +416,7 @@ linked from it — see item 18 for what comparing against it turned up.
 
 ---
 
-## 10. Upstream data quirks worth reporting to CharaChorder
+## 10. Upstream data quirks worth reporting to CharaChorder (decided)
 
 Found while generating the tables. None of these are bugs in these docs, but
 they show up in generated output:
@@ -442,7 +442,23 @@ they show up in generated output:
   copied. It renders as "Range 0 ms to 1 ms. Default 0 ms." The docs leave it
   verbatim rather than special-casing it, so a fix upstream will show up here.
 
-**Question:** worth opening issues upstream on CCOS-firmware?
+**Decided: do not open issues upstream for now.** The list stays here as a
+record. Nothing on it breaks the generated docs today — the two misspellings
+and the stray `unit: "ms"` render verbatim, the inline HTML is stripped by the
+extension, and the `actions.json` key inconsistencies are in fields the
+generator never reads. The only one with real user impact is the HTTP 500
+without CORS headers, and item 7 already routes around it with
+`MIN_METADATA_VERSION`.
+
+The same decision covers item 18's four Serial API gaps (`QRY KEY`, `CML C5`,
+`RST OTA`, profile addressing), which that item proposed filing alongside this
+list. They are documentation gaps rather than data quirks, so if the call is
+ever reversed they belong in an issue of their own, not this one.
+
+Note that filing any of these means writing the upstream-facing version: which
+file, which version snapshot it was observed in (all of the above are from the
+3.0.0 data cached here, checked 2026-08), and what the expected value is. That
+work has not been done.
 
 ---
 
