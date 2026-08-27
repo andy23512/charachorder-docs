@@ -322,7 +322,7 @@ You can follow the steps below to update each Master Forge half:
    While it's updating, the device manager disconnects, and the Master Forge disconnects from the OS. In Windows, it plays a device disconnected sound. When it's done, Windows plays a device connected sound.
 
    .. _Apply Update Button:
-   .. image:: /assets/images/DM-apply-update-button-M4G.png
+   .. image:: /assets/images/DM-apply-update-button-m4g.png
       :width: 600
       :alt: Apply Update Button
 

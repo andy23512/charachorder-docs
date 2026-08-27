@@ -508,18 +508,20 @@ The block would then be parsed for the first time, so expect follow-on work:
 its lines are indented with a mix of tabs and spaces at inconsistent depths,
 and two of its images have the wrong case (12b).
 
-### 12b. Image paths whose case does not match the file on disk
+### 12b. Image paths whose case does not match the file on disk (part done)
 
 | Reference | File in git | Effect |
 |---|---|---|
-| `Device Manager.rst:403` → `ManagerSettingsAutocorrect.png` | `ManagerSettingsAutoCorrect.png` | **Image missing from the published page** |
-| `Master Forge.rst:325` → `DM-apply-update-button-M4G.png` | `DM-apply-update-button-m4g.png` | **Image missing from the published page** |
-| `Master Forge.rst:342` → `FW-connect-button.jpg` | `FW-connect-button.JPG` | Harmless today — inside the 12a comment |
-| `Master Forge.rst:385` → `FW-connect-button.jpg` | `FW-connect-button.JPG` | Harmless today — inside the 12a comment |
+| `Device Manager.rst:379` → `ManagerSettingsAutocorrect.png` | `ManagerSettingsAutoCorrect.png` | **Fixed** — was missing from the published page |
+| `Master Forge.rst:325` → `DM-apply-update-button-M4G.png` | `DM-apply-update-button-m4g.png` | **Fixed** — was missing from the published page |
+| `Master Forge.rst:342` → `FW-connect-button.jpg` | `FW-connect-button.JPG` | Still wrong — harmless today, inside the 12a comment |
+| `Master Forge.rst:385` → `FW-connect-button.jpg` | `FW-connect-button.JPG` | Still wrong — harmless today, inside the 12a comment |
 
-The first two are the only `image file not readable` warnings the CI build
-emits. Fixing them is a one-word edit each; the last two must be fixed as part
-of 12a, or they will start failing the moment that block is uncommented.
+**Done: the first two were the only `image file not readable` warnings the CI
+build emitted, and both references were corrected** rather than renaming the
+files, so nothing else that points at them had to move. The remaining two must
+be fixed as part of 12a, or they will start failing the moment that block is
+uncommented.
 
 Note `Master Forge.rst:241` and `:291` already spell the same file `.JPG`
 correctly, so only the copies inside the commented block are wrong.
@@ -661,16 +663,13 @@ Mismatches already known, without opening the app:
 
 **Also worth folding in while reshooting:**
 
-- Item 12b's case bug is on this page: line 390 asks for
-  `ManagerSettingsAutocorrect.png` while the file is
-  `ManagerSettingsAutoCorrect.png`, so that image is missing from the published
-  page today. A reshoot renames the file anyway, which is the moment to settle
-  on one spelling.
-- Twelve `Manager*.png` files in `assets/images` are referenced by no `.rst` at
+- Item 12b's case bug was on this page and is now fixed by correcting the
+  reference to `ManagerSettingsAutoCorrect.png`. A reshoot renames the file
+  anyway, which is the moment to settle on one spelling.
+- Eleven `Manager*.png` files in `assets/images` are referenced by no `.rst` at
   all: `ManagerBootloaderButton-Lite`, `ManagerCONNECT`,
   `ManagerDeviceButton-Lite`, `ManagerFirstTimeConnect`, `ManagerLinks`,
-  `ManagerPowerButton-Lite`, `ManagerREDCONNECTBUTTON`,
-  `ManagerSettingsAutoCorrect` (the case bug above), `ManagerSettingsResets`,
+  `ManagerPowerButton-Lite`, `ManagerREDCONNECTBUTTON`, `ManagerSettingsResets`,
   `ManagerSettingsSpurring`, `ManagerTerminal`, `ManagerVersion`. Some are
   probably left from sections that were rewritten; worth deciding which to
   delete once the new set exists.
