@@ -185,7 +185,7 @@ All Forge :doc:`anchor bodies<Anchor Bodies>`, including the Master Forge Digiti
 
 If you haven't done so, now would be the time to plug the included USB-C to USB-A cable included with your order into the LEFT :ref:`digitizer<Master Forge:The Digitizers>`. If you would rather use an after-market USB-C to USB-C cable instead, due to a personal preference or computer requirement, that is also okay. Regardless of your selection, we'll refer to the cable that connects directly to the computer as the sole Power Cable. If you have any additional :doc:`bolt-ons<Bolt-Ons>`, now would be a good time to plug them into your Master.
 
-Once you have your setup connected, you can plug the Master Power Cable into your computer. Upon connecting, the LED lights under your :doc:`digitizers<Digitizers>` will start their rainbow cycle.
+Once you have your setup connected, you can plug the Master Power Cable into your computer. Upon connecting, the LED lights under your :ref:`digitizers<Master Forge:The Digitizers>` will start their rainbow cycle.
 
 If this is your very first time using a :doc:`CCOS<CCOS>` device, we recommend the following:
     #. Place your cursor into a place where it's safe to type

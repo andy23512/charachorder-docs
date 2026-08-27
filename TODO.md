@@ -526,23 +526,52 @@ uncommented.
 Note `Master Forge.rst:241` and `:291` already spell the same file `.JPG`
 correctly, so only the copies inside the commented block are wrong.
 
-### 12c. `:ref:` targets that do not exist
+### 12c. Cross-references that do not resolve (done)
 
-Four cross-references point at section titles no section has. They predate this
-branch — the same four are missing at the commit this branch started from — and
-`sphinx.yml` does not pass `-W`, so they warn without failing the build.
+This item used to list four `:ref:` targets as missing. **Three of the four were
+never broken.** They were found by comparing the target string against section
+titles by hand, and Sphinx does not match that way: it lowercases labels before
+looking them up, so a case difference costs nothing.
 
-| Reference | Target that does not exist |
+Building the docs is what settles it (`.venv/bin/python -m sphinx -b html docs
+<out>`, Sphinx 9.1.0). Before the fixes below the build emitted exactly one
+undefined-label warning, and the other three resolved to real links in the
+generated HTML:
+
+| Reference | Verdict |
 |---|---|
-| `Chords.rst:103` | `Chords:Impulse Chording` |
-| `Device Manager.rst:618` | `Device Manager:Action Code Categories` |
-| `Glossary.rst:35` | `Device Manager:Compound Timeout Setting` |
-| `SerialAPI.rst:31` | `SerialAPI:ID` |
+| `Chords.rst:103` → `Chords:Impulse Chording` | fine — resolves to `#impulse-chording`; the heading is `Impulse chording` |
+| `Device Manager.rst:618` → `Device Manager:Action Code Categories` | fine — resolves to `#action-code-categories` |
+| `SerialAPI.rst:31` → `SerialAPI:ID` | fine — resolves to `#id` |
+| `Glossary.rst:35` → `Device Manager:Compound Timeout Setting` | **was broken** — rendered as plain text, no link |
 
-**Question:** same as 12b — fix in the fork, or send upstream?
+**Fixed: `Glossary.rst:35` now says `:ref:`Compound timeout<Compound Timeout
+Setting>``.** The target at `Device Manager.rst:358` is an explicit label
+(`.. _Compound Timeout Setting:`, sitting above a `.. dropdown::` rather than a
+section), and explicit labels are global — the `Device Manager:` prefix that
+`autosectionlabel_prefix_document` adds applies only to generated section
+labels, so prefixing it was what broke the lookup.
 
-**Question:** fix these in the fork, or send them upstream as a separate PR
-(they are not fork-specific, so upstream seems the better home)?
+**Also fixed, and never listed here: `Master Forge.rst:188`** wrote
+`:doc:`digitizers<Digitizers>`` when no `Digitizers.rst` exists, which the build
+reported as `unknown document: 'Digitizers'`. Line 185 of the same paragraph
+already used `:ref:`digitizer<Master Forge:The Digitizers>``, so 188 was changed
+to match; `:12` and `:76` use the same form.
+
+After both, the build emits **no `ref.ref` or `ref.doc` warnings at all** (22
+warnings down to 20). The 20 that remain are unrelated and pre-existing: ten
+files warn `Explicit markup ends without a blank line`, and the same ten are not
+in any toctree. `sphinx.yml` does not pass `-W`, so none of this fails the
+build.
+
+### Question for all of item 12
+
+**Fix in the fork, or send upstream?** None of 12a-12c is fork-specific — `git
+log -L` points at upstream commits by `duianto`, 2025-08 — so upstream seems the
+better home. 12b and 12c are already fixed here; the question is whether to also
+send them as a separate PR. Note item 10 decided against opening upstream issues
+for the data quirks, which is a different call: these are patches to this
+repository's own content, not reports about someone else's data.
 
 ---
 
