@@ -490,38 +490,72 @@ predate this branch (`git log -L` points at upstream commits by `duianto`,
 RST that simply does nothing, and 12b resolves silently on macOS, whose
 filesystem is case-insensitive, so it only warns on the Linux CI runner.
 
-### 12a. A whole section is commented out — `docs/Master Forge.rst:333`
+### 12a. A whole section was commented out — `docs/Master Forge.rst:333` (done)
 
 ```rst
 .. Dropdown: Only use in Emergency
 ```
 
 One colon, not two. `.. dropdown::` is a directive; `.. Dropdown:` is a
-**comment**, so docutils swallows everything indented beneath it — lines
+**comment**, so docutils swallowed everything indented beneath it — lines
 334–418, i.e. 62 non-blank lines and 9 images. The entire *"Only use in
-Emergency"* manual firmware-update procedure is absent from the published
-page. Confirmed: the deployed `Master Forge.html` contains no occurrence of
-"auto-connected" or "Doing it manually".
+Emergency"* manual firmware-update procedure was absent from the published
+page.
 
-**Question:** restore it as a real `.. dropdown:: Only use in Emergency`?
-The block would then be parsed for the first time, so expect follow-on work:
-its lines are indented with a mix of tabs and spaces at inconsistent depths,
-and two of its images have the wrong case (12b).
+**Done: it is a real `.. dropdown::` now, and the block was reindented so it
+parses.** Turning the comment into a directive alone was not enough — building
+with the one-character fix and nothing else produced 16 warnings and 5 errors,
+all inside the block:
 
-### 12b. Image paths whose case does not match the file on disk (part done)
+- Every line used tabs and spaces mixed, at depths that do not line up once
+  docutils expands tabs to 8 columns. Each `.. image::` and its `:width:` /
+  `:alt:` lines sat at three different indents, so the option block was read as
+  the option *value*: `invalid option value: (option: "width"; value: '435\n:alt:
+  Popup to select serial device')`, five times. One image swallowed its options
+  as content instead (`no content permitted`).
+- One of those errors surfaced as a bogus missing-image warning for
+  `assets/images/DM-CCOS-button.jpg:width:600` — the option text glued to the
+  filename. The file itself is fine.
+- Two explicit labels were defined twice, `Bootloader button` and
+  `Current.uf2 button`, once per digitizer half.
+
+What the fix consisted of, beyond the one character:
+
+- The whole block reindented to spaces: 3 for the dropdown's own content, 6 for
+  content belonging to a numbered step, 9 for image options. Blank lines
+  inserted where a step follows an indented block, which is what the remaining
+  `Block quote ends without a blank line` warnings were.
+- The four labels of the second half suffixed `Emergency Right`, and the first
+  half's `Bootloader button` / `Current.uf2 button` suffixed `Emergency`, to
+  match the `Connect Button Emergency` / `Serial Port Popup Emergency` already
+  there and the `... Check Firmware` / `... Update Firmware` convention the
+  other device pages use. Nothing referenced any of them — they were
+  unreachable inside a comment.
+- The two `FW-connect-button.jpg` references corrected to `.JPG`, which is
+  12b's remaining half.
+- One sentence was split across a blank line (`Once again, your Forge will
+  automatically reboot and the` / `Forge drive will have disappeared.`), which
+  would have rendered as two broken paragraphs. Joined.
+
+Verified: the build is back to its baseline 20 warnings with none in
+`Master Forge.rst`, and the rendered dropdown contains all 9 images, both
+warning admonitions, and one continuous `<ol>` numbering the 16 steps 1-16. The
+block's text was diffed against `HEAD` with whitespace normalised to confirm
+that only the edits listed above changed.
+
+### 12b. Image paths whose case does not match the file on disk (done)
 
 | Reference | File in git | Effect |
 |---|---|---|
 | `Device Manager.rst:379` → `ManagerSettingsAutocorrect.png` | `ManagerSettingsAutoCorrect.png` | **Fixed** — was missing from the published page |
 | `Master Forge.rst:325` → `DM-apply-update-button-M4G.png` | `DM-apply-update-button-m4g.png` | **Fixed** — was missing from the published page |
-| `Master Forge.rst:342` → `FW-connect-button.jpg` | `FW-connect-button.JPG` | Still wrong — harmless today, inside the 12a comment |
-| `Master Forge.rst:385` → `FW-connect-button.jpg` | `FW-connect-button.JPG` | Still wrong — harmless today, inside the 12a comment |
+| `Master Forge.rst:342` → `FW-connect-button.jpg` | `FW-connect-button.JPG` | **Fixed** — with 12a, which made the block render |
+| `Master Forge.rst:385` → `FW-connect-button.jpg` | `FW-connect-button.JPG` | **Fixed** — with 12a, which made the block render |
 
 **Done: the first two were the only `image file not readable` warnings the CI
 build emitted, and both references were corrected** rather than renaming the
-files, so nothing else that points at them had to move. The remaining two must
-be fixed as part of 12a, or they will start failing the moment that block is
-uncommented.
+files, so nothing else that points at them had to move. The other two were
+fixed as part of 12a, which is what made that block render at all.
 
 Note `Master Forge.rst:241` and `:291` already spell the same file `.JPG`
 correctly, so only the copies inside the commented block are wrong.

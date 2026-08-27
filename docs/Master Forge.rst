@@ -330,90 +330,93 @@ You can follow the steps below to update each Master Forge half:
 
 Now repeat the steps, but pick the other Master Forge USB Serial device from the connect device popup box to update the other half.
 
-.. Dropdown: Only use in Emergency
+.. dropdown:: Only use in Emergency
 
-	If, for some reason, you weren't able to complete an OTA update, you can follow the steps below to update your CCOS manually.
+   If, for some reason, you weren't able to complete an OTA update, you can follow the steps below to update your CCOS manually.
 
- 	Doing it manually, the Master Forge must be updated one :ref:`digitizer<Master Forge:The Digitizers>` at a time.
- 		#. On a chromium based browser, such as Chrome, go to the CharaChorder `Device Manager <https://charachorder.io/ccos/>`__
- 		#. If not auto-connected, click "Connect"
+   Doing it manually, the Master Forge must be updated one :ref:`digitizer<Master Forge:The Digitizers>` at a time.
 
-       		   .. _Connect Button Emergency:
-     		   .. image:: /assets/images/FW-connect-button.jpg
-    		      :width: 600
-    		      :alt: Connect Button on Device Manager
- 		#. When the popup box comes up that reads “manager.charachorder.com wants to connect to a serial port”, choose the CCOS device you wish to update, then click the blue “connect” button
+   #. On a chromium based browser, such as Chrome, go to the CharaChorder `Device Manager <https://charachorder.io/ccos/>`__
+   #. If not auto-connected, click "Connect"
 
-        		 .. _Serial Port Popup Emergency:
-      		  .. image:: /assets/images/SerialPort-Message-M4G.webp
-       		   :width: 435
-        		  :alt: Popup to select serial device
- 		#. If not already on the Firmware Updates page, click "CCOS Updates" at the bottom left of the page
+      .. _Connect Button Emergency:
+      .. image:: /assets/images/FW-connect-button.JPG
+         :width: 600
+         :alt: Connect Button on Device Manager
 
-        		 .. _Firmware Updates Page:
-     		   .. image:: /assets/images/DM-CCOS-button.jpg
-     		     :width: 600
-      		    :alt: CCOS button
- 		#. You can compare the latest release (the version at the top of the list) with your device's version. Select your desired version.
- 		#. Use the blue "Bootloader" text to reboot your device into bootloader
+   #. When the popup box comes up that reads “manager.charachorder.com wants to connect to a serial port”, choose the CCOS device you wish to update, then click the blue “connect” button
 
-       		  .. _Bootloader button:
-      		  .. image:: /assets/images/DM-Bootloader-button.jpg
-        		  :width: 600
-        		  :alt: Bootloader button
- 		#. Click the blue "CURRENT.UF2" text to download the firmware file
+      .. _Serial Port Popup Emergency:
+      .. image:: /assets/images/SerialPort-Message-M4G.webp
+         :width: 435
+         :alt: Popup to select serial device
 
-      		   .. _Current.uf2 button:
-      		  .. image:: /assets/images/DM-UF2-button.jpg
-       		   :width: 600
-        		  :alt: CURRENT.UF2 button
+   #. If not already on the Firmware Updates page, click "CCOS Updates" at the bottom left of the page
 
-			.. warning::
-   				IMPORTANT: Make sure that the file you download is named exactly like this: CURRENT.UF2 . If there are any other characters in the file name, the file will not work. “CURRENT.UF2(1)” will NOT work. Additionally, the file name is case sensitive; all letters must be capitalized.
+      .. _Firmware Updates Page:
+      .. image:: /assets/images/DM-CCOS-button.jpg
+         :width: 600
+         :alt: CCOS button
 
+   #. You can compare the latest release (the version at the top of the list) with your device's version. Select your desired version.
+   #. Use the blue "Bootloader" text to reboot your device into bootloader
 
+      .. _Bootloader button Emergency:
+      .. image:: /assets/images/DM-Bootloader-button.jpg
+         :width: 600
+         :alt: Bootloader button
 
- 		#. Copy the CURRENT.UF2 file that you just downloaded and paste it into the Forge drive in your file explorer
- 		#. When your computer asks you how you would like to resolve the issue of two files with the same name, select “Replace file”.
+   #. Click the blue "CURRENT.UF2" text to download the firmware file
 
-			At this point, your Forge will automatically reboot and the Forge drive will have disappeared. Congratulations! You have successfully updated your device. You can check your device’s firmware version by following the steps :ref:`here<m4g-checking-your-devices-firmware>`.
+      .. _Current.uf2 button Emergency:
+      .. image:: /assets/images/DM-UF2-button.jpg
+         :width: 600
+         :alt: CURRENT.UF2 button
 
- 		#. Now, back in the `Firmware Updates page <https://charachorder.io/ccos/>`__, select ``m4gr_s3``
- 		#. If you haven't done so already, Connect your device to the Manager again by clicking "Connect" at the bottom of the page
+      .. warning::
+         IMPORTANT: Make sure that the file you download is named exactly like this: CURRENT.UF2 . If there are any other characters in the file name, the file will not work. “CURRENT.UF2(1)” will NOT work. Additionally, the file name is case sensitive; all letters must be capitalized.
 
-      		   .. _Connect Button:
-     		   .. image:: /assets/images/FW-connect-button.jpg
-     		     :width: 600
-     		     :alt: Connect Button on Device Manager
- 		#. When the popup box comes up that reads “charachorder.io wants to connect to a serial port”, choose your Master Forge, then click the blue “connect” button
+   #. Copy the CURRENT.UF2 file that you just downloaded and paste it into the Forge drive in your file explorer
+   #. When your computer asks you how you would like to resolve the issue of two files with the same name, select “Replace file”.
 
-        		 .. _Serial Port Popup:
-       		 .. image:: /assets/images/SerialPort-Message-M4G.webp
-       		   :width: 435
-      		    :alt: Popup to select serial device
- 		#. Use the blue "Bootloader" text to reboot the right digitizer into bootloader
+      At this point, your Forge will automatically reboot and the Forge drive will have disappeared. Congratulations! You have successfully updated your device. You can check your device’s firmware version by following the steps :ref:`here<m4g-checking-your-devices-firmware>`.
 
-     		    .. _Bootloader button:
-    		    .. image:: /assets/images/DM-Bootloader-button.jpg
-     		     :width: 600
-    		      :alt: Bootloader button
- 		#. Click the blue "CURRENT.UF2" text to download the firmware file
+   #. Now, back in the `Firmware Updates page <https://charachorder.io/ccos/>`__, select ``m4gr_s3``
+   #. If you haven't done so already, Connect your device to the Manager again by clicking "Connect" at the bottom of the page
 
-      		   .. _Current.uf2 button:
-       		 .. image:: /assets/images/DM-UF2-button.jpg
-        		  :width: 600
-        		  :alt: CURRENT.UF2 button
+      .. _Connect Button Emergency Right:
+      .. image:: /assets/images/FW-connect-button.JPG
+         :width: 600
+         :alt: Connect Button on Device Manager
 
-			.. warning::
-   				IMPORTANT: Make sure that the file you download is named exactly like this: CURRENT.UF2 . If there are any other characters in the file name, the file will not work. “CURRENT.UF2(1)” will NOT work. Additionally, the file name is case sensitive; all letters must be capitalized.
+   #. When the popup box comes up that reads “charachorder.io wants to connect to a serial port”, choose your Master Forge, then click the blue “connect” button
 
-		 #. Copy the CURRENT.UF2 file that you just downloaded and paste it into the Forge drive in your file explorer
-		 #. When your computer asks you how you would like to resolve the issue of two files with the same name, select “Replace file”.
+      .. _Serial Port Popup Emergency Right:
+      .. image:: /assets/images/SerialPort-Message-M4G.webp
+         :width: 435
+         :alt: Popup to select serial device
 
-		Once again, your Forge will automatically reboot and the
+   #. Use the blue "Bootloader" text to reboot the right digitizer into bootloader
 
-  Forge drive will have disappeared. You can check your device’s firmware
-  version by following the steps :ref:`here<m4g-checking-your-devices-firmware>`.
+      .. _Bootloader button Emergency Right:
+      .. image:: /assets/images/DM-Bootloader-button.jpg
+         :width: 600
+         :alt: Bootloader button
+
+   #. Click the blue "CURRENT.UF2" text to download the firmware file
+
+      .. _Current.uf2 button Emergency Right:
+      .. image:: /assets/images/DM-UF2-button.jpg
+         :width: 600
+         :alt: CURRENT.UF2 button
+
+      .. warning::
+         IMPORTANT: Make sure that the file you download is named exactly like this: CURRENT.UF2 . If there are any other characters in the file name, the file will not work. “CURRENT.UF2(1)” will NOT work. Additionally, the file name is case sensitive; all letters must be capitalized.
+
+   #. Copy the CURRENT.UF2 file that you just downloaded and paste it into the Forge drive in your file explorer
+   #. When your computer asks you how you would like to resolve the issue of two files with the same name, select “Replace file”.
+
+      Once again, your Forge will automatically reboot and the Forge drive will have disappeared. You can check your device’s firmware version by following the steps :ref:`here<m4g-checking-your-devices-firmware>`.
 
 
 Understanding the Settings
