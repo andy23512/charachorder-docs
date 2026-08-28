@@ -698,7 +698,7 @@ repository's own content, not reports about someone else's data.
 
 ---
 
-## 13. The GTM page had never been checked against a real device (done for the Two)
+## 13. The GTM page had never been checked against a real device (done for the Two and the Lite)
 
 **Files:** `docs/GenerativeTextMenu.rst`, `docs/Device Manager.rst`,
 `docs/CharaChorder_Lite.rst`
@@ -740,13 +740,37 @@ in that exact shape. Only the number is stale (30 ms is the 3.0.0 default) and
 it stays as-is, same reasoning as before -- it is an illustration, not a
 defaults claim.
 
-**Scope of what "done" means here:** one device, one version. The Two was the
-device on hand; Lite, X, Engine, One and Master Forge have not been walked.
-Acting on a single device's result was a deliberate call, not an oversight --
-CCOS is treated as one core shared across devices, with per-device differences
-handled explicitly where they are known to exist (LEDs being the standing
-example), so a menu structure confirmed on one device is trusted for the
-others until something turns up device-specific about it.
+**Done: the same 23 claims re-walked on a CharaChorder Lite running CCOS
+3.0.0**, cross-checked against the Meta API's `lite_s2` snapshot. Two goals:
+recheck the six findings above for a device-specific difference, and cover
+the `Display > LEDs` section, which the Two cannot reach at all since it has
+no LEDs.
+
+| Check | Result on the Lite |
+|---|---|
+| `GUI-CTRL Soft Swap` present in `Keyboard` | Same as the Two |
+| `Operating System` reachable from `Keyboard` | Same as the Two -- not reachable |
+| `Display > Startup` present | Same as the Two -- absent |
+| `Chording > Compound` submenu present | Same as the Two |
+| `Chording > Spurring` still shows a dead menu entry | Same as the Two |
+| `Mouse` menu contents | Same as the Two: `Slow Speed`, `Fast Speed`, `Scroll Speed`, `Active Mode`. No `mouse/enable` toggle here either |
+| `Display > LEDs` submenu | Present, with exactly `On/Off` and `Brightness` -- no hue/saturation/effect controls, matching what the page already says (colour is Device Manager-only) |
+
+No device-specific difference turned up anywhere. The remaining existing
+claims (`Keyboard`'s `Debounce Press`/`Debounce Release`/`Capslock`,
+`Chording`'s `Character Only Mode`/`Press Tolerance`/`Release
+Tolerance`/`Timeout`, `Arpeggiate On/Off`/`Arpeggiate Timeout`, `Display`'s
+`Version`/`Realtime Feedback`, and `Resources`) were also confirmed present
+on the Lite.
+
+**Scope of what "done" means here:** two devices, one version. The Two and
+the Lite have been walked; X, Engine, One and Master Forge have not. Acting
+on these results was a deliberate call, not an oversight -- CCOS is treated
+as one core shared across devices, with per-device differences handled
+explicitly where they are known to exist (LEDs being the standing example,
+now confirmed consistent between the two devices that have them), so a menu
+structure confirmed on two devices is trusted for the others until something
+turns up device-specific about it.
 
 ---
 
