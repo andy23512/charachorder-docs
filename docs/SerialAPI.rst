@@ -266,6 +266,25 @@ Parameter codes
 
 .. ccos-parameter-codes::
 
+Serial output toggles
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table::
+   :header: "Code","Name"
+
+   "0x01","Enable Serial Header"
+   "0x02","Enable Serial Logging"
+   "0x03","Enable Serial Debugging"
+   "0x04","Enable Serial Raw"
+   "0x05","Enable Serial Chord"
+   "0x06","Enable Serial Keyboard"
+   "0x07","Enable Serial Mouse"
+   "0x12","Enable Character Entry"
+
+.. note::
+	These eight switch serial output on and off rather than change a device setting, so the Firmware Meta API does not publish them and this table stays hand-written.
+
+	Confirmed on hardware (2026-08, CCOS 3.0.0): all eight still answer ``CMD_VAR_GET_PARAMETER``, and all default to ``0``, consistent with the "enable" names above. None of the eight codes has been reassigned to a setting the Meta API currently publishes, unlike some other codes from the same era. The names predate this check and have only been confirmed to the extent of that default value, not by toggling each one and observing the resulting serial output.
 
 Operating system codes
 ^^^^^^^^^^^^^^^^^^^^^^

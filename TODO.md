@@ -828,7 +828,7 @@ overrides rather than reproducing the mix.
 
 ---
 
-## 16. Eight serial parameter codes vanished with the hand-written table
+## 16. Eight serial parameter codes vanished with the hand-written table (done)
 
 **File:** `docs/SerialAPI.rst`
 
@@ -863,10 +863,23 @@ ids when a setting goes away.
 Pasting the old descriptions back would document values that may now write
 something else entirely.
 
-**To settle:** read the parameter ids out of the CCOS firmware source, or send
-`CMD_VAR_GET_PARAMETER` for each of the eight to a device on 3.0.0 and see what
-answers. Then either write them up as a second, clearly hand-written table
-below the generated one, or record that they are gone.
+**Tested on hardware (2026-08, CCOS 3.0.0): all eight are alive.** Sent
+`CMD_VAR_GET_PARAMETER` for each of `0x01`-`0x07` and `0x12`. All eight
+answered, all defaulting to `0` -- consistent with the old "enable" names,
+none of which look like they'd default to on.
+
+Cross-checked the eight ids against `one_m0`'s current `settings.json`: none
+of them is used by any setting the Meta API publishes today. That is the
+opposite of `0x17` and `0x93`, which this item already flagged as reused, so
+the risk the old names describe the wrong thing no longer applies here the
+way it did there.
+
+**Done: written up as a second, hand-written `Serial output toggles` table**
+in `docs/SerialAPI.rst`, right after the generated `Parameter codes` table
+and before `Operating system codes`. The note on it is explicit about what
+was and was not checked: the ids are live and default to `0`, but nobody has
+toggled each one and watched the resulting serial output to confirm the old
+names still describe them correctly.
 
 ---
 
