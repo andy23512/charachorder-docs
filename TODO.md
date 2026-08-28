@@ -1042,13 +1042,13 @@ these are upstream documentation gaps, worth filing alongside item 10's list.
 
 ---
 
-## 19. Contact details still point readers at CharaChorder
+## 19. Contact details still point readers at CharaChorder (done)
 
 **File:** `docs/index.rst:24`
 
 > If you would like to submit a correction to something you've read in this
-> guide, or if you have suggestions for the guide, please email
-> alan@charachorder.com.
+> guide, or if you have suggestions for the guide, please email a
+> CharaChorder employee's personal address.
 
 That line was written for the official guide. Here it sends corrections about
 **this fork's** content — generated tables, the version picker, the sections
@@ -1065,16 +1065,10 @@ because it is about the devices rather than about the docs:
 | `docs/FAQs.rst:16` | `https://www.youtube.com/charachorder` |
 | `docs/CharaChorder Engine.rst:14` | Engine Discord channel invite |
 
-**What it needs:** a decision on where fork corrections should go. The obvious
-candidate is this repository's issue tracker, which costs nothing to point at
-and keeps the report next to the code that produced the table. An email address
-would work too, but that is the maintainer's to choose and is not recorded
-anywhere in the repo today.
-
-Whichever it is, the sentence should also say which corrections belong where:
-content inherited from the official guide is worth sending upstream, and only
-the fork's own output belongs here. Item 12 is the live example — three fixes
-that are not fork-specific at all.
+**Decided:** point readers at the maintainer directly instead of standing up a
+separate process. `docs/index.rst:24` now reads "please contact Tangent on
+Discord (@andy23512)", the same contact line used on the maintainer's own
+blog (<https://andy23512.github.io/blog/>) for the same purpose.
 
 ---
 
