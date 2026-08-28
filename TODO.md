@@ -187,9 +187,42 @@ where to go.
 "2 pg" with nothing to explain it. Unlike the HSB letters this looks like a
 genuine unit, probably "pages", but that is a guess and the prose that used to
 surround the table said "pixels (px)", contradicting the API. Left verbatim
-rather than expanded into a word nobody has verified. Resolving it means
-watching what changing the setting actually does, or finding a label for it in
-the Device Manager.
+rather than expanded into a word nobody has verified.
+
+**Both routes to resolving it turned out to be dead ends or impractical:**
+
+- **No label in the Device Manager.** Its own hardcoded
+  `src/lib/assets/settings.yml` carries the same bare `unit: pg` with no
+  `description`, and the settings page
+  (`src/routes/(app)/config/settings/+page.svelte`) renders any non-H/S/B unit
+  by concatenating it straight after the number input -- so the shipping app
+  shows the same unexplained "255pg" a reader would see here. There is no
+  hidden label to go find.
+- **Behavioural testing is confounded by the OS.** Any test that scrolls
+  something and measures the result -- a paged terminal reader, a browser's
+  `wheel` event `deltaY` -- passes through the OS's own scroll-speed
+  multiplier first (macOS: System Settings > Mouse > Scroll speed). That
+  multiplier sits between the firmware's HID wheel report and anything an app
+  can observe, so no app-level measurement can isolate what `mouse/scroll
+  speed` alone contributes.
+  Reading the raw HID report before the OS touches it would route around
+  that, but `hidutil monitor` -- the obvious tool -- does not exist on
+  current macOS (checked on 26.5.1: `hidutil` only has `dump`, `property` and
+  `list`, and `dump` is a state snapshot, not a live stream). A USB-level
+  capture (Wireshark against the CharaChorder's USB bus, or a tool like
+  Karabiner-EventViewer) would still work but has not been tried.
+
+**Leading hypothesis, not yet confirmed: `pg` is a typo for `px`.** This
+matches the pre-generation prose, which described this exact setting in
+pixels. No new evidence for or against it was found beyond that prose already
+being here before the tables were generated.
+
+**Decided: leave the table rendering `pg` verbatim rather than silently
+correct it to `px`.** Same reasoning as item 5 and item 6 -- an unverified
+guess written as fact would be worse than the honest gap, because a reader
+who trusted "px" and then measured actual pixel movement would be misled with
+more confidence than the current bare "pg" ever claims. Revisit if a USB
+capture or an upstream answer settles it.
 
 ---
 
@@ -694,8 +727,23 @@ mean, and guessing is how three settings ended up on the wrong page during item
 - `leds/off delay` and `leds/on off transition` are both `0-2550 ms` and
   nothing in the API distinguishes them.
 - `leds/hue` at `0-65280` in steps of 256 is presumably a 16-bit hue stored in
-  the high byte, but whether the Device Manager shows a number or a color
-  picker is unknown.
+  the high byte. **Confirmed from source, not hardware:** in
+  `DeviceManager/src/routes/(app)/config/settings/+page.svelte`, any setting
+  with `unit === "H"` renders as `<input type="color">` labeled "Color", not a
+  number field. `DeviceManager/src/lib/setting.ts` backs that picker with
+  `hsvToRgb`/`rgbToHsv`, reading and writing three *consecutive* setting ids —
+  `id`, `id+1`, `id+2` — as H, S and V respectively. Settings whose unit is
+  `S` or `B` render nothing of their own on that page (the same `{#if}` chain
+  skips both). So *if* `leds/hue`, `leds/saturation` and `leds/brightness` have
+  consecutive parameter ids in that order, the Device Manager shows one color
+  picker for all three, not three controls — but the ids are not recorded
+  anywhere in this repo, so that last step is unconfirmed. Worth checking on
+  hardware together with the rest of this item.
+  (Note: this repo also ships a hardcoded, stale `leds` block in
+  `DeviceManager/src/lib/assets/settings.yml` — brightness `0-50`, a 14-color
+  `enum` "base color code", `highlight` — matching the pre-3.0.0 table item 3
+  already deleted from these docs. That block is not what the live settings
+  page renders from; do not mistake it for current behaviour.)
 - `leds/effect` has two options, `static` and `rainbow`, and `leds/effect cycle`
   (`0.1-25.5 s`) presumably sets the rainbow's period — but that it applies
   only to `rainbow` is a guess.
