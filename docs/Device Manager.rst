@@ -395,12 +395,54 @@ RGB
 ---
 These settings adjust the color and brightness of the LEDs on the devices that have them: the :doc:`CharaChorder Lite<CharaChorder_Lite>` and the :doc:`Master Forge<Master Forge>`. The Master Forge stores them per half, so each :ref:`digitizer<Master Forge:The Digitizers>` can be lit in its own color.
 
-You can read more about the LED settings in the :ref:`GTM section<GenerativeTextMenu:LEDs>`.
+The :ref:`GTM<GenerativeTextMenu:LEDs>` only offers the on/off toggle and the brightness slider. Everything below is only reachable here.
 
 
 .. image:: /assets/images/ManagerSettingsRGB.png
   :width: 1200
   :alt: The RGB settings box
+
+.. dropdown:: Color
+
+	This box is a single color picker, not separate hue, saturation and brightness fields: picking a color sets all three settings below at once.
+
+	.. ccos-setting:: leds/hue
+	   :devices: lite_s2, m4g_s3
+
+	.. ccos-setting:: leds/saturation
+	   :devices: lite_s2, m4g_s3
+
+	.. ccos-setting:: leds/brightness
+	   :devices: lite_s2, m4g_s3
+
+.. dropdown:: Effect
+
+	Chooses whether the LEDs hold a static color or cycle through the rainbow.
+
+	.. ccos-setting:: leds/effect
+	   :columns: Device, Default
+	   :devices: lite_s2, m4g_s3
+
+.. dropdown:: Effect Cycle
+
+	How long one full rainbow cycle takes. Confirmed on a CharaChorder Lite: this field stays enabled and adjustable even while the Effect setting above is set to Static, though it has nothing to affect until Effect is switched back to Rainbow.
+
+	.. ccos-setting:: leds/effect cycle
+	   :devices: lite_s2, m4g_s3
+
+.. dropdown:: Off delay
+
+	Confirmed on a CharaChorder Lite: the delay between turning the LEDs off and the first LED actually going dark.
+
+	.. ccos-setting:: leds/off delay
+	   :devices: lite_s2, m4g_s3
+
+.. dropdown:: On off transition
+
+	Confirmed on a CharaChorder Lite: once the first LED has changed state, how long the rest take to follow it one by one, whether that is fading out until every LED is off or fading in until every LED is lit.
+
+	.. ccos-setting:: leds/on off transition
+	   :devices: lite_s2, m4g_s3
 
 USB
 ---

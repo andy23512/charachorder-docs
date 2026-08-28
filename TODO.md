@@ -727,58 +727,64 @@ others until something turns up device-specific about it.
 
 ---
 
-## 14. Six LED settings have no documentation anywhere
+## 14. Six LED settings have no documentation anywhere (done)
 
 **File:** `docs/Device Manager.rst`, `RGB` section
 
 Item 3 fixed who the LED settings apply to, not how many are described. The API
-exposes eight; the docs describe two.
+exposes eight; the docs described two.
 
 | Setting | Default | Range / options | Documented |
 |---|---|---|---|
 | `leds/enable` | 1 | `0-1` | yes, GTM `On/Off` |
 | `leds/brightness` | 255 | `0-255` | yes, GTM `Brightness` |
-| `leds/hue` | 0 | `0-65280` | no |
-| `leds/saturation` | 255 | `0-255` | no |
-| `leds/effect` | `rainbow` | `static`, `rainbow` | no |
-| `leds/effect cycle` | 25000 | `100-25500`, step 100, unit `s` | no |
-| `leds/off delay` | 1000 | `0-2550 ms`, step 10 | no |
-| `leds/on off transition` | 1000 | `0-2550 ms`, step 10 | no |
-
-The `RGB` section is two sentences and a screenshot, so this is where they
-belong — the same shape as the `USB` section added for item 2.
+| `leds/hue` | 0 | `0-65280` | now, Device Manager `Color` |
+| `leds/saturation` | 255 | `0-255` | now, Device Manager `Color` |
+| `leds/effect` | `rainbow` | `static`, `rainbow` | now, Device Manager `Effect` |
+| `leds/effect cycle` | 25000 | `100-25500`, step 100, unit `s` | now, Device Manager `Effect Cycle` |
+| `leds/off delay` | 1000 | `0-2550 ms`, step 10 | now, Device Manager `Off delay` |
+| `leds/on off transition` | 1000 | `0-2550 ms`, step 10 | now, Device Manager `On off transition` |
 
 **Why it was not done with item 3:** the metadata alone does not say what these
 mean, and guessing is how three settings ended up on the wrong page during item
-2. Specifically:
+2. Two questions needed a device rather than the API, and both are now answered
+on a CharaChorder Lite running CCOS 3.0.0:
 
-- `leds/off delay` and `leds/on off transition` are both `0-2550 ms` and
-  nothing in the API distinguishes them.
-- `leds/hue` at `0-65280` in steps of 256 is presumably a 16-bit hue stored in
-  the high byte. **Confirmed from source, not hardware:** in
+- **The hue/saturation/brightness color picker theory — confirmed both ways.**
+  Source only got as far as: in
   `DeviceManager/src/routes/(app)/config/settings/+page.svelte`, any setting
-  with `unit === "H"` renders as `<input type="color">` labeled "Color", not a
-  number field. `DeviceManager/src/lib/setting.ts` backs that picker with
-  `hsvToRgb`/`rgbToHsv`, reading and writing three *consecutive* setting ids —
-  `id`, `id+1`, `id+2` — as H, S and V respectively. Settings whose unit is
-  `S` or `B` render nothing of their own on that page (the same `{#if}` chain
-  skips both). So *if* `leds/hue`, `leds/saturation` and `leds/brightness` have
-  consecutive parameter ids in that order, the Device Manager shows one color
-  picker for all three, not three controls — but the ids are not recorded
-  anywhere in this repo, so that last step is unconfirmed. Worth checking on
-  hardware together with the rest of this item.
-  (Note: this repo also ships a hardcoded, stale `leds` block in
+  with `unit === "H"` renders as `<input type="color">`, backed by
+  `hsvToRgb`/`rgbToHsv` in `DeviceManager/src/lib/setting.ts` reading three
+  *consecutive* setting ids as H, S and V — but whether `leds/hue`,
+  `leds/saturation` and `leds/brightness` actually have consecutive ids was
+  never recorded anywhere in this repo. The cached `docs/_data/ccos/3.0.0.json`
+  answers it without needing hardware: on `lite_s2` the three ids are 129, 130,
+  131 — consecutive, in that order. Confirmed on the Lite itself too: the RGB
+  box shows one color picker, not three number fields.
+  (The stale, hardcoded `leds` block in
   `DeviceManager/src/lib/assets/settings.yml` — brightness `0-50`, a 14-color
-  `enum` "base color code", `highlight` — matching the pre-3.0.0 table item 3
-  already deleted from these docs. That block is not what the live settings
-  page renders from; do not mistake it for current behaviour.)
-- `leds/effect` has two options, `static` and `rainbow`, and `leds/effect cycle`
-  (`0.1-25.5 s`) presumably sets the rainbow's period — but that it applies
-  only to `rainbow` is a guess.
+  `enum`, `highlight` — is not what the live settings page renders from and
+  still does not describe current behaviour.)
+- **`leds/off delay` vs `leds/on off transition` — distinguished by testing,
+  not guessed.** Both are `0-2550 ms` and nothing in the API tells them apart.
+  Tested on a Lite: `off delay` is the delay between turning the LEDs off and
+  the first LED actually going dark; `on off transition` is how long the rest
+  take to follow it, one by one, until every LED is off. Tested both
+  directions — the same cascading behaviour also governs turning the LEDs
+  back on, from the first LED lighting up to every LED lit.
+- `leds/effect` (`static`/`rainbow`) and `leds/effect cycle` (`0.1-25.5 s`,
+  presumably the rainbow's period) turned out not to need disambiguation:
+  confirmed on the Lite that the `Effect Cycle` field stays enabled regardless
+  of which `Effect` is selected, so no guess about it being hidden or
+  disabled under `static` was needed.
 
-**What it needs:** someone with a Lite or a Master Forge open in the Device
-Manager to say which controls appear in the RGB box and what each does. Then
-the six get dropdowns and `ccos-setting` tables like the rest.
+**Done:** all six now have a `.. dropdown::` and `.. ccos-setting::` table in
+`docs/Device Manager.rst`'s `RGB` section, `:devices: lite_s2, m4g_s3` like the
+existing `leds/brightness` table on the GTM page. Build checked back to the
+baseline 20 warnings (Sphinx 9.1.0) after fixing one new `ref.ref` warning —
+an `:ref:` to the `Effect` dropdown does not resolve, because dropdowns are not
+sections and `autosectionlabel` does not see them; reworded as plain text
+instead.
 
 ---
 
