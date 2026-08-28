@@ -107,8 +107,6 @@ letters output by the CCOS device will be capitalized. When off, all letters out
 Operating System
 ~~~~~~~~~~~~~~~~
 
-``Path: GTM > Keyboard > Operating System``
-
 This setting refers to your host computer's operating system. Because the keys on the different computer operating systems may vary, you can set your CCOS device up so that it matches your computer.
 
 The intent of this setting is to provide more accurate key mapping. As such, it is recommendable to set this setting to match whatever computer operating system you're using your CCOS device on.
@@ -117,19 +115,28 @@ The intent of this setting is to provide more accurate key mapping. As such, it 
    :columns: Device, Default
 
 .. Warning::
-	Whether this setting does anything has not been verified. This page has said since
-	December of 2023 that it does nothing on CCOS devices, which contradicts the advice
-	above it, and nothing has settled it since — the Meta API publishes the setting and
-	its values but not what reads them, and no release note mentions it either way.
-	Matching your computer costs nothing, so the advice stands, but do not count on it
+	This setting is not reachable through the GTM -- confirmed absent from the
+	``Keyboard`` menu on a CharaChorder Two running CCOS 3.0.0. Whether the
+	Device Manager exposes it has not been checked either, so as of now the
+	only confirmed way to change it is the Serial API directly.
+
+	Whether the setting does anything once changed has also not been verified.
+	This page has said since December of 2023 that it does nothing on CCOS
+	devices, which contradicts the advice above it, and nothing has settled it
+	since -- the Meta API publishes the setting and its values but not what
+	reads them, and no release note mentions it either way. Matching your
+	computer costs nothing, so the advice stands, but do not count on it
 	changing what your keys output until someone checks on a device.
 
-GUI-CTRL Soft Swap (CharaChorder Lite only)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GUI-CTRL Soft Swap
+~~~~~~~~~~~~~~~~~~~
 
 ``Path: GTM > Keyboard > GUI-CTRL Soft Swap``
 
 This setting will swap the behavior of the two keys on the bottom-left of the CharaChorder Lite.
+
+.. note::
+	This setting is not Lite-specific: the Meta API lists ``keyboard/command control swap`` on every CharaChorder device, and it is present in the GTM's ``Keyboard`` menu on a CharaChorder Two running CCOS 3.0.0. What it does on devices without a bottom-left ``CTRL``/``GUI`` pair like the Lite's has not been checked.
 
 Traditional QWERTY keyboards keep the ``CTRL`` key at the bottom left corner of the keyboard with the ``GUI`` key (Command key on Mac, Windows key on Windows, Super key on Linux, etc.) to the right of the ``CTRL`` key. The CharaChorder Lite has these two keys swapped by default, which some users find odd and difficult to adjust to. A brand new CharaChorder Lite will have the ``GUI`` key at the bottom-left corner with the ``CTRL`` key to the right of the ``GUI`` key.
 
@@ -314,6 +321,24 @@ The arpeggiate timeout is a window of time after a chord is performed during whi
 
 A common issue that users may run into while having arpeggiates enabled is the shift key modifying the preceding chord instead of the next key. For this reason, some users lower the arpeggiate timeout to a really low amount of time in order to reduce the possibility of this happening unintentionally.
 
+Compound
+~~~~~~~~
+
+``Path: GTM > Chording > Compound``
+
+:ref:`Compound chords<Chords:Compound Chords>` let you type several chords back to back and have them combined into a single, longer output, provided each one starts within the timeout below.
+
+Compound Timeout
+^^^^^^^^^^^^^^^^
+
+``Path: GTM > Chording > Compound > Timeout``
+
+The Compound timeout determines if a compound chord succeeds or fails. If the time between the individual chords in a compound chord is shorter than this setting, the individual chords are replaced with the compound chord's output; if it is longer, the compound fails and the individual chords remain.
+
+You can find the default settings for each device in the table below:
+
+.. ccos-setting:: chording/compound timeout
+
 Display
 -------
 
@@ -335,22 +360,20 @@ This setting toggles realtime feedback ON or OFF.
 
 Realtime feedback refers to the helpful text like ``SPURRING_ON``, ``SPURRING_OFF`` etc, that lets the user know if a certain mode has been activated or deactivated on the CharaChorder device. Since there is no other visual way to know if the chord used to enable or disable certain settings, it is helpful to have these texts pop up as confirmation.
 
-.. Note::
-	The realtime feedback setting controls the :ref:`startup<GenerativeTextMenu:Startup>` setting. If realtime feedback is OFF, then startup will be OFF, regardless of that setting's individual toggle.
-
-Startup
-~~~~~~~
-
-``Path: GTM > Display > Startup``
-
-Having this setting set to "ON" will result in your device displaying the text "CCOS is ready." after you have plugged your device into a computer. The startup text will be displayed wherever your cursor was last typing, if that window is active. This setting is useful so that you know when your CharaChorder device is ready to be used, since startup may take a couple of seconds.
+One of these is the startup message: having this setting set to "ON" will result in your device displaying the text "CCOS is ready." after you have plugged your device into a computer. The startup text will be displayed wherever your cursor was last typing, if that window is active. This setting is useful so that you know when your CharaChorder device is ready to be used, since startup may take a couple of seconds.
 
 However, if you have editable text highlighted when you connect your CharaChorder, this setting will replace that highlighted text with the startup message. Additionally, if there is not a selected window where text may be typed, the key codes that the CharaChorder sends to your computer in order to display the startup message may be interpreted by your computer as actions and may result in unwanted behavior.
 
-If you would rather not have this message display every time that you connect your device, then you can toggle this setting OFF.
-
-.. Warning::
-	The Startup setting is dependent on the :ref:`realtime feedback setting<GenerativeTextMenu:Realtime Feedback>`. If that setting is set to OFF, then Startup won't display, even if Startup is set to ON.
+.. Note::
+	This page used to describe a separate ``Startup`` toggle here, dependent on
+	realtime feedback. A CharaChorder Two running CCOS 3.0.0 has no such entry
+	in the ``Display`` menu, and the Meta API has no setting matching it on any
+	of the 11 device slugs it publishes -- unlike, say,
+	:ref:`Capslock<GenerativeTextMenu:Capslock>`, which is a real GTM toggle the
+	API simply does not track. Whether the standalone toggle was folded into
+	this one or just dropped is not recorded in any release note. If you would
+	rather not see the startup message, this setting is now the only known way
+	to turn it off.
 
 LEDs
 ~~~~

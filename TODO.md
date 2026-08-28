@@ -111,6 +111,11 @@ it is gone.
   `Detection method` dropdown already covers all three modes. The deletion also
   removed a stale path line reading
   `Path: GTM > Chording > Character Only Mode > Spurring Timeout`.
+- **Addendum from the item 13 walk:** on a CharaChorder Two (CCOS 3.0.0), the
+  `Chording` menu still lists a `Spurring` entry — selecting it does nothing.
+  The setting behind it is gone, as above; the GTM just never cleaned up the
+  now-dead menu label. Worth knowing so nobody mistakes the leftover text for
+  evidence that spurring survived.
 - `Device Manager.rst` described spurring twice: an old `Spurring` section and
   a current `Detection method` dropdown under `Chording`. Confirmed in the
   Device Manager that the spurring box no longer exists, so the old section was
@@ -609,54 +614,55 @@ repository's own content, not reports about someone else's data.
 
 ---
 
-## 13. The GTM page has never been checked against a real device
+## 13. The GTM page had never been checked against a real device (done for the Two)
 
-**File:** `docs/GenerativeTextMenu.rst`
+**Files:** `docs/GenerativeTextMenu.rst`, `docs/Device Manager.rst`,
+`docs/CharaChorder_Lite.rst`
 
-Every section there carries a `Path: GTM > ...` line claiming the setting is
-reachable from that menu. 26 such claims remain, and none has been verified
-against CCOS 3.0.0:
+Every section on the page carries a `Path: GTM > ...` line claiming the
+setting is reachable from that menu. The count recorded here used to say 26;
+counting the actual `Path:` lines gives **23**:
 
 | Menu | Claims |
 |---|---|
-| Keyboard | 7 |
-| Chording | 7 |
-| Display | 7 |
+| Keyboard | 5 |
 | Mouse | 4 |
+| Chording | 7 |
+| Display | 6 |
 | Resources | 1 |
 
-This is not hypothetical. Three settings were placed on that page during the
+This was not hypothetical. Three settings were placed on the page during the
 item 2 work by reasoning from their API group, and all three turned out to be
-absent from the GTM when someone opened it on a device:
+absent from the GTM when someone opened it on a device: `usb/poll rate`,
+`mouse/scroll throttle` and `chording/detection method`.
 
-| Setting | Group | Actually in the GTM |
-|---|---|---|
-| `usb/poll rate` | `usb` | no |
-| `mouse/scroll throttle` | `mouse` | no |
-| `chording/detection method` | `chording` | no |
+**Done: all 23 claims walked on a CharaChorder Two running CCOS 3.0.0**, menu
+by menu, cross-checked against the Meta API's `two_s3` snapshot. 17 matched --
+name, submenu structure and default value all consistent with what the page
+already said. Six did not:
 
-So the API tells you a setting exists and what values it takes, but not where a
-user reaches it. Only the device does. The settings whose sections survived
-item 2 were inherited from the pre-3.0.0 docs and carry the same risk in the
-other direction: a section may describe a menu entry that 3.0.0 moved or
-dropped.
+| Finding | Fix |
+|---|---|
+| `GUI-CTRL Soft Swap` heading said "(CharaChorder Lite only)" | Wrong: present in the Two's `Keyboard` menu, and the Meta API lists `keyboard/command control swap` on all 11 device slugs. Heading and a note corrected. |
+| `Path: GTM > Keyboard > Operating System` | Setting is real (`misc/operating system`) but not reachable from the Two's `Keyboard` menu. Path line removed, warning rewritten to say so and to note Device Manager reachability is still unchecked. |
+| `Path: GTM > Display > Startup` | Not in the Two's `Display` menu, and no device in the Meta API has a setting matching it at all -- unlike `Capslock`, which is a real toggle the API just does not track. Section merged into `Realtime Feedback`, which is what the old warning already said controlled it. Five `:ref:` links across `GenerativeTextMenu.rst`, `CharaChorder_Lite.rst` (×3) and `Device Manager.rst` retargeted. |
+| `Chording > Compound` had no section | The Two's `Chording` menu has a `Compound` submenu (`Compound Timeout`, default 1000 ms) with no counterpart on this page at all -- the "menu entry with no section" case item 13 anticipated. Written up from `chording/compound timeout`, matching the existing `Compound timeout` dropdown already in `Device Manager.rst`. |
+| `Chording > Spurring` still shows up in the menu | Confirms item 2b's call that the setting itself is gone, but adds a detail item 2b did not have: the GTM never cleaned up the menu label, so selecting it does nothing. Noted there rather than reopening the item. |
+| `mouse/enable` is undocumented and absent from the GTM | Not one of item 17's original 13 -- found here because the Two's `Mouse` menu was enumerated in full. Added to that item as a 14th entry. |
 
-**What it would take:** open the GTM on a device running 3.0.0, walk
-`>K<eyboard`, `>M<ouse`, `>C<hording`, `>D<isplay` and `>R<esources`, and write
-down what each menu actually lists. Then reconcile: sections with no menu entry
-move to `Device Manager.rst` (as `usb/poll rate` and `mouse/scroll throttle`
-did) or go; menu entries with no section get written.
+`GenerativeTextMenu.rst:51`'s illustrative screen, `Press Tolerance [ Use
+up/down arrow keys to adjust: 25ms ]`, was also checked: the Two draws the line
+in that exact shape. Only the number is stale (30 ms is the 3.0.0 default) and
+it stays as-is, same reasoning as before -- it is an illustration, not a
+defaults claim.
 
-The same walk settles one line of prose. `GenerativeTextMenu.rst:51` shows what
-a GTM screen looks like, using ``Press Tolerance [ Use up/down arrow keys to
-adjust: 25ms ]`` as the example. 25 ms is not the 3.0.0 default -- the API says
-30 -- but it is an illustration, not a claim about defaults, and nobody has
-checked whether a 3.0.0 device still draws the line in that shape at all.
-Changing the number alone would make an unverified example look verified, so it
-waits for the device with everything else on this page.
-
-Worth doing before trusting any remaining `Path:` line, but it is a device-in-
-hand job and does not block the other items.
+**Scope of what "done" means here:** one device, one version. The Two was the
+device on hand; Lite, X, Engine, One and Master Forge have not been walked.
+Acting on a single device's result was a deliberate call, not an oversight --
+CCOS is treated as one core shared across devices, with per-device differences
+handled explicitly where they are known to exist (LEDs being the standing
+example), so a menu structure confirmed on one device is trusted for the
+others until something turns up device-specific about it.
 
 ---
 
@@ -794,7 +800,7 @@ below the generated one, or record that they are gone.
 
 Item 14 counted the LED settings. Checking `keyboard/rollover` while closing
 item 8f turned into the same count for everything else: of the 43 settings CCOS
-3.0.0 publishes, 13 non-LED ones have no section, no dropdown and no table
+3.0.0 publishes, 14 non-LED ones have no section, no dropdown and no table
 anywhere in these docs. They appear only as a row in the generated Serial API
 parameter table, under their API name.
 
@@ -810,6 +816,7 @@ parameter table, under their API name.
 | `fuzzy modifiers/release guard threshold` | 0x1B | 50 | 0-255 ms | yes |
 | `gaming/layer warp` | 0x70 | 0 | 0-1 | yes |
 | `keyboard/rollover` | 0x17 | 1 | 6 key, 12 key, 18 key | yes |
+| `mouse/enable` | 0x21 | 1 | 0-1 | no |
 | `usb/aggressive reporting` | 0x95 | 0 | never, active only | yes |
 | `usb/aggressive reporting throttle` | 0x93 | 0 | 0-25500 step 100 s scale 0.001 | no |
 | `usb/hid resend throttle` | 0x97 | 10 | 10-2550 step 10 ms | no |
@@ -824,11 +831,19 @@ Two settings that look missing are not: `mouse/caffeine` is documented as the
 Device Manager's `Active Mouse`, and `keyboard/command control swap` as
 `GUI-CTRL Soft Swap` on the GTM page. Neither name matches the API.
 
+`mouse/enable` is the one entry in this table confirmed by a device rather
+than by diffing docs against the API: the item 13 walk on a CharaChorder Two
+(CCOS 3.0.0) listed every entry actually in the GTM's `Mouse` menu, and this
+was not among them, sitting alongside `mouse/scroll throttle` which item 2
+already moved to Device Manager. Unlike that one, `mouse/enable` has no
+description in the API to explain what it does, and no home anywhere in either
+doc.
+
 **Why this is not just writing them up.** Same trap as item 2a: the API group
 does not tell you where a user reaches a setting. `usb/poll rate`,
 `mouse/scroll throttle` and `chording/detection method` were each placed by
 reasoning from the group, and each turned out to be absent from the GTM when
-someone looked. Eight of these thirteen sit in `fuzzy modifiers`, `gaming` and
+someone looked. Eight of these fourteen sit in `fuzzy modifiers`, `gaming` and
 `usb` — groups with no section on either page, so there is not even an
 established home to add them to.
 

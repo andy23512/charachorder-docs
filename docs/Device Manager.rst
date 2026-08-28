@@ -185,7 +185,7 @@ that you may have made since the last time you connected it. If you have this en
 you won't have to manually connect your device to the manager ever again!
 
 
-The :ref:`boot message<GenerativeTextMenu:Startup>` and :ref:`realtime feedback<GenerativeTextMenu:Realtime Feedback>` can be enabled or disabled in this box.
+The boot message and :ref:`realtime feedback<GenerativeTextMenu:Realtime Feedback>` can be enabled or disabled in this box.
 Additionally, you can reset some parts of your device files such as your chords, your layout, and even return to factory settings.
 
 .. image:: /assets/images/ManagerSettingsDevice.png

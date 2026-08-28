@@ -139,7 +139,7 @@ If not done already, make sure that the USB-C side of the :ref:`power cable<Char
         If you have the S2 chip, then you can skip to the :ref:`Getting Started section<CharaChorder_Lite:Getting Started>`, because the startup message has been removed on instant boot devices (CCOS 2.1.0).
 
 .. warning::
-   By default, the device sends a :ref:`startup<GenerativeTextMenu:Startup>` message, on every boot or re-plug. In some cases, this can interfere with functions on your computer or cause unwanted behavior. This feature can be disabled in
+   By default, the device sends a :ref:`startup<GenerativeTextMenu:Realtime Feedback>` message, on every boot or re-plug. In some cases, this can interfere with functions on your computer or cause unwanted behavior. This feature can be disabled in
    the :doc:`GTM<GenerativeTextMenu>`.
 
 After making sure that the cable on the CharaChorder is properly
@@ -155,11 +155,11 @@ following things:
 
 	- You will be able to see your keyboard's lights flash from left to right, then go completely dark. After a few moments, the entire keyboard will be lit up with the LED backlighting.
 
-If you have :ref:`startup<GenerativeTextMenu:Startup>` enabled, once you can see the highlighted text that reads
+If you have :ref:`startup<GenerativeTextMenu:Realtime Feedback>` enabled, once you can see the highlighted text that reads
 “CCOS is ready.”, your device is ready to be used. If you have :ref:`LEDs<GenerativeTextMenu:LEDs>` turned on, once you see all of the lights turned on and static, your device is ready to be used.
 
 .. note::
-   The :ref:`Startup message<GenerativeTextMenu:Startup>` is enabled by default on new CharaChorder devices.
+   The :ref:`Startup message<GenerativeTextMenu:Realtime Feedback>` is enabled by default on new CharaChorder devices.
 
 Getting Started
 ***************
