@@ -224,6 +224,27 @@ who trusted "px" and then measured actual pixel movement would be misled with
 more confidence than the current bare "pg" ever claims. Revisit if a USB
 capture or an upstream answer settles it.
 
+**Changelog cross-check (2026-08), for reference.** Searched every
+`changelog.json` `one_m0` publishes -- the 39 live versions from
+`2.1.0-rc.0` up -- for "scroll". Two feature entries turned up, neither
+explaining `pg`:
+
+- **Spin Scroll**, first at `2.1.0-rc.0`: "This feature allows you to
+  dedicate a stick to scrolling, and scroll by spinning it like a scroll
+  wheel instead of holding down a key." (Typo "scolling" through `rc.3`,
+  fixed at `rc.4`.)
+- **High resolution scrolling** -- title only, no description -- first at
+  `2.2.0-beta.20`, still listed as of `3.0.0`/`3.0.0-rc.0`. Absent from
+  `beta.0` through `beta.8`.
+
+Neither names `mouse/scroll speed` or `mouse/scroll throttle`, and neither
+settles the unit. Flagged, not chased further: "High resolution scrolling"
+landing in the same era as this setting raises the possibility that `pg` is
+some resolution-related quantity rather than "pages" or a `px` typo, if it
+changed what a single wheel HID report represents. That is speculation with
+nothing behind it -- recorded so it is not reinvented, not as a lead anyone
+should act on yet.
+
 ---
 
 ## 5. Enum values render in the API's lower case (decided)
