@@ -189,7 +189,7 @@ genuine unit, probably "pages", but that is a guess and the prose that used to
 surround the table said "pixels (px)", contradicting the API. Left verbatim
 rather than expanded into a word nobody has verified.
 
-**Both routes to resolving it turned out to be dead ends or impractical:**
+**Every route tried to resolve it turned out to be a dead end or impractical:**
 
 - **No label in the Device Manager.** Its own hardcoded
   `src/lib/assets/settings.yml` carries the same bare `unit: pg` with no
@@ -208,9 +208,32 @@ rather than expanded into a word nobody has verified.
   Reading the raw HID report before the OS touches it would route around
   that, but `hidutil monitor` -- the obvious tool -- does not exist on
   current macOS (checked on 26.5.1: `hidutil` only has `dump`, `property` and
-  `list`, and `dump` is a state snapshot, not a live stream). A USB-level
-  capture (Wireshark against the CharaChorder's USB bus, or a tool like
-  Karabiner-EventViewer) would still work but has not been tried.
+  `list`, and `dump` is a state snapshot, not a live stream).
+- **USB-level capture (2026-08): tried, not available on this hardware.**
+  Wireshark installed via `brew install --cask wireshark`, ChmodBPF installed
+  and the user's account confirmed in the `access_bpf` group -- so this is not
+  a permissions problem. On an Apple Silicon Mac (M4 Pro, macOS 26.5.1, SIP
+  enabled), `tshark -D` lists no USB pseudo-interface at all, only the usual
+  network ones (`en0`, `awdl0`, `utun*`, etc.); `sudo Wireshark` made no
+  difference. Older Intel Macs exposed IOUSBFamily's kext-level trace point to
+  libpcap as interfaces named `XHCx`, which is what Wireshark's documented
+  macOS USB capture support relies on -- Apple Silicon's IOUSBHostFamily does
+  not provide the same hook, so that support does not apply here. Not tried:
+  an external hardware USB analyzer, or capturing from a different machine
+  (Intel Mac or Linux) with the CharaChorder plugged into it.
+- **Karabiner-EventViewer (2026-08): tried, does not show scroll wheel events
+  at all.** A different mechanism from USB capture -- it reads IOHIDManager,
+  so Apple Silicon was not the obstacle this time. Scrolling the CharaChorder's
+  stick produced nothing in the event log, not even in an "Unknown Events"
+  section. This is not specific to the CharaChorder or this machine: two open
+  GitHub issues against Karabiner-Elements report the identical symptom on
+  unrelated mice
+  ([#3486](https://github.com/pqrs-org/Karabiner-Elements/issues/3486),
+  ["scroll the wheel, no event... even Unknown Events section doesn't show"];
+  [#3610](https://github.com/pqrs-org/Karabiner-Elements/issues/3610), a
+  duplicate), neither with a maintainer response or fix, both auto-closed as
+  stale. So this is a real, unresolved limitation of the tool, not something
+  specific to this setup that a different permission or config would fix.
 
 **Leading hypothesis, not yet confirmed: `pg` is a typo for `px`.** This
 matches the pre-generation prose, which described this exact setting in
