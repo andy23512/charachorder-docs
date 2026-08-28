@@ -276,7 +276,7 @@ from the API.
 
 ---
 
-## 6. Operating system codes table — `docs/SerialAPI.rst` (decided)
+## 6. Operating system codes table — `docs/SerialAPI.rst` (done)
 
 The hand-written table maps `Windows`→0 … `Android`→4 **plus `Unknown`→255**.
 Codes 0-4 are exactly the positions of the values in the `misc/operating
@@ -288,24 +288,31 @@ ship factory default `0`, and `Beta Releases.rst` never mentions the setting.
 Nothing found contradicts it either — it has been in this page since the serial
 API was first documented (`d1c9eba`).
 
-**Decided: the table stays hand-written, with a note saying what is and is not
-known.** Deleting 255 would assert it is invalid, which nobody has checked;
-leaving it bare would keep implying it is as solid as the other five. The note
-also records the open reading — whether 255 is a value you can set or only one
-the device reports back — and points out that the API spells the names in lower
-case while this table title-cases them.
+**Decided (superseded below): the table stays hand-written, with a note saying
+what is and is not known.** The generator was not extended to bolt extra rows
+onto an enum — that would put an unverified value inside the generated
+pipeline, for one table, with no second use case in sight. The section also
+stays its own table rather than folding into the generated `Parameter codes`
+above it: they are different lookups, the generated one read by parameter
+name, this one by code number, which is what someone implementing the
+protocol has in hand. Both of those calls still stand.
 
-The generator was not extended to bolt extra rows onto an enum. That would put
-an unverified value inside the generated pipeline, for one table, with no
-second use case in sight.
+**Tested on hardware (2026-08): 255 does not round-trip.** Sent `255` to
+parameter `0x91` with `CMD_VAR_SET_PARAMETER`, then read it back with
+`CMD_VAR_GET_PARAMETER`. The device returned `5`, not `255` — one past the
+last valid enum index (`android` = 4), not the value that was written and not
+a clamp to the valid range either. Whatever this is, it settles the question
+this item opened with: the firmware does not store `255` for this setting, so
+`Unknown` → `255` was not a value a reader could ever rely on. Removed from
+`docs/SerialAPI.rst`; the note there now records the test instead of the open
+question.
 
-The section also stays as its own table rather than folding into the generated
-`Parameter codes` above it. They are different lookups: the generated one is
-read by parameter name, this one by code number, which is what someone
-implementing the protocol has in hand.
-
-**To settle 255:** send it to parameter `0x91` with `CMD_VAR_SET_PARAMETER`
-and read it back.
+**Not chased further: why `5`.** One plausible read is an off-by-one clamp —
+firmware rejecting an out-of-range write by pinning it to `count` (5) instead
+of `count - 1` (4, the actual last index) — but that takes more than one data
+point to confirm (does `6` also read back as `5`? does `254`?), and nothing
+here depends on the answer. Worth a line in item 10's upstream list if that
+policy ever changes.
 
 ---
 

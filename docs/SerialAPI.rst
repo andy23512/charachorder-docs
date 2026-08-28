@@ -278,12 +278,11 @@ Operating system codes
    "Linux","2"
    "iOS","3"
    "Android","4"
-   "Unknown","255"
 
 .. note::
 	Codes 0 to 4 are the positions of the values in the ``misc/operating system`` enum, which the Firmware Meta API spells in lower case: ``windows``, ``mac``, ``linux``, ``ios``, ``android``.
 
-	``255`` is not in that enum, and no device ships it as a factory default — every one of them starts at ``0``. It is kept here because it has been documented since this page was written, but whether the firmware still accepts it, and whether it is a value you can set or only one the device reports back, has not been verified.
+	This table used to list ``Unknown`` at code ``255`` as well. Tested on hardware (2026-08): writing ``255`` to parameter ``0x91`` with ``CMD_VAR_SET_PARAMETER`` and reading it back with ``CMD_VAR_GET_PARAMETER`` returns ``5``, not ``255`` — the value does not round-trip, so the firmware does not actually store ``255`` for this setting. The row was removed.
 
 CMD_VAR_COMMIT
 ^^^^^^^^^^^^^^
