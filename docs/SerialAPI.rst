@@ -261,10 +261,31 @@ Keymap codes
    "Secondary","A2","The default secondary keymap. In the CharaChorder One this is called the Num-shift keymap, while on the CharaChorder Lite this provides some additional function and numpad keys."
    "Tertiary","A3","The default tertiary keymap. In the CharaChorder One this is called the Function keymap, while on the CharaChorder Lite this is a copy of the secondary keymap."
 
+.. note::
+   The letter selects one of the three :ref:`profiles<Beta Releases:Profiles>`
+   added in firmware 2.2.0-beta (A, B or C); the digit selects the layer
+   within it, exactly as described above for profile A. ``B1``-``B3`` and
+   ``C1``-``C3`` address the same three layers in profiles B and C.
+
+   Confirmed on hardware (2026-08, CCOS 3.0.0): writing a keymap entry to
+   ``B1`` with ``CMD_VAR_SET_KEYMAP`` changes what ``CMD_VAR_GET_KEYMAP``
+   reads back from ``B1`` at that index, while ``A1`` and ``C1`` at the same
+   index are unaffected.
+
 Parameter codes
 ^^^^^^^^^^^^^^^
 
 .. ccos-parameter-codes::
+
+.. note::
+   Every code in this table addresses profile A. Profile B's copy of a
+   parameter is at ``id + 0x100``, and profile C's is at ``id + 0x200`` -- for
+   example, parameter ``0x15`` in profile B is addressed as ``0x115``, and in
+   profile C as ``0x215``. See :ref:`profiles<Beta Releases:Profiles>`.
+
+   Confirmed on hardware (2026-08, CCOS 3.0.0): writing to ``0x115`` with
+   ``CMD_VAR_SET_PARAMETER`` changes what ``CMD_VAR_GET_PARAMETER`` reads back
+   from ``0x115``, while ``0x15`` and ``0x215`` are unaffected.
 
 Serial output toggles
 ^^^^^^^^^^^^^^^^^^^^^^

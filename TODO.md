@@ -1190,7 +1190,7 @@ re-cropping.
 
 ---
 
-## 18. The Serial API page has drifted from the reference implementation
+## 18. The Serial API page has drifted from the reference implementation (partially done)
 
 Found while answering item 9. `DeviceManager/src/lib/serial/device.ts` is the
 client CharaChorder's own web app talks to devices with, and the CCOS-firmware
@@ -1230,6 +1230,37 @@ which is how the rest of the page reads.
 <https://docs.charachorder.com/SerialAPI.html> was fetched and searched: it
 contains no `QRY`, no `C5`, no `RST OTA` and no mention of profiles either. So
 these are upstream documentation gaps, worth filing alongside item 10's list.
+
+**Done: three of the four tried on a CharaChorder Lite S2, CCOS 3.0.0, over a
+serial terminal (serialterminal.com, 115200 bps).**
+
+- **`QRY KEY` does not exist on this device.** Sent `QRY KEY`, got back
+  `UKN QRY`. `CMD` itself confirms it: this firmware's command list is
+  `CMD,ID,VERSION,CML,VAR,RST,SIM` — no `QRY`, and no `RAM` either (`RAM`
+  was tried directly and also came back `UKN RAM`, even though `RAM` is an
+  existing, already-documented command on this same page). Client code
+  calling a command is not evidence it ships in current firmware, exactly as
+  this item warned above — corrected, this is not a documentation gap to add.
+- **`CML C5` does not exist on this device either.** Sent `CML C5`, got
+  `CML 1`. Sent `CML C9` — a subcommand that is certainly not real — as a
+  control, and got the identical `CML 1`. So `CML C5`'s reply is the generic
+  "unknown subcommand" error, not a real `GET_PROGRESS` float. Same
+  correction as `QRY KEY`: not a documentation gap to add.
+- **Profile addressing is real and is now documented**, in both
+  `docs/SerialAPI.rst`'s `Keymap codes` and `Parameter codes` sections, each
+  with a `:ref:` to `Beta Releases:Profiles`. Verified by writing to one
+  profile and confirming only that profile changed: `VAR B4 B1 24 999`
+  changed what `VAR B3 B1 24` read back, while `VAR B3 A1 24` and
+  `VAR B3 C1 24` stayed at their original value (`338`); `VAR B2 0x115 17`
+  changed what `VAR B1 0x115` read back, while `VAR B1 0x15` and
+  `VAR B1 0x215` stayed at their original value (`16`). Both writes were
+  reverted immediately after and `VAR B0` (commit) was never sent, so nothing
+  was written to flash.
+- **`RST OTA` was not tried — left pending, by choice.** It starts an actual
+  over-the-air firmware update; unlike the other three, a wrong guess about
+  its arguments or a bad transfer risks bricking the device it's tested on.
+  Needs an owner decision on whether it's worth the risk before anyone sends
+  it, ideally with a firmware backup in hand first.
 
 ---
 
