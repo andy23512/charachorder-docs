@@ -141,8 +141,8 @@ html_use_opensearch = html_baseurl
 
 html_context = {
     'display_github': True,
-    'github_user': 'CharaChorder',
-    'github_repo': 'docs',
+    'github_user': 'andy23512',
+    'github_repo': 'charachorder-docs',
     'github_version': 'main/',
     "conf_py_path": "/docs/",
     "source_suffix": source_suffix,
