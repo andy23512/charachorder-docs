@@ -556,7 +556,7 @@ Layer Selector
 
 .. dropdown:: Explanation of Layers on CCOS Devices
 
-	As of February of 2024, :doc:`CCOS<CCOS>` devices come with three (3) layers that you can make use of: the base layer, called the A1 (Alpha) layer, the secondary layer, referred to as A2 (Numeric), and the tertiary layer, named A3 (Function).
+	As of CCOS 3.0.0, :doc:`CCOS<CCOS>` devices come with four (4) layers that you can make use of: the base layer, called the A1 (Alpha) layer, the secondary layer, referred to as A2 (Numeric), the tertiary layer, named A3 (Function), and the quaternary layer, named A4 (Flag).
 
 	In order to access layers, you need to press and hold a "layer access" button. You MUST hold the button in order to use keys mapped to layers other than the alpha layer. The alpha layer is active by default.
 
@@ -577,7 +577,13 @@ Layer Selector
 
 	The A3 layer, sometimes referred to as the “function layer”, is accessible with the :doc:`A3 access key<CharaChorder Keys>`. In the Device Manager, this key is assignable by the names “Function Layer (Left)” and “Function Layer (Right)”.
 
-	Once you've mapped the A3 layer access buttons, the A3 Layer is accessible by pressing and holding either one of them. You do not have to hold them both in order to access the A3 layer. Any key that is on the A3 Layer can only be accessed by pressing and holding the :doc:`A3 access key<CharaChorder Keys>`, along with the target key. You do not need to :doc:`chord<Chords>` the keys together; it’s only required that the A3 layer access key is pressed while the target key is pressed.
+	Once you’ve mapped the A3 layer access buttons, the A3 Layer is accessible by pressing and holding either one of them. You do not have to hold them both in order to access the A3 layer. Any key that is on the A3 Layer can only be accessed by pressing and holding the :doc:`A3 access key<CharaChorder Keys>`, along with the target key. You do not need to :doc:`chord<Chords>` the keys together; it’s only required that the A3 layer access key is pressed while the target key is pressed.
+
+	**A4 Layer**
+
+	The A4 layer, also known as the "Flag" layer, is accessible with the A4 access key, named "Flag Layer" in the Device Manager’s action codes menu (one entry for the left hand, one for the right, both sharing that name). It works the same way as the A2 and A3 layers: press and hold the A4 layer access key while pressing the target key.
+
+	Unlike A1-A3, the A4 layer has no keys mapped by default -- every key starts out set to "No Action" -- so on a factory-default layout you’ll need to assign an A4 access key and remap the layer yourself before it does anything.
 
 .. Note::
 	The following section assumes that you have already :ref:`connected<Device Manager:Connecting to the Device Manager>` your device to the device manager.
@@ -585,7 +591,20 @@ Layer Selector
 .. image:: /assets/images/ManagerLayoutSelector.png
   :alt: Image of the Layer Selector bar
 
-Above the diagram of your device, you'll see a circle with the letters "ABC" in the middle. The circle, together with the "wings" on either side (one on the left with the numbers "123" inscribed and one on the right with "fx" stylized within), make up the layer selector. You can select any one of these to view the keys that are mapped to each location, on each layer.
+Above the diagram of your device, you'll see a row of tabs -- A1, A2, A3, A4 -- plus a circular icon. Click any tab to view and edit the keys mapped to that layer. The circular icon resets the currently selected layer back to its factory default; it doesn't undo edits to other layers.
+
+.. Note::
+	The tab labels change to match whichever :ref:`profile<Device Manager:Profile Selector>` is currently selected -- for example, they read B1-B4 while profile B is selected.
+
+Profile Selector
+-----------------
+
+.. image:: /assets/images/ManagerProfileSelector.png
+  :alt: Image of the Profile Selector buttons
+
+Near the top of the page, next to the :ref:`Apply button<Device Manager:Apply Button>`, you'll see three buttons labelled A, B, and C -- the profile selector. Each profile has its own independent set of four layers (so profile A has layers A1-A4, profile B has B1-B4, and profile C has C1-C4) and its own settings; the chord library is shared across all three profiles. Clicking a letter here switches which profile you're viewing and editing in the Device Manager.
+
+To switch the active profile on the device itself, assign the "Profile A", "Profile B", or "Profile C" action to a key or chord through the :ref:`action codes menu<Device Manager:Using Action Codes>` (all three are listed under the "Modifiers" category).
 
 Remapping
 ---------

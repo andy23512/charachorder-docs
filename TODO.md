@@ -944,14 +944,39 @@ Arpeggiates, Leds, Misc, Usb, Backup.
   swap can fix: the old circular "ABC" dial with "123"/"fx" wings is gone,
   replaced by a row of tabs that now includes a fourth layer, `A4`, that
   didn't exist before. There's also a separate, unrelated "A/B/C" radio
-  control near the top of the page (purpose unconfirmed -- didn't respond to
-  clicks, no tooltip found) and a circular icon next to the layer tabs that
-  turned out to be a "Reset Layout" trigger (not clicked). Per instruction,
-  only swapped the image for now and dropped its `:width: 300` override
-  (natural size is 212px); the prose still says "three layers" and describes
-  the old circle/wings UI -- left as a known inaccuracy rather than
-  researched further this session. The `A4` layer's purpose and the `A/B/C`
-  control are still unidentified.
+  control near the top of the page and a circular icon next to the layer
+  tabs that turned out to be a "Reset Layout" trigger. Per instruction, only
+  swapped the image at first and dropped its `:width: 300` override (natural
+  size is 212px), leaving the prose and the `A4`/`A B C` mystery for later.
+
+  **Done:** resolved both, confirmed against the live API data
+  (`docs/_data/ccos/3.0.0.json`) and the maintainer's own knowledge of the
+  feature:
+  - `A4` is a genuine fourth layer, the same tier as A1-A3. The API calls it
+    the "Flag Layer" (`QUATERNARY_KEYMAP_L/R`, action codes `KM_4_L`/`KM_4_R`).
+    Unlike A1-A3, it has no keys mapped by default -- every key starts out
+    "No Action" -- confirmed both from the maintainer and by opening a key on
+    a live A4 layer and seeing "No Action" as its current action.
+  - The "A/B/C" control is **Profile**: three independent sets of four layers
+    (profile A = layers A1-A4, B = B1-B4, C = C1-C4) plus independent
+    settings, sharing one chord library. Confirmed live that the layer tabs'
+    letter prefix follows whichever profile is selected (e.g. switching to
+    profile B relabels the tabs B1-B4). On-device profile switching uses the
+    "Profile A"/"Profile B"/"Profile C" actions (`PROFILE_A`/`PROFILE_B`/
+    `PROFILE_C`), assignable to a key or chord like any other action code.
+  - This was already documented once, in `docs/Beta Releases.rst`'s
+    `2.2.0-beta` notes (written when each profile only had three layers,
+    A1-A3/B1-B3/C1-C3) -- left that changelog entry alone since it's a
+    point-in-time release note, not meant to track the current state.
+  - Rewrote `docs/Device Manager.rst`'s Layer Selector prose to describe the
+    current tab-row UI instead of the old dial, added an "A4 Layer"
+    subsection alongside A1-A3, and added a new "Profile Selector" section
+    with a new screenshot, `ManagerProfileSelector.png`.
+  - Side discovery, not yet acted on: A2 and A3's "this key has the name
+    'Numeric/Function Layer (Left)' and '...(Right)'" claim doesn't match the
+    live action codes menu, which shows both hands under the same unsuffixed
+    name ("Numeric Layer" / "Function Layer" twice, distinguished only by a
+    mirrored icon). Likely stale, but out of scope for this pass.
 - `ManagerSELECTDEVICE.png` -- left as-is, not reshot. It's Chrome's own
   native "wants to connect to a serial port" permission dialog, not part of
   charachorder.io's UI, so it isn't expected to have changed, and reshooting
@@ -959,8 +984,7 @@ Arpeggiates, Leds, Misc, Usb, Backup.
 
 Every screenshot that existed at the start of this item has now either been
 reshot, or deliberately deleted/skipped with a documented reason. What's left
-open is scoped separately below (the `A4`/`A B C` Layout mystery and the
-missing Usb screenshot).
+open is scoped separately below: the missing Usb screenshot.
 
 Also newly discovered, not previously in this doc at all: **Gaming** (`Layer
 warp`) and **Fuzzy modifiers** (`Enable`, `Press threshold`, `Release
