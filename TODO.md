@@ -1190,7 +1190,7 @@ re-cropping.
 
 ---
 
-## 18. The Serial API page has drifted from the reference implementation (partially done)
+## 18. The Serial API page has drifted from the reference implementation (done)
 
 Found while answering item 9. `DeviceManager/src/lib/serial/device.ts` is the
 client CharaChorder's own web app talks to devices with, and the CCOS-firmware
@@ -1256,11 +1256,10 @@ serial terminal (serialterminal.com, 115200 bps).**
   `VAR B1 0x215` stayed at their original value (`16`). Both writes were
   reverted immediately after and `VAR B0` (commit) was never sent, so nothing
   was written to flash.
-- **`RST OTA` was not tried — left pending, by choice.** It starts an actual
-  over-the-air firmware update; unlike the other three, a wrong guess about
-  its arguments or a bad transfer risks bricking the device it's tested on.
-  Needs an owner decision on whether it's worth the risk before anyone sends
-  it, ideally with a firmware backup in hand first.
+- **`RST OTA` was not tried, by decision.** It starts an actual over-the-air
+  firmware update; unlike the other three, a wrong guess about its arguments
+  or a bad transfer risks bricking the device it's tested on, and that risk
+  was judged not worth taking just to fill in this table.
 
 ---
 
