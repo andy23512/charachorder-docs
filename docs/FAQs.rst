@@ -3,9 +3,6 @@ Frequently Asked Questions
 
 This page houses some Frequently Asked Questions about our technology and our devices.
 
-.. contents:: Table of Contents of this Page
-   :local:
-
 General FAQs
 ------------
 Where can I talk to other CharaChorder users?

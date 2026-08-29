@@ -9,9 +9,6 @@ below to navigate to the topics that you find most relevant.
   :width: 1200
   :alt: CharaChorder CC2
 
-.. contents:: Table of Contents of this Page
-   :local:
-
 Out of the Box
 **************
 

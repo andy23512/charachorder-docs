@@ -17,9 +17,6 @@ You will notice that some settings have different press and release values. This
 .. warning::
 	Please note that updating your CCOS device might reset your GTM settings to default. Please make sure that you have a :ref:`backup of your GTM settings<Device Manager:Creating a Backup>` before updating your CCOS device. For instructions on how to restore backed up files, visit the :ref:`Restoring from a Backup<Device Manager:Restoring from a Backup>` section.
 
-.. contents:: Table of Contents of this Page
-   :local:
-
 How to access the GTM
 *********************
 

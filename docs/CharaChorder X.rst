@@ -14,9 +14,6 @@ What is :doc:`chording<Chords>`? Put simply, :doc:`chording<Chords>` is the acti
 
 Although the CharaChorder X is a very powerful device, it is limited by the keyboard that you use it with. One example of this is that :doc:`chording<Chords>` relies on your keyboard's :doc:`rollover<Glossary>` limits. A keyboard with 3-key rollover (3KRO) will not be able to make use of :doc:`chords<Chords>` that use more than 3 keys in their :doc:`input<Chords>`. We recommend using a keyboard with N-key rollover (NKRO) for best results. Feel free to choose from the list below to read the topics that you find relevant.
 
-.. contents::
-   :local:
-
 Out of the Box
 **************
 

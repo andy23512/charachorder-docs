@@ -13,9 +13,6 @@ The Master Forge bundle consists of two :ref:`Forge Digitizers<Master Forge:The 
 
 :ref:`Click here to skip to the Getting Started Guide.<Master Forge:Getting Started>`
 
-.. contents:: Table of Contents of this Page
-   :local:
-
 Out of the Box
 **************
 

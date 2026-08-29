@@ -16,9 +16,6 @@ Those who would rather build onto their muscle memory on a traditional, QWERTY k
   :width: 1200
   :alt: CharaChorder Lite
 
-.. contents:: Table of Contents of this Page
-   :local:
-
 Out of the Box
 **************
 

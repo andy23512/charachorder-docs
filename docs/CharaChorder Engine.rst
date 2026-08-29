@@ -14,9 +14,6 @@ CCOS powered text entry device. If you are interested in learning how to utilize
 CharaChorder Engine, please visit the `CharaChorder Engine Discord channel <https://discord.gg/VngNWSyZJb>`_
 and ping Riley Keen or Matt Swarts.
 
-.. contents:: Table of Contents of this Page
-   :local:
-
 Pinout Diagram
 **************
 

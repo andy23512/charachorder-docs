@@ -20,7 +20,7 @@
             python311
             python311Packages.sphinx
             python311Packages.sphinx-autobuild
-            python311Packages.sphinx-rtd-theme
+            python311Packages.furo
             python311Packages.sphinx-design
             python311Packages.sphinx-copybutton
             python311Packages.myst-parser

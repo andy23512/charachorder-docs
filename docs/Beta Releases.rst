@@ -1,9 +1,6 @@
 Beta Releases
 =============
 
-.. contents::
-	:local:
-
 2.2.0-beta
 **********
 

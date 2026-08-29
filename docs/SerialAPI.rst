@@ -28,9 +28,6 @@ The Serial API allows users and developers to interact with their CCOS powered d
    reference: a hand-written TypeScript client in `DeviceManager
    <https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/serial/device.ts>`_.
 
-.. contents::
-   :local:
-
 Commands Overview
 -----------------
 

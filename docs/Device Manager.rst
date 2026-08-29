@@ -7,9 +7,6 @@ In this section, we'll talk about the device manager and how you can navigate ar
 
 Feel free to use the links below to skip to whatever section you would like to read or scroll to start with the first section.
 
-.. contents:: Table of Contents of this Page
-   :local:
-
 
 Connecting to the Device Manager
 ********************************

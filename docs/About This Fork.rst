@@ -6,9 +6,6 @@ CharaChorder documentation at https://docs.charachorder.com/, beyond the
 five-line note on the front page. It is maintained by Tangent and is not
 affiliated with CharaChorder.
 
-.. contents::
-   :local:
-
 Generated setting tables
 -------------------------
 
@@ -62,3 +59,11 @@ their output differ from the hand-written original: enum values are kept in
 the Meta API's lower case rather than capitalized, and single-letter unit
 labels on HSB (hue/saturation/brightness) settings are suppressed, since the
 API applies them inconsistently there.
+
+A different theme, with dark mode
+------------------------------------
+
+This fork uses the `furo <https://pradyunsg.me/furo/>`__ Sphinx theme instead
+of the official guide's Read the Docs theme. Furo adds a light/dark/auto
+toggle in the top right of each page; auto follows your system's color
+scheme, and your choice is remembered across visits.

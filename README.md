@@ -6,10 +6,10 @@ The official documentation is at <https://docs.charachorder.com/>.
 
 ## Dependencies
 
-Install `sphinx`, `sphinx_rtd_theme`, `sphinx-design`, `myst-parser`, and `sphinx_copybutton` using `pip` or your preferred package manager.
+Install `sphinx`, `furo`, `sphinx-design`, `myst-parser`, and `sphinx_copybutton` using `pip` or your preferred package manager.
 
 ```sh
-pip install sphinx sphinx_rtd_theme myst-parser sphinx-design sphinx_copybutton
+pip install sphinx furo myst-parser sphinx-design sphinx_copybutton
 ```
 
 ### Nix/NixOS

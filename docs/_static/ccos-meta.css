@@ -1,15 +1,12 @@
 /* Styling for the CCOS version picker and the tables it drives.
    See docs/_ext/ccos_meta.py and docs/_static/ccos-meta.js. */
 
-/* sphinx_rtd_theme has no dark mode -- the page is always light -- so the
-   picker is always light too. Keying it off prefers-color-scheme made it a
-   dark bar floating on a white page. */
+/* furo defines --color-* as CSS custom properties that it repoints itself
+   for light/dark/auto, so borrowing its variables keeps the picker in step
+   with whatever the reader's theme toggle is set to, with no media query of
+   our own to maintain. */
 .ccos-picker {
-  --ccos-surface: #f8f9fb;
-  --ccos-border: #d7dbe0;
-  --ccos-accent: #2980b9;
-  --ccos-muted: #4a5560;
-  --ccos-text: #404040;
+  --ccos-accent: var(--color-brand-primary);
 
   position: sticky;
   top: 0;
@@ -20,31 +17,25 @@
   gap: 0.75rem;
   margin: 0.5rem 0 1rem;
   padding: 0.5rem 0.75rem;
-  border: 1px solid var(--ccos-border);
+  border: 1px solid var(--color-background-border);
   border-left: 3px solid var(--ccos-accent);
   border-radius: 3px;
-  background: var(--ccos-surface);
-  color: var(--ccos-text);
-  /* The controls are light regardless of the OS setting, to match the theme. */
-  color-scheme: light;
+  background: var(--color-background-secondary);
+  color: var(--color-foreground-primary);
   font-size: 0.9em;
 }
 
-/* sphinx_rtd_theme hardcodes `label { color: #333 }`; take the panel's colour
-   instead so the two stay in step. */
 .ccos-picker label {
   margin: 0;
   color: inherit;
   font-weight: 700;
 }
 
-/* The theme forces `select { background-color: #fff }` but sets no colour, so
-   the text would otherwise inherit whatever the panel uses. */
 .ccos-picker select {
   margin-left: 0.4rem;
   padding: 0.15rem 0.3rem;
-  color: var(--ccos-text);
-  background-color: #fff;
+  color: var(--color-foreground-primary);
+  background-color: var(--color-background-primary);
 }
 
 .ccos-picker-toggle {
@@ -53,7 +44,7 @@
 
 .ccos-picker-status {
   margin-left: auto;
-  color: var(--ccos-muted);
+  color: var(--color-foreground-secondary);
   font-style: italic;
 }
 

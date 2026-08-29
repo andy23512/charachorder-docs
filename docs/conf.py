@@ -91,13 +91,21 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'furo'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+# furo ships a light/dark/auto toggle out of the box (auto follows
+# prefers-color-scheme and the choice is remembered in localStorage), and
+# drives the per-page "Edit on GitHub" link from these repo settings instead
+# of html_context.
+html_theme_options = {
+    "source_repository": "https://github.com/andy23512/charachorder-docs/",
+    "source_branch": "main",
+    "source_directory": "docs/",
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -113,18 +121,6 @@ html_js_files = ['ccos-meta.js']
 # extension, not pages of their own.
 exclude_patterns += ['_data']
 
-# Custom sidebar templates, must be a dictionary that maps document names
-# to template names.
-#
-# This is required for the alabaster theme
-# refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
-html_sidebars = {
-    '**': [
-        'relations.html',  # needs 'show_related': True theme option to display
-        'searchbox.html',
-    ]
-}
-
 # Appended HTML page title
 html_title = f'{project} v{version}'
 
@@ -138,15 +134,6 @@ html_favicon = 'assets/images/favicon.ico'
 html_copy_source = False
 
 html_use_opensearch = html_baseurl
-
-html_context = {
-    'display_github': True,
-    'github_user': 'andy23512',
-    'github_repo': 'charachorder-docs',
-    'github_version': 'main/',
-    "conf_py_path": "/docs/",
-    "source_suffix": source_suffix,
-}
 
 def setup(app):
     app.add_css_file('custom.css')
