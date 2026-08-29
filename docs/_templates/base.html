@@ -1,0 +1,10 @@
+{% extends "!base.html" %}
+{% block body %}
+<script>
+  var storedTheme = localStorage.getItem("theme");
+  document.body.dataset.theme =
+    (storedTheme === "light" || storedTheme === "dark" || storedTheme === "auto")
+      ? storedTheme
+      : "auto";
+</script>
+{% endblock %}
