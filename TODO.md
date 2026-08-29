@@ -839,14 +839,18 @@ instead.
 
 **File:** `docs/Device Manager.rst`, `docs/assets/images/Manager*.png`
 
-**Done so far:** reshot on a connected CharaChorder Lite (CCOS 3.0.0, Device
+**Done:** reshot on a connected CharaChorder Lite (CCOS 3.0.0, Device
 Manager v2.8.0) and cropped to match the existing "one box per screenshot"
-style: `ManagerSettingsArpeggiates.png`, `ManagerSettingsMouse.png`,
-`ManagerSettingsChording.png`, `ManagerSettingsAutoCorrect.png`,
-`ManagerSettingsRGB.png`. Dropped the `:width: 1200` overrides on the three
-that had them, since the new crops are already close to their natural size and
-upscaling made them blurry. `sphinx-build -a` gives zero warnings and the
-rendered page was checked visually.
+style, across two reshoot passes the same day: `ManagerSettingsArpeggiates.png`,
+`ManagerSettingsMouse.png`, `ManagerSettingsChording.png`,
+`ManagerSettingsAutoCorrect.png`, `ManagerSettingsRGB.png`. Dropped the
+`:width: 1200` overrides on the three that had them, since the new crops are
+already close to their natural size and upscaling made them blurry.
+`sphinx-build -a` gives zero warnings and the rendered page was checked
+visually. (Note: the second pass re-shot `ManagerSettingsArpeggiates.png`,
+`ManagerSettingsMouse.png`, and `ManagerSettingsRGB.png` a second time without
+realizing the first pass had already covered them -- redundant effort, but the
+new crops are still valid, so they were kept as-is rather than reverted.)
 
 Confirmed while reshooting:
 
@@ -855,9 +859,13 @@ Confirmed while reshooting:
   `Aggressive reporting` and `Aggressive reporting throttle`, `Hid resend
   throttle` settings not documented anywhere yet -- item 17 territory).
   **Scroll Throttle** is present as the page already says.
-- The Mouse box's `Active Mouse` toggle is labelled **`Caffeine`** in the live
-  UI. The `.. dropdown:: Active Mouse` text describing it is still accurate,
-  but the heading no longer matches what a reader sees in the screenshot.
+- **Done:** the Mouse box's `Active Mouse` toggle is labelled **`Caffeine`**
+  in the live UI. Renamed the `.. dropdown:: Active Mouse` heading to
+  `Caffeine` to match; the body text needed no changes. Confirmed no
+  `:ref:` in the repo targets the old heading, and `GenerativeTextMenu.rst`'s
+  separate "Active Mode" heading (the same setting reached from the device's
+  own on-device menu, per item 13) was deliberately left alone since it's a
+  different UI surface.
 - The Chording box picked up three fields since the last screenshot that
   aren't documented in any dropdown yet: `Minimum chord keys`, `Tap dance
   tolerance`, `Concatenation style` (`Compound timeout` and `Detection method`
@@ -951,53 +959,39 @@ Arpeggiates, Leds, Misc, Usb, Backup.
 
 Every screenshot that existed at the start of this item has now either been
 reshot, or deliberately deleted/skipped with a documented reason. What's left
-open is scoped separately below (the `A4`/`A B C` Layout mystery, the missing
-Usb screenshot, and the orphaned-file cleanup).
+open is scoped separately below (the `A4`/`A B C` Layout mystery and the
+missing Usb screenshot).
 
 Also newly discovered, not previously in this doc at all: **Gaming** (`Layer
 warp`) and **Fuzzy modifiers** (`Enable`, `Press threshold`, `Release
 threshold`, `Release guard threshold`) are entire settings categories with no
 documentation anywhere -- folds into item 17's scope.
 
-The page shows 15 screenshots. All of them predate CCOS 3.0.0 (released
-2026-01-28), and two thirds predate the Master Forge:
+The page shows 15 screenshots. As of 2026-08-29 all of them are current except
+one gap, the missing `USB` box screenshot (see "What it needs" below):
 
 | Last changed | Screenshots |
 |---|---|
-| 2024-01/02 | `ManagerSELECTDEVICE`, `ManagerSettingsArpeggiates`, `ManagerSettingsMouse`, `ManagerSettingsRGB` |
 | 2025-02-25 | `ChordManager` |
 | 2025-08-26 | `ManagerSettingsAutoCorrect`, `ManagerSettingsChording` |
-| 2026-08-29 | `ManagerColorScheme`, `ManagerLayoutSelector`, `ManagerSaveButton`, `ManagerUndoRedo` |
-
-Mismatches already known, without opening the app:
-
-- `ManagerSettingsMouse.png` shows a Mouse box containing **Poll Rate**, which
-  2.2.0 removed, and cannot show **Scroll Throttle**, which the page now
-  documents (item 2).
-- `ManagerSettingsRGB.png` predates the Master Forge, so it shows the box as it
-  looked when RGB really was Lite-only — the claim item 3 had to delete.
-- The `USB` section added for item 2 has **no screenshot at all**.
-- `ManagerSettingsSpurring.png` is orphaned: item 3 deleted the section that
-  used it, because the Device Manager has no spurring box any more.
+| 2026-08-29 | everything else: `ManagerSELECTDEVICE` (unchanged, see below), `ManagerSettingsArpeggiates`, `ManagerSettingsMouse`, `ManagerSettingsRGB`, `ManagerColorScheme`, `ManagerLayoutSelector`, `ManagerSaveButton`, `ManagerUndoRedo` |
 
 **Also worth folding in while reshooting:**
 
 - Item 12b's case bug was on this page and is now fixed by correcting the
   reference to `ManagerSettingsAutoCorrect.png`. A reshoot renames the file
   anyway, which is the moment to settle on one spelling.
-- Eleven `Manager*.png` files in `assets/images` are referenced by no `.rst` at
-  all: `ManagerBootloaderButton-Lite`, `ManagerCONNECT`,
+- **Done:** eleven `Manager*.png` files in `assets/images` were referenced by
+  no `.rst` at all -- `ManagerBootloaderButton-Lite`, `ManagerCONNECT`,
   `ManagerDeviceButton-Lite`, `ManagerFirstTimeConnect`, `ManagerLinks`,
   `ManagerPowerButton-Lite`, `ManagerREDCONNECTBUTTON`, `ManagerSettingsResets`,
-  `ManagerSettingsSpurring`, `ManagerTerminal`, `ManagerVersion`. Some are
-  probably left from sections that were rewritten; worth deciding which to
-  delete once the new set exists.
+  `ManagerSettingsSpurring`, `ManagerTerminal`, `ManagerVersion`. Reconfirmed
+  with `grep -rl` across every `.rst` file and deleted.
 
-**What it needs (for the three settings-box screenshots still stale --
-`ManagerSettingsArpeggiates`, `ManagerSettingsMouse`, `ManagerSettingsRGB` --
-plus the missing `USB` box screenshot):** a device connected to the current
-Device Manager, cropped to its natural pixel size with no `:width:` override,
-matching the approach settled on for this segment's reshoots.
+**What it needs (for the missing `USB` box screenshot):** a device connected
+to the current Device Manager, cropped to its natural pixel size with no
+`:width:` override, matching the approach settled on for this item's other
+reshoots.
 
 ---
 
@@ -1090,7 +1084,7 @@ reporting`, `chording/concatenation style` ("Prepend concatenation style") and
 Serial API rows already show.
 
 Two settings that look missing are not: `mouse/caffeine` is documented as the
-Device Manager's `Active Mouse`, and `keyboard/command control swap` as
+Device Manager's `Caffeine`, and `keyboard/command control swap` as
 `GUI-CTRL Soft Swap` on the GTM page. Neither name matches the API.
 
 `mouse/enable` is the one entry in this table confirmed by a device rather

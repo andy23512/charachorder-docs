@@ -307,9 +307,9 @@ In this box, you can adjust settings relating to :doc:`CCOS'<CCOS>` mouse abilit
 
 	.. ccos-setting:: mouse/scroll throttle
 
-.. dropdown:: Active Mouse
+.. dropdown:: Caffeine
 
-	Active mode nudges your mouse cursor one pixel every minute or so (not a specific timing). This setting can be used to keep your computer from going to sleep. You might turn this setting off if you notice desktop apps are preventing you from getting mobile notifications (for example on Discord or Microsoft Teams).
+	Caffeine nudges your mouse cursor one pixel every minute or so (not a specific timing). This setting can be used to keep your computer from going to sleep. You might turn this setting off if you notice desktop apps are preventing you from getting mobile notifications (for example on Discord or Microsoft Teams).
 
 Chording
 --------
