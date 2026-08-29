@@ -256,12 +256,6 @@ Character Entry
 
 	Character entry, known to the CharaChorder community as "chentry," refers to typing one character at time.
 
-.. image:: /assets/images/ManagerSettingsChentry.png
-  :width: 1200
-  :alt: The Character Entry settings box
-
-In this box, you can change a few settings that relate to using your device for character entry.
-
 .. dropdown:: Swap Keymap 0 and 1
 
 	This setting will swap the behavior of the two keys on the bottom-left of the CharaChorder Lite.
