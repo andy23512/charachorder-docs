@@ -866,17 +866,21 @@ Confirmed while reshooting:
   dropdown either.
 - RGB/Leds box matches what item 14 already documented, field for field.
 
+**Done:** `ManagerSettingsModifiers.png` ("Chord Modifiers") -- confirmed no
+corresponding settings box exists in the current UI at all. It was never a
+CCOS setting, just fixed key-location documentation, so there was nothing to
+screenshot any more. Deleted the image and the `.. image::` block plus its
+one line of caption text from `docs/Device Manager.rst:219-223`; the
+Capitalization/Present Tense/Pluralizer/Past Tense/Comparative sections below
+it are unaffected and stay as they are.
+
 **Still open, deferred:** the entire Settings page layout changed since these
 docs were written -- it's now one continuously-scrolling page with category
 boxes stacked in this order: Keyboard, Mouse, Gaming, Fuzzy modifiers,
-Chording, Autocorrect, Arpeggiates, Leds, Misc, Usb, Backup. Three of the
-remaining ten screenshots don't have a clean 1:1 replacement and need a
+Chording, Autocorrect, Arpeggiates, Leds, Misc, Usb, Backup. Two of the
+remaining nine screenshots don't have a clean 1:1 replacement and need a
 decision on how to rewrite the surrounding text, not just the image:
 
-- `ManagerSettingsModifiers.png` ("Chord Modifiers"): no corresponding
-  settings box exists in the current UI at all. It was never a CCOS setting,
-  just fixed key-location documentation, so there may be nothing to
-  screenshot here any more.
 - `ManagerSettingsChentry.png`: neither "Swap Keymap 0 and 1" nor the
   "Character Entry (chentry)" toggle exist in the current Meta API or UI.
 - `ManagerSettingsDevice.png` ("Device Section"): no longer a single box.
@@ -895,7 +899,7 @@ The page shows 15 screenshots. All of them predate CCOS 3.0.0 (released
 
 | Last changed | Screenshots |
 |---|---|
-| 2024-01/02 | `ManagerSELECTDEVICE`, `ManagerColorScheme`, `ManagerLayoutSelector`, `ManagerSaveButton`, `ManagerSettingsArpeggiates`, `ManagerSettingsChentry`, `ManagerSettingsModifiers`, `ManagerSettingsMouse`, `ManagerSettingsRGB`, `ManagerUndoRedo` |
+| 2024-01/02 | `ManagerSELECTDEVICE`, `ManagerColorScheme`, `ManagerLayoutSelector`, `ManagerSaveButton`, `ManagerSettingsArpeggiates`, `ManagerSettingsChentry`, `ManagerSettingsMouse`, `ManagerSettingsRGB`, `ManagerUndoRedo` |
 | 2025-02-25 | `ChordManager`, `ManagerHistoryMenu`, `ManagerSettingsDevice` |
 | 2025-08-26 | `ManagerSettingsAutoCorrect`, `ManagerSettingsChording` |
 
@@ -925,8 +929,8 @@ Mismatches already known, without opening the app:
 
 **What it needs:** a device connected to the current Device Manager, and a
 decision about capture size. The existing set is inconsistent: widths run from
-250px (`ManagerSaveButton`) to 1066px (`ManagerSettingsModifiers`), and 7 of
-the 15 carry `:width: 1200` — an upscale for every one of them, since none is
+250px (`ManagerSaveButton`) to 1046px (`ManagerSettingsChentry`), and 7 of
+the 15 carried `:width: 1200` — an upscale for every one of them, since none is
 that wide. Worth settling on one capture width and dropping the `:width:`
 overrides rather than reproducing the mix.
 
