@@ -835,7 +835,7 @@ instead.
 
 ---
 
-## 15. Every screenshot on the Device Manager page is out of date (done, with follow-ups)
+## 15. Every screenshot on the Device Manager page is out of date (done)
 
 **File:** `docs/Device Manager.rst`, `docs/assets/images/Manager*.png`
 
@@ -972,33 +972,40 @@ Arpeggiates, Leds, Misc, Usb, Backup.
     current tab-row UI instead of the old dial, added an "A4 Layer"
     subsection alongside A1-A3, and added a new "Profile Selector" section
     with a new screenshot, `ManagerProfileSelector.png`.
-  - Side discovery, not yet acted on: A2 and A3's "this key has the name
-    'Numeric/Function Layer (Left)' and '...(Right)'" claim doesn't match the
-    live action codes menu, which shows both hands under the same unsuffixed
-    name ("Numeric Layer" / "Function Layer" twice, distinguished only by a
-    mirrored icon). Likely stale, but out of scope for this pass.
+  - Side discovery, since resolved as a non-issue: A2 and A3's "this key has
+    the name 'Numeric/Function Layer (Left)' and '...(Right)'" claim looked
+    like it didn't match the live action codes menu, which shows both hands
+    under the same unsuffixed title ("Numeric Layer" / "Function Layer"
+    twice, distinguished only by a mirrored icon). Turned out to be an
+    artifact of an incomplete cross-check: the bundled
+    `docs/_data/ccos/3.0.0.json` snapshot only carries `code`, `description`,
+    `display`, `id`, `name` per action -- no `variant` field -- but the live
+    Meta API does carry a `Variant` column (`left`/`right`) per the
+    maintainer's screenshot of the full table. The doc's "(Left)"/"(Right)"
+    phrasing is a faithful rendering of Title + Variant, so no fix needed.
 - `ManagerSELECTDEVICE.png` -- left as-is, not reshot. It's Chrome's own
   native "wants to connect to a serial port" permission dialog, not part of
   charachorder.io's UI, so it isn't expected to have changed, and reshooting
   it would require revoking the site's stored serial permission first.
 
 Every screenshot that existed at the start of this item has now either been
-reshot, or deliberately deleted/skipped with a documented reason. What's left
-open is scoped separately below: the missing Usb screenshot.
+reshot, or deliberately deleted/skipped with a documented reason. The one
+outright gap, a missing `USB` box screenshot, is also now filled in -- see
+"What it needs" below.
 
 Also newly discovered, not previously in this doc at all: **Gaming** (`Layer
 warp`) and **Fuzzy modifiers** (`Enable`, `Press threshold`, `Release
 threshold`, `Release guard threshold`) are entire settings categories with no
 documentation anywhere -- folds into item 17's scope.
 
-The page shows 15 screenshots. As of 2026-08-29 all of them are current except
-one gap, the missing `USB` box screenshot (see "What it needs" below):
+The page shows 16 screenshots (was 15; `ManagerSettingsUsb` is new). As of
+2026-08-29 all of them are current:
 
 | Last changed | Screenshots |
 |---|---|
 | 2025-02-25 | `ChordManager` |
 | 2025-08-26 | `ManagerSettingsAutoCorrect`, `ManagerSettingsChording` |
-| 2026-08-29 | everything else: `ManagerSELECTDEVICE` (unchanged, see below), `ManagerSettingsArpeggiates`, `ManagerSettingsMouse`, `ManagerSettingsRGB`, `ManagerColorScheme`, `ManagerLayoutSelector`, `ManagerSaveButton`, `ManagerUndoRedo` |
+| 2026-08-29 | everything else: `ManagerSELECTDEVICE` (unchanged, see below), `ManagerSettingsArpeggiates`, `ManagerSettingsMouse`, `ManagerSettingsRGB`, `ManagerColorScheme`, `ManagerLayoutSelector`, `ManagerSaveButton`, `ManagerUndoRedo`, `ManagerProfileSelector` (new), `ManagerSettingsUsb` (new) |
 
 **Also worth folding in while reshooting:**
 
@@ -1012,10 +1019,11 @@ one gap, the missing `USB` box screenshot (see "What it needs" below):
   `ManagerSettingsSpurring`, `ManagerTerminal`, `ManagerVersion`. Reconfirmed
   with `grep -rl` across every `.rst` file and deleted.
 
-**What it needs (for the missing `USB` box screenshot):** a device connected
-to the current Device Manager, cropped to its natural pixel size with no
-`:width:` override, matching the approach settled on for this item's other
-reshoots.
+**Done (missing `USB` box screenshot):** captured `ManagerSettingsUsb.png` from
+a connected device on the current Device Manager, cropped to its natural pixel
+size with no `:width:` override, and added an `.. image::` block to `docs/Device
+Manager.rst`'s USB section (previously had none at all), matching the pattern
+used for the other setting-box sections.
 
 ---
 

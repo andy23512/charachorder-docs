@@ -426,6 +426,9 @@ USB
 ---
 These settings are experimental. They are not in the :doc:`GTM<GenerativeTextMenu>`, so the Device Manager and the :doc:`Serial API<SerialAPI>` are the only ways to change them.
 
+.. image:: /assets/images/ManagerSettingsUsb.png
+  :alt: The Usb settings box
+
 .. dropdown:: Poll Rate
 
 	The polling rate (poll rate) is the frequency at which the device sends its input reports to the computer it is connected to, expressed in Hz (Hertz). At 1000 Hz the device reports 1000 times every second.
