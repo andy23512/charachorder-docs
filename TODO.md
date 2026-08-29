@@ -881,18 +881,32 @@ text from `docs/Device Manager.rst`; the "What is Character Entry?", "Swap
 Keymap 0 and 1", "Character Entry (chentry)", "Key Debounce Press", and "Key
 Debounce Release" dropdowns below it are unaffected and stay as they are.
 
+**Done:** `ManagerSettingsDevice.png` ("Device Section") -- confirmed the box
+split in two: Operating system and Realtime feedback moved into **Misc**;
+the library/layout/settings export buttons, Full profile backup/restore, and
+Reset Settings/Recovery moved into **Backup**. Replaced the single image with
+two new ones, `ManagerSettingsMisc.png` and `ManagerSettingsBackup.png`, and
+rewrote `docs/Device Manager.rst`'s "Device Section" to describe each box
+separately.
+
+Also confirmed the old "Auto-connect" toggle really is gone, not just moved:
+reloading the settings page no longer reconnects automatically, and requires
+clicking "Connect" every time. In its place there's now a "Recent Devices"
+list behind the Connect button that lets you reconnect a previously-used
+device with one click instead of going through the serial port permission
+popup again. Rewrote the two other places on the page that referenced
+Auto-connect (the "Connecting to the Device Manager" note, and the Library
+section's note about faster reconnect loading times) to describe Recent
+Devices instead, and added a `Recent Devices` anchor/paragraph under
+"Connecting to the Device Manager" since that's where the feature actually
+lives now.
+
 **Still open, deferred:** the entire Settings page layout changed since these
 docs were written -- it's now one continuously-scrolling page with category
 boxes stacked in this order: Keyboard, Mouse, Gaming, Fuzzy modifiers,
-Chording, Autocorrect, Arpeggiates, Leds, Misc, Usb, Backup. One of the
-remaining eight screenshots doesn't have a clean 1:1 replacement and needs a
-decision on how to rewrite the surrounding text, not just the image:
-
-- `ManagerSettingsDevice.png` ("Device Section"): no longer a single box.
-  Realtime feedback and Operating system moved into **Misc**; Reset
-  Settings/Recovery moved into **Backup**. The old Auto-connect toggle was not
-  found anywhere on the page during a full scroll-through -- needs another
-  look, possibly gone.
+Chording, Autocorrect, Arpeggiates, Leds, Misc, Usb, Backup. All eight
+remaining screenshots now have a clean 1:1 replacement -- no more surrounding
+text decisions needed for item 15 itself.
 
 Also newly discovered, not previously in this doc at all: **Gaming** (`Layer
 warp`) and **Fuzzy modifiers** (`Enable`, `Press threshold`, `Release
@@ -905,7 +919,7 @@ The page shows 15 screenshots. All of them predate CCOS 3.0.0 (released
 | Last changed | Screenshots |
 |---|---|
 | 2024-01/02 | `ManagerSELECTDEVICE`, `ManagerColorScheme`, `ManagerLayoutSelector`, `ManagerSaveButton`, `ManagerSettingsArpeggiates`, `ManagerSettingsMouse`, `ManagerSettingsRGB`, `ManagerUndoRedo` |
-| 2025-02-25 | `ChordManager`, `ManagerHistoryMenu`, `ManagerSettingsDevice` |
+| 2025-02-25 | `ChordManager`, `ManagerHistoryMenu` |
 | 2025-08-26 | `ManagerSettingsAutoCorrect`, `ManagerSettingsChording` |
 
 Mismatches already known, without opening the app:

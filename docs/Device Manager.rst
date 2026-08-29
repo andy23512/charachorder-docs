@@ -17,7 +17,7 @@ Connecting to the Device Manager
 You can follow the steps below to connect to the device manager for the first time.
 
 .. Note::
-	If you have previously selected :ref:`Auto-connect<Autoreconnect>` within that browser for the same device, you may not need to repeat these steps every time that you go to the device manager page.
+	If you have connected this device from this browser before, you can skip the serial port permission popup: click "Connect" and choose your device from the :ref:`Recent Devices<Recent Devices>` list instead.
 
 1. On a chromium based browser, such as Chrome or Edge, go to the `CharaChorder Device Manager <https://charachorder.io>`__
 2. Click “Connect” at the bottom center of the screen
@@ -28,6 +28,10 @@ You can follow the steps below to connect to the device manager for the first ti
   :alt: Image showing the dialogue box requesting permission to open a serial connection
 
 If these steps were performed correctly, you can see the connected device name in the bottom bar where "Connect" was previously.
+
+.. _Recent Devices:
+
+Once you've connected a device this way, the browser remembers it. The next time you click "Connect", you'll see a "Recent Devices" list with that device already in it -- click its name to reconnect without going through the serial port permission popup again.
 
 .. _serialportaccess:
 
@@ -176,21 +180,21 @@ Additionally, you can restore your chords, your layout, and your settings on the
 Device Section
 --------------
 
-.. _Autoreconnect:
+The settings box that used to live here has since split into two smaller boxes: Misc and Backup.
 
-Here you'll find a helpful toggle labeled "Auto-connect". By enabling this, the device manager
-will automatically connect your paired device through a :doc:`serial connection<SerialAPI>`
-every time that you open it. In doing so, it will also read your chords to detect changes
-that you may have made since the last time you connected it. If you have this enabled,
-you won't have to manually connect your device to the manager ever again!
+Misc
+~~~~
+.. image:: /assets/images/ManagerSettingsMisc.png
+  :alt: The Misc settings box
 
+Here you can select your device's operating system and toggle :ref:`realtime feedback<GenerativeTextMenu:Realtime Feedback>` on or off.
 
-The boot message and :ref:`realtime feedback<GenerativeTextMenu:Realtime Feedback>` can be enabled or disabled in this box.
-Additionally, you can reset some parts of your device files such as your chords, your layout, and even return to factory settings.
+Backup
+~~~~~~
+.. image:: /assets/images/ManagerSettingsBackup.png
+  :alt: The Backup settings box
 
-.. image:: /assets/images/ManagerSettingsDevice.png
-  :width: 1200
-  :alt: The Device settings box
+This box lets you export your library, layout, or settings individually, download or restore a full profile backup, reset your device to factory settings, or enter recovery mode.
 
 Arpeggiates
 -----------
@@ -452,7 +456,7 @@ Library
 
 The Library is a powerful tool that lets you add, delete and edit chords stored in your chord library. It's easy to use and quick to load. We'll go over how to use it below.
 
-When you :ref:`connect<Device Manager:Connecting to the Device Manager>` your device to the device manager, the webpage will start reading the chords on your device. It may take a couple of seconds — or even over a minute for very large libraries — to load the first time. If you have :ref:`auto-reconnect<Autoreconnect>` enabled, the loading times are much shorter.
+When you :ref:`connect<Device Manager:Connecting to the Device Manager>` your device to the device manager, the webpage will start reading the chords on your device. It may take a couple of seconds — or even over a minute for very large libraries — to load the first time. Reconnecting a device you've connected before, e.g. via the :ref:`Recent Devices<Recent Devices>` list, loads much faster.
 
 Chords displayed here are shown in alphabetical order, using the list of :ref:`chord outputs<Chords:Chord Output>`. The number of chords shown on the library depends on your screen size and browser zoom settings. Above the chords list, you'll see the search bar which will display the number of chords on your CCOS device until something is typed there.
 
