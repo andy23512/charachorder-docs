@@ -571,7 +571,7 @@ images, notes and dropdowns. It should stay hand-written.
 
 ---
 
-## 12. Pre-existing markup bugs in the RST sources
+## 12. Pre-existing markup bugs in the RST sources (decided)
 
 Unrelated to the Meta API work — found while checking the deployed site. Both
 predate this branch (`git log -L` points at upstream commits by `duianto`,
@@ -687,14 +687,17 @@ files warn `Explicit markup ends without a blank line`, and the same ten are not
 in any toctree. `sphinx.yml` does not pass `-W`, so none of this fails the
 build.
 
-### Question for all of item 12
+### Question for all of item 12 (decided)
 
 **Fix in the fork, or send upstream?** None of 12a-12c is fork-specific — `git
 log -L` points at upstream commits by `duianto`, 2025-08 — so upstream seems the
-better home. 12b and 12c are already fixed here; the question is whether to also
+better home. 12b and 12c are already fixed here; the question was whether to also
 send them as a separate PR. Note item 10 decided against opening upstream issues
 for the data quirks, which is a different call: these are patches to this
 repository's own content, not reports about someone else's data.
+
+**Decided:** fix in this fork only, no upstream PR. All three (12a-12c) are
+already fixed here, so no further action needed.
 
 ---
 
@@ -996,16 +999,19 @@ outright gap, a missing `USB` box screenshot, is also now filled in -- see
 Also newly discovered, not previously in this doc at all: **Gaming** (`Layer
 warp`) and **Fuzzy modifiers** (`Enable`, `Press threshold`, `Release
 threshold`, `Release guard threshold`) are entire settings categories with no
-documentation anywhere -- folds into item 17's scope.
+documentation anywhere -- folded into item 17's scope, along with a new
+**Keyboard** section (item 17 also covered by the same walk).
 
-The page shows 16 screenshots (was 15; `ManagerSettingsUsb` is new). As of
-2026-08-29 all of them are current:
+The page shows 19 screenshots (was 15; `ManagerSettingsUsb`,
+`ManagerSettingsKeyboard`, `ManagerSettingsGaming` and
+`ManagerSettingsFuzzyModifiers` are new, added while working items 15 and 17).
+As of 2026-08-29 all of them are current:
 
 | Last changed | Screenshots |
 |---|---|
 | 2025-02-25 | `ChordManager` |
 | 2025-08-26 | `ManagerSettingsAutoCorrect`, `ManagerSettingsChording` |
-| 2026-08-29 | everything else: `ManagerSELECTDEVICE` (unchanged, see below), `ManagerSettingsArpeggiates`, `ManagerSettingsMouse`, `ManagerSettingsRGB`, `ManagerColorScheme`, `ManagerLayoutSelector`, `ManagerSaveButton`, `ManagerUndoRedo`, `ManagerProfileSelector` (new), `ManagerSettingsUsb` (new) |
+| 2026-08-29 | everything else: `ManagerSELECTDEVICE` (unchanged, see below), `ManagerSettingsArpeggiates`, `ManagerSettingsMouse`, `ManagerSettingsRGB`, `ManagerColorScheme`, `ManagerLayoutSelector`, `ManagerSaveButton`, `ManagerUndoRedo`, `ManagerProfileSelector` (new), `ManagerSettingsUsb` (new), `ManagerSettingsKeyboard` (new), `ManagerSettingsGaming` (new), `ManagerSettingsFuzzyModifiers` (new) |
 
 **Also worth folding in while reshooting:**
 
@@ -1082,7 +1088,7 @@ names still describe them correctly.
 
 ---
 
-## 17. Thirteen settings the API exposes and the docs never mention
+## 17. Thirteen settings the API exposes and the docs never mention (done)
 
 **Files:** `docs/GenerativeTextMenu.rst`, `docs/Device Manager.rst`
 
@@ -1142,6 +1148,45 @@ with API descriptions can be written from the metadata.
 Kept separate from item 14 because the LED settings have a known home (the
 `RGB` section) and a specific obstacle (nothing distinguishes `off delay` from
 `on off transition`). These have neither.
+
+**Done: walked a CharaChorder Lite S2 (CCOS 3.0.0) through every box on the
+Device Manager's Settings page** to find each of the 14 settings' actual home,
+then wrote them into `docs/Device Manager.rst`. New `Keyboard`, `Gaming` and
+`Fuzzy modifiers` sections were created (none existed before), inserted next
+to `Mouse` to roughly match the live UI's box order; the other settings went
+into the existing `Chording`, `Arpeggiates` and `USB` sections.
+
+- Settings with a usable API description got that description as prose:
+  `keyboard/rollover`, `gaming/layer warp`, `chording/concatenation style`,
+  `chording/minimum chord keys`, `fuzzy modifiers/press theshold`,
+  `release theshold` and `release guard threshold`, `usb/aggressive
+  reporting`.
+- `mouse/enable` and `fuzzy modifiers/enable` have no API description, but are
+  plain on/off toggles, so they got a one-line hand-written blurb instead
+  (matching how `Caffeine` and other boolean toggles are already documented).
+- `arpeggiates/mode`, `chording/tap dance tolerance`, `usb/aggressive
+  reporting throttle` and `usb/hid resend throttle` got **no explanatory
+  prose** -- only a bare `.. dropdown::` wrapping the `.. ccos-setting::`
+  table (value/range/enum, no description). Checked both `Beta Releases.rst`
+  and the live Meta API's `changelog.json` for `two_s3`/3.0.0 for material to
+  write these four up; found nothing usable for any of them.
+
+Two settings turned up during the device walk that were not in the original
+count of 14, both booleans with no API description: `keyboard/enable` (no
+home before now -- added to the new `Keyboard` section) and `leds/enable`
+(the `RGB` section never mentioned the LEDs' own on/off toggle -- added as a
+one-line blurb, same treatment as `mouse/enable`). `chording/enable` and
+`arpeggiates/enable` were already covered by existing prose in their
+respective sections ("as well as turn off chording altogether", "you can
+enable or disable arpeggiates"), just never through the `.. ccos-setting::`
+table, so they were left alone.
+
+New screenshots: `ManagerSettingsKeyboard.png`, `ManagerSettingsGaming.png`,
+`ManagerSettingsFuzzyModifiers.png`. The existing `ManagerSettingsMouse.png`,
+`ManagerSettingsChording.png`, `ManagerSettingsArpeggiates.png`,
+`ManagerSettingsRGB.png` and `ManagerSettingsUsb.png` already showed every
+newly-documented field in frame (checked each one), so none of them needed
+re-cropping.
 
 ---
 

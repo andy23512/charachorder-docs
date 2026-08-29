@@ -198,6 +198,10 @@ Arpeggiates
 
 In this box, ou can enable or disable arpeggiates as well as increase or decrease the :ref:`arpeggiate timeout setting<GenerativeTextMenu:Arpeggiate Timeout>`.
 
+.. dropdown:: Mode
+
+	.. ccos-setting:: arpeggiates/mode
+
 Chord Modifiers
 ---------------
 .. dropdown:: What are chord modifiers?
@@ -276,6 +280,41 @@ Character Entry
 	We should adjust this setting if we are having unintentional duplicate characters while typing. Increasing this value will lower the probability that unwanted duplicate characters will appear because it tells :doc:`CCOS<CCOS>` to wait longer before typing an additional character that’s assigned to the same switch-direction. However, having this setting set too high might also cause issues with :doc:`CCOS<CCOS>` not reading intentional double-presses, so it’s recommended to try different numbers in small increments. This setting should be used in connection with the debounce press setting.
 
 
+Keyboard
+--------
+.. image:: /assets/images/ManagerSettingsKeyboard.png
+  :alt: The Keyboard settings box
+
+In this box, you can adjust settings relating to :doc:`CCOS'<CCOS>` keyboard input, or turn keyboard input off altogether.
+
+.. dropdown:: Enable
+
+	Turns the device's keyboard input off entirely. Chording and mouse input, controlled by their own "Enable" toggles below, keep working independently of this one.
+
+.. dropdown:: Command Control Swap
+
+	Swaps the ``CTRL`` and ``GUI`` (Command on Mac) keys, to make transitioning between Mac and other systems easier.
+
+	You can read a more in-depth explanation in the :ref:`GTM section<GenerativeTextMenu:GUI-CTRL Soft Swap>`.
+
+.. dropdown:: Debounce Press
+
+	The debounce press setting refers to the time frame (measured in milliseconds) in which :doc:`CCOS<CCOS>` will filter out duplicate key activations on a press event.
+
+	You can read a more in-depth explanation in the :ref:`GTM section<GenerativeTextMenu:Debounce Press>`.
+
+.. dropdown:: Debounce Release
+
+	The debounce release setting refers to the time frame (measured in milliseconds) in which :doc:`CCOS<CCOS>` will filter out duplicate key activations on a release event.
+
+	You can read a more in-depth explanation in the :ref:`GTM section<GenerativeTextMenu:Debounce Release>`.
+
+.. dropdown:: Rollover
+
+	How many keys can be held at once and still be detected by your PC, excluding modifier keys. Older hardware or especially BIOS/UEFI might only support 6-key rollover. This only affects reporting to the host system; CCOS always uses full n-key rollover. Requires a replug to be effective.
+
+	.. ccos-setting:: keyboard/rollover
+
 Mouse
 -----
 .. dropdown:: Mouse???
@@ -286,6 +325,10 @@ Mouse
   :alt: The Mouse settings box
 
 In this box, you can adjust settings relating to :doc:`CCOS'<CCOS>` mouse abilities.
+
+.. dropdown:: Enable
+
+	Turns the device's mouse functionality off entirely.
 
 .. dropdown:: Mouse Speed(s)
 
@@ -311,6 +354,46 @@ In this box, you can adjust settings relating to :doc:`CCOS'<CCOS>` mouse abilit
 
 	Caffeine nudges your mouse cursor one pixel every minute or so (not a specific timing). This setting can be used to keep your computer from going to sleep. You might turn this setting off if you notice desktop apps are preventing you from getting mobile notifications (for example on Discord or Microsoft Teams).
 
+Gaming
+------
+.. image:: /assets/images/ManagerSettingsGaming.png
+  :alt: The Gaming settings box
+
+.. dropdown:: Layer Warp
+
+	Re-presses held keys with their new layer's mappings when you switch layers while still holding them down.
+
+	.. ccos-setting:: gaming/layer warp
+
+Fuzzy modifiers
+---------------
+.. image:: /assets/images/ManagerSettingsFuzzyModifiers.png
+  :alt: The Fuzzy modifiers settings box
+
+Modifiers (like ``SHIFT`` or a layer key) normally only work if you press them before the key you want to modify, and release them before pressing any key you don't want modified. Fuzzy modifiers relax this rule: they let you press or release the modifier at almost the same time as the key, checking whether the modifier's press or release happened close enough in time to the key press instead of requiring a strict order.
+
+.. dropdown:: Enable
+
+	Turns fuzzy modifiers off entirely. The three thresholds below have no effect while this is off.
+
+.. dropdown:: Press theshold
+
+	The time between a modifier press and the previous key press.
+
+	.. ccos-setting:: fuzzy modifiers/press theshold
+
+.. dropdown:: Release theshold
+
+	The time between a modifier release and the previous key press.
+
+	.. ccos-setting:: fuzzy modifiers/release theshold
+
+.. dropdown:: Release guard threshold
+
+	The time between a modifier press and a subsequent key press that prevents the next modifier release from affecting it.
+
+	.. ccos-setting:: fuzzy modifiers/release guard threshold
+
 Chording
 --------
 .. dropdown:: What is Chording?
@@ -334,6 +417,16 @@ In this box, you can adjust settings relating to :doc:`CCOS'<CCOS>` :doc:`chordi
 
 	The release tolerance refers to a window of time in which a chord can be performed, measured in milliseconds (ms). This timer is initiated upon the first “release” action of any key in a chord and ends once the chord is fully performed, or until the release tolerance runs out, whichever comes first. Read the :ref:`GTM section<GenerativeTextMenu:Release Tolerance>` for a more in-depth explanation.
 
+.. dropdown:: Minimum Chord Keys
+
+	The fewest keys, pressed at the same time, that count as a chord. Setting this to 1 can very slightly affect typing latency.
+
+	.. ccos-setting:: chording/minimum chord keys
+
+.. dropdown:: Tap Dance Tolerance
+
+	.. ccos-setting:: chording/tap dance tolerance
+
 .. _Compound Timeout Setting:
 .. dropdown:: Compound timeout
 
@@ -351,6 +444,13 @@ In this box, you can adjust settings relating to :doc:`CCOS'<CCOS>` :doc:`chordi
 	* Latency (classic) mode. Each key is printed instantly and backspaced after a successful chord.
 	* Smart adds a small amount of latency depending on your tolerances, and only prints characters when it is no longer plausible for the inputs to be a chord input.
 	* Continuous (spurring) allows you to jump from one chord to the next without releasing all keys, with more potential speed traded against the flexibility of character entry.
+
+.. dropdown:: Concatenation Style
+
+	Appended (classic) places spaces directly after a chord. Recommended for typists. Prepended places spaces lazily between two chords. Recommended for text editing and coding.
+
+	.. ccos-setting:: chording/concatenation style
+	   :columns: Device, Default
 
 Autocorrect
 -----------
@@ -379,6 +479,10 @@ The :ref:`GTM<GenerativeTextMenu:LEDs>` only offers the on/off toggle and the br
 
 .. image:: /assets/images/ManagerSettingsRGB.png
   :alt: The RGB settings box
+
+.. dropdown:: Enable
+
+	Turns the LEDs off entirely.
 
 .. dropdown:: Color
 
@@ -439,6 +543,21 @@ These settings are experimental. They are not in the :doc:`GTM<GenerativeTextMen
 
 	.. ccos-setting:: usb/poll rate
 	   :columns: Device, Default
+
+.. dropdown:: Aggressive Reporting
+
+	Some hardware combinations, especially with USB hubs, might cause the host to time out waiting for responses. Enabling this setting will cause the device to always respond with the last report.
+
+	.. ccos-setting:: usb/aggressive reporting
+	   :columns: Device, Default
+
+.. dropdown:: Aggressive Reporting Throttle
+
+	.. ccos-setting:: usb/aggressive reporting throttle
+
+.. dropdown:: Hid Resend Throttle
+
+	.. ccos-setting:: usb/hid resend throttle
 
 Library
 *******
