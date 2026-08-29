@@ -90,7 +90,6 @@ Undo and Redo
 -------------
 
 .. image:: /assets/images/ManagerUndoRedo.png
-  :width: 200
   :alt: The Undo and Redo arrows
 
 Near the top left corner, the device manager has handy undo and redo buttons which do exactly what their names describe. If you're making changes to your layout, your chords, or your layout, you can step back, one change at a time, all the way back to the very first change that you made during that session. Once you're stepped back, you can step forward to redo the change(s) that was/were undone.
@@ -100,24 +99,22 @@ Color Scheme
 On the bottom right of the device manager, you'll see a circle with a solid color. Hovering over this circle will reveal the label "color scheme." You can click this circle to change the color scheme of the device manager. In the color scheme menu, you can choose your preferred color using a color pallette, an RGB color system, or by clicking the dropper icon to choose a color on your screen.
 
 .. image:: /assets/images/ManagerColorScheme.png
-  :width: 300
   :alt: The Color Scheme Menu
 
 Light and Dark Mode
 -------------------
 Also in the bottom right-hand corner, you'll find a sun or moon icon where you can toggle between light and dark mode. This toggle can help those who would rather a brighter screen to see better or a darker screen to reduce eye strain.
 
-Save Button
------------
+Apply Button
+------------
 
 .. image:: /assets/images/ManagerSaveButton.png
-  :width: 200
-  :alt: The Save Button
+  :alt: The Apply Button
 
-If you make changes in the :ref:`library<Device Manager:Library>`, the :ref:`layout editor<Device Manager:Layout>` or the :ref:`device menu<Device Manager:Device>`, a colored "save" button will pop up on your screen, towards the top left corner.
+If you make changes in the :ref:`library<Device Manager:Library>`, the :ref:`layout editor<Device Manager:Layout>` or the :ref:`device menu<Device Manager:Device>`, a colored "apply" button will pop up on your screen, towards the top left corner.
 
 .. Note::
-	Your changes will not take effect until you click the save button.
+	Your changes will not take effect until you click the apply button.
 
 
 Device
@@ -128,27 +125,19 @@ Read on to see the different settings you can change. You can find more detailed
 Backup Section
 --------------
 
-.. image:: /assets/images/ManagerHistoryMenu.png
-  :width: 400
-  :alt: The Backup Menu
-
-The Backup Menu is home to your backups as well as the place to go to in order to restore your device by using a backup file. There are different kinds of backups that you can create and we'll cover all of them in the next section.
-
-If you toggle the "Auto-backup" on, then the website will store a copy of your backup on your browser.  The backup is stored in the browser that you're using at that time and remains on your computer, so only YOU can access it.
-
-On the Device Manager, you can create backups of your chords, your layout, and even your settings. Follow the steps below to create a backup and to restore saved backups to your :doc:`CCOS<CCOS>` device.
+There are different kinds of backups that you can create on the Device Manager -- of your chords, your layout, or even your settings -- and we'll cover all of them below. These backups are made using the "Backup" box in the :ref:`Device Section<Device Manager:Device Section>`.
 
 Creating a Backup
 ~~~~~~~~~~~~~~~~~
 .. Note::
 	In order to follow these steps, you must already have your device :ref:`connected<Device Manager:Connecting to the Device Manager>` to the device manager.
 
-1. Open the Device tab and locate the "Backup" menu in the top left.
+1. Open the Settings tab and scroll down to the "Backup" box.
 
-2. Choose an "individual backup" to download to your computer, or select "download everything" to download a single file with all three parts. The file(s) will be downloaded in .json format.
+2. Choose an individual "Library", "Layout" or "Settings" backup to download to your computer, or select "Full profile" to download a single file with all three parts. The file(s) will be downloaded in .json format.
 
 	.. note::
-		You can make individual backups of just your chords, just your layout, or just your settings. The "download everything" option will download all three of these in a single file instead of three separate files.
+		You can make individual backups of just your chords, just your layout, or just your settings. The "Full profile" option will download all three of these in a single file instead of three separate files.
 
 3. If prompted, select a location to save to on your computer and rename the file to your liking.
 
@@ -161,7 +150,7 @@ Additionally, you can restore your chords, your layout, and your settings on the
 .. Note::
 	In order to follow these steps, you must already have your device :ref:`connected<Device Manager:Connecting to the Device Manager>` to the device manager.
 
-1. Open the Device tab and locate the "Backup" menu in the top left.
+1. Open the Settings tab and scroll down to the "Backup" box.
 
 2. Click on "Restore".
 
@@ -170,12 +159,12 @@ Additionally, you can restore your chords, your layout, and your settings on the
 	.. note::
 		Files that you can restore from will have been created ahead of time by following the :ref:`steps to create a backup<Device Manager:Creating a Backup>`.
 
-4. If there are changes, the :ref:`save button<Device Manager:Save Button>` will appear on the top left. Note the changes in the appropriate tab. If you restored chords, check the :ref:`chords tab<Device Manager:Library>`, if you restored a layout, check the :ref:`layout tab<Device Manager:Layout>`, and if you restored settings, check the :ref:`settings tab<Device Manager:Device>`.
+4. If there are changes, the :ref:`apply button<Device Manager:Apply Button>` will appear on the top left. Note the changes in the appropriate tab. If you restored chords, check the :ref:`chords tab<Device Manager:Library>`, if you restored a layout, check the :ref:`layout tab<Device Manager:Layout>`, and if you restored settings, check the :ref:`settings tab<Device Manager:Device>`.
 
 	.. note::
 		The restore feature does NOT erase data from your device. If there is a conflict (such as a changed setting, a different key in the layout, or a chord that has a different :ref:`output<Chords:Chord Output>`), that will be overwritten by the restore file. Settings and layout backups ALWAYS overwrite everything.
 
-5. Once you see the changes that the restore file made, you can click :ref:`save<Device Manager:Save Button>` to apply the changes.
+5. Once you see the changes that the restore file made, you can click :ref:`apply<Device Manager:Apply Button>` to apply the changes.
 
 Device Section
 --------------
@@ -490,7 +479,7 @@ You can follow the steps below to create a new chord on the device manager.
 		You can add any number of chords at a time without defining the desired :ref:`chord output<Chords:Chord Output>`.
 
 	.. Warning::
-		If you click :ref:`save<Device Manager:Save Button>`, before defining a :ref:`chord output<Chords:Chord Output>` as described in :ref:`step three<Step 3>`, any chords that you've created will save to your device with a blank output and will lead to strange behavior.
+		If you click :ref:`apply<Device Manager:Apply Button>`, before defining a :ref:`chord output<Chords:Chord Output>` as described in :ref:`step three<Step 3>`, any chords that you've created will save to your device with a blank output and will lead to strange behavior.
 
 .. _Step 3:
 
@@ -502,7 +491,7 @@ You can follow the steps below to create a new chord on the device manager.
 
 	As you type, you'll notice that your text has changed color to match your :ref:`color scheme<Device Manager:Color Scheme>` and that the end of your text has a floating dot immediately to the right.
 
-4. Once you are satisfied with your :ref:`output<Chords:Chord Output>`, you can proceed to modify another chord or click :ref:`save<Device Manager:Save Button>`.
+4. Once you are satisfied with your :ref:`output<Chords:Chord Output>`, you can proceed to modify another chord or click :ref:`apply<Device Manager:Apply Button>`.
 
 
 Deleting a Chord
@@ -521,7 +510,7 @@ You can follow the steps below to delete a chord in the device manager.
 	.. Tip::
 		You can mark multiple chords for deletion at a time. Flipping through the pages in your chord library will not unmark the chords that you have marked for deletion.
 
-3. Once you have marked the undesired chords for deletion and are ready to delete them, click the :ref:`save button<Device Manager:Save Button>`.
+3. Once you have marked the undesired chords for deletion and are ready to delete them, click the :ref:`apply button<Device Manager:Apply Button>`.
 
 	Once you click save, the marked chord maps will disappear from the list.
 
@@ -544,17 +533,17 @@ You can follow the steps below to edit an existing chord in the device manager.
 		As you type your :ref:`chord output<Chords:Chord Output>`, you'll notice that your cursor will have a bubble with a ``+`` above it. You can click this to open the :ref:`action codes menu<Device Manager:Using Action Codes>` where you can search for specific action codes or browse through the action codes available to assign into a :ref:`chord output<Chords:Chord Output>`. Read the :ref:`action codes section<Device Manager:Using Action Codes>` for information on the different kinds of action codes.
 
 	.. Tip::
-		You can edit multiple chords before :ref:`saving<Device Manager:Save Button>` your changes. Flipping through the pages in your chord library will not undo the changes that you have made to your existing chords.
+		You can edit multiple chords before :ref:`applying<Device Manager:Apply Button>` your changes. Flipping through the pages in your chord library will not undo the changes that you have made to your existing chords.
 
-4. Once you are ready to :ref:`save<Device Manager:Save Button>` your changes, click :ref:`save<Device Manager:Save Button>`.
+4. Once you are ready to :ref:`apply<Device Manager:Apply Button>` your changes, click :ref:`apply<Device Manager:Apply Button>`.
 
-	Once you click :ref:`save<Device Manager:Save Button>`, the chord(s) that you've modified will change color to match the rest of the list and the floating dot will disappear.
+	Once you click :ref:`apply<Device Manager:Apply Button>`, the chord(s) that you've modified will change color to match the rest of the list and the floating dot will disappear.
 
 Share button
 ------------
 Next to every chord, you will see a share icon. You can share individual chord maps with others by pressing this button. When you do, your computer's clipboard will copy a URL that you can share with anyone who can then add that exact chord map to their own CharaChorder through the Device Manager.
 
-When you follow a chord map link, you'll be taken to the Library where you'll see the new chord map ready to be :ref:`saved<Device Manager:Save Button>`.
+When you follow a chord map link, you'll be taken to the Library where you'll see the new chord map ready to be :ref:`applied<Device Manager:Apply Button>`.
 
 
 Layout
@@ -594,7 +583,6 @@ Layer Selector
 	The following section assumes that you have already :ref:`connected<Device Manager:Connecting to the Device Manager>` your device to the device manager.
 
 .. image:: /assets/images/ManagerLayoutSelector.png
-  :width: 300
   :alt: Image of the Layer Selector bar
 
 Above the diagram of your device, you'll see a circle with the letters "ABC" in the middle. The circle, together with the "wings" on either side (one on the left with the numbers "123" inscribed and one on the right with "fx" stylized within), make up the layer selector. You can select any one of these to view the keys that are mapped to each location, on each layer.
@@ -618,14 +606,14 @@ How to Remap Your Keys
 	Once you select the :ref:`action code<Device Manager:Using Action Codes>`, you will notice that the layout diagram now reflects the selected :ref:`action code<Device Manager:Using Action Codes>` highlighted according to your :ref:`color scheme<Device Manager:Color Scheme>` and it will be accompanied by a floating dot.
 
 	.. Tip::
-		You can edit multiple keys before :ref:`saving<Device Manager:Save Button>` your changes. Flipping through the :ref:`layers<Device Manager:Layer Selector>` will not undo the changes that you have made to the layout so far.
+		You can edit multiple keys before :ref:`applying<Device Manager:Apply Button>` your changes. Flipping through the :ref:`layers<Device Manager:Layer Selector>` will not undo the changes that you have made to the layout so far.
 
-4. Once you have changed the desired key(s), click the :ref:`save button<Device Manager:Save Button>`.
+4. Once you have changed the desired key(s), click the :ref:`apply button<Device Manager:Apply Button>`.
 
 	.. note::
-		Your changes will not take effect until you click :ref:`save<Device Manager:Save Button>`.
+		Your changes will not take effect until you click :ref:`apply<Device Manager:Apply Button>`.
 
-	Once you click :ref:`save<Device Manager:Save Button>`, the highlighted key(s) will lose their highlight and the floating dot will disappear. Your layout diagram will be black and white.
+	Once you click :ref:`apply<Device Manager:Apply Button>`, the highlighted key(s) will lose their highlight and the floating dot will disappear. Your layout diagram will be black and white.
 
 Using Action Codes
 ~~~~~~~~~~~~~~~~~~

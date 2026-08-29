@@ -835,7 +835,7 @@ instead.
 
 ---
 
-## 15. Every screenshot on the Device Manager page is out of date (in progress)
+## 15. Every screenshot on the Device Manager page is out of date (done, with follow-ups)
 
 **File:** `docs/Device Manager.rst`, `docs/assets/images/Manager*.png`
 
@@ -901,12 +901,58 @@ Devices instead, and added a `Recent Devices` anchor/paragraph under
 "Connecting to the Device Manager" since that's where the feature actually
 lives now.
 
-**Still open, deferred:** the entire Settings page layout changed since these
-docs were written -- it's now one continuously-scrolling page with category
-boxes stacked in this order: Keyboard, Mouse, Gaming, Fuzzy modifiers,
-Chording, Autocorrect, Arpeggiates, Leds, Misc, Usb, Backup. All eight
-remaining screenshots now have a clean 1:1 replacement -- no more surrounding
-text decisions needed for item 15 itself.
+The entire Settings page layout changed since these docs were written -- it's
+now one continuously-scrolling page with category boxes stacked in this
+order: Keyboard, Mouse, Gaming, Fuzzy modifiers, Chording, Autocorrect,
+Arpeggiates, Leds, Misc, Usb, Backup.
+
+**Done:** reshot the remaining screenshots against the current UI:
+
+- `ManagerColorScheme.png`, `ManagerSaveButton.png`, `ManagerUndoRedo.png`,
+  `ChordManager.png` -- straightforward reshoots. Dropped `:width:` overrides
+  on `ManagerUndoRedo.png` (200 -> natural 85px) and `ManagerColorScheme.png`
+  (300 -> natural 165px), both of which were upscaling blurrily; kept
+  `ChordManager.png`'s `:width: 1200`, since its natural size (1568px) is
+  still wider than that.
+- The button labelled "save" throughout this page is now labelled **Apply**.
+  Renamed the "Save Button" section to "Apply Button" (heading + anchor) and
+  every "save"/"saving"/"saved" mention that referred to it, across the
+  Library, Layout, and Backup Section instructions -- all thirteen references
+  were self-contained within `Device Manager.rst`, so nothing outside this
+  page needed touching.
+- `ManagerSettingsDevice.png`'s replacement Backup box (see above) turned out
+  to duplicate the pre-existing "Backup Section" heading almost entirely
+  (same Library/Layout/Settings/Full profile/Restore controls, just laid out
+  differently). Removed that section's intro paragraph, its "Auto-backup"
+  toggle mention (confirmed gone -- no such toggle exists anywhere on the
+  Settings page any more), and `ManagerHistoryMenu.png` as redundant. Kept
+  the "Creating a Backup"/"Restoring from a Backup" step-by-step instructions
+  under the same heading names, since seven other pages (`CharaChorder X`,
+  `CharaChorder_Lite`, `CharaChorder Two`, `CharaChorder One`,
+  `GenerativeTextMenu`, `CCOS`, `Master Forge`) `:ref:` them directly; just
+  updated "Backup menu in the top left" to "Settings tab, Backup box" to
+  match where the feature actually lives now.
+- `ManagerLayoutSelector.png`'s underlying UI changed more than a screenshot
+  swap can fix: the old circular "ABC" dial with "123"/"fx" wings is gone,
+  replaced by a row of tabs that now includes a fourth layer, `A4`, that
+  didn't exist before. There's also a separate, unrelated "A/B/C" radio
+  control near the top of the page (purpose unconfirmed -- didn't respond to
+  clicks, no tooltip found) and a circular icon next to the layer tabs that
+  turned out to be a "Reset Layout" trigger (not clicked). Per instruction,
+  only swapped the image for now and dropped its `:width: 300` override
+  (natural size is 212px); the prose still says "three layers" and describes
+  the old circle/wings UI -- left as a known inaccuracy rather than
+  researched further this session. The `A4` layer's purpose and the `A/B/C`
+  control are still unidentified.
+- `ManagerSELECTDEVICE.png` -- left as-is, not reshot. It's Chrome's own
+  native "wants to connect to a serial port" permission dialog, not part of
+  charachorder.io's UI, so it isn't expected to have changed, and reshooting
+  it would require revoking the site's stored serial permission first.
+
+Every screenshot that existed at the start of this item has now either been
+reshot, or deliberately deleted/skipped with a documented reason. What's left
+open is scoped separately below (the `A4`/`A B C` Layout mystery, the missing
+Usb screenshot, and the orphaned-file cleanup).
 
 Also newly discovered, not previously in this doc at all: **Gaming** (`Layer
 warp`) and **Fuzzy modifiers** (`Enable`, `Press threshold`, `Release
@@ -918,9 +964,10 @@ The page shows 15 screenshots. All of them predate CCOS 3.0.0 (released
 
 | Last changed | Screenshots |
 |---|---|
-| 2024-01/02 | `ManagerSELECTDEVICE`, `ManagerColorScheme`, `ManagerLayoutSelector`, `ManagerSaveButton`, `ManagerSettingsArpeggiates`, `ManagerSettingsMouse`, `ManagerSettingsRGB`, `ManagerUndoRedo` |
-| 2025-02-25 | `ChordManager`, `ManagerHistoryMenu` |
+| 2024-01/02 | `ManagerSELECTDEVICE`, `ManagerSettingsArpeggiates`, `ManagerSettingsMouse`, `ManagerSettingsRGB` |
+| 2025-02-25 | `ChordManager` |
 | 2025-08-26 | `ManagerSettingsAutoCorrect`, `ManagerSettingsChording` |
+| 2026-08-29 | `ManagerColorScheme`, `ManagerLayoutSelector`, `ManagerSaveButton`, `ManagerUndoRedo` |
 
 Mismatches already known, without opening the app:
 
@@ -946,12 +993,11 @@ Mismatches already known, without opening the app:
   probably left from sections that were rewritten; worth deciding which to
   delete once the new set exists.
 
-**What it needs:** a device connected to the current Device Manager, and a
-decision about capture size. The existing set is inconsistent: widths run from
-250px (`ManagerSaveButton`) to over 1000px for some of the settings boxes, and
-7 of the 15 carried `:width: 1200` — an upscale for every one of them, since
-none is that wide. Worth settling on one capture width and dropping the
-`:width:` overrides rather than reproducing the mix.
+**What it needs (for the three settings-box screenshots still stale --
+`ManagerSettingsArpeggiates`, `ManagerSettingsMouse`, `ManagerSettingsRGB` --
+plus the missing `USB` box screenshot):** a device connected to the current
+Device Manager, cropped to its natural pixel size with no `:width:` override,
+matching the approach settled on for this segment's reshoots.
 
 ---
 
