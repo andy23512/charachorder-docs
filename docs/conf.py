@@ -55,7 +55,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = "CharaChorder Docs (Tangent's fork)"
-copyright = '2025, CharaChorder'
+copyright = '2025-2026, CharaChorder (unofficial fork by Tangent)'
 author = 'CharaChorder'
 
 # The version info for the project you're documenting, acts as replacement for
