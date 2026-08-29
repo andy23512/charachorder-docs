@@ -11,7 +11,8 @@ Welcome to the CharaChorder Guide (Tangent's fork)!
    Tangent. Setting tables here are generated from the
    `CCOS Firmware Meta API <https://github.com/CharaChorder/CCOS-firmware#firmware-meta-api>`__
    rather than written by hand, so they may differ from the official guide.
-   The official documentation lives at https://docs.charachorder.com/.
+   The official documentation lives at https://docs.charachorder.com/. See
+   :doc:`About This Fork` for a fuller list of the differences.
 
 Welcome to the wonderful world of CharaChorder! If you're here, you are likely seeking guidance for your CharaChorder device or you're simply interested in CharaChorder and came here to read a little about what CharaChorder devices are capable of. Either way, we welcome you and hope that you enjoy reading this guide. If you are setting your CharaChorder device up for the first time, please continue reading below.
 
@@ -30,6 +31,7 @@ Table of Contents
 .. toctree::
    :maxdepth: 2
 
+   About This Fork.rst
    Master Forge.rst
    CharaChorder One.rst
    CharaChorder Two.rst

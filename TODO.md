@@ -1293,7 +1293,7 @@ blog (<https://andy23512.github.io/blog/>) for the same purpose.
 
 ---
 
-## 20. No page explains how this fork differs from the official docs
+## 20. No page explains how this fork differs from the official docs (done)
 
 **Files:** `docs/index.rst`, plus a new page
 
@@ -1339,3 +1339,15 @@ commits, and the parts a reader would notice are:
   is the part most likely to go stale, and it is exactly the part this TODO
   already tracks per item, so one option is to write the page by hand and keep
   it honest by linking each entry to its item here.
+
+**Done:** added `docs/About This Fork.rst`, a hand-written page titled "About
+this fork" covering all six points above (generated tables, the version
+picker, settings CCOS has removed, sections moved between pages, scope
+corrections, presentation choices), and put it first in the `index.rst`
+toctree so it renders and appears in the sidebar. The front-page note now
+ends with a link to it (`See :doc:`About This Fork` for a fuller list of the
+differences.`) instead of growing further itself. Verified with a Sphinx
+build (0 new warnings) and a browser check of both the new page and the
+front page: all six headings, the in-page contents box, and the
+`:doc:`Device Manager`` / `:doc:`GenerativeTextMenu`` cross-reference links
+render correctly.
