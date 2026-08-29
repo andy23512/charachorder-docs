@@ -835,9 +835,60 @@ instead.
 
 ---
 
-## 15. Every screenshot on the Device Manager page is out of date
+## 15. Every screenshot on the Device Manager page is out of date (in progress)
 
 **File:** `docs/Device Manager.rst`, `docs/assets/images/Manager*.png`
+
+**Done so far:** reshot on a connected CharaChorder Lite (CCOS 3.0.0, Device
+Manager v2.8.0) and cropped to match the existing "one box per screenshot"
+style: `ManagerSettingsArpeggiates.png`, `ManagerSettingsMouse.png`,
+`ManagerSettingsChording.png`, `ManagerSettingsAutoCorrect.png`,
+`ManagerSettingsRGB.png`. Dropped the `:width: 1200` overrides on the three
+that had them, since the new crops are already close to their natural size and
+upscaling made them blurry. `sphinx-build -a` gives zero warnings and the
+rendered page was checked visually.
+
+Confirmed while reshooting:
+
+- `ManagerSettingsMouse.png`'s known mismatch was real: **Poll Rate is gone
+  from the Mouse box** and now lives in a new **Usb** box (`1000Hz`, plus new
+  `Aggressive reporting` and `Aggressive reporting throttle`, `Hid resend
+  throttle` settings not documented anywhere yet -- item 17 territory).
+  **Scroll Throttle** is present as the page already says.
+- The Mouse box's `Active Mouse` toggle is labelled **`Caffeine`** in the live
+  UI. The `.. dropdown:: Active Mouse` text describing it is still accurate,
+  but the heading no longer matches what a reader sees in the screenshot.
+- The Chording box picked up three fields since the last screenshot that
+  aren't documented in any dropdown yet: `Minimum chord keys`, `Tap dance
+  tolerance`, `Concatenation style` (`Compound timeout` and `Detection method`
+  were already documented). Also item 17 territory.
+- The Arpeggiates box has a `Mode` field (`All`) with no corresponding
+  dropdown either.
+- RGB/Leds box matches what item 14 already documented, field for field.
+
+**Still open, deferred:** the entire Settings page layout changed since these
+docs were written -- it's now one continuously-scrolling page with category
+boxes stacked in this order: Keyboard, Mouse, Gaming, Fuzzy modifiers,
+Chording, Autocorrect, Arpeggiates, Leds, Misc, Usb, Backup. Three of the
+remaining ten screenshots don't have a clean 1:1 replacement and need a
+decision on how to rewrite the surrounding text, not just the image:
+
+- `ManagerSettingsModifiers.png` ("Chord Modifiers"): no corresponding
+  settings box exists in the current UI at all. It was never a CCOS setting,
+  just fixed key-location documentation, so there may be nothing to
+  screenshot here any more.
+- `ManagerSettingsChentry.png`: neither "Swap Keymap 0 and 1" nor the
+  "Character Entry (chentry)" toggle exist in the current Meta API or UI.
+- `ManagerSettingsDevice.png` ("Device Section"): no longer a single box.
+  Realtime feedback and Operating system moved into **Misc**; Reset
+  Settings/Recovery moved into **Backup**. The old Auto-connect toggle was not
+  found anywhere on the page during a full scroll-through -- needs another
+  look, possibly gone.
+
+Also newly discovered, not previously in this doc at all: **Gaming** (`Layer
+warp`) and **Fuzzy modifiers** (`Enable`, `Press threshold`, `Release
+threshold`, `Release guard threshold`) are entire settings categories with no
+documentation anywhere -- folds into item 17's scope.
 
 The page shows 15 screenshots. All of them predate CCOS 3.0.0 (released
 2026-01-28), and two thirds predate the Master Forge:

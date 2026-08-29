@@ -201,7 +201,6 @@ Arpeggiates
 	With arpeggiates enabled, you can chord the word run and then, within the :ref:`arpeggiate timeout window<GenerativeTextMenu:Arpeggiate Timeout>`, press the :ref:`past tense modifier<Device Manager:Past Tense>` for the word to be “modified” into its past tense variant; in english, ran.
 
 .. image:: /assets/images/ManagerSettingsArpeggiates.png
-  :width: 1200
   :alt: The Arpeggiates settings box
 
 In this box, ou can enable or disable arpeggiates as well as increase or decrease the :ref:`arpeggiate timeout setting<GenerativeTextMenu:Arpeggiate Timeout>`.
@@ -303,7 +302,6 @@ Mouse
 	:doc:`CCOS<CCOS>` has mouse functionality. This means that your CharaChorder, or CCOS-powered keyboard, has the ability to control your computer's mouse. These settings affect the mouse usage on your CharaChorder.
 
 .. image:: /assets/images/ManagerSettingsMouse.png
-  :width: 1200
   :alt: The Mouse settings box
 
 In this box, you can adjust settings relating to :doc:`CCOS'<CCOS>` mouse abilities.
@@ -399,7 +397,6 @@ The :ref:`GTM<GenerativeTextMenu:LEDs>` only offers the on/off toggle and the br
 
 
 .. image:: /assets/images/ManagerSettingsRGB.png
-  :width: 1200
   :alt: The RGB settings box
 
 .. dropdown:: Color
