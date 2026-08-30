@@ -1,0 +1,16 @@
+/* Restore the emphasized (red) inline-code color that the previous theme
+   provided, adapted to furo's light/dark/auto theme switching. */
+:root {
+  --color-inline-code-foreground: #c0341d;
+}
+body[data-theme="dark"] {
+  --color-inline-code-foreground: #ff8a80;
+}
+@media (prefers-color-scheme: dark) {
+  body[data-theme="auto"] {
+    --color-inline-code-foreground: #ff8a80;
+  }
+}
+code.literal {
+  color: var(--color-inline-code-foreground);
+}
