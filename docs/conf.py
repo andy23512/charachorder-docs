@@ -36,7 +36,7 @@ sys.path.insert(0, os.path.abspath('_ext'))
 # ones.
 # extensions = ['sphinx.ext.autodoc']
 extensions = ['myst_parser', 'sphinx.ext.autosectionlabel', "sphinx_design",
-'sphinx.ext.autosectionlabel', 'sphinx_copybutton', 'ccos_meta']
+'sphinx.ext.autosectionlabel', 'sphinx_copybutton', 'ccos_meta', 'ccos_changelog']
 
 # Automatically prefix labels with the document name
 autosectionlabel_prefix_document = True
@@ -114,7 +114,7 @@ html_static_path = ['_static']
 
 # Lets readers switch the generated CCOS setting tables to another device or
 # firmware version without a rebuild. Without JS the cached tables still show.
-html_css_files = ['ccos-meta.css']
+html_css_files = ['ccos-meta.css', 'ccos-changelog.css']
 html_js_files = ['ccos-meta.js']
 
 # Excluded from the build: cached Meta API data consumed by the ccos_meta

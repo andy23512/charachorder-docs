@@ -21,6 +21,8 @@ jobs:
       - uses: actions/setup-python@v5
       - name: Refresh cached Meta API data
         run: python3 scripts/update_ccos_meta.py
+      - name: Refresh cached CCOS release changelog
+        run: python3 scripts/update_ccos_changelog.py
       - name: Open a pull request if anything changed
         uses: peter-evans/create-pull-request@v6
         with:
@@ -29,8 +31,9 @@ jobs:
           title: 'Refresh CCOS Firmware Meta API cache'
           commit-message: 'Refresh CCOS Firmware Meta API cache'
           body: |
-            Automated refresh of `docs/_data/ccos/` from the
+            Automated refresh of `docs/_data/ccos/` (settings snapshot and
+            release changelog) from the
             [Firmware Meta API](https://github.com/CharaChorder/CCOS-firmware#firmware-meta-api).
 
-            Review the diff for setting changes that need prose updates too.
+            Review the diff for setting/changelog changes that need prose updates too.
           add-paths: docs/_data/ccos

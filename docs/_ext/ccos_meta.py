@@ -242,8 +242,10 @@ def plain_text(value):
 
     A few descriptions carry inline HTML (`<b>`, and at least one unbalanced
     `<b/>`), which docutils would otherwise render as literal angle brackets.
+    Tags are replaced with a space, not dropped outright, so adjacent tags
+    like `<kbd>CTRL</kbd><kbd>RIGHT</kbd>` don't fuse into "CTRLRIGHT".
     """
-    return " ".join(re.sub(r"<[^>]*>", "", value or "").split())
+    return " ".join(re.sub(r"<[^>]*>", " ", value or "").split())
 
 
 def describe_setting(setting):

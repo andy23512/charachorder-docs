@@ -25,6 +25,16 @@ release using the dropdown above it, since not every setting exists on every
 version. The list only includes releases that publish machine-readable
 settings data (2.1.0-rc.0 and later); older releases are not offered.
 
+A generated release history
+------------------------------
+
+:doc:`CCOS Releases` is assembled the same way, from the Meta API's
+``changelog.json`` for CharaChorder One, Lite, X, Two, Engine, and Master
+Forge, merging entries that read identically across devices and flagging the
+ones that don't. It only covers CCOS 2.1.0 and later: the Meta API no longer
+serves changelog data for older firmware versions. For the release currently
+in beta, see :doc:`Beta Releases`, which is still written by hand.
+
 Settings CCOS has since removed
 --------------------------------
 

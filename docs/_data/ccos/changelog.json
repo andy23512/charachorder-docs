@@ -1,0 +1,765 @@
+{
+ "fetched_at": "2026-09-02T05:52:02+00:00",
+ "devices": [
+  "one_m0",
+  "lite_s2",
+  "x_s2",
+  "two_s3",
+  "engine_s2",
+  "m4g_s3"
+ ],
+ "versions": [
+  {
+   "version": "3.0.0",
+   "date": "2026-01-28T19:08:12+01:00",
+   "devices": [
+    "engine_s2",
+    "lite_s2",
+    "m4g_s3",
+    "one_m0",
+    "two_s3",
+    "x_s2"
+   ],
+   "features": [
+    {
+     "summary": "Cookbook",
+     "description": "The device manager now includes a new cookbook section.\nThe cookbook includes a number of example usecases derived from our new end-to-end testing framework,\nwith interactive demos and detailed information about the setup used.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Single key chords",
+     "description": "You can now use a single key as an input to a chord.\nThis feature must be enabled in the settings first via the minimum chord key count setting.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Custom Arpeggiates",
+     "description": "You can now add chords with ARPEGGIATE + key -> ... to create custom arpeggiates.\nThe previously hard-coded arpeggiates can be added back by adding the \"arpeggiates\"\ndefault chords in the device manager's library tab.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Arpeggiated Modifier Overrides",
+     "description": "Overriding modifiers with exact chords is now also possible\nwhen using the modifier as an arpeggiate after the chord.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Hyperspace",
+     "description": "Control what the concatenator between chords is using the new <kbd>HYPERSPACE</kbd> and <kbd>CAPTURE</kbd> actions.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Prepended Concatenation Style",
+     "description": "You can now select \"prepended\" as a concatenation style.\nThis mode is part of the Hyperspace feature, and recommended for text editing (like coding).\nInstead of placing the space after chords (default), it is prepended to the subsequent chord.\nThis means you don't have to erase extra spaces while editing.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "VIM Mode",
+     "description": "Adds universal VIM motion emulation through the <kbd>VIM</kbd> action.\nThis mode makes use of standard shortcuts like <kbd>CTRL</kbd><kbd>RIGHT</kbd>\n(or <kbd>\u2318</kbd> on Mac) to emulate VIM motions in a best-effort way in any\ntextbox. While not as powerful as native VIM or even just a VIM plugin,\nyou don't always have the option to use either of them,\nso this is a way to carry around your VIM muscle memory to nearly every textbox you encounter.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Fuzzy Modifiers",
+     "description": "Modifiers (like Shift or layer keys) normally only work if you press them <b>before</b> the key you want to modify,\nand release them <b>before</b> pressing any key you <i>don\u2019t</i> want modified.\n<br>\n<b>Fuzzy modifiers</b> relax this rule: they let you press or release the modifier <b>at almost the same time</b> as the key.\nInstead of requiring a strict order,\nthe system just checks whether the modifier\u2019s press or release happened <i>close enough</i> in time to the key press.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Removed duplicate keycode actions",
+     "description": "In the past we've had both ASCII and KSC_... actions, which caused a lot of confusion to which\nones you are supposed to use and if there's any difference.\nAdding to that confusion, CCX as the only device also used these actions by default in its chord library\nand layout, making transferring and sharing libraries between X and Lite practically impossible.\nWe've made the decision to finally remove all KSC_... actions which are duplicates of ASCII actions.\nLayouts are automatically migrated with no action required, for technical reasons however it is not\npossible to migrate chord libraries in the same way. Use `CML CE` to auto-fix the library.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Layer Warp",
+     "description": "For gaming profiles we added a \"layer warp\" setting which re-presses held keys when you switch layers.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Updated grammar rules",
+     "description": "Grammar rules have been updated with community contributions.\nYou can submit your own on our <a href=\"https://github.com/CharaChorder/CCOS-firmware\">Issue Repo</a>.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "DUP can now be used with modifiers",
+     "description": "When typing \"a\" hitting shift + DUP now produces \"A\"\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Case insensitive grammar rules",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Capitalize now toggles case",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "USB Aggressive Reporting",
+     "description": "Enabling this might improve stability on certain hardware combinations.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Keyboard Rollover Settings",
+     "description": "Reducing this to 6-key might improve compatibility with older hardware.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Chord library fix command",
+     "description": "Added a new Serial API command `CML CE` that auto-fixes issues in the chord library, such as\nduplicate chords, usage of old/removed action codes, bad chord inputs, duplicate chord inputs and suspicious corrupted chords\n(\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff\u00ff chords).\nPlease make a backup before using this command.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "High resolution scrolling",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "LED on/off fading",
+     "description": "LEDs now smoothly fade on and off.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "DUP now re-presses keys instead of continuing to hold them",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Reorganized Action Codes",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Predictable auto-space specifier",
+     "description": "Auto-space rules have been simplified.\nAuto-spaces are always applied unless <kbd>KSC_00</kbd> is present at the end of the chord.\nChords old chords are auto-upgraded.\nPre-3.0.0 backups need to be upgraded manually!\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Moved settings and layout flash",
+     "description": "Settings/layout storage has been moved from onboard flash to the external flash\n(same where the chords live).\nWhen first updating this will cause a factory reset,\nhowever following this update settings and layout will no longer be wiped when updating.\n",
+     "devices": [
+      "one_m0"
+     ]
+    },
+    {
+     "summary": "Arpeggiated chord modifiers can be disabled separately",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Chord capacity command (CML CF)",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Profiles",
+     "description": "Support for three Profiles has been added, each with their own layout and settings.\nYou can combine this feature with dynamic libraries as well by creating a\nprofile activation chord that simultaneously activates your desired dynamic library.\n",
+     "devices": [
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Added a fourth layer",
+     "description": "",
+     "devices": [
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    }
+   ],
+   "fixes": [
+    {
+     "summary": "Incorrect max chord count",
+     "description": "In a past update it was incorrectly stated that the maximum chord count was increased to 16k.\nThe actual increase was to 10,240.\nWe already put a great deal of care towards optimization,\nbut due to the very limited amount of RAM,\nfurther reductions in maximum chord count can happen in the future as a tradeoff for new features.\n",
+     "devices": [
+      "one_m0"
+     ]
+    },
+    {
+     "summary": "Memory corruption when approaching chord limit",
+     "description": "This issue could cause memory corruption when approaching the limit of 10,240 chords,\napproximately starting around 9000 chords.\n",
+     "devices": [
+      "one_m0"
+     ]
+    },
+    {
+     "summary": "Improved flash performance",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Capitalize action is not interrupted by chentry",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "NULL is now ignored as an action",
+     "description": "Subsequently modifiers that use layer keys now no longer break backspacing when the target layer has no actions\non part of the chord input keys.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Stuck key mitigation",
+     "description": "As a general fallback measure against (software-)stuck keys we added a measure that releases\nall keys when you either physically release all switches or at the end of a chord.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Specific compounds caused library corruption",
+     "description": "There was a bug that could cause library corruption if you got unlucky that has now been fixed.\nThis only compound chords with a specific base.\nyou can check if your library contained any of these <a href=\"/config/chords/will-my-compound-break/\">here</a>.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Can't use modifiers with chords that change concatenators",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Smart detection erases newlines",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Removed RST STARTER/FUNC commands",
+     "description": "Factory chords are now added via the device manager/firmware meta api instead.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "RST CLEARCML/FACTORY/OTA will now force release all held keys before proceeding",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Mouse move/click actions are now breaking actions",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Removed obsolete \"character entry\" option, use \"enable chording\" option instead.",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Potential improved USB Hub compatibility",
+     "description": "",
+     "devices": [
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Fixed device names in the manager popup",
+     "description": "",
+     "devices": [
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Poll rate setting",
+     "description": "Replaced the mouse/keyboard poll rate settings (which didn't actually change the poll rate) with a USB poll rate setting\nunder a new experimental category\n",
+     "devices": [
+      "lite_s2",
+      "x_s2",
+      "two_s3",
+      "engine_s2",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Fixed swapped Right Shift and Quote keys",
+     "description": "",
+     "devices": [
+      "lite_s2"
+     ]
+    },
+    {
+     "summary": "Disconnect issues",
+     "description": "We've identified a potential workaround for intermittent disconnects on primarily MacOS and Windows,\navailable as the \"aggressive reporting\" setting.\nWe're still continuing to investigate as we gather feedback from this change.\n",
+     "devices": [
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Leds can now be fully turned off",
+     "description": "",
+     "devices": [
+      "m4g_s3"
+     ]
+    }
+   ]
+  },
+  {
+   "version": "2.1.1",
+   "date": "2025-10-06T15:35:21+02:00",
+   "devices": [
+    "lite_s2",
+    "m4g_s3",
+    "one_m0",
+    "two_s3"
+   ],
+   "features": [],
+   "fixes": [
+    {
+     "summary": "Fixed swapped Right Shift and Quote keys",
+     "description": "",
+     "devices": [
+      "lite_s2"
+     ]
+    }
+   ]
+  },
+  {
+   "version": "2.1.0",
+   "date": "2025-05-09T19:32:37+02:00",
+   "devices": [
+    "lite_s2",
+    "m4g_s3",
+    "one_m0",
+    "two_s3"
+   ],
+   "features": [
+    {
+     "summary": "Instant Boot",
+     "description": "You can now start typing on your device immediately while the chords load in the background.\nThe <code>CCOS is ready.</code> message has been removed.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Smart Chord Detection",
+     "description": "If you are okay with a bit more latency while typing this mode allows you to chord <i>without backspacing</i>.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Reworked Auto Delete",
+     "description": "Auto delete is now smarter and can be properly set to just delete chord inputs.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Quickfix",
+     "description": "A single action to delete the last chord, last attempt, or just act as backspace.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Active Quickfix",
+     "description": "Quickfix that auto-deletes all attempts until you successfully chord.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Custom Arpeggiates (almost)",
+     "description": "You can now (almost) create custom arpeggiates through chords.\nThe old arpeggiates just use JOIN and CAPITALIZE actions and act as a chord internally.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Filtered DUP",
+     "description": "By default DUP will now only repeat printable keys (i.e. not backspace or arrow keys) so that it can be safely used in chord inputs. The previous behaviour is still available as <i>DUP_ALL</i>.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Media Keys",
+     "description": "This feature was contributed by @gex__ as part of our communal source program, thank you!\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Spin Scroll",
+     "description": "This feature allows you to dedicate a stick to scrolling,\nand scroll by spinning it like a scroll wheel instead of holding down a key.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "AltGr/US Intl. Actions",
+     "description": "We now provide a set of actions that hold AltGr+... and can be assigned to your layout directly.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Hyper & Meh Actions",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Mod + Layer Actions",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Layer Toggle Support",
+     "description": "This feature expands upon a bug we had before. You can now assign a different layer key to the target layer to toggle a layer on or off.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Increased chord count to 16k",
+     "description": "",
+     "devices": [
+      "one_m0"
+     ]
+    },
+    {
+     "summary": "Build Meta API",
+     "description": "For easier and faster development every CCOS build now contains a meta.json file, which includes action codes, settings, changelog, firmware, factory defaults and more.\n",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Delay 1/10/100ms Actions",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Reworked LED controls",
+     "description": "",
+     "devices": [
+      "lite_s2",
+      "m4g_s3"
+     ]
+    }
+   ],
+   "fixes": [
+    {
+     "summary": "Shift key not being held through layers",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    },
+    {
+     "summary": "Fixed keyboard poll rate setting",
+     "description": "",
+     "devices": [
+      "one_m0",
+      "lite_s2",
+      "two_s3",
+      "m4g_s3"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -227,7 +227,11 @@ def main():
         print(f"wrote {path.relative_to(DATA_DIR.parent.parent.parent)}")
 
     versions = sorted(
-        {p.stem for p in DATA_DIR.glob("*.json") if p.name not in ("devices.json", "index.json")},
+        {
+            p.stem
+            for p in DATA_DIR.glob("*.json")
+            if p.name not in ("devices.json", "index.json", "changelog.json")
+        },
         key=version_key,
         reverse=True,
     )

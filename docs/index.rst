@@ -47,3 +47,4 @@ Table of Contents
    Layout.rst
    SerialAPI.rst
    Beta Releases.rst
+   CCOS Releases.rst

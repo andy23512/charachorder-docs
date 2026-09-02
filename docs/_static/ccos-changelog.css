@@ -1,0 +1,21 @@
+/* Styling for the generated CCOS Releases page.
+   See docs/_ext/ccos_changelog.py. */
+
+/* "Features"/"Fixes" read as a group heading; entry rubrics below them are
+   just bold labels, not a distinct heading level. */
+p.rubric.ccos-changelog-group {
+  margin-top: 2rem;
+  font-size: 1.15em;
+  border-bottom: 1px solid var(--color-background-border);
+  padding-bottom: 0.25rem;
+}
+
+.ccos-changelog-devices {
+  color: var(--color-foreground-secondary);
+  font-style: italic;
+}
+
+.ccos-changelog-scope {
+  color: var(--color-foreground-secondary);
+  font-size: 0.9em;
+}
