@@ -269,6 +269,28 @@ Keymap codes
    reads back from ``B1`` at that index, while ``A1`` and ``C1`` at the same
    index are unaffected.
 
+Switch location map
+^^^^^^^^^^^^^^^^^^^^
+
+The ``Index`` argument used by :ref:`CMD_VAR_GET_KEYMAP<SerialAPI:CMD_VAR_GET_KEYMAP>`
+and :ref:`CMD_VAR_SET_KEYMAP<SerialAPI:CMD_VAR_SET_KEYMAP>` refers to a
+physical switch, not a character. The diagrams below show which switch
+each index number corresponds to for the CharaChorder One (0-89) and the
+CharaChorder Lite (0-66).
+
+.. figure:: /assets/images/CC1SwitchMap.png
+  :width: 1200
+  :alt: CharaChorder One switch index map
+
+  CharaChorder One switch indices. Each 5-way switch is shown as its
+  center (press) index surrounded by its north/west/east/south indices.
+
+.. figure:: /assets/images/CCLSwitchMap.png
+  :width: 1200
+  :alt: CharaChorder Lite switch index map
+
+  CharaChorder Lite switch indices, in physical key position.
+
 Parameter codes
 ^^^^^^^^^^^^^^^
 
