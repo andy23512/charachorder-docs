@@ -813,4 +813,4 @@ If you select the "Remove" button while typing a :ref:`chord output<Chords:Chord
 
 Available Action Codes
 ^^^^^^^^^^^^^^^^^^^^^^
-You can view the `action codes here. <https://docs.google.com/spreadsheets/d/1--T9bXshCIC-OVly-CY3rK87fgb7AHgJl3IySh7cmHc/edit#gid=0>`__
+You can view the :ref:`action codes<SerialAPI:Action codes>`.
