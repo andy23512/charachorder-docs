@@ -1351,3 +1351,41 @@ build (0 new warnings) and a browser check of both the new page and the
 front page: all six headings, the in-page contents box, and the
 `:doc:`Device Manager`` / `:doc:`GenerativeTextMenu`` cross-reference links
 render correctly.
+
+---
+
+# Open questions — Upstream PRs to review for adoption
+
+Triaged the 34 open PRs at <https://github.com/CharaChorder/docs/pulls>
+(2026-09-09) for content worth pulling into this fork, after sending
+`#144` upstream. Diffs were saved to a scratch dir during triage and are
+not kept here; re-fetch with `gh pr diff --repo CharaChorder/docs <n>` if
+needed. Skipped entirely (already fixed here, moot, or a blanket
+reformat that would conflict with this fork's own rewrites more than it's
+worth): #128, #142, #125, #116.
+
+## Likely still applicable, low conflict risk
+
+- [ ] [#105](https://github.com/CharaChorder/docs/pull/105) — Dynamic Library guide for `Chords.rst` (+154 lines, new images). Nothing like it exists here yet.
+- [ ] [#140](https://github.com/CharaChorder/docs/pull/140) — Move the Chord Modifiers section out of `Device Manager.rst` into the (currently WIP-stub) `Chord Modifiers.rst`.
+- [ ] [#121](https://github.com/CharaChorder/docs/pull/121) — Note that CCOS 2.1.0 removed the GTM startup message (Instant Boot). Not documented here yet.
+- [ ] [#113](https://github.com/CharaChorder/docs/pull/113) — Glossary typo/whitespace fixes (`wihthin`, "This features allows"). Confirmed still present here.
+- [ ] [#114](https://github.com/CharaChorder/docs/pull/114) — Remove duplicate `sphinx.ext.autosectionlabel` from `conf.py`. Confirmed still duplicated here.
+- [ ] [#115](https://github.com/CharaChorder/docs/pull/115) — Add `:orphan:` + blank-line fixes for Sphinx "not in any toctree" warnings. Not applied here yet.
+- [ ] [#127](https://github.com/CharaChorder/docs/pull/127) — Sphinx extension that catches image ref/filename case mismatches at build time. Content-independent tooling, guards against regressing item 12b.
+- [ ] [#129](https://github.com/CharaChorder/docs/pull/129) — Move `assets/cce/pinout.png` and `assets/serial/serialterminal.png` into `assets/images/`. Still unmoved here.
+- [ ] [#137](https://github.com/CharaChorder/docs/pull/137) / [#138](https://github.com/CharaChorder/docs/pull/138) / [#139](https://github.com/CharaChorder/docs/pull/139) — M4G cable connection images / FAQ Master Forge entry / Beta Releases wording fix. No description given upstream; check diffs before adopting.
+- [ ] [#49](https://github.com/CharaChorder/docs/pull/49) — Function Keys table for CharaChorder Lite. Nothing like it exists here; from 2024 and marked CONFLICTING upstream, so verify against current CCOS before adding rather than porting verbatim.
+
+## Needs reconciliation with this fork's own changes
+
+- [ ] [#126](https://github.com/CharaChorder/docs/pull/126) — Replaces Device Section with an Auto-connect section; this fork already split Device Section into Misc/Backup (item 15). Design intents conflict.
+- [ ] [#130](https://github.com/CharaChorder/docs/pull/130) — Adds a Keyboard section, removes Character Entry; this fork only removed the Character Entry screenshot, not the prose (item 15). Check intent before merging.
+- [ ] [#133](https://github.com/CharaChorder/docs/pull/133) — Adds a Misc section; may duplicate the Misc box this fork already created in item 15.
+- [ ] [#132](https://github.com/CharaChorder/docs/pull/132) / [#134](https://github.com/CharaChorder/docs/pull/134) — Reorder Arpeggiates / Backup sections; may fight this fork's own section ordering from item 15.
+- [ ] [#136](https://github.com/CharaChorder/docs/pull/136) — Renames RGB to Leds, updates images; this fork independently documented 6 previously-undescribed LED settings under the existing RGB heading (item 14). Needs merging, not a straight apply.
+- [ ] [#123](https://github.com/CharaChorder/docs/pull/123) / [#124](https://github.com/CharaChorder/docs/pull/124) / [#131](https://github.com/CharaChorder/docs/pull/131) — Save/Connect/Mouse screenshot updates; this fork already renamed Save→Apply and reshot the Device Manager screenshots (item 15), likely superseding these.
+- [ ] [#141](https://github.com/CharaChorder/docs/pull/141) — Reorganizes Learning the Layout across CC1/CC2/M4G/Layout.rst; touches files this fork rewrote heavily (A4 layer, profile selector). Needs a careful read, not a blind merge.
+- [ ] [#95](https://github.com/CharaChorder/docs/pull/95) — Large `Master Forge.rst` rewrite from 2025-08-12 (links, pre-order items, Kickstarter bundle count). This fork has rewritten Master Forge repeatedly since; look for factual fixes (e.g. the bundle count) not yet carried over rather than merging wholesale.
+- [ ] [#117](https://github.com/CharaChorder/docs/pull/117) / [#119](https://github.com/CharaChorder/docs/pull/119) / [#120](https://github.com/CharaChorder/docs/pull/120) / [#107](https://github.com/CharaChorder/docs/pull/107) — Link fixes for CC1/CCL/CCX/CC2; this fork settled its own device-slug/ref-target decisions independently (item 1), so targets may already differ.
+- [ ] [#118](https://github.com/CharaChorder/docs/pull/118) — CC1 typo fixes; mostly safe, but one hunk retargets a `:doc:`/`:ref:` link (`Layout` → `CC English Layout`) that may not match this fork's current heading names.
