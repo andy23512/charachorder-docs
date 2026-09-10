@@ -384,7 +384,7 @@ Some CCOS devices carry RGB LEDs. The :doc:`CharaChorder Lite<CharaChorder_Lite>
 .. note::
 	These settings only exist on devices that have LEDs, currently the :doc:`CharaChorder Lite<CharaChorder_Lite>` and the :doc:`Master Forge<Master Forge>`. The LEDs are not individually addressable: every LED on a device shares one colour and one brightness. On the Master Forge each half stores its own LED settings, so the two :ref:`digitizers<Master Forge:The Digitizers>` can be lit in different colours, and the right half has to be configured separately from the left.
 
-The GTM only offers the on/off toggle and the brightness. Colour is set from the Device Manager's :ref:`RGB settings<Device Manager:RGB>`.
+The GTM only offers the on/off toggle and the brightness. Colour is set from the Device Manager's :ref:`Leds settings<Device Manager:Leds>`.
 
 On/Off
 ^^^^^^

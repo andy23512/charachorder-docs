@@ -347,15 +347,17 @@ In this box, you can enable or disable arpeggiates as well as increase or decrea
 
 	.. ccos-setting:: arpeggiates/mode
 
-RGB
----
+Leds
+----
 These settings adjust the color and brightness of the LEDs on the devices that have them: the :doc:`CharaChorder Lite<CharaChorder_Lite>` and the :doc:`Master Forge<Master Forge>`. The Master Forge stores them per half, so each :ref:`digitizer<Master Forge:The Digitizers>` can be lit in its own color.
 
 The :ref:`GTM<GenerativeTextMenu:LEDs>` only offers the on/off toggle and the brightness slider. Everything below is only reachable here.
 
+.. note::
+	Since each Master Forge half stores its own LED settings, you need to connect to each half separately to configure it -- connecting to one half does not let you reach the other's settings. Once connected, the currently connected half's name replaces the "Connect" button at the bottom of the sidebar: ``M4G`` for the left half, ``M4GR`` for the right half.
 
-.. image:: /assets/images/ManagerSettingsRGB.png
-  :alt: The RGB settings box
+.. image:: /assets/images/ManagerSettingsLeds.png
+  :alt: The Leds settings box
 
 .. dropdown:: Enable
 

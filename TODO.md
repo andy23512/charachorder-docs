@@ -1483,25 +1483,37 @@ rename is item 25's call, not this one's.) Along the way:
 
 ---
 
-## 25. RGB heading rename and per-half Master Forge connection instructions (open)
+## 25. RGB heading rename and per-half Master Forge connection instructions (done)
 
 **File:** `docs/Device Manager.rst`
 
 Found while reviewing upstream PR `#136` (2026-09-10), two things it has
-that this fork's `RGB` section doesn't:
+that this fork's `RGB` section doesn't.
 
-- **Possible rename to "Leds".** Item 15's live-device pass already calls
-  the box "RGB/Leds" in passing (`docs/Device Manager.rst`-adjacent notes
-  in this file, item 15's Chording bullet list), suggesting the on-device
-  label may already have changed -- but this was never confirmed
-  directly or acted on. Check the live heading and rename `RGB` to
-  `Leds` throughout (heading, `:ref:` targets, image name) if so.
-- **Per-half Master Forge connection steps.** The PR explains that each
-  Master Forge half must be connected to the Device Manager separately to
-  set its LEDs, and that the connected half's name appears bottom-center
-  after connecting (M4G = left, M4GR = right). This fork's RGB section
-  only says settings are stored "per half" without saying how to reach
-  each half's settings. Worth adding if confirmed still accurate.
+**Done:**
+
+- **Renamed `RGB` to `Leds`.** Confirmed directly by reading
+  `docs/assets/images/ManagerSettingsRGB.png` (the item 15 reshoot): the
+  live box heading reads "Leds", not "RGB". Renamed the section heading,
+  its `:alt:` text, and the image file itself (`ManagerSettingsRGB.png`
+  -> `ManagerSettingsLeds.png`, via `git mv`), and updated
+  `GenerativeTextMenu.rst`'s cross-reference to the new heading/target.
+  Left the GTM page's own `LEDs` heading alone -- different doc, already
+  correct.
+- **Documented per-half Master Forge connection.** Confirmed via
+  `~/DeviceManager` source, not a live device: `device.ts`'s
+  `DEVICE_ALIASES` map pairs firmware alias `m4g_s3` with display name
+  `M4G` (left half) and `m4gr_s3` with `M4G (right)` (right half), and
+  `Footer.svelte` shows that once connected, the sidebar's bottom-center
+  "Connect" button is replaced by
+  `` {$serialPort.company} {$serialPort.device} {$serialPort.chipset} ``
+  -- the device's own raw self-reported name, i.e. `M4G` or `M4GR`. Added
+  a note to the Leds section explaining you must connect to each half
+  separately to reach its settings, and how to tell which half is
+  currently connected.
+
+`sphinx-build -a -W --keep-going` gives zero warnings; the rendered page
+was checked visually (heading, image, and note all render correctly).
 
 ---
 
