@@ -1394,7 +1394,7 @@ Documented as a new "Connect Dropdown Options" subsection in
 
 ---
 
-## 22. Character Entry section is dead weight left over from the Keyboard split (open)
+## 22. Character Entry section is dead weight left over from the Keyboard split (done)
 
 **File:** `docs/Device Manager.rst`
 
@@ -1414,11 +1414,17 @@ removed when the `Keyboard` section was added but never was:
   dropdown yet (only mentioned in passing in that section's intro
   sentence).
 
-**What it needs:** delete the "What is Character Entry?", "Swap Keymap 0
-and 1", "Key Debounce Press", and "Key Debounce Release" dropdowns
-entirely (all superseded by Keyboard), and move "Character Entry
-(chentry)" into the Chording section as its own dropdown backed by
-`.. ccos-setting:: chording/enable`.
+Deleted the "What is Character Entry?", "Swap Keymap 0 and 1", "Key
+Debounce Press", and "Key Debounce Release" dropdowns along with the whole
+`Character Entry` heading. Moved the chording-disable toggle into the
+`Chording` section as a new dropdown -- but titled it **Enable**, not
+"Character Entry (chentry)": `docs/assets/images/ManagerSettingsChording.png`
+(an existing live-device screenshot already in the repo) shows the box's
+actual toggle is labelled plain "Enable", matching the naming convention
+every other settings box already uses (Keyboard, Mouse, Fuzzy modifiers,
+Gaming). The "chentry" terminology is kept in the dropdown's prose instead
+of the title, and backed by `.. ccos-setting:: chording/enable` for the
+per-device default/range table.
 
 ---
 

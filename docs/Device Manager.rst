@@ -212,39 +212,6 @@ In this box, you can enable or disable arpeggiates as well as increase or decrea
 
 	.. ccos-setting:: arpeggiates/mode
 
-Character Entry
----------------
-.. dropdown:: What is Character Entry?
-
-	Character entry, known to the CharaChorder community as "chentry," refers to typing one character at time.
-
-.. dropdown:: Swap Keymap 0 and 1
-
-	This setting will swap the behavior of the two keys on the bottom-left of the CharaChorder Lite.
-
-	Traditional QWERTY keyboards keep the ``CTRL`` key at the bottom left corner of the keyboard with the ``GUI`` key (Command key on Mac, Windows key on Windows, Super key on Linux, etc.) to the right of the ``CTRL`` key. The CharaChorder Lite has these two keys swapped by default, which some users find odd and difficult to adjust to. A brand new CharaChorder Lite will have the ``GUI`` key at the bottom-left corner with the ``CTRL`` key to the right of the ``GUI`` key.
-
-	With this setting, you can effectively swap the two keys’ location at the level of the CCOS so that CTRL is at the bottom-left corner.
-
-.. dropdown:: Character Entry (chentry)
-
-	This setting is a toggle that disables chording capabilities on CCOS devices. It is off by default and can be enabled in case we don’t want any chording at all. This setting can be useful in cases where we don’t want to accidentally trigger chords unintentionally, such as when gaming.
-
-	If your CCOS device suddenly loses its chording ability, it’s a good idea to check if this setting is toggled off.
-
-.. dropdown:: Key Debounce Press
-
-	The debounce press setting refers to the time frame (measured in milliseconds) in which :doc:`CCOS<CCOS>` will filter out duplicate key activations on a press event. In other words, any duplicate activations within the given time frame will only be counted as one.
-
-	We should adjust this setting if we are having unintentional duplicate characters while typing. Increasing this value will lower the probability that unwanted duplicate characters will appear because it tells :doc:`CCOS<CCOS>` to wait longer before typing an additional character that’s assigned to the same switch-direction. However, having this setting set too high might also cause issues with :doc:`CCOS<CCOS>` not reading intentional double-presses, so it’s recommended to try different numbers in small increments. This setting should be used in connection with the debounce release setting.
-
-.. dropdown:: Key Debounce Release
-
-	The debounce release setting refers to the time frame (measured in milliseconds) in which :doc:`CCOS<CCOS>` will filter out duplicate key activations on a release event. In other words, any duplicate activations within the given time frame will only be counted as one.
-
-	We should adjust this setting if we are having unintentional duplicate characters while typing. Increasing this value will lower the probability that unwanted duplicate characters will appear because it tells :doc:`CCOS<CCOS>` to wait longer before typing an additional character that’s assigned to the same switch-direction. However, having this setting set too high might also cause issues with :doc:`CCOS<CCOS>` not reading intentional double-presses, so it’s recommended to try different numbers in small increments. This setting should be used in connection with the debounce press setting.
-
-
 Keyboard
 --------
 .. image:: /assets/images/ManagerSettingsKeyboard.png
@@ -373,6 +340,14 @@ Chording
   :alt: The Chording settings
 
 In this box, you can adjust settings relating to :doc:`CCOS'<CCOS>` :doc:`chording<Chords>` abilities as well as turn off :doc:`chording<Chords>` altogether, should you choose to.
+
+.. dropdown:: Enable
+
+	Turns chording off entirely. With it off, CCOS falls back to typing one letter at a time -- what the CharaChorder community calls "chentry" (character entry). This can be useful when you want to avoid accidentally triggering chords, such as while gaming.
+
+	If your CCOS device suddenly loses its chording ability, it’s a good idea to check if this setting is toggled off.
+
+	.. ccos-setting:: chording/enable
 
 .. dropdown:: Press Tolerance
 
