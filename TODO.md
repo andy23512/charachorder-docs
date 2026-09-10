@@ -1446,7 +1446,7 @@ changing it does anything has still not been verified.
 
 ---
 
-## 24. Device Manager settings sections are not in the order confirmed on a live device (open)
+## 24. Device Manager settings sections are not in the order confirmed on a live device (done)
 
 **File:** `docs/Device Manager.rst`
 
@@ -1454,26 +1454,32 @@ Found while reviewing upstream PRs `#132` and `#134` (2026-09-10). Item 15
 already confirmed the live Settings page stacks its category boxes in
 this order: **Keyboard, Mouse, Gaming, Fuzzy modifiers, Chording,
 Autocorrect, Arpeggiates, Leds (RGB), Misc, Usb, Backup**. The `.rst`
-file was never reordered to match -- it currently goes Backup Section
-(prose) -> Device Section (Misc + Backup sub-boxes) -> Arpeggiates ->
-Character Entry -> Keyboard -> Mouse -> Gaming -> Fuzzy modifiers ->
-Chording -> Autocorrect -> RGB -> Usb.
+file was never reordered to match.
 
-**What it needs:** a single pass that reorders all of the above to match
-the confirmed order, done together with (not separately from) the other
-open Device Manager cleanups so they aren't reordered twice:
+**Done:** reordered the Device tab's sections to match: Keyboard, Mouse,
+Gaming, Fuzzy modifiers, Chording, Autocorrect, Arpeggiates, RGB, Misc,
+USB, Backup. (Kept the `RGB` heading text as-is -- the `RGB` -> `Leds`
+rename is item 25's call, not this one's.) Along the way:
 
-- item 22's Character Entry removal / `chording/enable` relocation into
-  Chording.
-- deciding whether the `Device Section` heading should go away entirely
-  once Misc and Backup become top-level sections in their new
-  Usb-then-Backup position, and how the prose `Backup Section` (creating
-  and restoring a backup, `docs/Device Manager.rst:122-165`) relates to
-  the `Backup` settings box description once both move next to each
-  other.
-- PRs `#132` / `#134` have already-shot replacement screenshots
-  (`DM-Arpeggiates.png`, `DM-Backup.png`) and minor prose fixes that can
-  be folded in while reordering, rather than reshooting from scratch.
+- Removed the `Device Section` heading entirely: with Misc and Backup
+  promoted to top-level sections in their new position, there was nothing
+  left for it to group.
+- Merged the prose `Backup Section` (creating/restoring a backup) with
+  the `Backup` settings box description into one `Backup` section: intro
+  paragraph, then the box's image and description, then the existing
+  `Creating a Backup` / `Restoring from a Backup` subsections unchanged.
+  The intro paragraph's dangling `:ref:` to the now-gone `Device Section`
+  was reworded to just say "the Backup box below".
+- Did not adopt PRs `#132` / `#134`'s screenshots (`DM-Arpeggiates.png`,
+  `DM-Backup.png`) or fold in any of their prose fixes -- their diffs
+  aren't visible from this fork (no network access to the upstream PRs),
+  and both PRs are already superseded here (each only reorders one
+  section, per the "Open questions -- Upstream PRs" note below). Kept the
+  existing `ManagerSettingsArpeggiates.png` / `ManagerSettingsBackup.png`
+  screenshots, which item 15 already reshot and confirmed accurate.
+- `sphinx-build -a -W --keep-going` gives zero warnings; the reordered
+  page was checked visually (Misc and Backup render correctly as
+  standalone sections, the sidebar TOC matches the confirmed order).
 
 ---
 

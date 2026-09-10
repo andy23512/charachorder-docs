@@ -132,86 +132,6 @@ Device
 The Device Tab is the place where you can configure most settings of your :ref:`connected<Device Manager:Connecting to the Device Manager>` CCOS device and create backups.
 Read on to see the different settings you can change. You can find more detailed explanations in the :doc:`GTM<GenerativeTextMenu>` section.
 
-Backup Section
---------------
-
-There are different kinds of backups that you can create on the Device Manager -- of your chords, your layout, or even your settings -- and we'll cover all of them below. These backups are made using the "Backup" box in the :ref:`Device Section<Device Manager:Device Section>`.
-
-Creating a Backup
-~~~~~~~~~~~~~~~~~
-.. Note::
-	In order to follow these steps, you must already have your device :ref:`connected<Device Manager:Connecting to the Device Manager>` to the device manager.
-
-1. Open the Settings tab and scroll down to the "Backup" box.
-
-2. Choose an individual "Library", "Layout" or "Settings" backup to download to your computer, or select "Full profile" to download a single file with all three parts. The file(s) will be downloaded in .json format.
-
-	.. note::
-		You can make individual backups of just your chords, just your layout, or just your settings. The "Full profile" option will download all three of these in a single file instead of three separate files.
-
-3. If prompted, select a location to save to on your computer and rename the file to your liking.
-
-Congratulations! Now you have created a backup.
-
-Restoring from a Backup
-~~~~~~~~~~~~~~~~~~~~~~~
-Additionally, you can restore your chords, your layout, and your settings on the Device Manager. Follow the steps below to do so.
-
-.. Note::
-	In order to follow these steps, you must already have your device :ref:`connected<Device Manager:Connecting to the Device Manager>` to the device manager.
-
-1. Open the Settings tab and scroll down to the "Backup" box.
-
-2. Click on "Restore".
-
-3. Select a file to use to restore from. This file should be in .json format.
-
-	.. note::
-		Files that you can restore from will have been created ahead of time by following the :ref:`steps to create a backup<Device Manager:Creating a Backup>`.
-
-4. If there are changes, the :ref:`apply button<Device Manager:Apply Button>` will appear on the top left. Note the changes in the appropriate tab. If you restored chords, check the :ref:`chords tab<Device Manager:Library>`, if you restored a layout, check the :ref:`layout tab<Device Manager:Layout>`, and if you restored settings, check the :ref:`settings tab<Device Manager:Device>`.
-
-	.. note::
-		The restore feature does NOT erase data from your device. If there is a conflict (such as a changed setting, a different key in the layout, or a chord that has a different :ref:`output<Chords:Chord Output>`), that will be overwritten by the restore file. Settings and layout backups ALWAYS overwrite everything.
-
-5. Once you see the changes that the restore file made, you can click :ref:`apply<Device Manager:Apply Button>` to apply the changes.
-
-Device Section
---------------
-
-The settings box that used to live here has since split into two smaller boxes: Misc and Backup.
-
-Misc
-~~~~
-.. image:: /assets/images/ManagerSettingsMisc.png
-  :alt: The Misc settings box
-
-Here you can select your device's operating system and toggle :ref:`realtime feedback<GenerativeTextMenu:Realtime Feedback>` on or off.
-
-Backup
-~~~~~~
-.. image:: /assets/images/ManagerSettingsBackup.png
-  :alt: The Backup settings box
-
-This box lets you export your library, layout, or settings individually, download or restore a full profile backup, reset your device to factory settings, or enter recovery mode.
-
-Arpeggiates
------------
-.. dropdown:: What are arpeggiates?
-
-	Arpeggiate actions are timed actions that can modify a :ref:`chord<Chords:What are Chords?>` after the chord is performed. A quick example of this is the use of :doc:`chord modifiers<Chord Modifiers>` after you perform the chord. You can read that section for information on how the chord modifiers work.
-
-	With arpeggiates enabled, you can chord the word run and then, within the :ref:`arpeggiate timeout window<GenerativeTextMenu:Arpeggiate Timeout>`, press the :ref:`past tense modifier<Chord Modifiers:Past Tense>` for the word to be “modified” into its past tense variant; in English, ran.
-
-.. image:: /assets/images/ManagerSettingsArpeggiates.png
-  :alt: The Arpeggiates settings box
-
-In this box, you can enable or disable arpeggiates as well as increase or decrease the :ref:`arpeggiate timeout setting<GenerativeTextMenu:Arpeggiate Timeout>`.
-
-.. dropdown:: Mode
-
-	.. ccos-setting:: arpeggiates/mode
-
 Keyboard
 --------
 .. image:: /assets/images/ManagerSettingsKeyboard.png
@@ -410,6 +330,23 @@ Autocorrect
 
 	This feature allows users to misfire chords, yet be able to correct them by quickly performing the chord correctly, without having to backspace manually to erase the misfired chord. The result is that the timeout will automatically backspace all of the preceding characters (up to the last breaking character) and replace them with the intended chord.
 
+Arpeggiates
+-----------
+.. dropdown:: What are arpeggiates?
+
+	Arpeggiate actions are timed actions that can modify a :ref:`chord<Chords:What are Chords?>` after the chord is performed. A quick example of this is the use of :doc:`chord modifiers<Chord Modifiers>` after you perform the chord. You can read that section for information on how the chord modifiers work.
+
+	With arpeggiates enabled, you can chord the word run and then, within the :ref:`arpeggiate timeout window<GenerativeTextMenu:Arpeggiate Timeout>`, press the :ref:`past tense modifier<Chord Modifiers:Past Tense>` for the word to be “modified” into its past tense variant; in English, ran.
+
+.. image:: /assets/images/ManagerSettingsArpeggiates.png
+  :alt: The Arpeggiates settings box
+
+In this box, you can enable or disable arpeggiates as well as increase or decrease the :ref:`arpeggiate timeout setting<GenerativeTextMenu:Arpeggiate Timeout>`.
+
+.. dropdown:: Mode
+
+	.. ccos-setting:: arpeggiates/mode
+
 RGB
 ---
 These settings adjust the color and brightness of the LEDs on the devices that have them: the :doc:`CharaChorder Lite<CharaChorder_Lite>` and the :doc:`Master Forge<Master Forge>`. The Master Forge stores them per half, so each :ref:`digitizer<Master Forge:The Digitizers>` can be lit in its own color.
@@ -466,6 +403,14 @@ The :ref:`GTM<GenerativeTextMenu:LEDs>` only offers the on/off toggle and the br
 	.. ccos-setting:: leds/on off transition
 	   :devices: lite_s2, m4g_s3
 
+Misc
+----
+
+.. image:: /assets/images/ManagerSettingsMisc.png
+  :alt: The Misc settings box
+
+Here you can select your device's operating system and toggle :ref:`realtime feedback<GenerativeTextMenu:Realtime Feedback>` on or off.
+
 USB
 ---
 These settings are experimental. They are not in the :doc:`GTM<GenerativeTextMenu>`, so the Device Manager and the :doc:`Serial API<SerialAPI>` are the only ways to change them.
@@ -498,6 +443,55 @@ These settings are experimental. They are not in the :doc:`GTM<GenerativeTextMen
 .. dropdown:: Hid Resend Throttle
 
 	.. ccos-setting:: usb/hid resend throttle
+
+Backup
+------
+
+There are different kinds of backups that you can create on the Device Manager -- of your chords, your layout, or even your settings -- and we'll cover all of them below. These backups are made using the "Backup" box below.
+
+.. image:: /assets/images/ManagerSettingsBackup.png
+  :alt: The Backup settings box
+
+This box lets you export your library, layout, or settings individually, download or restore a full profile backup, reset your device to factory settings, or enter recovery mode.
+
+Creating a Backup
+~~~~~~~~~~~~~~~~~
+.. Note::
+	In order to follow these steps, you must already have your device :ref:`connected<Device Manager:Connecting to the Device Manager>` to the device manager.
+
+1. Open the Settings tab and scroll down to the "Backup" box.
+
+2. Choose an individual "Library", "Layout" or "Settings" backup to download to your computer, or select "Full profile" to download a single file with all three parts. The file(s) will be downloaded in .json format.
+
+	.. note::
+		You can make individual backups of just your chords, just your layout, or just your settings. The "Full profile" option will download all three of these in a single file instead of three separate files.
+
+3. If prompted, select a location to save to on your computer and rename the file to your liking.
+
+Congratulations! Now you have created a backup.
+
+Restoring from a Backup
+~~~~~~~~~~~~~~~~~~~~~~~
+Additionally, you can restore your chords, your layout, and your settings on the Device Manager. Follow the steps below to do so.
+
+.. Note::
+	In order to follow these steps, you must already have your device :ref:`connected<Device Manager:Connecting to the Device Manager>` to the device manager.
+
+1. Open the Settings tab and scroll down to the "Backup" box.
+
+2. Click on "Restore".
+
+3. Select a file to use to restore from. This file should be in .json format.
+
+	.. note::
+		Files that you can restore from will have been created ahead of time by following the :ref:`steps to create a backup<Device Manager:Creating a Backup>`.
+
+4. If there are changes, the :ref:`apply button<Device Manager:Apply Button>` will appear on the top left. Note the changes in the appropriate tab. If you restored chords, check the :ref:`chords tab<Device Manager:Library>`, if you restored a layout, check the :ref:`layout tab<Device Manager:Layout>`, and if you restored settings, check the :ref:`settings tab<Device Manager:Device>`.
+
+	.. note::
+		The restore feature does NOT erase data from your device. If there is a conflict (such as a changed setting, a different key in the layout, or a chord that has a different :ref:`output<Chords:Chord Output>`), that will be overwritten by the restore file. Settings and layout backups ALWAYS overwrite everything.
+
+5. Once you see the changes that the restore file made, you can click :ref:`apply<Device Manager:Apply Button>` to apply the changes.
 
 Library
 *******
