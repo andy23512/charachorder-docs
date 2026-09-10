@@ -1475,6 +1475,18 @@ that this fork's `RGB` section doesn't:
 
 ---
 
+## 26. `DM-connect-button.png` looks like an old Device Manager screenshot (open)
+
+**File:** `docs/assets/images/DM-connect-button.png`
+
+Added while adopting upstream PR `#124` (2026-09-10). The image shows a red
+arrow pointing at the bottom-center "Connect" button, but the underlying
+Device Manager screenshot it's cropped from looks like an older UI revision
+-- worth comparing against a current live screenshot and reshooting the
+arrow annotation on top of an up-to-date capture if it's actually stale.
+
+---
+
 # Open questions — Upstream PRs to review for adoption
 
 Triaged the 34 open PRs at <https://github.com/CharaChorder/docs/pulls>
@@ -1536,6 +1548,15 @@ Two things the PR has that this fork doesn't were tracked separately as
 item 25: whether the live UI heading is actually "Leds" now, and how to
 connect each Master Forge half individually to set its LEDs.
 
+`#123` (update the Save Button screenshot/width) and `#131` (Mouse section
+formatting, Active Mouse → Caffeine rename, add Poll Rate) were also
+reviewed and skipped: this fork already renamed Save → Apply with its own
+reshot screenshot, and its Mouse section already has the Caffeine rename
+plus a `Scroll Throttle` dropdown the PR doesn't have; the PR's Poll Rate
+addition was cross-checked against item 15's live-device notes and found
+to be stale (Poll Rate isn't in the live Mouse box). `#124`, reviewed
+alongside these two, was adopted instead -- see the checklist below.
+
 ## Likely still applicable, low conflict risk
 
 - [x] [#105](https://github.com/CharaChorder/docs/pull/105) — Dynamic Library guide for `Chords.rst` (+154 lines, new images). Already adopted here (commits `b6ef56a`/`95acef2`/`7f56f9f`/`cd747e4`, content verified identical); the earlier note that "nothing like it exists here" was stale.
@@ -1547,10 +1568,10 @@ connect each Master Forge half individually to set its LEDs.
 - [x] [#127](https://github.com/CharaChorder/docs/pull/127) — Sphinx extension that catches image ref/filename case mismatches at build time. Adopted.
 - [x] [#129](https://github.com/CharaChorder/docs/pull/129) — Move `assets/cce/pinout.png` and `assets/serial/serialterminal.png` into `assets/images/`. Adopted.
 - [x] [#137](https://github.com/CharaChorder/docs/pull/137) / [#138](https://github.com/CharaChorder/docs/pull/138) / [#139](https://github.com/CharaChorder/docs/pull/139) — M4G cable connection images / FAQ Master Forge entry / Beta Releases wording fix. Adopted.
+- [x] [#124](https://github.com/CharaChorder/docs/pull/124) — Arrow-annotated `DM-connect-button.png` replacing the plain `FW-connect-button.JPG` screenshot, added after every "Connect" step across CC1/CC2/CCX/CCL, Device Manager, and Master Forge. Adopted (commit `30c8b4d`); also caught and fixed an extra `FW-connect-button.JPG` reference in Master Forge's "Emergency Right" step that the PR itself didn't touch. The image itself may be a stale screenshot -- tracked as item 26.
 
 ## Needs reconciliation with this fork's own changes
 
-- [ ] [#123](https://github.com/CharaChorder/docs/pull/123) / [#124](https://github.com/CharaChorder/docs/pull/124) / [#131](https://github.com/CharaChorder/docs/pull/131) — Save/Connect/Mouse screenshot updates; this fork already renamed Save→Apply and reshot the Device Manager screenshots (item 15), likely superseding these.
 - [ ] [#141](https://github.com/CharaChorder/docs/pull/141) — Reorganizes Learning the Layout across CC1/CC2/M4G/Layout.rst; touches files this fork rewrote heavily (A4 layer, profile selector). Needs a careful read, not a blind merge.
 - [ ] [#95](https://github.com/CharaChorder/docs/pull/95) — Large `Master Forge.rst` rewrite from 2025-08-12 (links, pre-order items, Kickstarter bundle count). This fork has rewritten Master Forge repeatedly since; look for factual fixes (e.g. the bundle count) not yet carried over rather than merging wholesale.
 - [ ] [#117](https://github.com/CharaChorder/docs/pull/117) / [#119](https://github.com/CharaChorder/docs/pull/119) / [#120](https://github.com/CharaChorder/docs/pull/120) / [#107](https://github.com/CharaChorder/docs/pull/107) — Link fixes for CC1/CCL/CCX/CC2; this fork settled its own device-slug/ref-target decisions independently (item 1), so targets may already differ.
