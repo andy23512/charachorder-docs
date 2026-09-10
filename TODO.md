@@ -1422,6 +1422,37 @@ whether changing it does anything has not been verified).
 
 ---
 
+## 24. Device Manager settings sections are not in the order confirmed on a live device (open)
+
+**File:** `docs/Device Manager.rst`
+
+Found while reviewing upstream PRs `#132` and `#134` (2026-09-10). Item 15
+already confirmed the live Settings page stacks its category boxes in
+this order: **Keyboard, Mouse, Gaming, Fuzzy modifiers, Chording,
+Autocorrect, Arpeggiates, Leds (RGB), Misc, Usb, Backup**. The `.rst`
+file was never reordered to match -- it currently goes Backup Section
+(prose) -> Device Section (Misc + Backup sub-boxes) -> Arpeggiates ->
+Character Entry -> Keyboard -> Mouse -> Gaming -> Fuzzy modifiers ->
+Chording -> Autocorrect -> RGB -> Usb.
+
+**What it needs:** a single pass that reorders all of the above to match
+the confirmed order, done together with (not separately from) the other
+open Device Manager cleanups so they aren't reordered twice:
+
+- item 22's Character Entry removal / `chording/enable` relocation into
+  Chording.
+- deciding whether the `Device Section` heading should go away entirely
+  once Misc and Backup become top-level sections in their new
+  Usb-then-Backup position, and how the prose `Backup Section` (creating
+  and restoring a backup, `docs/Device Manager.rst:122-165`) relates to
+  the `Backup` settings box description once both move next to each
+  other.
+- PRs `#132` / `#134` have already-shot replacement screenshots
+  (`DM-Arpeggiates.png`, `DM-Backup.png`) and minor prose fixes that can
+  be folded in while reordering, rather than reshooting from scratch.
+
+---
+
 # Open questions — Upstream PRs to review for adoption
 
 Triaged the 34 open PRs at <https://github.com/CharaChorder/docs/pulls>
@@ -1468,6 +1499,13 @@ the PR's hand-written one), and this fork's Misc box already links there
 instead of repeating it. Reviewing it did surface a stale warning on the
 GTM page's Operating System entry -- tracked as item 23.
 
+`#132` (move Arpeggiates after Autocorrect) / `#134` (move Backup Section
+after RGB, before Library) were also reviewed and skipped as PRs: each
+only reorders one section, and neither matches the full order this fork
+already confirmed on a live device (item 15). Both partial reorderings
+would still leave the page out of order. Tracked as one full-page reorder,
+item 24, rather than applying them piecemeal.
+
 ## Likely still applicable, low conflict risk
 
 - [x] [#105](https://github.com/CharaChorder/docs/pull/105) — Dynamic Library guide for `Chords.rst` (+154 lines, new images). Already adopted here (commits `b6ef56a`/`95acef2`/`7f56f9f`/`cd747e4`, content verified identical); the earlier note that "nothing like it exists here" was stale.
@@ -1482,7 +1520,6 @@ GTM page's Operating System entry -- tracked as item 23.
 
 ## Needs reconciliation with this fork's own changes
 
-- [ ] [#132](https://github.com/CharaChorder/docs/pull/132) / [#134](https://github.com/CharaChorder/docs/pull/134) — Reorder Arpeggiates / Backup sections; may fight this fork's own section ordering from item 15.
 - [ ] [#136](https://github.com/CharaChorder/docs/pull/136) — Renames RGB to Leds, updates images; this fork independently documented 6 previously-undescribed LED settings under the existing RGB heading (item 14). Needs merging, not a straight apply.
 - [ ] [#123](https://github.com/CharaChorder/docs/pull/123) / [#124](https://github.com/CharaChorder/docs/pull/124) / [#131](https://github.com/CharaChorder/docs/pull/131) — Save/Connect/Mouse screenshot updates; this fork already renamed Save→Apply and reshot the Device Manager screenshots (item 15), likely superseding these.
 - [ ] [#141](https://github.com/CharaChorder/docs/pull/141) — Reorganizes Learning the Layout across CC1/CC2/M4G/Layout.rst; touches files this fork rewrote heavily (A4 layer, profile selector). Needs a careful read, not a blind merge.
