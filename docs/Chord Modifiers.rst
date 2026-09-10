@@ -19,12 +19,6 @@ Chord Modifiers
 
 	Chord modifiers only work in English.
 
-.. image:: /assets/images/ManagerSettingsModifiers.png
-  :width: 1200
-  :alt: The Chord Modifiers settings box
-
-In this box, you can read a brief explanation of chord modifiers and how to access them.
-
 Capitalization
 ~~~~~~~~~~~~~~
 The capitalization modifier modifies any chord so that the first letter is capitalized on :ref:`output<Chords:Chord Output>`. This modifier can be performed together with a :ref:`chord<Chords:What are Chords?>` or :ref:`arpeggiately<GenerativeTextMenu:Arpeggiate>`.
