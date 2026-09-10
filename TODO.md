@@ -1517,7 +1517,7 @@ was checked visually (heading, image, and note all render correctly).
 
 ---
 
-## 26. `DM-connect-button.png` looks like an old Device Manager screenshot (open)
+## 26. `DM-connect-button.png` looks like an old Device Manager screenshot (done)
 
 **File:** `docs/assets/images/DM-connect-button.png`
 
@@ -1526,6 +1526,17 @@ arrow pointing at the bottom-center "Connect" button, but the underlying
 Device Manager screenshot it's cropped from looks like an older UI revision
 -- worth comparing against a current live screenshot and reshooting the
 arrow annotation on top of an up-to-date capture if it's actually stale.
+
+**Done:**
+The old screenshot was confirmed stale by comparing it against the
+`Sidebar.svelte` source of the live Device Manager app and against a fresh
+capture: it showed a "Device" tab and no Emulator entry, matching an old
+~v2.3.0 sidebar. Replaced it with a screenshot taken from
+`https://charachorder.io/config/layout/` (v2.8.0), whose sidebar now shows
+Settings/Library/Layout/Emulator/Learn/Docs/Voicebox, with the same red
+arrow annotation re-drawn pointing at the bottom-center "Connect" button.
+`sphinx-build -a -W --keep-going` gives zero warnings; the rendered page
+was checked visually in-browser and shows the updated screenshot correctly.
 
 ---
 
