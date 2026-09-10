@@ -34,6 +34,15 @@ If these steps were performed correctly, you can see the connected device name i
 
 Once you've connected a device this way, the browser remembers it. The next time you click "Connect", you'll see a "Recent Devices" list with that device already in it -- click its name to reconnect without going through the serial port permission popup again.
 
+Connect Dropdown Options
+-------------------------
+
+Clicking "Connect" opens a dropdown alongside the :ref:`Recent Devices<Recent Devices>` list with up to three toggles:
+
+* **Auto-connect** -- only shown once exactly one device is in your Recent Devices list. When enabled, the Device Manager reconnects to that device automatically as soon as the page loads, without you needing to click "Connect" or pick it from the list.
+* **Fast Connect** -- shown alongside Auto-connect, under the same one-device condition. Caches your device's data locally in the browser so the next connection loads faster; turn it off if you're using a shared or public computer, since it leaves that cached data on the machine.
+* **WebUSB Fallback** -- always shown. Forces the Device Manager to talk to your device over WebUSB instead of the browser's native Web Serial API. Try enabling this if you're having trouble connecting normally. It's forced on automatically (and the checkbox disabled) in browsers that don't support Web Serial at all.
+
 .. _serialportaccess:
 
 Linux Serial Port Access

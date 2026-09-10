@@ -1363,19 +1363,34 @@ render correctly.
 
 ---
 
-## 21. Connect dropdown has three undocumented toggles (open)
+## 21. Connect dropdown has three undocumented toggles (done)
 
 **File:** `docs/Device Manager.rst`
 
 Found while re-checking item 15's Auto-connect claim (2026-09-10): the
 "Connect" button's dropdown, next to the Recent Devices list, has three
 toggles that this page never documents: **Auto-connect**, **Fast
-Connect**, **WebUSB Fallback**. Not written up yet because the mechanism
-of Auto-connect and Fast Connect isn't confirmed -- need to test on a live
-device (what each one actually changes about the connect flow) before
-writing accurate prose. See PR `#126` in the Open questions section below,
-which proposed documenting Auto-connect but placed it under the Device Tab
-rather than the Connect dropdown where it actually lives.
+Connect**, **WebUSB Fallback**. Not written up initially because the
+mechanism of Auto-connect and Fast Connect wasn't confirmed. See PR `#126`
+in the Open questions section below, which proposed documenting
+Auto-connect but placed it under the Device Tab rather than the Connect
+dropdown where it actually lives.
+
+Resolved by reading the Device Manager source (`~/DeviceManager`) instead
+of a live device, which confirms the mechanism precisely: **Auto-connect**
+and **Fast Connect** only render when exactly one port is in Recent
+Devices (`ConnectPopup.svelte`, `ports.length === 1`); Auto-connect
+reconnects automatically on page load via `canAutoConnect`/`initSerial`
+(`+layout.svelte`); Fast Connect is actually the `backup` preference under
+the hood (its i18n key is still `AUTO_BACKUP`, only the displayed label
+text was changed to "Fast Connect") and its unused-in-UI disclaimer string
+describes it as caching device data locally for a faster reconnect, off by
+default recommendation for shared/public computers. WebUSB Fallback always
+renders and toggles `forceWebUSB`, which makes `serialObject` use a WebUSB
+polyfill instead of `navigator.serial`; it's forced on automatically (and
+the checkbox disabled) when the browser lacks Web Serial support at all.
+Documented as a new "Connect Dropdown Options" subsection in
+`docs/Device Manager.rst`, right after the Recent Devices paragraph.
 
 ---
 
