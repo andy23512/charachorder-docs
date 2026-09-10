@@ -1453,6 +1453,28 @@ open Device Manager cleanups so they aren't reordered twice:
 
 ---
 
+## 25. RGB heading rename and per-half Master Forge connection instructions (open)
+
+**File:** `docs/Device Manager.rst`
+
+Found while reviewing upstream PR `#136` (2026-09-10), two things it has
+that this fork's `RGB` section doesn't:
+
+- **Possible rename to "Leds".** Item 15's live-device pass already calls
+  the box "RGB/Leds" in passing (`docs/Device Manager.rst`-adjacent notes
+  in this file, item 15's Chording bullet list), suggesting the on-device
+  label may already have changed -- but this was never confirmed
+  directly or acted on. Check the live heading and rename `RGB` to
+  `Leds` throughout (heading, `:ref:` targets, image name) if so.
+- **Per-half Master Forge connection steps.** The PR explains that each
+  Master Forge half must be connected to the Device Manager separately to
+  set its LEDs, and that the connected half's name appears bottom-center
+  after connecting (M4G = left, M4GR = right). This fork's RGB section
+  only says settings are stored "per half" without saying how to reach
+  each half's settings. Worth adding if confirmed still accurate.
+
+---
+
 # Open questions — Upstream PRs to review for adoption
 
 Triaged the 34 open PRs at <https://github.com/CharaChorder/docs/pulls>
@@ -1506,6 +1528,14 @@ already confirmed on a live device (item 15). Both partial reorderings
 would still leave the page out of order. Tracked as one full-page reorder,
 item 24, rather than applying them piecemeal.
 
+`#136` (rename RGB to Leds) was also reviewed and skipped: the settings it
+proposes documenting (Effect, Effect cycle, Color) are already covered in
+more detail and more accurately by this fork's item 14 work (which also
+documented two settings the PR misses, Off delay and On off transition).
+Two things the PR has that this fork doesn't were tracked separately as
+item 25: whether the live UI heading is actually "Leds" now, and how to
+connect each Master Forge half individually to set its LEDs.
+
 ## Likely still applicable, low conflict risk
 
 - [x] [#105](https://github.com/CharaChorder/docs/pull/105) — Dynamic Library guide for `Chords.rst` (+154 lines, new images). Already adopted here (commits `b6ef56a`/`95acef2`/`7f56f9f`/`cd747e4`, content verified identical); the earlier note that "nothing like it exists here" was stale.
@@ -1520,7 +1550,6 @@ item 24, rather than applying them piecemeal.
 
 ## Needs reconciliation with this fork's own changes
 
-- [ ] [#136](https://github.com/CharaChorder/docs/pull/136) — Renames RGB to Leds, updates images; this fork independently documented 6 previously-undescribed LED settings under the existing RGB heading (item 14). Needs merging, not a straight apply.
 - [ ] [#123](https://github.com/CharaChorder/docs/pull/123) / [#124](https://github.com/CharaChorder/docs/pull/124) / [#131](https://github.com/CharaChorder/docs/pull/131) — Save/Connect/Mouse screenshot updates; this fork already renamed Save→Apply and reshot the Device Manager screenshots (item 15), likely superseding these.
 - [ ] [#141](https://github.com/CharaChorder/docs/pull/141) — Reorganizes Learning the Layout across CC1/CC2/M4G/Layout.rst; touches files this fork rewrote heavily (A4 layer, profile selector). Needs a careful read, not a blind merge.
 - [ ] [#95](https://github.com/CharaChorder/docs/pull/95) — Large `Master Forge.rst` rewrite from 2025-08-12 (links, pre-order items, Kickstarter bundle count). This fork has rewritten Master Forge repeatedly since; look for factual fixes (e.g. the bundle count) not yet carried over rather than merging wholesale.
