@@ -1364,18 +1364,23 @@ needed. Skipped entirely (already fixed here, moot, or a blanket
 reformat that would conflict with this fork's own rewrites more than it's
 worth): #128, #142, #125, #116.
 
+`#49` (Function Keys table for `CharaChorder_Lite.rst`) was also reviewed
+and skipped: the A2-layer keyboard diagrams already there
+(`LiteLayoutNumber.png`) show F1-F12, Scroll Lock, and Home/End/Page Up/Page
+Down (via icons on the arrow-key cluster), which is what the PR's table
+would duplicate in text form.
+
 ## Likely still applicable, low conflict risk
 
 - [ ] [#105](https://github.com/CharaChorder/docs/pull/105) — Dynamic Library guide for `Chords.rst` (+154 lines, new images). Nothing like it exists here yet.
-- [ ] [#140](https://github.com/CharaChorder/docs/pull/140) — Move the Chord Modifiers section out of `Device Manager.rst` into the (currently WIP-stub) `Chord Modifiers.rst`.
-- [ ] [#121](https://github.com/CharaChorder/docs/pull/121) — Note that CCOS 2.1.0 removed the GTM startup message (Instant Boot). Not documented here yet.
-- [ ] [#113](https://github.com/CharaChorder/docs/pull/113) — Glossary typo/whitespace fixes (`wihthin`, "This features allows"). Confirmed still present here.
-- [ ] [#114](https://github.com/CharaChorder/docs/pull/114) — Remove duplicate `sphinx.ext.autosectionlabel` from `conf.py`. Confirmed still duplicated here.
-- [ ] [#115](https://github.com/CharaChorder/docs/pull/115) — Add `:orphan:` + blank-line fixes for Sphinx "not in any toctree" warnings. Not applied here yet.
-- [ ] [#127](https://github.com/CharaChorder/docs/pull/127) — Sphinx extension that catches image ref/filename case mismatches at build time. Content-independent tooling, guards against regressing item 12b.
-- [ ] [#129](https://github.com/CharaChorder/docs/pull/129) — Move `assets/cce/pinout.png` and `assets/serial/serialterminal.png` into `assets/images/`. Still unmoved here.
-- [ ] [#137](https://github.com/CharaChorder/docs/pull/137) / [#138](https://github.com/CharaChorder/docs/pull/138) / [#139](https://github.com/CharaChorder/docs/pull/139) — M4G cable connection images / FAQ Master Forge entry / Beta Releases wording fix. No description given upstream; check diffs before adopting.
-- [ ] [#49](https://github.com/CharaChorder/docs/pull/49) — Function Keys table for CharaChorder Lite. Nothing like it exists here; from 2024 and marked CONFLICTING upstream, so verify against current CCOS before adding rather than porting verbatim.
+- [x] [#140](https://github.com/CharaChorder/docs/pull/140) — Move the Chord Modifiers section out of `Device Manager.rst` into the (currently WIP-stub) `Chord Modifiers.rst`. Adopted.
+- [x] [#121](https://github.com/CharaChorder/docs/pull/121) — Note that CCOS 2.1.0 removed the GTM startup message (Instant Boot). Adopted, merged into this fork's existing note.
+- [x] [#113](https://github.com/CharaChorder/docs/pull/113) — Glossary typo/whitespace fixes (`wihthin`, "This features allows"). Adopted.
+- [x] [#114](https://github.com/CharaChorder/docs/pull/114) — Remove duplicate `sphinx.ext.autosectionlabel` from `conf.py`. Adopted.
+- [x] [#115](https://github.com/CharaChorder/docs/pull/115) — Add `:orphan:` + blank-line fixes for Sphinx "not in any toctree" warnings. Adopted (Sphinx build warnings dropped 18 → 0).
+- [x] [#127](https://github.com/CharaChorder/docs/pull/127) — Sphinx extension that catches image ref/filename case mismatches at build time. Adopted.
+- [x] [#129](https://github.com/CharaChorder/docs/pull/129) — Move `assets/cce/pinout.png` and `assets/serial/serialterminal.png` into `assets/images/`. Adopted.
+- [x] [#137](https://github.com/CharaChorder/docs/pull/137) / [#138](https://github.com/CharaChorder/docs/pull/138) / [#139](https://github.com/CharaChorder/docs/pull/139) — M4G cable connection images / FAQ Master Forge entry / Beta Releases wording fix. Adopted.
 
 ## Needs reconciliation with this fork's own changes
 
