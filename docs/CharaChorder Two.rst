@@ -270,8 +270,6 @@ You can find the quick reference guide below, and :ref:`read about how the layou
   :width: 1200
   :alt: CC English Layout
 
-Ready to start learning? Start your training on `DOT I/O <https://www.iq-eq.io/#/>`__!
-
 Layers
 ~~~~~~
 

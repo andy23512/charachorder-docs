@@ -459,7 +459,7 @@ You can read an explanation on all of the settings on your CharaChorder device :
 Learning the Layout
 -------------------
 
-On the default CC English layout, all 26 letters are accessible without moving your hands from the home position.
+On the default M4 English layout, all 26 letters are accessible without moving your hands from the home position.
 
 You can find the quick reference guide below, and :ref:`read about how the layout was designed, here <Layout:Design of the layout>`.
 
@@ -467,8 +467,6 @@ You can find the quick reference guide below, and :ref:`read about how the layou
 .. image:: /assets/images/M4-Layout.png
   :width: 1200
   :alt: M4 English Layout
-
-Ready to start learning? Start your training on `DOT I/O <https://www.iq-eq.io/#/>`__!
 
 Layers
 ~~~~~~

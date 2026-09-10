@@ -6,7 +6,7 @@ Layout
 Layout Philosophy
 -----------------
 
-The default CC English layout is optimized around common letter pairs and triplets in English (bigrams and trigrams: 'er', 'at', 'ing'), so frequent words feel effortless to type and supports logical :doc:`lexical chords<Chords>`.
+The default English layout is optimized around common letter pairs and triplets in English (bigrams and trigrams: 'er', 'at', 'ing'), so frequent words feel effortless to type and supports logical :doc:`lexical chords<Chords>`.
 
 Design of the layout
 --------------------
