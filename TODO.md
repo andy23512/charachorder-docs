@@ -1372,7 +1372,7 @@ would duplicate in text form.
 
 ## Likely still applicable, low conflict risk
 
-- [ ] [#105](https://github.com/CharaChorder/docs/pull/105) — Dynamic Library guide for `Chords.rst` (+154 lines, new images). Nothing like it exists here yet.
+- [x] [#105](https://github.com/CharaChorder/docs/pull/105) — Dynamic Library guide for `Chords.rst` (+154 lines, new images). Already adopted here (commits `b6ef56a`/`95acef2`/`7f56f9f`/`cd747e4`, content verified identical); the earlier note that "nothing like it exists here" was stale.
 - [x] [#140](https://github.com/CharaChorder/docs/pull/140) — Move the Chord Modifiers section out of `Device Manager.rst` into the (currently WIP-stub) `Chord Modifiers.rst`. Adopted.
 - [x] [#121](https://github.com/CharaChorder/docs/pull/121) — Note that CCOS 2.1.0 removed the GTM startup message (Instant Boot). Adopted, merged into this fork's existing note.
 - [x] [#113](https://github.com/CharaChorder/docs/pull/113) — Glossary typo/whitespace fixes (`wihthin`, "This features allows"). Adopted.
