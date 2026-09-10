@@ -113,9 +113,10 @@ The intent of this setting is to provide more accurate key mapping. As such, it 
 
 .. Warning::
 	This setting is not reachable through the GTM -- confirmed absent from the
-	``Keyboard`` menu on a CharaChorder Two running CCOS 3.0.0. Whether the
-	Device Manager exposes it has not been checked either, so as of now the
-	only confirmed way to change it is the Serial API directly.
+	``Keyboard`` menu on a CharaChorder Two running CCOS 3.0.0. It is exposed
+	on the Device Manager's :ref:`Misc box<Device Manager:Misc>`, confirmed on
+	a live device, so that's the easiest way to change it; the Serial API
+	works directly as well.
 
 	Whether the setting does anything once changed has also not been verified.
 	This page has said since December of 2023 that it does nothing on CCOS

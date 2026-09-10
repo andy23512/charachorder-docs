@@ -1428,7 +1428,7 @@ per-device default/range table.
 
 ---
 
-## 23. GTM page's Operating System warning contradicts what this fork already confirmed (open)
+## 23. GTM page's Operating System warning contradicts what this fork already confirmed (done)
 
 **File:** `docs/GenerativeTextMenu.rst:111-119`
 
@@ -1436,10 +1436,13 @@ Found while reviewing upstream PR `#133` (2026-09-10). The warning under
 `Operating System` says "Whether the Device Manager exposes it has not
 been checked either", but it has: `docs/Device Manager.rst`'s `Misc` box
 (item 15, `ManagerSettingsMisc.png`) already documents an operating
-system selector there, confirmed on a live device. The warning is stale
-and needs rewriting to say the Device Manager does expose this setting,
-while keeping the still-open parts (not reachable through the GTM itself;
-whether changing it does anything has not been verified).
+system selector there, confirmed on a live device.
+
+Rewrote the warning's first paragraph to point at the Device Manager's
+Misc box (linked with `:ref:`) as the confirmed, easiest way to change the
+setting, instead of claiming only the Serial API works. Left the still-open
+parts alone: it's still not reachable through the GTM itself, and whether
+changing it does anything has still not been verified.
 
 ---
 
