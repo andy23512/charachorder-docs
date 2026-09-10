@@ -1407,6 +1407,21 @@ entirely (all superseded by Keyboard), and move "Character Entry
 
 ---
 
+## 23. GTM page's Operating System warning contradicts what this fork already confirmed (open)
+
+**File:** `docs/GenerativeTextMenu.rst:111-119`
+
+Found while reviewing upstream PR `#133` (2026-09-10). The warning under
+`Operating System` says "Whether the Device Manager exposes it has not
+been checked either", but it has: `docs/Device Manager.rst`'s `Misc` box
+(item 15, `ManagerSettingsMisc.png`) already documents an operating
+system selector there, confirmed on a live device. The warning is stale
+and needs rewriting to say the Device Manager does expose this setting,
+while keeping the still-open parts (not reachable through the GTM itself;
+whether changing it does anything has not been verified).
+
+---
+
 # Open questions — Upstream PRs to review for adoption
 
 Triaged the 34 open PRs at <https://github.com/CharaChorder/docs/pulls>
@@ -1445,6 +1460,14 @@ that this fork's old `Character Entry` section should have been removed
 when the Keyboard section was added and never was -- tracked as a
 separate cleanup, item 22.
 
+`#133` (Add Misc section to `Device Manager.rst`) was also reviewed and
+skipped: both dropdowns it proposes (Operating system, Realtime feedback)
+duplicate prose that already lives on `GenerativeTextMenu.rst` (with a
+live `.. ccos-setting:: misc/operating system` table, more accurate than
+the PR's hand-written one), and this fork's Misc box already links there
+instead of repeating it. Reviewing it did surface a stale warning on the
+GTM page's Operating System entry -- tracked as item 23.
+
 ## Likely still applicable, low conflict risk
 
 - [x] [#105](https://github.com/CharaChorder/docs/pull/105) — Dynamic Library guide for `Chords.rst` (+154 lines, new images). Already adopted here (commits `b6ef56a`/`95acef2`/`7f56f9f`/`cd747e4`, content verified identical); the earlier note that "nothing like it exists here" was stale.
@@ -1459,7 +1482,6 @@ separate cleanup, item 22.
 
 ## Needs reconciliation with this fork's own changes
 
-- [ ] [#133](https://github.com/CharaChorder/docs/pull/133) — Adds a Misc section; may duplicate the Misc box this fork already created in item 15.
 - [ ] [#132](https://github.com/CharaChorder/docs/pull/132) / [#134](https://github.com/CharaChorder/docs/pull/134) — Reorder Arpeggiates / Backup sections; may fight this fork's own section ordering from item 15.
 - [ ] [#136](https://github.com/CharaChorder/docs/pull/136) — Renames RGB to Leds, updates images; this fork independently documented 6 previously-undescribed LED settings under the existing RGB heading (item 14). Needs merging, not a straight apply.
 - [ ] [#123](https://github.com/CharaChorder/docs/pull/123) / [#124](https://github.com/CharaChorder/docs/pull/124) / [#131](https://github.com/CharaChorder/docs/pull/131) — Save/Connect/Mouse screenshot updates; this fork already renamed Save→Apply and reshot the Device Manager screenshots (item 15), likely superseding these.
