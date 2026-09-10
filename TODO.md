@@ -912,6 +912,15 @@ Devices instead, and added a `Recent Devices` anchor/paragraph under
 "Connecting to the Device Manager" since that's where the feature actually
 lives now.
 
+**Correction (2026-09-10):** the "Auto-connect toggle really is gone" claim
+above was wrong -- it was only checked as "does reloading the settings page
+auto-reconnect", not "does the toggle exist anywhere". Auto-connect is
+still there, plus two undocumented siblings (Fast Connect, WebUSB
+Fallback), inside a dropdown behind the "Connect" button next to the
+Recent Devices list. See PR `#126` in the Open questions section for the
+follow-up; documenting the Connect dropdown's three toggles is still an
+open gap.
+
 The entire Settings page layout changed since these docs were written -- it's
 now one continuously-scrolling page with category boxes stacked in this
 order: Keyboard, Mouse, Gaming, Fuzzy modifiers, Chording, Autocorrect,
@@ -1354,6 +1363,22 @@ render correctly.
 
 ---
 
+## 21. Connect dropdown has three undocumented toggles (open)
+
+**File:** `docs/Device Manager.rst`
+
+Found while re-checking item 15's Auto-connect claim (2026-09-10): the
+"Connect" button's dropdown, next to the Recent Devices list, has three
+toggles that this page never documents: **Auto-connect**, **Fast
+Connect**, **WebUSB Fallback**. Not written up yet because the mechanism
+of Auto-connect and Fast Connect isn't confirmed -- need to test on a live
+device (what each one actually changes about the connect flow) before
+writing accurate prose. See PR `#126` in the Open questions section below,
+which proposed documenting Auto-connect but placed it under the Device Tab
+rather than the Connect dropdown where it actually lives.
+
+---
+
 # Open questions — Upstream PRs to review for adoption
 
 Triaged the 34 open PRs at <https://github.com/CharaChorder/docs/pulls>
@@ -1370,6 +1395,18 @@ and skipped: the A2-layer keyboard diagrams already there
 Down (via icons on the arrow-key cluster), which is what the PR's table
 would duplicate in text form.
 
+`#126` (Add Auto-connect section to `Device Manager.rst`) was also reviewed
+and skipped, but not for the reason this fork's commit `1e8e544` claimed.
+That commit said a live-device check confirmed the Auto-connect toggle was
+"genuinely gone, not just moved" -- checked again on 2026-09-10 and that
+was wrong: Auto-connect is still there, alongside two undocumented
+siblings (Fast Connect, WebUSB Fallback), inside the "Connect" button's
+dropdown next to the Recent Devices list, not in the Device Tab. The PR's
+placement (a standalone section under the Device Tab) no longer matches
+where the toggle actually lives, so it can't be applied as-is. Documenting
+the Connect dropdown's three toggles properly is tracked as a separate
+follow-up, not part of this PR's adoption.
+
 ## Likely still applicable, low conflict risk
 
 - [x] [#105](https://github.com/CharaChorder/docs/pull/105) — Dynamic Library guide for `Chords.rst` (+154 lines, new images). Already adopted here (commits `b6ef56a`/`95acef2`/`7f56f9f`/`cd747e4`, content verified identical); the earlier note that "nothing like it exists here" was stale.
@@ -1384,7 +1421,6 @@ would duplicate in text form.
 
 ## Needs reconciliation with this fork's own changes
 
-- [ ] [#126](https://github.com/CharaChorder/docs/pull/126) — Replaces Device Section with an Auto-connect section; this fork already split Device Section into Misc/Backup (item 15). Design intents conflict.
 - [ ] [#130](https://github.com/CharaChorder/docs/pull/130) — Adds a Keyboard section, removes Character Entry; this fork only removed the Character Entry screenshot, not the prose (item 15). Check intent before merging.
 - [ ] [#133](https://github.com/CharaChorder/docs/pull/133) — Adds a Misc section; may duplicate the Misc box this fork already created in item 15.
 - [ ] [#132](https://github.com/CharaChorder/docs/pull/132) / [#134](https://github.com/CharaChorder/docs/pull/134) — Reorder Arpeggiates / Backup sections; may fight this fork's own section ordering from item 15.
