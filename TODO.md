@@ -1379,6 +1379,34 @@ rather than the Connect dropdown where it actually lives.
 
 ---
 
+## 22. Character Entry section is dead weight left over from the Keyboard split (open)
+
+**File:** `docs/Device Manager.rst`
+
+Found while reviewing upstream PR `#130` (2026-09-10). The `Character
+Entry` section (`docs/Device Manager.rst:202-232`) should have been
+removed when the `Keyboard` section was added but never was:
+
+- "What is Character Entry?" -- glossary-style aside, not a setting.
+- "Swap Keymap 0 and 1" -- duplicates the Keyboard section's "Command
+  Control Swap" (`keyboard/command control swap`).
+- "Key Debounce Press" / "Key Debounce Release" -- duplicate the Keyboard
+  section's "Debounce Press" / "Debounce Release" (`keyboard/debounce
+  press`/`release`).
+- "Character Entry (chentry)" -- the chording-disable toggle. This one
+  isn't a duplicate: it maps to `chording/enable`, which the `Chording`
+  section (`docs/Device Manager.rst:349-`) doesn't document as its own
+  dropdown yet (only mentioned in passing in that section's intro
+  sentence).
+
+**What it needs:** delete the "What is Character Entry?", "Swap Keymap 0
+and 1", "Key Debounce Press", and "Key Debounce Release" dropdowns
+entirely (all superseded by Keyboard), and move "Character Entry
+(chentry)" into the Chording section as its own dropdown backed by
+`.. ccos-setting:: chording/enable`.
+
+---
+
 # Open questions — Upstream PRs to review for adoption
 
 Triaged the 34 open PRs at <https://github.com/CharaChorder/docs/pulls>
@@ -1407,6 +1435,16 @@ where the toggle actually lives, so it can't be applied as-is. Documenting
 the Connect dropdown's three toggles properly is tracked as a separate
 follow-up, not part of this PR's adoption.
 
+`#130` (Add Keyboard section, remove Character Entry) was also reviewed
+and skipped: this fork already has a `Keyboard` section (`keyboard/enable`,
+`command control swap`, `debounce press`/`release`, `rollover`), built
+from live Meta API data with links into the GTM page, which is more
+accurate than what the PR proposes (it still includes a Poll Rate
+dropdown this fork's Keyboard box doesn't have). What the PR got right is
+that this fork's old `Character Entry` section should have been removed
+when the Keyboard section was added and never was -- tracked as a
+separate cleanup, item 22.
+
 ## Likely still applicable, low conflict risk
 
 - [x] [#105](https://github.com/CharaChorder/docs/pull/105) — Dynamic Library guide for `Chords.rst` (+154 lines, new images). Already adopted here (commits `b6ef56a`/`95acef2`/`7f56f9f`/`cd747e4`, content verified identical); the earlier note that "nothing like it exists here" was stale.
@@ -1421,7 +1459,6 @@ follow-up, not part of this PR's adoption.
 
 ## Needs reconciliation with this fork's own changes
 
-- [ ] [#130](https://github.com/CharaChorder/docs/pull/130) — Adds a Keyboard section, removes Character Entry; this fork only removed the Character Entry screenshot, not the prose (item 15). Check intent before merging.
 - [ ] [#133](https://github.com/CharaChorder/docs/pull/133) — Adds a Misc section; may duplicate the Misc box this fork already created in item 15.
 - [ ] [#132](https://github.com/CharaChorder/docs/pull/132) / [#134](https://github.com/CharaChorder/docs/pull/134) — Reorder Arpeggiates / Backup sections; may fight this fork's own section ordering from item 15.
 - [ ] [#136](https://github.com/CharaChorder/docs/pull/136) — Renames RGB to Leds, updates images; this fork independently documented 6 previously-undescribed LED settings under the existing RGB heading (item 14). Needs merging, not a straight apply.
