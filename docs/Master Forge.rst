@@ -40,8 +40,15 @@ Once you open the tactical case, you’ll meet your shiny, new Master Forge. The
 The Digitizers
 ~~~~~~~~~~~~~~
 
-Your device will come with two Digitizers which, together, comprise the Master Forge. Each digitizer typically corresponds to each hand and is designed for the ergonomics and comfort of each hand. The digitizers are composed of a 3D printed endoskeleton and a machined-aluminum exoskeleton. The exoskeleton of the digitizer is actually two pieces which are the trapezoidal-shaped “shell,” and the flat and partially hollowed out “baseplate”. They are held together by five M2, Philips screws which are
-under the “feet” pads of the device. The feet are round, rubberized and help the device to have a grip on desks and other smooth surfaces.
+Your device will come with two Digitizers which, together, comprise the Master Forge. Each digitizer typically corresponds to each hand and is designed for the ergonomics and comfort of each hand. The digitizers are composed of a 3D printed endoskeleton and a machined-aluminum exoskeleton. The exoskeleton of the digitizer is actually two pieces which are the trapezoidal-shaped “shell,” and the flat and partially hollowed out “baseplate”. They are held together by nine M2, Philips screws:
+
+  * two on the left shoulder
+  * two on the right shoulder
+  * two at the back
+  * two on the bottom back, under the two back rubber feet
+  * one on the bottom front center (this screw is longer than the two back screws)
+
+The feet are round, rubberized and help the device to have a grip on desks and other smooth surfaces.
 
 There are two different kinds of digitizers, each of which can be purchased individually; the left digitizer and the right digitizer. Each one contains a :doc:`Platinum CharaChorder Core<CharaChorder Core>` where they store chords, layouts, and settings.
 
@@ -99,7 +106,7 @@ Each :ref:`digitizer<Master Forge:The Digitizers>` of the Master Forge comes wit
   :width: 1200
   :alt: The three Bookend Rails
 
-The bookend rails are made of machined aluminum and are held in place on the body of the :ref:`digitizers<Master Forge:The Digitizers>` by two (size), steel screws.
+The bookend rails are made of machined aluminum and are held in place on the body of the :ref:`digitizers<Master Forge:The Digitizers>` by two M3 steel screws.
 
 The Splitter
 ~~~~~~~~~~~~
@@ -115,10 +122,9 @@ The Switches
 ~~~~~~~~~~~~
 
 Instead of the one-dimensional buttons that traditional keyboards use,
-Forge :ref:`digitizer<Master Forge:The Digitizers>` levers, which we will call switches, detect motion in three-dimensions so users have access to 64 unique inputs without their fingers breaking contact with the device. The :ref:`digitizer<Master Forge:The Digitizers>` switches produce a digital input, as opposed to analog. All of the switch caps are 3D-printed and measure [measurements]. Under the switch cap, there's a stem that's [measurements] thick and square in shape. The stem is not removable without disassembling the device whereas the caps are hot-swappable.
+Forge :ref:`digitizer<Master Forge:The Digitizers>` levers, which we will call switches, detect motion in three-dimensions so users have access to 64 unique inputs without their fingers breaking contact with the device. The :ref:`digitizer<Master Forge:The Digitizers>` switches produce a digital input, as opposed to analog. All of the switch caps are 3D-printed and are hot-swappable. Under the switch cap, there's a thick stem that isn't removable without disassembling the device.
 
-Each :ref:`digitizer<Master Forge:The Digitizers>` has eight 5-way switches. Starting from the outside on each :ref:`digitizer<Master Forge:The Digitizers>` and working inwards, the switches correspond to the following fingers; pinky, ring, middle, and index. The two switches along the "torso," that is, the inner-most side of each :ref:`digitizer<Master Forge:The Digitizers>`, correspond to the thumb. You can see what characters are on each switch by default in :doc:`Layout<Layout>`. Additionally, there are two more switches not on the “home-row” which can be accessed by the ring and middle fingers. The correct positioning of your fingers is for them to follow the arc in which the switches are laid out.
-
+.. _switch names:
 .. note::
    **IMPORTANT**: In this manual, we will refer to switches in the
    following way, starting from the pinky finger and working inwards:
@@ -127,6 +133,26 @@ Each :ref:`digitizer<Master Forge:The Digitizers>` has eight 5-way switches. Sta
    switches, where the switch further to the left on the left digitizer
    is aux 1. Symmetrically, aux 1 is the switch furthest to the right on the
    right half.
+
+This is the Master Forge home-row:
+
+.. code-block::
+
+         ring   middle                     middle  ring
+  pinky                 index     index                   pinky
+                        thumb 1   thumb 1
+                        thumb 2   thumb 2
+
+There are two additional keys on each half, below the ring and middle fingers:
+
+.. code-block::
+
+         ring   middle                     middle  ring
+  pinky  aux 1  aux 2   index     index    aux 2   aux 1  pinky
+                        thumb 1   thumb 1
+                        thumb 2   thumb 2
+
+You can see what characters are on each switch on the default :ref:`M4 English Layout, here<M4English Layout>`.
 
 Each switch has five press-able directions. Throughout this guide, we
 will use cardinal directions to refer to the directions in which each
@@ -494,17 +520,17 @@ By default, auxiliary layers are accessible by pressing and holding the "layer a
 
     In order to set your device up to have toggleable layers instead of shifted layers, you'll need to head to the `Device Manager <https://charachorder.io/config/layout/>`__ and remap some keys. We'll describe here how to remap the A2 layer access key, but the same steps apply to the A3 layer. These instructions assume that you have already connected your device to the `Device Manager <https://charachorder.io/config/layout/>`__.
 
-    #. Make sure that the A2 layer access key is mapped to the key of your choice on the Alpha layer (A1 layer). This is the key you will use to toggle into the A2 layer
+    #. Make sure that the A2 layer access key is mapped to the key of your choice on the A1 layer. This is the key you will use to toggle into the A2 layer
     #. On the A2 layer, find the same location that you mapped the A2 layer access key and change that key (on the A2 layer) to ``No Key Pressed``. This change is what prevents your device from shifting back into the A1 layer
-    #. On the A2 layer, choose another location and map the A2 layer access key there. This is the key that you will use to return to the Alpha layer.
+    #. On the A2 layer, choose another location and map the A1 layer access key there. This is the key that you will use to return to the A1 layer.
 
 A1 Layer
 ^^^^^^^^
 
-.. _M4G Alpha Layer:
+.. _M4G A1 Layer:
 .. image:: /assets/images/AlphaL.JPG
   :width: 1200
-  :alt: The Alpha Layer
+  :alt: The A1 Layer
 
 The A1 layer is the main layer that is active by default. The M4 English
 layout has all 26 letters of the English alphabet on the A1 layer so
@@ -527,17 +553,17 @@ A2 Layer
   :alt: The Numeric Layer
 
 The A2 layer, sometimes referred to as the “number layer”, is accessible
-with the :doc:`A2 access key<CharaChorder Keys>`. In the above :ref:`graphic<CCEnglish Layout>`, you’ll see this labeled
-as “num-shift.” In the `Device Manager <https://charachorder.io/config/layout/>`__,
+with the :doc:`A2 access key<CharaChorder Keys>`. In the :ref:`M4 English Layout<M4English Layout>`, you’ll see this labeled
+as “②”. In the `Device Manager <https://charachorder.io/config/layout/>`__,
 this key has the name “Numeric Layer (Left)” and “Numeric Layer (Right)”, one for each :ref:`digitizer<Master Forge:The Digitizers>`.
 
 By default, the A2 Layer is accessible by pressing and holding either
 pinky finger outwards, that is, west on the left pinky or east on the
 right pinky. You do not have to hold them both, only one is required.
 Any key that is on the A2 Layer can only be accessed by pressing and
-holding the A2 Layer access key along with the target key. You do not
+holding the :doc:`A2 access key<CharaChorder Keys>` along with the target key. You do not
 need to :doc:`chord<Chords>` the keys together; it’s only required that the
-A2 Layer access key is pressed while the target key is pressed.
+:doc:`A2 access key<CharaChorder Keys>` is pressed while the target key is pressed.
 
 .. note::
    EXAMPLE: On the M4 English layout, you can access the number
@@ -554,16 +580,15 @@ A3 Layer
   :alt: The Function Layer
 
 The A3 layer, sometimes referred to as the “function layer”, is
-accessible with the :doc:`A3 access key<CharaChorder Keys>`. This key is not
-in the above :ref:`graphic<CCEnglish Layout>`, and instead
-is accessible by [INFO]. In the `Device Manager <https://charachorder.io/config/layout/>`__,
+accessible with the :doc:`A3 access key<CharaChorder Keys>`. In the :ref:`M4 English Layout<M4English Layout>`, you’ll see this labeled
+as “③”. In the `Device Manager <https://charachorder.io/config/layout/>`__,
 this key has the name “Function Layer (Left)” and “Function Layer (Right)”, one for each :ref:`digitizer<Master Forge:The Digitizers>`.
 
-By default, the A3 Layer is accessible by [INFO]. You do not have to hold them both in order to access the A3 layer. Any key that is on the A3 Layer can only be accessed by pressing and holding the :doc:`A3 access key<CharaChorder Keys>`, along with the target key. You do not need to :doc:`chord<Chords>` the keys together; it’s only required that the A3 layer access key is pressed while the target key is pressed.
+By default, the A3 Layer is accessible by holding right :ref:`aux 1<Switch Names>` south, then pressing the target key. Any key that is on the A3 Layer can only be accessed by pressing and holding the :doc:`A3 access key<CharaChorder Keys>`, along with the target key. You do not need to :doc:`chord<Chords>` the keys together; it’s only required that the :doc:`A3 access key<CharaChorder Keys>` is pressed while the target key is pressed.
 
 .. note::
    EXAMPLE: On the M4 English layout, you can access the F1 key by
-   pressing and holding [INFO] and adding the letter ``a`` or ``r`` (location of number 1 on the default layout) to it.
+   pressing and holding right :ref:`aux 1<Switch Names>` south and adding the letter ``a`` or ``r`` (location of number 1 on the default layout) to it.
 
 
 Shift Modifier
@@ -608,11 +633,11 @@ like other modifiers (such as Ctrl and Alt). The Shift modifier output
 is currently controlled by the Operating System that your Forge is
 plugged into, and it is not possible to customize their outputs.
 
-In the above graphic, you’ll see
-the Shift key labeled as “Shift”. In the `Device Manager <https://charachorder.io/config/layout/>`__,
+On the :ref:`M4 English Layout<M4English Layout>`, you’ll see
+the Shift key labeled as “⇧”. In the `Device Manager <https://charachorder.io/config/layout/>`__,
 this key has the name “Shift Keyboard Modifier (Left)” and “Shift Keyboard Modifier (Right)”, one for each :ref:`digitizer<Master Forge:The Digitizers>`.
 
-By default, the Shift is accessible by pressing and holding either pinky
+By default, the Shift key is accessible by pressing and holding either pinky
 finger inwards, that is, east on the left pinky or west on the right
 pinky. You do not have to hold them both, only one is required. Any key
 that requires the Shift Modifier can only be accessed by pressing and
@@ -621,12 +646,12 @@ holding the Shift key along with the target key. You do not need to
 key is pressed while the target key is pressed.
 
 .. note::
-   EXAMPLE: On the M4 English layout, you can access the capital
-   ``A`` by pressing and holding the left pinky to the east and the
-   right index finger to the west.
+   EXAMPLE: On the M4 English layout, you can access capital
+   ``A`` by pressing and holding the left pinky to the east (shift) and the
+   right index finger to the west (a).
 
    On the M4 English layout, you can access the ``@`` symbol by pressing
-   and holding both pinkies to the east and the left index south.
+   and holding both pinkies to the east and the left index south (``shift + 2 = @``).
 
 Configurability
 ~~~~~~~~~~~~~~~
@@ -698,7 +723,7 @@ The Premium backer tier on Kickstarter includes the following:
     - :ref:`One (1) "Original Backer" Deskmat<Add-Ons:Original Backer Deskmat>`
     - One (1) M3 Allen Wrench
     - :ref:`One (1) Forge Cleat<Add-Ons:Cleat>`
-    - :ref:`Four (4) Ergo Bolt-On sets<Bolt-Ons:Ergo>`
+    - :ref:`One (1) Ergo Bolt-On set<Bolt-Ons:Ergo>`
     - Unlimited Forge CAD Access
     - 2 Years of VIP Membership
 
@@ -717,7 +742,7 @@ Super
     - :ref:`One (1) "Original Backer" Deskmat<Add-Ons:Original Backer Deskmat>`
     - One (1) M3 Allen Wrench
     - :ref:`One (1) Forge Cleat<Add-Ons:Cleat>`
-    - :ref:`Four (4) Ergo Bolt-On sets<Bolt-Ons:Ergo>`
+    - :ref:`One (1) Ergo Bolt-On set<Bolt-Ons:Ergo>`
     - Unlimited Forge CAD Access
     - Lifetime VIP Membership
     - GTM Immortalization
