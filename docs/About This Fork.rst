@@ -35,6 +35,20 @@ ones that don't. It only covers CCOS 2.1.0 and later: the Meta API no longer
 serves changelog data for older firmware versions. For the release currently
 in beta, see :doc:`Beta Releases`, which is still written by hand.
 
+Content adopted from unmerged upstream pull requests
+-------------------------------------------------------
+
+Some fixes and additions here started out as pull requests opened against
+the official documentation's repository that have not been merged there.
+Each was checked against this fork's current wording and, where relevant,
+against live-device behavior before being adopted, sometimes with
+corrections along the way. Most are small (typo fixes, broken cross-file
+link fixes, screenshot updates), but a few are larger, such as the Dynamic
+Library guide on :doc:`Chords` and the :doc:`Chord Modifiers` page split
+out of :doc:`Device Manager`. Pull requests whose content this fork already
+covered more accurately, or that no longer matched the current live UI,
+were left out.
+
 Settings CCOS has since removed
 --------------------------------
 
