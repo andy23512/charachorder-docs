@@ -8,7 +8,7 @@ Welcome to the CharaChorder Guide (Tangent's fork)!
 
 .. note::
    This is an unofficial fork of the CharaChorder documentation, maintained by
-   Tangent. Setting tables here are generated from the
+   Tangent Chang. Setting tables here are generated from the
    `CCOS Firmware Meta API <https://github.com/CharaChorder/CCOS-firmware#firmware-meta-api>`__
    rather than written by hand, so they may differ from the official guide.
    The official documentation lives at https://docs.charachorder.com/. See
@@ -22,7 +22,7 @@ Before even unboxing your CharaChorder, we encourage you to set up your computer
 
 This guide has been designed to link itself to other sections of itself for quick reference and ease of access. Anything that is highlighted in blue or purple is clickable and will take you to another portion of the guide. Please note that this guide is currently a work in progress and is not final in any way. As such, many of the pages that are linked might be empty. We thank you for your patience as we work arduously to release more pages.
 
-If you would like to submit a correction to something you've read in this guide, or if you have suggestions for the guide, please contact Tangent on Discord (@andy23512).
+If you would like to submit a correction to something you've read in this guide, or if you have suggestions for the guide, please contact Tangent Chang on Discord (@andy23512).
 
 
 Table of Contents

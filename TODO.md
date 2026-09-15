@@ -54,7 +54,7 @@ dashes.
 
 Re-check when a new CCOS release is cached: if a setting starts to differ, give
 that one directive an explicit `:devices:` listing both. Note the option
-*replaces* the default list rather than extending it, so all the other slugs
+_replaces_ the default list rather than extending it, so all the other slugs
 have to be repeated.
 
 ---
@@ -86,7 +86,7 @@ setting under a new experimental category."
 - `mouse/scroll throttle` (new in 3.0.0, `0-255 ms`, default 16) had no
   documentation at all. Confirmed on hardware that it is not in the GTM either,
   despite being in the `mouse` group, so it is documented as a `Scroll
-  Throttle` dropdown in the Device Manager's `Mouse` section.
+Throttle` dropdown in the Device Manager's `Mouse` section.
 
 **Worth knowing for the rest of this work:** an API group name does not tell
 you whether a setting is reachable from the GTM. `usb/poll rate`,
@@ -176,10 +176,10 @@ because the extension renders the baked-in table and the script re-renders it
 on a version switch. Documented in README.md so the next unit question knows
 where to go.
 
-| | before | after |
-|---|---|---|
-| `leds/brightness` | `Range 0 B to 255 B. Default 255 B.` | `Range 0 to 255. Default 255.` |
-| `leds/hue` | `Range 0 H to 65280 H, in steps of 256 H.` | `Range 0 to 65280, in steps of 256.` |
+|                   | before                                     | after                                |
+| ----------------- | ------------------------------------------ | ------------------------------------ |
+| `leds/brightness` | `Range 0 B to 255 B. Default 255 B.`       | `Range 0 to 255. Default 255.`       |
+| `leds/hue`        | `Range 0 H to 65280 H, in steps of 256 H.` | `Range 0 to 65280, in steps of 256.` |
 
 `ms`, `s` and `px` are left alone — they are real units and they read fine.
 
@@ -204,7 +204,7 @@ rather than expanded into a word nobody has verified.
   multiplier first (macOS: System Settings > Mouse > Scroll speed). That
   multiplier sits between the firmware's HID wheel report and anything an app
   can observe, so no app-level measurement can isolate what `mouse/scroll
-  speed` alone contributes.
+speed` alone contributes.
   Reading the raw HID report before the OS touches it would route around
   that, but `hidutil monitor` -- the obvious tool -- does not exist on
   current macOS (checked on 26.5.1: `hidutil` only has `dump`, `property` and
@@ -442,11 +442,11 @@ three devices listed out of eleven. Both are now
 **8f. Scan Rate and Keystroke Delay — deleted.** Neither has a setting in
 3.0.0. Tracking the parameter ids across versions says why:
 
-| | `0x14` | `0x17` | `0x26` |
-|---|---|---|---|
-| 2.1.0, 2.1.1 | `keyboard/poll rate` | — | `mouse/poll rate` |
-| 2.2.0-beta.0 | — | — | — |
-| 2.2.0-beta.29 onward | — | `keyboard/rollover` | — |
+|                      | `0x14`               | `0x17`              | `0x26`            |
+| -------------------- | -------------------- | ------------------- | ----------------- |
+| 2.1.0, 2.1.1         | `keyboard/poll rate` | —                   | `mouse/poll rate` |
+| 2.2.0-beta.0         | —                    | —                   | —                 |
+| 2.2.0-beta.29 onward | —                    | `keyboard/rollover` | —                 |
 
 `0x14` is the old "Key Scan Duration", and it disappeared alongside
 `mouse/poll rate` in 2.2.0-beta.0 — both halves of `Beta Releases.rst:215`,
@@ -527,7 +527,7 @@ they show up in generated output:
 - `fuzzy modifiers/enable` is an on/off setting with `range [0, 1]`, but it
   carries `unit: "ms"`. The other nine `[0, 1]` settings across the API have no
   unit, and its neighbours in the same group (`press theshold`, `release
-  theshold`, `release guard threshold`) are genuinely in ms, so the unit looks
+theshold`, `release guard threshold`) are genuinely in ms, so the unit looks
   copied. It renders as "Range 0 ms to 1 ms. Default 0 ms." The docs leave it
   verbatim rather than special-casing it, so a fix upstream will show up here.
 
@@ -556,14 +556,14 @@ work has not been done.
 Recorded so it does not get re-investigated.
 
 The file has exactly one `csv-table`, "Shifted Key Actions" under
-*Shift Modifier*, mapping unshifted to shifted keys (`` ` ``→`~`, `1`→`!`, …).
+_Shift Modifier_, mapping unshifted to shifted keys (`` ` ``→`~`, `1`→`!`, …).
 It is **not** derivable from the Meta API:
 
 - The page itself says the output "is currently controlled by the Operating
   System that your Forge is plugged into, and it is not possible to customize
   their outputs" — it describes host keyboard behaviour, not a CCOS setting.
 - In `actions.json` the two halves live in different categories (`1` = code 49
-  in *ASCII*, `!` = code 33 in *ASCII Macros*) and nothing links them:
+  in _ASCII_, `!` = code 33 in _ASCII Macros_) and nothing links them:
   `variationOf` / `variantOf` are unset on every character in the table.
 
 The rest of the file contains no defaults, ranges, or units — only prose,
@@ -587,8 +587,8 @@ filesystem is case-insensitive, so it only warns on the Linux CI runner.
 
 One colon, not two. `.. dropdown::` is a directive; `.. Dropdown:` is a
 **comment**, so docutils swallowed everything indented beneath it — lines
-334–418, i.e. 62 non-blank lines and 9 images. The entire *"Only use in
-Emergency"* manual firmware-update procedure was absent from the published
+334–418, i.e. 62 non-blank lines and 9 images. The entire _"Only use in
+Emergency"_ manual firmware-update procedure was absent from the published
 page.
 
 **Done: it is a real `.. dropdown::` now, and the block was reindented so it
@@ -599,8 +599,8 @@ all inside the block:
 - Every line used tabs and spaces mixed, at depths that do not line up once
   docutils expands tabs to 8 columns. Each `.. image::` and its `:width:` /
   `:alt:` lines sat at three different indents, so the option block was read as
-  the option *value*: `invalid option value: (option: "width"; value: '435\n:alt:
-  Popup to select serial device')`, five times. One image swallowed its options
+  the option _value_: `invalid option value: (option: "width"; value: '435\n:alt:
+Popup to select serial device')`, five times. One image swallowed its options
   as content instead (`no content permitted`).
 - One of those errors surfaced as a bogus missing-image warning for
   `assets/images/DM-CCOS-button.jpg:width:600` — the option text glued to the
@@ -623,7 +623,7 @@ What the fix consisted of, beyond the one character:
 - The two `FW-connect-button.jpg` references corrected to `.JPG`, which is
   12b's remaining half.
 - One sentence was split across a blank line (`Once again, your Forge will
-  automatically reboot and the` / `Forge drive will have disappeared.`), which
+automatically reboot and the` / `Forge drive will have disappeared.`), which
   would have rendered as two broken paragraphs. Joined.
 
 Verified: the build is back to its baseline 20 warnings with none in
@@ -634,12 +634,12 @@ that only the edits listed above changed.
 
 ### 12b. Image paths whose case does not match the file on disk (done)
 
-| Reference | File in git | Effect |
-|---|---|---|
-| `Device Manager.rst:379` → `ManagerSettingsAutocorrect.png` | `ManagerSettingsAutoCorrect.png` | **Fixed** — was missing from the published page |
-| `Master Forge.rst:325` → `DM-apply-update-button-M4G.png` | `DM-apply-update-button-m4g.png` | **Fixed** — was missing from the published page |
-| `Master Forge.rst:342` → `FW-connect-button.jpg` | `FW-connect-button.JPG` | **Fixed** — with 12a, which made the block render |
-| `Master Forge.rst:385` → `FW-connect-button.jpg` | `FW-connect-button.JPG` | **Fixed** — with 12a, which made the block render |
+| Reference                                                   | File in git                      | Effect                                            |
+| ----------------------------------------------------------- | -------------------------------- | ------------------------------------------------- |
+| `Device Manager.rst:379` → `ManagerSettingsAutocorrect.png` | `ManagerSettingsAutoCorrect.png` | **Fixed** — was missing from the published page   |
+| `Master Forge.rst:325` → `DM-apply-update-button-M4G.png`   | `DM-apply-update-button-m4g.png` | **Fixed** — was missing from the published page   |
+| `Master Forge.rst:342` → `FW-connect-button.jpg`            | `FW-connect-button.JPG`          | **Fixed** — with 12a, which made the block render |
+| `Master Forge.rst:385` → `FW-connect-button.jpg`            | `FW-connect-button.JPG`          | **Fixed** — with 12a, which made the block render |
 
 **Done: the first two were the only `image file not readable` warnings the CI
 build emitted, and both references were corrected** rather than renaming the
@@ -661,12 +661,12 @@ Building the docs is what settles it (`.venv/bin/python -m sphinx -b html docs
 undefined-label warning, and the other three resolved to real links in the
 generated HTML:
 
-| Reference | Verdict |
-|---|---|
-| `Chords.rst:103` → `Chords:Impulse Chording` | fine — resolves to `#impulse-chording`; the heading is `Impulse chording` |
-| `Device Manager.rst:618` → `Device Manager:Action Code Categories` | fine — resolves to `#action-code-categories` |
-| `SerialAPI.rst:31` → `SerialAPI:ID` | fine — resolves to `#id` |
-| `Glossary.rst:35` → `Device Manager:Compound Timeout Setting` | **was broken** — rendered as plain text, no link |
+| Reference                                                          | Verdict                                                                   |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| `Chords.rst:103` → `Chords:Impulse Chording`                       | fine — resolves to `#impulse-chording`; the heading is `Impulse chording` |
+| `Device Manager.rst:618` → `Device Manager:Action Code Categories` | fine — resolves to `#action-code-categories`                              |
+| `SerialAPI.rst:31` → `SerialAPI:ID`                                | fine — resolves to `#id`                                                  |
+| `Glossary.rst:35` → `Device Manager:Compound Timeout Setting`      | **was broken** — rendered as plain text, no link                          |
 
 **Fixed: `Glossary.rst:35` now says `:ref:`Compound timeout<Compound Timeout
 Setting>``.** The target at `Device Manager.rst:358` is an explicit label
@@ -710,13 +710,13 @@ Every section on the page carries a `Path: GTM > ...` line claiming the
 setting is reachable from that menu. The count recorded here used to say 26;
 counting the actual `Path:` lines gives **23**:
 
-| Menu | Claims |
-|---|---|
-| Keyboard | 5 |
-| Mouse | 4 |
-| Chording | 7 |
-| Display | 6 |
-| Resources | 1 |
+| Menu      | Claims |
+| --------- | ------ |
+| Keyboard  | 5      |
+| Mouse     | 4      |
+| Chording  | 7      |
+| Display   | 6      |
+| Resources | 1      |
 
 This was not hypothetical. Three settings were placed on the page during the
 item 2 work by reasoning from their API group, and all three turned out to be
@@ -728,14 +728,14 @@ by menu, cross-checked against the Meta API's `two_s3` snapshot. 17 matched --
 name, submenu structure and default value all consistent with what the page
 already said. Six did not:
 
-| Finding | Fix |
-|---|---|
-| `GUI-CTRL Soft Swap` heading said "(CharaChorder Lite only)" | Wrong: present in the Two's `Keyboard` menu, and the Meta API lists `keyboard/command control swap` on all 11 device slugs. Heading and a note corrected. |
-| `Path: GTM > Keyboard > Operating System` | Setting is real (`misc/operating system`) but not reachable from the Two's `Keyboard` menu. Path line removed, warning rewritten to say so and to note Device Manager reachability is still unchecked. |
-| `Path: GTM > Display > Startup` | Not in the Two's `Display` menu, and no device in the Meta API has a setting matching it at all -- unlike `Capslock`, which is a real toggle the API just does not track. Section merged into `Realtime Feedback`, which is what the old warning already said controlled it. Five `:ref:` links across `GenerativeTextMenu.rst`, `CharaChorder_Lite.rst` (×3) and `Device Manager.rst` retargeted. |
-| `Chording > Compound` had no section | The Two's `Chording` menu has a `Compound` submenu (`Compound Timeout`, default 1000 ms) with no counterpart on this page at all -- the "menu entry with no section" case item 13 anticipated. Written up from `chording/compound timeout`, matching the existing `Compound timeout` dropdown already in `Device Manager.rst`. |
-| `Chording > Spurring` still shows up in the menu | Confirms item 2b's call that the setting itself is gone, but adds a detail item 2b did not have: the GTM never cleaned up the menu label, so selecting it does nothing. Noted there rather than reopening the item. |
-| `mouse/enable` is undocumented and absent from the GTM | Not one of item 17's original 13 -- found here because the Two's `Mouse` menu was enumerated in full. Added to that item as a 14th entry. |
+| Finding                                                      | Fix                                                                                                                                                                                                                                                                                                                                                                                                |
+| ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `GUI-CTRL Soft Swap` heading said "(CharaChorder Lite only)" | Wrong: present in the Two's `Keyboard` menu, and the Meta API lists `keyboard/command control swap` on all 11 device slugs. Heading and a note corrected.                                                                                                                                                                                                                                          |
+| `Path: GTM > Keyboard > Operating System`                    | Setting is real (`misc/operating system`) but not reachable from the Two's `Keyboard` menu. Path line removed, warning rewritten to say so and to note Device Manager reachability is still unchecked.                                                                                                                                                                                             |
+| `Path: GTM > Display > Startup`                              | Not in the Two's `Display` menu, and no device in the Meta API has a setting matching it at all -- unlike `Capslock`, which is a real toggle the API just does not track. Section merged into `Realtime Feedback`, which is what the old warning already said controlled it. Five `:ref:` links across `GenerativeTextMenu.rst`, `CharaChorder_Lite.rst` (×3) and `Device Manager.rst` retargeted. |
+| `Chording > Compound` had no section                         | The Two's `Chording` menu has a `Compound` submenu (`Compound Timeout`, default 1000 ms) with no counterpart on this page at all -- the "menu entry with no section" case item 13 anticipated. Written up from `chording/compound timeout`, matching the existing `Compound timeout` dropdown already in `Device Manager.rst`.                                                                     |
+| `Chording > Spurring` still shows up in the menu             | Confirms item 2b's call that the setting itself is gone, but adds a detail item 2b did not have: the GTM never cleaned up the menu label, so selecting it does nothing. Noted there rather than reopening the item.                                                                                                                                                                                |
+| `mouse/enable` is undocumented and absent from the GTM       | Not one of item 17's original 13 -- found here because the Two's `Mouse` menu was enumerated in full. Added to that item as a 14th entry.                                                                                                                                                                                                                                                          |
 
 `GenerativeTextMenu.rst:51`'s illustrative screen, `Press Tolerance [ Use
 up/down arrow keys to adjust: 25ms ]`, was also checked: the Two draws the line
@@ -749,15 +749,15 @@ recheck the six findings above for a device-specific difference, and cover
 the `Display > LEDs` section, which the Two cannot reach at all since it has
 no LEDs.
 
-| Check | Result on the Lite |
-|---|---|
-| `GUI-CTRL Soft Swap` present in `Keyboard` | Same as the Two |
-| `Operating System` reachable from `Keyboard` | Same as the Two -- not reachable |
-| `Display > Startup` present | Same as the Two -- absent |
-| `Chording > Compound` submenu present | Same as the Two |
-| `Chording > Spurring` still shows a dead menu entry | Same as the Two |
-| `Mouse` menu contents | Same as the Two: `Slow Speed`, `Fast Speed`, `Scroll Speed`, `Active Mode`. No `mouse/enable` toggle here either |
-| `Display > LEDs` submenu | Present, with exactly `On/Off` and `Brightness` -- no hue/saturation/effect controls, matching what the page already says (colour is Device Manager-only) |
+| Check                                               | Result on the Lite                                                                                                                                        |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `GUI-CTRL Soft Swap` present in `Keyboard`          | Same as the Two                                                                                                                                           |
+| `Operating System` reachable from `Keyboard`        | Same as the Two -- not reachable                                                                                                                          |
+| `Display > Startup` present                         | Same as the Two -- absent                                                                                                                                 |
+| `Chording > Compound` submenu present               | Same as the Two                                                                                                                                           |
+| `Chording > Spurring` still shows a dead menu entry | Same as the Two                                                                                                                                           |
+| `Mouse` menu contents                               | Same as the Two: `Slow Speed`, `Fast Speed`, `Scroll Speed`, `Active Mode`. No `mouse/enable` toggle here either                                          |
+| `Display > LEDs` submenu                            | Present, with exactly `On/Off` and `Brightness` -- no hue/saturation/effect controls, matching what the page already says (colour is Device Manager-only) |
 
 No device-specific difference turned up anywhere. The remaining existing
 claims (`Keyboard`'s `Debounce Press`/`Debounce Release`/`Capslock`,
@@ -784,20 +784,19 @@ turns up device-specific about it.
 Item 3 fixed who the LED settings apply to, not how many are described. The API
 exposes eight; the docs described two.
 
-| Setting | Default | Range / options | Documented |
-|---|---|---|---|
-| `leds/enable` | 1 | `0-1` | yes, GTM `On/Off` |
-| `leds/brightness` | 255 | `0-255` | yes, GTM `Brightness` |
-| `leds/hue` | 0 | `0-65280` | now, Device Manager `Color` |
-| `leds/saturation` | 255 | `0-255` | now, Device Manager `Color` |
-| `leds/effect` | `rainbow` | `static`, `rainbow` | now, Device Manager `Effect` |
-| `leds/effect cycle` | 25000 | `100-25500`, step 100, unit `s` | now, Device Manager `Effect Cycle` |
-| `leds/off delay` | 1000 | `0-2550 ms`, step 10 | now, Device Manager `Off delay` |
-| `leds/on off transition` | 1000 | `0-2550 ms`, step 10 | now, Device Manager `On off transition` |
+| Setting                  | Default   | Range / options                 | Documented                              |
+| ------------------------ | --------- | ------------------------------- | --------------------------------------- |
+| `leds/enable`            | 1         | `0-1`                           | yes, GTM `On/Off`                       |
+| `leds/brightness`        | 255       | `0-255`                         | yes, GTM `Brightness`                   |
+| `leds/hue`               | 0         | `0-65280`                       | now, Device Manager `Color`             |
+| `leds/saturation`        | 255       | `0-255`                         | now, Device Manager `Color`             |
+| `leds/effect`            | `rainbow` | `static`, `rainbow`             | now, Device Manager `Effect`            |
+| `leds/effect cycle`      | 25000     | `100-25500`, step 100, unit `s` | now, Device Manager `Effect Cycle`      |
+| `leds/off delay`         | 1000      | `0-2550 ms`, step 10            | now, Device Manager `Off delay`         |
+| `leds/on off transition` | 1000      | `0-2550 ms`, step 10            | now, Device Manager `On off transition` |
 
 **Why it was not done with item 3:** the metadata alone does not say what these
-mean, and guessing is how three settings ended up on the wrong page during item
-2. Two questions needed a device rather than the API, and both are now answered
+mean, and guessing is how three settings ended up on the wrong page during item 2. Two questions needed a device rather than the API, and both are now answered
 on a CharaChorder Lite running CCOS 3.0.0:
 
 - **The hue/saturation/brightness color picker theory — confirmed both ways.**
@@ -805,7 +804,7 @@ on a CharaChorder Lite running CCOS 3.0.0:
   `DeviceManager/src/routes/(app)/config/settings/+page.svelte`, any setting
   with `unit === "H"` renders as `<input type="color">`, backed by
   `hsvToRgb`/`rgbToHsv` in `DeviceManager/src/lib/setting.ts` reading three
-  *consecutive* setting ids as H, S and V — but whether `leds/hue`,
+  _consecutive_ setting ids as H, S and V — but whether `leds/hue`,
   `leds/saturation` and `leds/brightness` actually have consecutive ids was
   never recorded anywhere in this repo. The cached `docs/_data/ccos/3.0.0.json`
   answers it without needing hardware: on `lite_s2` the three ids are 129, 130,
@@ -860,7 +859,7 @@ Confirmed while reshooting:
 - `ManagerSettingsMouse.png`'s known mismatch was real: **Poll Rate is gone
   from the Mouse box** and now lives in a new **Usb** box (`1000Hz`, plus new
   `Aggressive reporting` and `Aggressive reporting throttle`, `Hid resend
-  throttle` settings not documented anywhere yet -- item 17 territory).
+throttle` settings not documented anywhere yet -- item 17 territory).
   **Scroll Throttle** is present as the page already says.
 - **Done:** the Mouse box's `Active Mouse` toggle is labelled **`Caffeine`**
   in the live UI. Renamed the `.. dropdown:: Active Mouse` heading to
@@ -871,7 +870,7 @@ Confirmed while reshooting:
   different UI surface.
 - The Chording box picked up three fields since the last screenshot that
   aren't documented in any dropdown yet: `Minimum chord keys`, `Tap dance
-  tolerance`, `Concatenation style` (`Compound timeout` and `Detection method`
+tolerance`, `Concatenation style` (`Compound timeout` and `Detection method`
   were already documented). Also item 17 territory.
 - The Arpeggiates box has a `Mode` field (`All`) with no corresponding
   dropdown either.
@@ -995,6 +994,7 @@ Arpeggiates, Leds, Misc, Usb, Backup.
     Meta API does carry a `Variant` column (`left`/`right`) per the
     maintainer's screenshot of the full table. The doc's "(Left)"/"(Right)"
     phrasing is a faithful rendering of Title + Variant, so no fix needed.
+
 - `ManagerSELECTDEVICE.png` -- left as-is, not reshot. It's Chrome's own
   native "wants to connect to a serial port" permission dialog, not part of
   charachorder.io's UI, so it isn't expected to have changed, and reshooting
@@ -1016,11 +1016,11 @@ The page shows 19 screenshots (was 15; `ManagerSettingsUsb`,
 `ManagerSettingsFuzzyModifiers` are new, added while working items 15 and 17).
 As of 2026-08-29 all of them are current:
 
-| Last changed | Screenshots |
-|---|---|
-| 2025-02-25 | `ChordManager` |
-| 2025-08-26 | `ManagerSettingsAutoCorrect`, `ManagerSettingsChording` |
-| 2026-08-29 | everything else: `ManagerSELECTDEVICE` (unchanged, see below), `ManagerSettingsArpeggiates`, `ManagerSettingsMouse`, `ManagerSettingsRGB`, `ManagerColorScheme`, `ManagerLayoutSelector`, `ManagerSaveButton`, `ManagerUndoRedo`, `ManagerProfileSelector` (new), `ManagerSettingsUsb` (new), `ManagerSettingsKeyboard` (new), `ManagerSettingsGaming` (new), `ManagerSettingsFuzzyModifiers` (new) |
+| Last changed | Screenshots                                                                                                                                                                                                                                                                                                                                                                                         |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2025-02-25   | `ChordManager`                                                                                                                                                                                                                                                                                                                                                                                      |
+| 2025-08-26   | `ManagerSettingsAutoCorrect`, `ManagerSettingsChording`                                                                                                                                                                                                                                                                                                                                             |
+| 2026-08-29   | everything else: `ManagerSELECTDEVICE` (unchanged, see below), `ManagerSettingsArpeggiates`, `ManagerSettingsMouse`, `ManagerSettingsRGB`, `ManagerColorScheme`, `ManagerLayoutSelector`, `ManagerSaveButton`, `ManagerUndoRedo`, `ManagerProfileSelector` (new), `ManagerSettingsUsb` (new), `ManagerSettingsKeyboard` (new), `ManagerSettingsGaming` (new), `ManagerSettingsFuzzyModifiers` (new) |
 
 **Also worth folding in while reshooting:**
 
@@ -1053,16 +1053,16 @@ mouse poll duration, `0x32`/`0x33` chording character counter timeout,
 `0x41`-`0x43` spurring -- and falling out of the table is the right outcome for
 those. The other eight are not:
 
-| Code | Old name |
-|---|---|
-| `0x01` | Enable Serial Header |
-| `0x02` | Enable Serial Logging |
+| Code   | Old name                |
+| ------ | ----------------------- |
+| `0x01` | Enable Serial Header    |
+| `0x02` | Enable Serial Logging   |
 | `0x03` | Enable Serial Debugging |
-| `0x04` | Enable Serial Raw |
-| `0x05` | Enable Serial Chord |
-| `0x06` | Enable Serial Keyboard |
-| `0x07` | Enable Serial Mouse |
-| `0x12` | Enable Character Entry |
+| `0x04` | Enable Serial Raw       |
+| `0x05` | Enable Serial Chord     |
+| `0x06` | Enable Serial Keyboard  |
+| `0x07` | Enable Serial Mouse     |
+| `0x12` | Enable Character Entry  |
 
 These switch serial output on and off. They are not settings a user reaches
 through the GTM or the Device Manager, which is what the Meta API publishes, so
@@ -1107,22 +1107,22 @@ item 8f turned into the same count for everything else: of the 43 settings CCOS
 anywhere in these docs. They appear only as a row in the generated Serial API
 parameter table, under their API name.
 
-| Setting | Code | Default | Values | API description |
-|---|---|---|---|---|
-| `arpeggiates/mode` | 0x55 | 0 | all, chord modifiers, arpeggiate chords | no |
-| `chording/concatenation style` | 0x3E | 0 | appended, prepended | yes |
-| `chording/minimum chord keys` | 0x38 | 2 | 1-12 | yes |
-| `chording/tap dance tolerance` | 0x39 | 175 | 0-1275 step 5 | no |
-| `fuzzy modifiers/enable` | 0x18 | 0 | 0-1 ms | no |
-| `fuzzy modifiers/press theshold` | 0x19 | 50 | 0-255 ms | yes |
-| `fuzzy modifiers/release theshold` | 0x1A | 110 | 0-255 ms | yes |
-| `fuzzy modifiers/release guard threshold` | 0x1B | 50 | 0-255 ms | yes |
-| `gaming/layer warp` | 0x70 | 0 | 0-1 | yes |
-| `keyboard/rollover` | 0x17 | 1 | 6 key, 12 key, 18 key | yes |
-| `mouse/enable` | 0x21 | 1 | 0-1 | no |
-| `usb/aggressive reporting` | 0x95 | 0 | never, active only | yes |
-| `usb/aggressive reporting throttle` | 0x93 | 0 | 0-25500 step 100 s scale 0.001 | no |
-| `usb/hid resend throttle` | 0x97 | 10 | 10-2550 step 10 ms | no |
+| Setting                                   | Code | Default | Values                                  | API description |
+| ----------------------------------------- | ---- | ------- | --------------------------------------- | --------------- |
+| `arpeggiates/mode`                        | 0x55 | 0       | all, chord modifiers, arpeggiate chords | no              |
+| `chording/concatenation style`            | 0x3E | 0       | appended, prepended                     | yes             |
+| `chording/minimum chord keys`             | 0x38 | 2       | 1-12                                    | yes             |
+| `chording/tap dance tolerance`            | 0x39 | 175     | 0-1275 step 5                           | no              |
+| `fuzzy modifiers/enable`                  | 0x18 | 0       | 0-1 ms                                  | no              |
+| `fuzzy modifiers/press theshold`          | 0x19 | 50      | 0-255 ms                                | yes             |
+| `fuzzy modifiers/release theshold`        | 0x1A | 110     | 0-255 ms                                | yes             |
+| `fuzzy modifiers/release guard threshold` | 0x1B | 50      | 0-255 ms                                | yes             |
+| `gaming/layer warp`                       | 0x70 | 0       | 0-1                                     | yes             |
+| `keyboard/rollover`                       | 0x17 | 1       | 6 key, 12 key, 18 key                   | yes             |
+| `mouse/enable`                            | 0x21 | 1       | 0-1                                     | no              |
+| `usb/aggressive reporting`                | 0x95 | 0       | never, active only                      | yes             |
+| `usb/aggressive reporting throttle`       | 0x93 | 0       | 0-25500 step 100 s scale 0.001          | no              |
+| `usb/hid resend throttle`                 | 0x97 | 10      | 10-2550 step 10 ms                      | no              |
 
 Five have something to start from in `Beta Releases.rst`: `keyboard/rollover`
 ("Keyboard Rollover Settings"), `gaming/layer warp`, `usb/aggressive
@@ -1169,12 +1169,12 @@ into the existing `Chording`, `Arpeggiates` and `USB` sections.
   `keyboard/rollover`, `gaming/layer warp`, `chording/concatenation style`,
   `chording/minimum chord keys`, `fuzzy modifiers/press theshold`,
   `release theshold` and `release guard threshold`, `usb/aggressive
-  reporting`.
+reporting`.
 - `mouse/enable` and `fuzzy modifiers/enable` have no API description, but are
   plain on/off toggles, so they got a one-line hand-written blurb instead
   (matching how `Caffeine` and other boolean toggles are already documented).
 - `arpeggiates/mode`, `chording/tap dance tolerance`, `usb/aggressive
-  reporting throttle` and `usb/hid resend throttle` got **no explanatory
+reporting throttle` and `usb/hid resend throttle` got **no explanatory
   prose** -- only a bare `.. dropdown::` wrapping the `.. ccos-setting::`
   table (value/range/enum, no description). Checked both `Beta Releases.rst`
   and the live Meta API's `changelog.json` for `two_s3`/3.0.0 for material to
@@ -1221,7 +1221,7 @@ it does are not on the page:
   `setSetting()` sends the parameter code as `id + profile * 0x100`, so profile
   B's copy of setting `0x15` is `0x115`. The page describes `A1`/`A2`/`A3` as
   three fixed keymaps and parameter codes as one flat byte. `docs/Beta
-  Releases.rst` already documents the three profiles, so this is the Serial API
+Releases.rst` already documents the three profiles, so this is the Serial API
   page lagging behind, not new hardware.
 
 **Why this is not just writing them up.** A client sending a command proves
@@ -1289,14 +1289,14 @@ sentence sits three paragraphs below the note that says this is a fork.
 Everything else found is a link to an official community, which is fine to keep
 because it is about the devices rather than about the docs:
 
-| File | What it points at |
-|---|---|
-| `docs/FAQs.rst:15` | Discord invite `https://discord.gg/hYu6VW5YkM` |
-| `docs/FAQs.rst:16` | `https://www.youtube.com/charachorder` |
-| `docs/CharaChorder Engine.rst:14` | Engine Discord channel invite |
+| File                              | What it points at                              |
+| --------------------------------- | ---------------------------------------------- |
+| `docs/FAQs.rst:15`                | Discord invite `https://discord.gg/hYu6VW5YkM` |
+| `docs/FAQs.rst:16`                | `https://www.youtube.com/charachorder`         |
+| `docs/CharaChorder Engine.rst:14` | Engine Discord channel invite                  |
 
 **Decided:** point readers at the maintainer directly instead of standing up a
-separate process. `docs/index.rst:24` now reads "please contact Tangent on
+separate process. `docs/index.rst:24` now reads "please contact Tangent Chang on
 Discord (@andy23512)", the same contact line used on the maintainer's own
 blog (<https://andy23512.github.io/blog/>) for the same purpose.
 
@@ -1326,7 +1326,7 @@ commits, and the parts a reader would notice are:
   8f).
 - **Sections moved between pages** after checking a device, because the API
   group a setting belongs to does not say where a user reaches it: `usb/poll
-  rate` and `mouse/scroll throttle` are documented under Device Manager here
+rate` and `mouse/scroll throttle` are documented under Device Manager here
   and on the GTM page upstream (item 2a).
 - **Scope corrections**, such as LED settings no longer being described as
   Lite-only (item 3).
@@ -1407,7 +1407,7 @@ removed when the `Keyboard` section was added but never was:
   Control Swap" (`keyboard/command control swap`).
 - "Key Debounce Press" / "Key Debounce Release" -- duplicate the Keyboard
   section's "Debounce Press" / "Debounce Release" (`keyboard/debounce
-  press`/`release`).
+press`/`release`).
 - "Character Entry (chentry)" -- the chording-disable toggle. This one
   isn't a duplicate: it maps to `chording/enable`, which the `Chording`
   section (`docs/Device Manager.rst:349-`) doesn't document as its own
@@ -1506,7 +1506,7 @@ that this fork's `RGB` section doesn't.
   `M4G` (left half) and `m4gr_s3` with `M4G (right)` (right half), and
   `Footer.svelte` shows that once connected, the sidebar's bottom-center
   "Connect" button is replaced by
-  `` {$serialPort.company} {$serialPort.device} {$serialPort.chipset} ``
+  `{$serialPort.company} {$serialPort.device} {$serialPort.chipset}`
   -- the device's own raw self-reported name, i.e. `M4G` or `M4GR`. Added
   a note to the Leds section explaining you must connect to each half
   separately to reach its settings, and how to tell which half is

@@ -19,6 +19,7 @@
 #
 import os
 import sys
+
 # sys.path.insert(0, os.path.abspath('../source'))
 
 # Local Sphinx extensions live in docs/_ext (see ccos_meta.py).
@@ -55,7 +56,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = "CharaChorder Docs (Tangent's fork)"
-copyright = '2025-2026, CharaChorder (unofficial fork by Tangent)'
+copyright = '2025-2026, CharaChorder (unofficial fork by Tangent Chang)'
 author = 'CharaChorder'
 
 # The version info for the project you're documenting, acts as replacement for

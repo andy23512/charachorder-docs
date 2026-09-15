@@ -3,7 +3,7 @@ About this fork
 
 This page describes what makes this guide different from the official
 CharaChorder documentation at https://docs.charachorder.com/, beyond the
-five-line note on the front page. It is maintained by Tangent and is not
+five-line note on the front page. It is maintained by Tangent Chang and is not
 affiliated with CharaChorder.
 
 Generated setting tables
