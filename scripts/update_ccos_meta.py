@@ -31,7 +31,9 @@ def fetch_json(url):
         with urllib.request.urlopen(url, timeout=TIMEOUT) as response:
             return json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as error:
-        if error.code == 404:
+        if error.code in (404, 500):
+            # The API answers missing files with a raw nginx 500 instead of
+            # a 404 (seen for x_s2 2.0.2/meta.json); treat both as "absent".
             return None
         raise
 
@@ -179,7 +181,7 @@ def main():
     if unknown:
         print(f"warning: API lists devices missing from devices.json: {', '.join(unknown)}", file=sys.stderr)
 
-    by_version = {}
+    listings = {}
     for device in available:
         if device not in known:
             continue
@@ -188,11 +190,28 @@ def main():
             versions = [v for v in versions if is_stable(v)]
         if args.version:
             versions = [v for v in versions if v == args.version]
+        listings[device] = versions
+
+    # A device's own directory index can lag behind what's actually published
+    # (seen for x_s2, whose listing omitted an already-live 3.0.0 release), so
+    # also probe the newest version seen across every other device even when
+    # a given device's own listing doesn't mention it yet.
+    all_versions = [v for versions in listings.values() for v in versions]
+    newest_seen = max(all_versions, key=version_key) if all_versions else None
+
+    by_version = {}
+    for device, versions in listings.items():
         if not versions:
             print(f"  {device}: no matching version, skipped", file=sys.stderr)
             continue
-        target = max(versions, key=version_key)
+        listed_target = max(versions, key=version_key)
+        target = listed_target
+        if newest_seen and version_key(newest_seen) > version_key(listed_target):
+            target = newest_seen
         data = snapshot_device(device, target)
+        if data is None and target != listed_target:
+            target = listed_target
+            data = snapshot_device(device, target)
         if data is None:
             print(f"  {device} {target}: metadata incomplete, skipped", file=sys.stderr)
             continue
