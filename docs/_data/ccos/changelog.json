@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-02T05:52:02+00:00",
+ "fetched_at": "2026-10-05T14:22:22+00:00",
  "devices": [
   "one_m0",
   "lite_s2",
@@ -17,8 +17,7 @@
     "lite_s2",
     "m4g_s3",
     "one_m0",
-    "two_s3",
-    "x_s2"
+    "two_s3"
    ],
    "features": [
     {
@@ -27,7 +26,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -39,7 +37,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -51,7 +48,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -63,7 +59,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -75,7 +70,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -87,7 +81,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -99,7 +92,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -111,7 +103,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -123,7 +114,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -135,7 +125,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -147,7 +136,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -159,7 +147,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -171,7 +158,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -183,7 +169,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -195,7 +180,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -207,7 +191,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -219,7 +202,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -231,7 +213,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -243,7 +224,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -255,7 +235,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -267,7 +246,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -279,7 +257,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -298,7 +275,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -310,7 +286,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -321,7 +296,6 @@
      "description": "Support for three Profiles has been added, each with their own layout and settings.\nYou can combine this feature with dynamic libraries as well by creating a\nprofile activation chord that simultaneously activates your desired dynamic library.\n",
      "devices": [
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -332,7 +306,6 @@
      "description": "",
      "devices": [
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -360,7 +333,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -372,7 +344,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -384,7 +355,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -396,7 +366,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -408,7 +377,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -420,7 +388,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -432,7 +399,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -444,7 +410,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -456,7 +421,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -468,7 +432,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -480,7 +443,6 @@
      "devices": [
       "one_m0",
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -491,7 +453,6 @@
      "description": "",
      "devices": [
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -502,7 +463,6 @@
      "description": "",
      "devices": [
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
@@ -513,7 +473,6 @@
      "description": "Replaced the mouse/keyboard poll rate settings (which didn't actually change the poll rate) with a USB poll rate setting\nunder a new experimental category\n",
      "devices": [
       "lite_s2",
-      "x_s2",
       "two_s3",
       "engine_s2",
       "m4g_s3"
