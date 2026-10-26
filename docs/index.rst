@@ -33,12 +33,14 @@ Table of Contents
 
    About This Fork.rst
    Master Forge.rst
+   Forge_Trackball.rst
    CharaChorder One.rst
    CharaChorder Two.rst
    CharaChorder_Lite.rst
    CharaChorder Engine.rst
    CharaChorder X.rst
    CCOS.rst
+   CC_DUO.rst
    Chords.rst
    Chord Modifiers.rst
    Device Manager.rst
