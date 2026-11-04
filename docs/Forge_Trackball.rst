@@ -11,7 +11,7 @@ Welcome to the Official Forge Trackball guide. You can select the links below to
 
 What began as a modular bolt-on accessory for the :doc:`Master Forge <Master Forge>` has evolved into a standalone, precision optical pointing device: the **Forge Trackball**. Powered by its own independent instance of :doc:`CharaChorder Operating System (CCOS) <CCOS>`, the Forge Trackball features a symmetrical, reversible brushed-aluminum exoskeleton designed for either fingertip or thumb control with your left or right hand. You can use it as an independent wired USB-C desktop trackball on any computer, bolt it directly onto any slotted bookend rail on your :doc:`Master Forge <Master Forge>`, or even use it as a structural bridge connecting two Forge modules together.
 
-Click :ref:`here <Forge Trackball:Getting Started>` to skip to the Getting Started Guide.
+Click :ref:`here <Forge_Trackball:Getting Started>` to skip to the Getting Started Guide.
 
 .. contents:: Table of Contents of this Page
    :local:
@@ -21,11 +21,6 @@ Out of the Box
 
 Parts
 ^^^^^
-
-.. _Forge Trackball Parts:
-.. image:: /assets/images/ForgeTrackballParts.jpg
-   :width: 600
-   :alt: Forge Trackball package contents
 
 When you first receive your Forge Trackball, it will come packaged with everything needed to get started either on your desktop or mounted to your Forge rig:
 
