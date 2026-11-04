@@ -13,9 +13,6 @@ What began as a modular bolt-on accessory for the :doc:`Master Forge <Master For
 
 Click :ref:`here <Forge_Trackball:Getting Started>` to skip to the Getting Started Guide.
 
-.. contents:: Table of Contents of this Page
-   :local:
-
 Out of the Box
 --------------
 

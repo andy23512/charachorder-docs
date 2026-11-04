@@ -6,9 +6,6 @@ Welcome to the Official **CC DUO** guide. You can select the links below to navi
 
 **CC DUO** is CharaChorder's dedicated desktop companion application for multi-ball, dual-wielding :doc:`Forge Trackball <Forge_Trackball>` setups. While a single Forge Trackball—or two trackballs controlling a single shared system pointer—operates 100% plug-and-play across Windows, macOS, and Linux without any additional software, **CC DUO** unlocks true **dual-cursor functionality**, independent left/right calibration, and specialized role splitting on Windows.
 
-.. contents:: Table of Contents of this Page
-   :local:
-
 Software Overview & System Requirements
 ---------------------------------------
 
