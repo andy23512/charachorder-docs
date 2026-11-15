@@ -10,3 +10,6 @@ processed_data/*.dat
 
 # Local Python env for building these docs
 .venv/
+
+# macOS
+.DS_Store

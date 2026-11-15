@@ -14,7 +14,7 @@ You can download CC Duo from `CharaChorder's GitHub <https://github.com/CharaCho
 On the CC Duo GitHub page, click the green (by default) button that says "<> Code".
 
 .. _Github Code button:
-.. image:: /assets/images/CC_Duo_Github.webp
+.. image:: /assets/images/CCDuoGithub.webp
    :width: 600
    :alt: CC Duo Github page
 
