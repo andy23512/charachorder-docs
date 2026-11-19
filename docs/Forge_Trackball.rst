@@ -167,12 +167,12 @@ Master Forge Rail Mounting
 
 If you own a :doc:`Master Forge <Master Forge>`, the Forge Trackball integrates directly into the Forge rail ecosystem:
 
-* **Dovetail Rail Mounting**: The bottom plate of the Forge Trackball has a dovetail rail that slides onto the slotted bookend rails on the Master Forge (``M4G``). To mount it:
+* **Dovetail Rail Mounting**: The bottom plate of the Forge Trackball has a dovetail rail that slides onto the slotted bookend rails on the Master Forge (``M4G``). It can attach to any of the slotted rails on the outside of the Master Forge. To mount it:
 
   #. Use the included Allen key to loosen the two metal socket screws on the bottom plate. This gives the plate a little play.
-  #. Slide the dovetail rail onto one of the :ref:`slotted bookend rails <Master Forge:The Bookend Rails>` and position the Forge Trackball where you want it. It will still be loose at this point.
+  #. Slide the dovetail rail onto the :ref:`slotted bookend rail <Master Forge:The Bookend Rails>` you want to use and position the Forge Trackball where you want it. It will still be loose at this point.
   #. Tighten the screws to lock it in place. The screws seat against brass inserts, so the clamp is metal on metal rather than metal on plastic.
-* **Universal Rail Compatibility**: The Forge Trackball can attach to **any rail** on the Master Forge—including outboard right, outboard left, front/rear shoulders, or center positions.
+
 * **Structural Bridge Capability**: In addition to outer rail mounting, the Forge Trackball can act as a **structural bridge/connector** between two other Forge modules, physically joining two digitizers or anchor bodies together.
 
 Angle & Tilt Adjustments
