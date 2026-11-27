@@ -298,4 +298,4 @@ Disassembly, Warranty & Replacement Parts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * **Warranty Warning**: Internal components are **not user-serviceable**. **Opening the Aluminum 5052 exoskeleton shell will void the manufacturer warranty**, as folding and unfolding the metal shell multiple times can cause the seams to break.
-* **Replacement Parts**: For replacement **34 mm balls, bearings, exoskeleton shells, and cables**, please check `charachorder.com <https://www.charachorder.com/>`_ or reach out to `CharaChorder Support <https://www.charachorder.com/pages/support?chat>`_.
+* **Replacement Parts**: For replacement **34 mm balls, bearings, exoskeleton shells, and cables**, please check `charachorder.com <https://www.charachorder.com/>`_ or reach out to `CharaChorder Support <https://www.charachorder.com/pages/support?sfae>`_.
